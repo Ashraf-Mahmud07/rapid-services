@@ -1,0 +1,57 @@
+name: CD
+
+on:
+  push:
+    branches:
+      - main   # production deploy — triggered when dev → main PR is merged
+      - dev    # staging deploy   — triggered when module/* → dev PR is merged
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    name: Deploy to ${{ github.ref_name == 'main' && 'Production' || 'Staging' }}
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Set environment variables
+        id: env
+        run: |
+          if [ "${{ github.ref_name }}" == "main" ]; then
+            echo "APP_DIR=${{ secrets.PROD_APP_DIR }}"     >> $GITHUB_OUTPUT
+            echo "PM2_APP=${{ secrets.PROD_PM2_APP }}"     >> $GITHUB_OUTPUT
+            echo "TARGET=Production"                        >> $GITHUB_OUTPUT
+          else
+            echo "APP_DIR=${{ secrets.STAGING_APP_DIR }}"  >> $GITHUB_OUTPUT
+            echo "PM2_APP=${{ secrets.STAGING_PM2_APP }}"  >> $GITHUB_OUTPUT
+            echo "TARGET=Staging"                           >> $GITHUB_OUTPUT
+          fi
+
+      - name: Deploy to VPS via SSH
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host:     ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USER }}
+          key:      ${{ secrets.VPS_SSH_KEY }}
+          port:     ${{ secrets.VPS_PORT || '22' }}
+          script: |
+            set -e
+
+            echo "==> [${{ steps.env.outputs.TARGET }}] Navigating to app directory"
+            cd ${{ steps.env.outputs.APP_DIR }}
+
+            echo "==> Pulling latest code (${{ github.ref_name }})"
+            git pull origin ${{ github.ref_name }}
+
+            echo "==> Installing dependencies"
+            npm ci --production=false
+
+            echo "==> Building Next.js"
+            npm run build
+
+            echo "==> Restarting pm2 process"
+            pm2 restart ${{ steps.env.outputs.PM2_APP }} --update-env
+
+            echo "==> ${{ steps.env.outputs.TARGET }} deploy complete ✅"

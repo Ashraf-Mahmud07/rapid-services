@@ -1,0 +1,26 @@
+# Global fallback — @mynulislam2 reviews everything
+*                                   @mynulislam2
+
+# === Shared layer — wide review required (affects every module) ===
+src/shared/                         @mynulislam2
+src/store/                          @mynulislam2
+src/providers/                      @mynulislam2
+src/i18n/                           @mynulislam2
+
+# === Root config ===
+next.config.ts                      @mynulislam2
+tsconfig.json                       @mynulislam2
+eslint.config.mjs                   @mynulislam2
+package.json                        @mynulislam2
+.github/                            @mynulislam2
+
+# === Module owners ===
+src/modules/auth/                   @mynulislam2
+src/modules/account/                @mynulislam2
+src/modules/product/                @mynulislam2
+src/modules/blogs/                  @mynulislam2
+src/modules/support/                @mynulislam2
+
+# === App Router (thin routing layer) ===
+src/app/                            @mynulislam2
+src/config/                         @mynulislam2
