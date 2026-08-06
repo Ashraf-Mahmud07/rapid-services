@@ -12,6 +12,13 @@
   --font-heading: var(--font-sans);
   --font-body: "Inter", "Segoe UI", system-ui, sans-serif;
   --font-mono: "JetBrains Mono", "Fira Code", ui-monospace, monospace;
+  --font-poppins: "Poppins", "Segoe UI", system-ui, sans-serif;
+  --font-inter: "Inter", "Segoe UI", system-ui, sans-serif;
+
+  /* ─── Page container ────────────────────────────────── */
+  /* Max content width shared by every page section. Change this one value to
+     widen or narrow the whole site. Also available as `max-w-page`. */
+  --container-page: 87.5rem;
 
   /* ─── Font sizes (type scale) ───────────────────────── */
   --text-xs: 0.75rem;
@@ -99,7 +106,7 @@
   /* ─── Semantic tokens (map to palette) ──────────────── */
   --color-background: hsl(0 0% 100%);
   --color-foreground: var(--color-neutral-900);
-  --color-primary: #00A79D;
+  --color-primary: #00a79d;
   --color-primary-foreground: hsl(210 40% 98%);
   --color-secondary: var(--color-neutral-100);
   --color-secondary-foreground: var(--color-neutral-800);
@@ -143,8 +150,13 @@
 }
 
 /* ─── Global resets ──────────────────────────────────── */
-* {
-  border-color: var(--color-border);
+/* Kept inside @layer base: an unlayered rule outranks every layered one, so
+   leaving this outside a layer made it beat Tailwind's border-color utilities
+   (border-primary, border-[#7fcabf], …) and forced every border to the default. */
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
 }
 
 body {
@@ -196,5 +208,63 @@ body {
   }
   html {
     @apply font-sans;
+  }
+}
+
+/* ─── Page container ─────────────────────────────────── */
+/* Centered container shared by the navbar, footer, and every page section, so
+   they all align on one edge instead of each carrying its own fixed gutter.
+   Gutters step down on tablet and mobile; the max width is --container-page. */
+@utility container-page {
+  width: 100%;
+  max-width: var(--container-page);
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+
+  @media (width >= 40rem) {
+    padding-inline: 1.5rem;
+  }
+
+  @media (width >= 48rem) {
+    padding-inline: 2.5rem;
+  }
+
+  @media (width >= 64rem) {
+    padding-inline: 3rem;
+  }
+}
+
+/* ─── Marketing site animations ──────────────────────── */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes modalIn {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes pop {
+  0% {
+    transform: scale(0.6);
+    opacity: 0;
+  }
+  60% {
+    transform: scale(1.08);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
   }
 }

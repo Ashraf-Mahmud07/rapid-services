@@ -1,102 +1,200 @@
-import Link from 'next/link'
-import React from 'react'
+import Image from "next/image";
+
+import { Link } from "@/i18n/navigation";
+import { ROUTES } from "@/shared/constants/routes";
+
+const QUICK_LINKS = [
+  { label: "Blogs", href: "/blogs" },
+  { label: "Media", href: "/media" },
+  { label: "Privacy Policy", href: "/privacy" },
+  { label: "Terms & Condition", href: "/terms" },
+];
+
+const OPENING_HOURS = [
+  "Saturday-Thursday 8:00 am-9:00 pm",
+  "Break : 1:30 pm–3:30 pm",
+  "Friday : Closed",
+];
+
+const maskIcon = (src: string) => ({
+  WebkitMaskImage: `url('${src}')`,
+  maskImage: `url('${src}')`,
+  WebkitMaskPosition: "center",
+  maskPosition: "center",
+  WebkitMaskSize: "contain",
+  maskSize: "contain",
+  WebkitMaskRepeat: "no-repeat",
+  maskRepeat: "no-repeat",
+});
 
 export default function Footer() {
   return (
-    <footer className="bg-[#0b0b0b] text-white mt-12">
-      <div className="max-w-7xl mx-auto px-6 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-          <div>
-            <Link href="/" className="inline-flex items-center gap-3" aria-label="Home">
-              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect width="24" height="24" rx="6" fill="var(--color-primary)" />
-                <path d="M6 12h12" stroke="white" strokeWidth="1.5" strokeLinecap="round" />
+    <footer className="bg-[#0C0C0C] pt-12 font-poppins sm:pt-16 lg:pt-20">
+      <div className="container-page grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-[1.5fr_1fr_1.15fr_1.35fr] lg:gap-12">
+        <div>
+          <Link href={ROUTES.HOME} aria-label="Home" className="mb-5.5 inline-block">
+            <Image
+              src="/images/logo.png"
+              alt="Rapid"
+              width={2633}
+              height={1904}
+              className="h-16 w-auto"
+            />
+          </Link>
+          <p className="mb-6.5 max-w-75 text-sm leading-[1.75] text-[#9a9c9e]">
+            Bab Al Bustan Auto Maintenance Workshop, our workshop stands as a symbol of precision,
+            quality, and trust for all your car care needs.
+          </p>
+          <div className="flex items-center gap-4">
+            <span className="text-sm font-semibold text-[#e4e6e8]">Follow us :</span>
+            <a
+              href="https://facebook.com"
+              aria-label="Facebook"
+              className="flex size-8.5 items-center justify-center rounded-full bg-[#242424] transition-colors hover:bg-[#2f2f2f]"
+            >
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="#d0d2d4">
+                <path d="M13.5 21v-7h2.3l.4-2.8h-2.7V9.4c0-.8.3-1.3 1.5-1.3H16V5.6c-.3 0-1.2-.1-2.1-.1-2.1 0-3.5 1.3-3.5 3.6v2H8v2.8h2.4V21z" />
               </svg>
-            </Link>
-
-            <p className="mt-4 text-sm text-white/70 leading-relaxed max-w-xs">
-              Rapid ERP — reliable, fast, and extensible enterprise resource planning platform that adapts to
-              your workflow.
-            </p>
-
-            <div className="mt-4 flex items-center gap-3">
-              {/* Social placeholders */}
-              <a aria-label="facebook" className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                  <path d="M18 2h-3a4 4 0 00-4 4v3H8v4h3v8h4v-8h3l1-4h-4V6a1 1 0 011-1h3z" />
-                </svg>
-              </a>
-              <a aria-label="twitter" className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                  <path d="M23 3a10.9 10.9 0 01-3.14 1.53A4.48 4.48 0 0016 3a4.48 4.48 0 00-4.47 5.5A12.94 12.94 0 013 4s-4 9 5 13a13 13 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z" />
-                </svg>
-              </a>
-            </div>
+            </a>
+            <a
+              href="https://instagram.com"
+              aria-label="Instagram"
+              className="flex size-8.5 items-center justify-center rounded-full bg-[#242424] transition-colors hover:bg-[#2f2f2f]"
+            >
+              <svg
+                width="15"
+                height="15"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="#d0d2d4"
+                strokeWidth="1.8"
+              >
+                <rect x="3" y="3" width="18" height="18" rx="5" />
+                <circle cx="12" cy="12" r="3.6" />
+                <circle cx="17.4" cy="6.6" r="1.1" fill="#d0d2d4" stroke="none" />
+              </svg>
+            </a>
+            <a
+              href="https://tiktok.com"
+              aria-label="TikTok"
+              className="flex size-8.5 items-center justify-center rounded-full bg-[#242424] transition-colors hover:bg-[#2f2f2f]"
+            >
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="#d0d2d4">
+                <path d="M15 4c.3 2 1.6 3.4 3.5 3.6v2.4c-1.2 0-2.4-.4-3.4-1v5.6a4.9 4.9 0 11-4.9-4.9c.3 0 .5 0 .8.1v2.5a2.4 2.4 0 102 2.3V4z" />
+              </svg>
+            </a>
           </div>
+        </div>
 
-          <div>
-            <h4 className="text-sm font-semibold mb-4 text-primary">Quick Links</h4>
-            <ul className="space-y-2 text-sm text-white/70">
-              <li>
-                <Link href="/blogs" className="hover:underline">Blogs</Link>
+        <div>
+          <h3 className="mb-4 inline-block border-b-2 border-primary pb-2 text-[15px] font-semibold tracking-[0.5px] text-white">
+            QUICK LINKS
+          </h3>
+          <ul className="flex flex-col gap-3.5">
+            {QUICK_LINKS.map((link) => (
+              <li key={link.href}>
+                <Link
+                  href={link.href}
+                  className="flex items-center gap-2 text-sm text-[#a7a9ab] transition-colors hover:text-white"
+                >
+                  <span className="text-primary">›</span>
+                  {link.label}
+                </Link>
               </li>
-              <li>
-                <Link href="/media" className="hover:underline">Media</Link>
-              </li>
-              <li>
-                <Link href="/privacy" className="hover:underline">Privacy Policy</Link>
-              </li>
-              <li>
-                <Link href="/terms" className="hover:underline">Terms &amp; Condition</Link>
-              </li>
-            </ul>
-          </div>
+            ))}
+          </ul>
+        </div>
 
-          <div>
-            <h4 className="text-sm font-semibold mb-4 text-primary">Opening Hours</h4>
-            <div className="text-sm text-white/70 space-y-2">
-              <div>
-                <strong className="text-white/90">Saturday-Thursday</strong>
-                <div>8:00 am - 9:00 pm</div>
-              </div>
-              <div>
-                <strong className="text-white/90">Break</strong>
-                <div>1:30 pm - 3:30 pm</div>
-              </div>
-              <div>
-                <strong className="text-white/90">Friday</strong>
-                <div>Closed</div>
-              </div>
-            </div>
-          </div>
+        <div>
+          <h3 className="mb-4 inline-block border-b-2 border-primary pb-2 text-[15px] font-semibold tracking-[0.5px] text-white">
+            OPENING HOURS
+          </h3>
+          <ul className="flex flex-col gap-3.5">
+            {OPENING_HOURS.map((entry) => (
+              <li key={entry} className="text-sm text-[#a7a9ab]">
+                {entry}
+              </li>
+            ))}
+          </ul>
+        </div>
 
-          <div>
-            <h4 className="text-sm font-semibold mb-4 text-primary">Contact Info</h4>
-            <div className="text-sm text-white/70 space-y-3">
-              <div>
-                <div>Industrial Area No 5, Sharjah, UAE</div>
-              </div>
-              <div>
-                <div>+971564406456</div>
-                <div>+971557636994</div>
-              </div>
-              <div>
-                <a href="mailto:info@example.com" className="hover:underline">info@example.com</a>
-              </div>
-              <div>
-                <div>Saturday-Thursday</div>
-                <div>8:00 am - 9:00 pm</div>
-              </div>
-            </div>
-          </div>
+        <div>
+          <h3 className="mb-4 inline-block border-b-2 border-primary pb-2 text-[15px] font-semibold tracking-[0.5px] text-white">
+            CONTACT INFO
+          </h3>
+          <ul className="flex flex-col gap-4.5">
+            <li className="flex items-start gap-3 text-sm leading-[1.5] text-[#a7a9ab]">
+              <svg
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="#00A79D"
+                strokeWidth="1.8"
+                className="mt-0.5 flex-none"
+              >
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" />
+                <circle cx="12" cy="10" r="3" />
+              </svg>
+              <span>
+                Industrial Area No 5 ,<br />
+                Sharjah, UAE
+              </span>
+            </li>
+            <li className="flex items-start gap-3 text-sm leading-[1.5] text-[#a7a9ab]">
+              <span
+                className="mt-0.5 inline-block size-4.5 flex-none bg-primary"
+                style={maskIcon("/icons/call.svg")}
+              />
+              <span>
+                +971564406456
+                <br />
+                +971557636994
+              </span>
+            </li>
+            <li className="flex items-start gap-3 text-sm leading-[1.5] text-[#a7a9ab]">
+              <svg
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="#00A79D"
+                strokeWidth="1.8"
+                className="mt-0.5 flex-none"
+              >
+                <rect x="3" y="5" width="18" height="14" rx="2" />
+                <path d="M3 7l9 6 9-6" />
+              </svg>
+              <span>
+                info@babalbustanuae.com
+                <br />
+                babalbustan1@gmail.com
+              </span>
+            </li>
+            <li className="flex items-start gap-3 text-sm leading-[1.5] text-[#a7a9ab]">
+              <span
+                className="mt-0.5 inline-block size-[18px] flex-none bg-primary"
+                style={maskIcon("/icons/office-chair.svg")}
+              />
+              <span>
+                Saturday-Thursday
+                <br />
+                8:00 am-9:00 pm
+              </span>
+            </li>
+          </ul>
         </div>
       </div>
 
-      <div className="border-t border-white/5">
-        <div className="max-w-7xl mx-auto px-6 py-6 text-center text-xs text-white/60">
-          © {new Date().getFullYear()} Rapid ERP. All rights reserved.
+      <div className="mt-12 border-t border-[#232323] lg:mt-[70px]">
+        <div className="container-page py-[22px] text-center">
+          <span className="text-xs tracking-[0.6px] text-[#7a7c7e]">
+            © COPYRIGHT 2026{" "}
+            <span className="font-bold text-primary">BAB AL BUSTAN AUTO MAINTENANCE WORKSHOP</span>.
+            ALL RIGHTS RESERVED.&nbsp;&nbsp;&nbsp;&nbsp;ADMIN
+          </span>
         </div>
       </div>
     </footer>
-  )
+  );
 }

@@ -21,11 +21,13 @@ export default async function LocaleLayout({
   const dir = RTL_LOCALES.includes(locale) ? "rtl" : "ltr";
 
   return (
-    /* Prevents hydration warnings caused by browser 
-       extensions injecting attributes on the <html> tag.
+    /* Prevents hydration warnings caused by browser extensions injecting
+       attributes on the <html> and <body> tags (e.g. ColorZilla's
+       cz-shortcut-listen). suppressHydrationWarning only applies to the element
+       it is set on, so <body> needs its own.
     */
     <html lang={locale} dir={dir} suppressHydrationWarning>
-      <body>
+      <body suppressHydrationWarning>
         <NextIntlClientProvider messages={messages}>
           <StoreProvider>{children}</StoreProvider>
         </NextIntlClientProvider>

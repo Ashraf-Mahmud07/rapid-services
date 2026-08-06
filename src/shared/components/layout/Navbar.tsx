@@ -1,124 +1,128 @@
-'use client'
+"use client";
 
-import React from 'react'
-import Link from 'next/link'
+import { MenuIcon, XIcon } from "lucide-react";
+import Image from "next/image";
+import * as React from "react";
 
-export type NavLink = { label: string; href: string }
+import { Link, usePathname } from "@/i18n/navigation";
+import { ROUTES } from "@/shared/constants/routes";
+import { cn } from "@/shared/utils/cn";
+
+export type NavLink = { label: string; href: string };
 
 type Props = {
-  links?: NavLink[]
-  logo?: React.ReactNode
-  variant?: 'transparent' | 'solid'
-  appointmentHref?: string
-}
+  links?: NavLink[];
+  logo?: React.ReactNode;
+  variant?: "transparent" | "solid";
+  appointmentHref?: string;
+};
+
+const DEFAULT_LINKS: NavLink[] = [
+  { label: "Product", href: ROUTES.PRODUCT },
+  { label: "Project", href: ROUTES.PROJECT },
+  { label: "Service", href: ROUTES.SERVICE },
+  { label: "Industry", href: ROUTES.INDUSTRY },
+  { label: "Career", href: ROUTES.CAREER },
+  { label: "About Us", href: ROUTES.ABOUT },
+  { label: "Contact Us", href: ROUTES.CONTACT },
+];
 
 export default function Navbar({
-  links = [
-    { label: 'Product', href: '/product' },
-    { label: 'Project', href: '/project' },
-    { label: 'Service', href: '/service' },
-    { label: 'Industry', href: '/industry' },
-    { label: 'Career', href: '/career' },
-    { label: 'About Us', href: '/about' },
-    { label: 'Contact Us', href: '/contact' }
-  ],
+  links = DEFAULT_LINKS,
   logo,
-  variant = 'transparent',
-  appointmentHref = '/appointment'
+  variant = "transparent",
+  appointmentHref = ROUTES.APPOINTMENT,
 }: Props) {
-  const [open, setOpen] = React.useState(false)
+  const [open, setOpen] = React.useState(false);
+  const pathname = usePathname();
 
-  const isTransparent = variant === 'transparent'
+  const isActive = (href: string) =>
+    href === ROUTES.HOME ? pathname === href : pathname === href || pathname.startsWith(`${href}/`);
 
   return (
     <nav
-      className={`w-full z-50 top-0 left-0 transition-colors duration-200 ${
-        isTransparent
-          ? 'bg-transparent text-white'
-          : 'bg-background text-foreground shadow-sm'
-      }`}
+      className={cn(
+        "z-40 font-poppins",
+        variant === "transparent" ? "absolute top-0 right-0 left-0" : "relative w-full bg-[#0C0C0C]"
+      )}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
-          {/* Left: logo */}
-          <div className="flex-shrink-0">
-            <Link href="/" className="flex items-center gap-2" aria-label="Home">
-              {logo ?? (
-                <svg
-                  width="36"
-                  height="36"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="block"
-                >
-                  <rect width="24" height="24" rx="6" fill="var(--color-primary)" />
-                  <path d="M6 12h12" stroke="white" strokeWidth="1.5" strokeLinecap="round" />
-                </svg>
+      <div className="relative container-page flex items-center justify-between py-4 sm:py-5 lg:py-6">
+        <Link href={ROUTES.HOME} aria-label="Home" className="flex-none">
+          {logo ?? (
+            <Image
+              src="/images/logo.png"
+              alt="Rapid"
+              width={2633}
+              height={1904}
+              priority
+              className="h-10 w-auto sm:h-11 lg:h-13.5"
+            />
+          )}
+        </Link>
+
+        <div className="hidden items-center gap-9.5 xl:flex">
+          {links.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              className={cn(
+                "text-[13px] font-semibold tracking-[1.2px] whitespace-nowrap uppercase transition-colors",
+                isActive(link.href)
+                  ? "border-b-2 border-white pb-1.5 text-white"
+                  : "text-white/90 hover:text-white"
               )}
+            >
+              {link.label}
             </Link>
-          </div>
+          ))}
+        </div>
 
-          {/* Center: desktop links */}
-          <div className="hidden md:flex md:space-x-6 md:items-center">
-            {links.map((l) => (
-              <Link key={l.href} href={l.href} className={`text-sm font-medium hover:underline ${isTransparent ? 'opacity-95' : ''}`}>
-                {l.label}
-              </Link>
-            ))}
-          </div>
+        <div className="flex items-center gap-4">
+          <Link
+            href={appointmentHref}
+            className="hidden rounded-full bg-white px-7.5 py-3.5 text-[13px] font-semibold tracking-[1px] text-primary uppercase transition-colors hover:bg-white/90 xl:inline-flex"
+          >
+            Appointment
+          </Link>
 
-          {/* Right: appointment button + mobile toggle */}
-          <div className="flex items-center gap-4">
-            <div className="hidden md:block">
-              <Link href={appointmentHref} className={`inline-flex items-center gap-2 px-4 py-1 rounded-full text-sm font-semibold transition-all duration-150 border ` +
-                    (isTransparent
-                      ? 'bg-white text-primary border-white/30 hover:bg-white/95'
-                      : 'bg-primary text-white border-primary hover:brightness-90')}
+          <button
+            type="button"
+            aria-label="Toggle menu"
+            aria-expanded={open}
+            onClick={() => setOpen((value) => !value)}
+            className="flex size-11 items-center justify-center rounded-full bg-white/10 text-white transition-colors hover:bg-white/20 xl:hidden"
+          >
+            {open ? <XIcon className="size-5" /> : <MenuIcon className="size-5" />}
+          </button>
+        </div>
+
+        {open && (
+          <div className="absolute top-full right-5 left-5 z-50 rounded-[10px] bg-[#0C0C0C] p-5 sm:right-6 sm:left-6 sm:p-6 md:right-10 md:left-10 lg:right-12 lg:left-12 xl:hidden">
+            <div className="flex flex-col gap-1">
+              {links.map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  onClick={() => setOpen(false)}
+                  className={cn(
+                    "flex min-h-11 items-center text-[13px] font-semibold tracking-[1.2px] uppercase transition-colors",
+                    isActive(link.href) ? "text-primary" : "text-white/90 hover:text-white"
+                  )}
+                >
+                  {link.label}
+                </Link>
+              ))}
+              <Link
+                href={appointmentHref}
+                onClick={() => setOpen(false)}
+                className="mt-3 rounded-full bg-white px-7.5 py-3.5 text-center text-[13px] font-semibold tracking-[1px] text-primary uppercase"
               >
                 Appointment
               </Link>
             </div>
-
-            {/* Mobile menu button */}
-            <div className="md:hidden">
-              <button
-                aria-label="Toggle menu"
-                aria-expanded={open}
-                onClick={() => setOpen((s) => !s)}
-                className="inline-flex items-center justify-center p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary"
-              >
-                <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  {open ? (
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                  ) : (
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-                  )}
-                </svg>
-              </button>
-            </div>
           </div>
-        </div>
-      </div>
-
-      {/* Mobile menu panel */}
-      <div className={`md:hidden ${open ? 'block' : 'hidden'} px-4 pb-4`}>
-        <div className={`space-y-2 ${isTransparent ? 'text-white' : 'text-foreground'}`}>
-          {links.map((l) => (
-            <Link key={l.href} href={l.href} className="block py-2 text-base font-medium" onClick={() => setOpen(false)}>
-              {l.label}
-            </Link>
-          ))}
-
-          <Link href={appointmentHref} className={`block w-full text-center mt-2 px-4 py-2 rounded-full font-semibold border ` +
-                (isTransparent
-                  ? 'bg-white text-primary border-white/30'
-                  : 'bg-primary text-white border-primary')}
-          >
-            Appointment
-          </Link>
-        </div>
+        )}
       </div>
     </nav>
-  )
+  );
 }
