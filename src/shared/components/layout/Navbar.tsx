@@ -49,14 +49,16 @@ export default function Navbar({
       <div className="relative container-page flex items-center justify-between py-4 sm:py-5 lg:py-6">
         <Link href={ROUTES.HOME} aria-label="Home" className="flex-none">
           {logo ?? (
-            <Image
-              src="/images/logo.png"
-              alt="Rapid"
-              width={2633}
-              height={1904}
-              priority
-              className="h-10 w-auto sm:h-11 lg:h-13.5"
-            />
+            <span className="flex size-14 items-center justify-center rounded-full bg-white sm:size-16 lg:size-18.5">
+              <Image
+                src="/images/logo.png"
+                alt="Rapid"
+                width={2633}
+                height={1904}
+                priority
+                className="h-auto w-[80%]"
+              />
+            </span>
           )}
         </Link>
 

@@ -30,13 +30,18 @@ export default function ApprovalCard({ approval }: ApprovalCardProps) {
         />
       </span>
 
-      <h3 className="mt-5 text-base font-bold text-primary">{approval.title}</h3>
-      <p className="mt-3 text-[13px] leading-[1.75] text-[#8b9096]">{approval.description}</p>
+      <h3 className="mt-3 text-[18px] leading-[1.35] font-bold text-primary">{approval.title}</h3>
+      <p className="mt-3 text-[13px] leading-normal text-[#6c7176]">{approval.description}</p>
 
-      <p className="mt-auto flex items-start gap-2 border-t border-[#EDEFF1] pt-4 text-[11px] leading-[1.5] font-bold tracking-[0.5px] text-[#3f4245] uppercase">
-        <CheckIcon className="mt-px size-3.5 flex-none text-primary" strokeWidth={2.6} />
-        {approval.highlight}
-      </p>
+      <div className="mt-auto pt-4">
+        <span className="block h-px w-[72%] bg-[#EDEFF1]" />
+        <p className="mt-4 flex items-start gap-2 text-[11px] leading-normal font-bold tracking-[0.3px] text-[#17181a] uppercase">
+          <span className="flex size-4 flex-none items-center justify-center rounded-sm bg-primary">
+            <CheckIcon className="size-2.5 text-white" strokeWidth={3} />
+          </span>
+          {approval.highlight}
+        </p>
+      </div>
     </article>
   );
 }

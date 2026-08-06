@@ -9,11 +9,11 @@ export default function CertificationCredentials() {
           <p className="mb-3.5 text-xs font-semibold tracking-[1.5px] text-primary uppercase">
             {CERTIFICATION_INTRO.eyebrow}
           </p>
-          <h2 className="max-w-[480px] text-[26px] leading-[1.25] font-bold text-[#17181a] sm:text-[30px] lg:text-[34px]">
+          <h2 className="max-w-125 text-[26px] leading-tight font-bold text-[#17181a] sm:text-[30px] lg:text-[34px]">
             {CERTIFICATION_INTRO.title}
           </h2>
         </div>
-        <p className="max-w-[340px] text-[13px] leading-[1.7] text-[#8b9096] lg:text-end">
+        <p className="max-w-85 text-[13px] leading-[1.7] text-[#8b9096] lg:text-end">
           {CERTIFICATION_INTRO.description}
         </p>
       </div>

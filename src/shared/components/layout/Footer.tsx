@@ -33,13 +33,17 @@ export default function Footer() {
     <footer className="bg-[#0C0C0C] pt-12 font-poppins sm:pt-16 lg:pt-20">
       <div className="container-page grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-[1.5fr_1fr_1.15fr_1.35fr] lg:gap-12">
         <div>
-          <Link href={ROUTES.HOME} aria-label="Home" className="mb-5.5 inline-block">
+          <Link
+            href={ROUTES.HOME}
+            aria-label="Home"
+            className="mb-5.5 inline-flex size-20 items-center justify-center rounded-full bg-white lg:size-23.5"
+          >
             <Image
               src="/images/logo.png"
               alt="Rapid"
               width={2633}
               height={1904}
-              className="h-16 w-auto"
+              className="h-auto w-[80%]"
             />
           </Link>
           <p className="mb-6.5 max-w-75 text-sm leading-[1.75] text-[#9a9c9e]">
@@ -124,7 +128,7 @@ export default function Footer() {
             CONTACT INFO
           </h3>
           <ul className="flex flex-col gap-4.5">
-            <li className="flex items-start gap-3 text-sm leading-[1.5] text-[#a7a9ab]">
+            <li className="flex items-start gap-3 text-sm leading-normal text-[#a7a9ab]">
               <svg
                 width="18"
                 height="18"
@@ -142,7 +146,7 @@ export default function Footer() {
                 Sharjah, UAE
               </span>
             </li>
-            <li className="flex items-start gap-3 text-sm leading-[1.5] text-[#a7a9ab]">
+            <li className="flex items-start gap-3 text-sm leading-normal text-[#a7a9ab]">
               <span
                 className="mt-0.5 inline-block size-4.5 flex-none bg-primary"
                 style={maskIcon("/icons/call.svg")}
@@ -153,7 +157,7 @@ export default function Footer() {
                 +971557636994
               </span>
             </li>
-            <li className="flex items-start gap-3 text-sm leading-[1.5] text-[#a7a9ab]">
+            <li className="flex items-start gap-3 text-sm leading-normal text-[#a7a9ab]">
               <svg
                 width="18"
                 height="18"
@@ -172,9 +176,9 @@ export default function Footer() {
                 babalbustan1@gmail.com
               </span>
             </li>
-            <li className="flex items-start gap-3 text-sm leading-[1.5] text-[#a7a9ab]">
+            <li className="flex items-start gap-3 text-sm leading-normal text-[#a7a9ab]">
               <span
-                className="mt-0.5 inline-block size-[18px] flex-none bg-primary"
+                className="mt-0.5 inline-block size-4.5 flex-none bg-primary"
                 style={maskIcon("/icons/office-chair.svg")}
               />
               <span>
@@ -187,8 +191,8 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="mt-12 border-t border-[#232323] lg:mt-[70px]">
-        <div className="container-page py-[22px] text-center">
+      <div className="mt-12 border-t border-[#232323] lg:mt-17.5">
+        <div className="container-page py-5.5 text-center">
           <span className="text-xs tracking-[0.6px] text-[#7a7c7e]">
             © COPYRIGHT 2026{" "}
             <span className="font-bold text-primary">BAB AL BUSTAN AUTO MAINTENANCE WORKSHOP</span>.

@@ -1,8 +1,8 @@
 "use client";
 
+import { zodResolver } from "@hookform/resolvers/zod";
 import Image from "next/image";
 import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
 
 import { Button } from "@/shared/components/ui/Button";
 import { Input } from "@/shared/components/ui/Input";
@@ -24,14 +24,14 @@ export default function NewsletterSection() {
   }
 
   return (
-    <section className="my-14 grid items-center gap-8 rounded-xl bg-[#0A1128] px-5 py-10 sm:my-20 sm:px-8 sm:py-12 lg:my-24 lg:grid-cols-[0.8fr_1.2fr] lg:gap-12 lg:px-[72px] lg:py-7">
+    <section className="my-14 grid items-center gap-8 rounded-xl bg-[#0A1128] px-5 py-10 sm:my-20 sm:px-8 sm:py-12 lg:my-24 lg:grid-cols-[0.8fr_1.2fr] lg:gap-12 lg:px-18 lg:py-7">
       <div className="flex justify-center">
         <Image
           src="/images/newsletter-subscribe.png"
           alt=""
           width={920}
           height={861}
-          className="w-full max-w-[260px] sm:max-w-[320px] lg:max-w-[392px]"
+          className="w-full max-w-65 sm:max-w-[320px] lg:max-w-98"
         />
       </div>
       <div>
@@ -39,13 +39,13 @@ export default function NewsletterSection() {
           Subscribe to our email newsletter and get{" "}
           <span className="text-primary">best deals or offers</span>
         </h2>
-        <p className="mb-6 max-w-[680px] text-sm leading-[1.35] text-[#A3ADBA] lg:mb-8 lg:text-[15px]">
+        <p className="mb-6 max-w-170 text-sm leading-[1.35] text-[#A3ADBA] lg:mb-8 lg:text-[15px]">
           Stay in the loop with the latest updates, exclusive offers, and exciting product launches
           by subscribing to our email newsletter.
         </p>
         <form
           onSubmit={handleSubmit(onSubmit)}
-          className="flex max-w-[744px] flex-col gap-3 sm:flex-row"
+          className="flex max-w-186 flex-col gap-3 sm:flex-row"
         >
           <div className="flex-1">
             <Input

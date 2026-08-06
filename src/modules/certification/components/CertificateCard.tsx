@@ -17,7 +17,7 @@ export default function CertificateCard({ certificate }: CertificateCardProps) {
             alt=""
             width={21}
             height={21}
-            className="size-[21px]"
+            className="size-5.25"
           />
         </span>
         <span className="inline-flex items-center rounded-full bg-[#E6F7F4] px-2.5 py-1 text-[10px] leading-none font-bold tracking-[1px] text-primary uppercase">
