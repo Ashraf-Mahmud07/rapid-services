@@ -1,3 +1,4 @@
-export { default as Navbar } from './Navbar'
-export { default as Footer } from './Footer'
-export type { NavLink } from './Navbar'
+export { default as Navbar } from "./Navbar";
+export { default as Footer } from "./Footer";
+export { default as PageHero } from "./PageHero";
+export type { NavLink } from "./Navbar";

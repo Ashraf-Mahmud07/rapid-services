@@ -5,6 +5,7 @@ export const ROUTES = {
   SERVICE: "/service",
   INDUSTRY: "/industry",
   CAREER: "/career",
+  CERTIFICATION: "/certification",
   ABOUT: "/about",
   CONTACT: "/contact-us",
   APPOINTMENT: "/appointment",

@@ -4,6 +4,7 @@ import { Link } from "@/i18n/navigation";
 import { ROUTES } from "@/shared/constants/routes";
 
 const QUICK_LINKS = [
+  { label: "Certification", href: ROUTES.CERTIFICATION },
   { label: "Blogs", href: "/blogs" },
   { label: "Media", href: "/media" },
   { label: "Privacy Policy", href: "/privacy" },

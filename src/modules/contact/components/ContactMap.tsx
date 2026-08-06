@@ -2,7 +2,7 @@ import { CONTACT_MAP } from "../data/contact.data";
 
 export default function ContactMap() {
   return (
-    <section className="mt-6 overflow-hidden rounded-[14px] border border-[#bfe3dd] sm:mt-8 lg:mt-[34px]">
+    <section className="mt-6 overflow-hidden rounded-[14px] border border-[#bfe3dd] sm:mt-8 lg:mt-8.5">
       <div className="relative">
         <iframe
           title={CONTACT_MAP.title}
@@ -10,7 +10,7 @@ export default function ContactMap() {
           loading="lazy"
           allowFullScreen
           referrerPolicy="no-referrer-when-downgrade"
-          className="block h-[320px] w-full border-0 sm:h-[420px] lg:h-[520px]"
+          className="block h-80 w-full border-0 sm:h-105 lg:h-130"
         />
 
         {/* Brand pin and address card composited over the embed. The pin tip and
