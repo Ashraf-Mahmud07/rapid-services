@@ -31,9 +31,9 @@ modules/certification/
 
 ## Reused Components
 
-The route composes shared pieces rather than redefining them — `Navbar`, `PageHero`, and `Footer`
-from `@/shared/components/layout`, and `FaqSection` from `@/modules/contact`. Updates to any of
-those apply to this page automatically.
+The route composes shared pieces rather than redefining them — `Navbar`, `PageHero`, `FaqSection`,
+and `Footer`, all from `@/shared/components/layout`. Updates to any of those apply to this page
+automatically.
 
 ## Key Gotchas
 

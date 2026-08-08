@@ -1,15 +1,27 @@
+import type { SVGProps } from "react";
+
+import {
+  BuildingIcon,
+  DropletIcon,
+  LabIcon,
+  LeafIcon,
+  ShieldCheckIcon,
+  ShieldIcon,
+} from "../assets/icons";
 import type { CertificationIconName } from "../types/certification.types";
 
 /**
- * Figma-exported SVGs in /public/icons. The certificate icons ship in brand teal
- * and are rendered as-is; the approval cards sit on a teal tile and re-colour the
- * same files to white with a CSS mask.
+ * Figma-exported marks drawn with `currentColor`, so the card controls the colour:
+ * `text-primary` on the tinted certificate tile, `text-white` on the solid approval tile.
  */
-export const CERTIFICATION_ICONS: Record<CertificationIconName, string> = {
-  shield: "/icons/iso.svg",
-  droplet: "/icons/iso-2015.svg",
-  "shield-check": "/icons/iso-20218.svg",
-  building: "/icons/ohsas.svg",
-  lab: "/icons/dcl-approved.svg",
-  leaf: "/icons/dm-green-building.svg",
+export const CERTIFICATION_ICONS: Record<
+  CertificationIconName,
+  (props: SVGProps<SVGSVGElement>) => React.ReactElement
+> = {
+  shield: ShieldIcon,
+  droplet: DropletIcon,
+  "shield-check": ShieldCheckIcon,
+  building: BuildingIcon,
+  lab: LabIcon,
+  leaf: LeafIcon,
 };

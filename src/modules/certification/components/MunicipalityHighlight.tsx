@@ -11,13 +11,7 @@ export default function MunicipalityHighlight() {
       <div className="grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:items-center lg:gap-12">
         <div className="relative pb-4">
           <div className="flex items-center justify-center rounded-lg bg-white p-8 lg:min-h-52.5">
-            <Image
-              src={content.logo}
-              alt={content.logoAlt}
-              width={435}
-              height={175}
-              className="h-auto w-full max-w-65"
-            />
+            <Image src={content.logo} alt={content.logoAlt} className="h-auto w-full max-w-65" />
           </div>
           <span className="absolute bottom-0 left-1/2 flex -translate-x-1/2 items-center gap-1.5 rounded-full bg-primary px-4 py-1.5 text-[11px] font-semibold text-white">
             <ShieldCheckIcon className="size-3.5" strokeWidth={2} />

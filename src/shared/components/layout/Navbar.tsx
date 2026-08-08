@@ -1,12 +1,14 @@
 "use client";
 
-import { MenuIcon, XIcon } from "lucide-react";
+import { ChevronDownIcon, MenuIcon, SearchIcon, XIcon } from "lucide-react";
 import Image from "next/image";
 import * as React from "react";
 
-import { Link, usePathname } from "@/i18n/navigation";
+import { usePathname } from "@/i18n/navigation";
 import { ROUTES } from "@/shared/constants/routes";
 import { cn } from "@/shared/utils/cn";
+import Link from "next/link";
+import LanguageSelector from "./LanguageSelector";
 
 export type NavLink = { label: string; href: string };
 
@@ -23,8 +25,8 @@ const DEFAULT_LINKS: NavLink[] = [
   { label: "Service", href: ROUTES.SERVICE },
   { label: "Industry", href: ROUTES.INDUSTRY },
   { label: "Career", href: ROUTES.CAREER },
-  { label: "About Us", href: ROUTES.ABOUT },
-  { label: "Contact Us", href: ROUTES.CONTACT },
+  { label: "About", href: ROUTES.ABOUT },
+  { label: "Contact", href: ROUTES.CONTACT },
 ];
 
 export default function Navbar({
@@ -62,16 +64,16 @@ export default function Navbar({
           )}
         </Link>
 
-        <div className="hidden items-center gap-9.5 xl:flex">
+        <div className="hidden items-center gap-10 xl:flex">
           {links.map((link) => (
             <Link
               key={link.href}
               href={link.href}
               className={cn(
-                "text-[13px] font-semibold tracking-[1.2px] whitespace-nowrap uppercase transition-colors",
+                "text-sm font-semibold tracking-[1.5px] whitespace-nowrap uppercase transition-colors",
                 isActive(link.href)
-                  ? "border-b-2 border-white pb-1.5 text-white"
-                  : "text-white/90 hover:text-white"
+                  ? "border-b-2 border-primary text-primary"
+                  : "text-white hover:border-b-2 hover:border-primary hover:text-primary"
               )}
             >
               {link.label}
@@ -79,12 +81,25 @@ export default function Navbar({
           ))}
         </div>
 
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-4 xl:gap-6">
+          <button
+            type="button"
+            aria-label="Search"
+            className="hidden text-white transition-colors hover:text-primary xl:block"
+          >
+            <SearchIcon className="size-5" strokeWidth={2.2} />
+          </button>
+
+          <div className="hidden xl:block">
+            <LanguageSelector />
+          </div>
+
           <Link
             href={appointmentHref}
-            className="hidden rounded-full bg-white px-7.5 py-3.5 text-[13px] font-semibold tracking-[1px] text-primary uppercase transition-colors hover:bg-white/90 xl:inline-flex"
+            className="hidden items-center gap-2 rounded-full bg-primary px-7 py-3.5 text-[13px] font-semibold tracking-[1px] text-white uppercase transition-colors hover:bg-primary/90 xl:inline-flex"
           >
             Appointment
+            <ChevronDownIcon className="size-4" />
           </Link>
 
           <button
@@ -117,10 +132,13 @@ export default function Navbar({
               <Link
                 href={appointmentHref}
                 onClick={() => setOpen(false)}
-                className="mt-3 rounded-full bg-white px-7.5 py-3.5 text-center text-[13px] font-semibold tracking-[1px] text-primary uppercase"
+                className="mt-3 rounded-full bg-primary px-7.5 py-3.5 text-center text-[13px] font-semibold tracking-[1px] text-white uppercase"
               >
                 Appointment
               </Link>
+              <div className="mt-4 border-t border-white/10 pt-4">
+                <LanguageSelector />
+              </div>
             </div>
           </div>
         )}

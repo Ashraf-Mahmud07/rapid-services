@@ -1,6 +1,7 @@
 import Image from "next/image";
 
 import { Link } from "@/i18n/navigation";
+import { CallIcon, OfficeChairIcon } from "@/shared/assets/icons";
 import { ROUTES } from "@/shared/constants/routes";
 
 const QUICK_LINKS = [
@@ -16,17 +17,6 @@ const OPENING_HOURS = [
   "Break : 1:30 pm–3:30 pm",
   "Friday : Closed",
 ];
-
-const maskIcon = (src: string) => ({
-  WebkitMaskImage: `url('${src}')`,
-  maskImage: `url('${src}')`,
-  WebkitMaskPosition: "center",
-  maskPosition: "center",
-  WebkitMaskSize: "contain",
-  maskSize: "contain",
-  WebkitMaskRepeat: "no-repeat",
-  maskRepeat: "no-repeat",
-});
 
 export default function Footer() {
   return (
@@ -147,10 +137,7 @@ export default function Footer() {
               </span>
             </li>
             <li className="flex items-start gap-3 text-sm leading-normal text-[#a7a9ab]">
-              <span
-                className="mt-0.5 inline-block size-4.5 flex-none bg-primary"
-                style={maskIcon("/icons/call.svg")}
-              />
+              <CallIcon className="mt-0.5 size-4.5 flex-none text-primary" strokeWidth={1.8} />
               <span>
                 +971564406456
                 <br />
@@ -177,10 +164,7 @@ export default function Footer() {
               </span>
             </li>
             <li className="flex items-start gap-3 text-sm leading-normal text-[#a7a9ab]">
-              <span
-                className="mt-0.5 inline-block size-4.5 flex-none bg-primary"
-                style={maskIcon("/icons/office-chair.svg")}
-              />
+              <OfficeChairIcon className="mt-0.5 size-4.5 flex-none text-primary" />
               <span>
                 Saturday-Thursday
                 <br />

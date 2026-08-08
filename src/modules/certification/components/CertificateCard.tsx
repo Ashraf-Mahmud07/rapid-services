@@ -1,5 +1,3 @@
-import Image from "next/image";
-
 import type { Certificate } from "../types/certification.types";
 import { CERTIFICATION_ICONS } from "./certificationIcons";
 
@@ -8,17 +6,13 @@ interface CertificateCardProps {
 }
 
 export default function CertificateCard({ certificate }: CertificateCardProps) {
+  const Icon = CERTIFICATION_ICONS[certificate.icon];
+
   return (
     <article className="rounded-xl border border-[#EDEFF1] bg-[#FAFAFA] p-5">
       <div className="flex items-start justify-between gap-3">
         <span className="flex size-10 flex-none items-center justify-center rounded-[10px] bg-[#E6F7F4]">
-          <Image
-            src={CERTIFICATION_ICONS[certificate.icon]}
-            alt=""
-            width={21}
-            height={21}
-            className="size-5.25"
-          />
+          <Icon className="size-5.25 text-primary" />
         </span>
         <span className="inline-flex items-center rounded-full bg-[#E6F7F4] px-2.5 py-1 text-[10px] leading-none font-bold tracking-[1px] text-primary uppercase">
           {certificate.status}

@@ -5,8 +5,7 @@ import {
   CertificationCredentials,
   MunicipalityHighlight,
 } from "@/modules/certification";
-import { FaqSection } from "@/modules/contact";
-import { Footer, Navbar, PageHero } from "@/shared/components/layout";
+import { FaqSection, Footer, Navbar, PageHero } from "@/shared/components/layout";
 import { ROUTES } from "@/shared/constants/routes";
 
 export const metadata: Metadata = {

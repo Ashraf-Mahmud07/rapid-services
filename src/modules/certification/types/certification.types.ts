@@ -1,3 +1,5 @@
+import type { StaticImageData } from "next/image";
+
 export type CertificationIconName =
   "shield" | "droplet" | "shield-check" | "building" | "lab" | "leaf";
 
@@ -23,6 +25,7 @@ export interface MunicipalityHighlightContent {
   description: string;
   highlight: string;
   badge: string;
-  logo: string;
+  /** Statically imported so next/image derives the intrinsic size. */
+  logo: StaticImageData;
   logoAlt: string;
 }

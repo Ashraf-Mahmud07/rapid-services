@@ -7,27 +7,13 @@ interface ApprovalCardProps {
   approval: Approval;
 }
 
-/** Re-colours a Figma SVG to the current text colour, matching the Footer pattern. */
-const maskIcon = (src: string) => ({
-  WebkitMaskImage: `url('${src}')`,
-  maskImage: `url('${src}')`,
-  WebkitMaskPosition: "center",
-  maskPosition: "center",
-  WebkitMaskSize: "contain",
-  maskSize: "contain",
-  WebkitMaskRepeat: "no-repeat",
-  maskRepeat: "no-repeat",
-});
-
 export default function ApprovalCard({ approval }: ApprovalCardProps) {
+  const Icon = CERTIFICATION_ICONS[approval.icon];
+
   return (
     <article className="flex flex-col rounded-xl border border-[#EDEFF1] bg-[#FAFAFA] p-5 sm:p-6">
       <span className="flex size-10 flex-none items-center justify-center rounded-[10px] bg-primary">
-        <span
-          className="size-5 bg-white"
-          style={maskIcon(CERTIFICATION_ICONS[approval.icon])}
-          aria-hidden="true"
-        />
+        <Icon className="size-5 text-white" />
       </span>
 
       <h3 className="mt-3 text-[18px] leading-[1.35] font-bold text-primary">{approval.title}</h3>

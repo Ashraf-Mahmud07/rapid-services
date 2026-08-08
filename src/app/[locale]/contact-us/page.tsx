@@ -1,13 +1,7 @@
 import type { Metadata } from "next";
 
-import {
-  ContactDetailCards,
-  ContactForm,
-  ContactHero,
-  ContactMap,
-  FaqSection,
-} from "@/modules/contact";
-import { Footer, Navbar } from "@/shared/components/layout";
+import { ContactDetailCards, ContactForm, ContactHero, ContactMap } from "@/modules/contact";
+import { FaqSection, Footer, Navbar } from "@/shared/components/layout";
 
 export const metadata: Metadata = {
   title: "Contact Us | Rapid",

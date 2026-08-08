@@ -2,9 +2,9 @@
 
 import { useState } from "react";
 
+import { FAQ_LEFT, FAQ_RIGHT } from "@/shared/constants/faq";
+import type { FaqItem } from "@/shared/types";
 import { cn } from "@/shared/utils/cn";
-import { FAQ_LEFT, FAQ_RIGHT } from "../data/contact.data";
-import type { FaqItem } from "../types/contact.types";
 
 interface FaqColumnProps {
   items: FaqItem[];

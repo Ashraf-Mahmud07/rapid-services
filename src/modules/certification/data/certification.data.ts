@@ -1,5 +1,6 @@
 /** TEMPORARY SAMPLE DATA **/
 
+import dubaiMunicipalityLogo from "../assets/images/dubai-municipality.png";
 import type {
   Approval,
   Certificate,
@@ -52,8 +53,8 @@ export const MUNICIPALITY_HIGHLIGHT: MunicipalityHighlightContent = {
     "Our products are selected from manufacturers whose systems comply with Dubai Municipality standards, ensuring quality, durability, and safety for construction, waterproofing, roofing, flooring, and swimming pool applications.",
   highlight: "Guarantees solutions that meet the strict regulatory requirements of UAE projects.",
   badge: "DM Approved",
-  /** Cropped from public/images/municipality-logo.png; swap for a transparent source when available. */
-  logo: "/images/dubai-municipality.png",
+  /** Cropped from assets/images/municipality-logo.png; swap for a transparent source when available. */
+  logo: dubaiMunicipalityLogo,
   logoAlt: "Dubai Municipality",
 };
 

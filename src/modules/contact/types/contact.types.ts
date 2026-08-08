@@ -1,11 +1,7 @@
-export interface FaqItem {
-  id: string;
-  question: string;
-  answer: string;
-}
+export type ContactIconName = "location" | "call" | "hour";
 
 export interface ContactDetail {
   label: string;
   value: string;
-  icon: string;
+  icon: ContactIconName;
 }

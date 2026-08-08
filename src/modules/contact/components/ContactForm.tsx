@@ -13,6 +13,8 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/shared/components/ui/Select";
+import contactFormBackground from "../assets/images/contact-form-bg.png";
+import contactSupportImage from "../assets/images/contact-support.png";
 import { CONTACT_TOPICS } from "../data/contact.data";
 import { contactSchema, type ContactFormData } from "../validation/contact.schema";
 
@@ -40,17 +42,14 @@ export default function ContactForm() {
       id="contact-form"
       className="mt-6 grid scroll-mt-24 items-stretch gap-6 rounded-[14px] border border-[#bfe3dd] p-4 sm:mt-8 sm:gap-8 sm:p-6 lg:mt-[34px] lg:grid-cols-[0.9fr_1.1fr] lg:gap-12 lg:p-[34px]"
       style={{
-        backgroundImage:
-          "linear-gradient(rgba(255,255,255,0.7),rgba(255,255,255,0.7)),url('/images/contact-form-bg.png')",
+        backgroundImage: `linear-gradient(rgba(255,255,255,0.7),rgba(255,255,255,0.7)),url('${contactFormBackground.src}')`,
         backgroundSize: "cover",
         backgroundPosition: "center",
       }}
     >
       <Image
-        src="/images/contact-support.png"
+        src={contactSupportImage}
         alt=""
-        width={655}
-        height={561}
         className="h-full min-h-[240px] w-full rounded-xl object-cover sm:min-h-[340px] lg:min-h-105"
       />
 
