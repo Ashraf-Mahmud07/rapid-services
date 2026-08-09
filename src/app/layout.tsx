@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Rapid ERP",
-  description: "Rapid ERP Application",
+  title: "Rapid Services",
+  description: "Rapid Services Application",
 };
 
 export default function RootLayout({
