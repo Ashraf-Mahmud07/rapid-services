@@ -25,7 +25,7 @@ export default function NotFoundContent() {
             />
           </div>
 
-          <div className="max-w-[420px] text-center lg:text-start">
+          <div className="w-full max-w-[420px] text-center lg:text-start">
             <p className="text-[64px] leading-none font-bold tracking-[-2px] text-[#0a0e1c] sm:text-[76px] lg:text-[86px]">
               404
             </p>
