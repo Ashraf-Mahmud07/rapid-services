@@ -268,3 +268,47 @@ body {
     opacity: 1;
   }
 }
+
+@utility container {
+  --containerPadding: 1rem;
+  width: 100%;
+  margin-inline: auto;
+  padding-inline: var(--containerPadding);
+
+  @variant sm {
+    max-width: 640px;
+  }
+
+  @variant md {
+    max-width: 768px;
+  }
+
+  @variant lg {
+    max-width: 1024px;
+  }
+
+  @variant xl {
+    max-width: 1200px;
+  }
+
+  @variant 2xl {
+    max-width: calc(1465px + var(--containerPadding) * 2);
+  }
+}
+
+@utility section-space {
+  @apply my-20 lg:my-24 xl:my-28 2xl:my-32;
+}
+
+/* ─── Scrollable tab rails ───────────────────────────── */
+/* The trade/industry/project tab rails scroll horizontally on mobile and
+   vertically on desktop. The bar itself adds nothing there, so it is hidden
+   while the container stays keyboard and wheel scrollable. */
+@utility hide-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}

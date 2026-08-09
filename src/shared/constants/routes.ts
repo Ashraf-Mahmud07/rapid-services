@@ -1,9 +1,10 @@
 export const ROUTES = {
   HOME: "/",
-  PRODUCT: "/products",
-  PROJECT: "/project",
-  SERVICE: "/service",
-  INDUSTRY: "/industry",
+  PRODUCT: "/product",
+  PROJECT: "/projects",
+  SERVICE: "/services",
+  INDUSTRY: "/industries",
+  BLOG: "/blogs",
   CAREER: "/career",
   CERTIFICATION: "/certification",
   ABOUT: "/about",
@@ -17,3 +18,7 @@ export const ROUTES = {
 } as const;
 
 export const careerDetailRoute = (slug: string) => `${ROUTES.CAREER}/${slug}`;
+
+export const blogDetailRoute = (id: string) => `${ROUTES.BLOG}/${id}`;
+
+export const productDetailRoute = (slug: string) => `${ROUTES.PRODUCT}/${slug}`;

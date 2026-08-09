@@ -4,10 +4,9 @@ import { ChevronDownIcon, MenuIcon, SearchIcon, XIcon } from "lucide-react";
 import Image from "next/image";
 import * as React from "react";
 
-import { usePathname } from "@/i18n/navigation";
+import { Link, usePathname } from "@/i18n/navigation";
 import { ROUTES } from "@/shared/constants/routes";
 import { cn } from "@/shared/utils/cn";
-import Link from "next/link";
 import LanguageSelector from "./LanguageSelector";
 
 export type NavLink = { label: string; href: string };
@@ -25,7 +24,7 @@ const DEFAULT_LINKS: NavLink[] = [
   { label: "Service", href: ROUTES.SERVICE },
   { label: "Industry", href: ROUTES.INDUSTRY },
   { label: "Career", href: ROUTES.CAREER },
-  { label: "About", href: ROUTES.ABOUT },
+  { label: "Blogs", href: ROUTES.BLOG },
   { label: "Contact", href: ROUTES.CONTACT },
 ];
 

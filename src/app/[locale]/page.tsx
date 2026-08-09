@@ -1,15 +1,38 @@
-import { useTranslations } from "next-intl";
+import {
+  About,
+  Brands,
+  Certifications,
+  Commitment,
+  Contact,
+  CounterSection,
+  CTA,
+  EngineeringSafety,
+  Features,
+  RecentWork,
+} from "@/modules/home/sections";
 import { Footer, Navbar } from "@/shared/components/layout";
 
 export default function HomePage() {
-  const t = useTranslations("common");
   return (
-    <>
+    <main>
       <Navbar variant="solid" />
-
-      <h1 className="text-primary">{t("welcome")}</h1>
-
+      <About />
+      <CounterSection />
+      <EngineeringSafety />
+      <Commitment />
+      <RecentWork />
+      <Features />
+      <Certifications />
+      <Brands />
+      {/* Sections below wait on the /images/about/about-home.webp asset. */}
+      {/* <Services /> */}
+      {/* <Steps /> */}
+      {/* <Reviews /> */}
+      {/* <Team /> */}
+      {/* <Blog /> */}
+      <Contact />
+      <CTA />
       <Footer />
-    </>
+    </main>
   );
 }

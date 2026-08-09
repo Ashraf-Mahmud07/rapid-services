@@ -1,0 +1,12 @@
+<svg width="800" height="600" viewBox="0 0 800 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="600" rx="32" fill="#0F172A"/>
+  <rect x="110" y="100" width="580" height="400" rx="24" fill="#111827" stroke="#334155" stroke-width="2"/>
+  <rect x="185" y="170" width="210" height="190" rx="24" fill="#1F2937"/>
+  <path d="M240 220H320" stroke="#00A79D" stroke-width="16" stroke-linecap="round"/>
+  <path d="M250 185L330 185" stroke="#F8FAFC" stroke-width="18" stroke-linecap="round"/>
+  <path d="M370 220C370 220 430 220 430 280C430 340 370 340 370 340" stroke="#F8FAFC" stroke-width="18" stroke-linecap="round"/>
+  <path d="M260 360C260 360 290 388 290 420" stroke="#00A79D" stroke-width="16" stroke-linecap="round"/>
+  <circle cx="275" cy="340" r="18" fill="#00A79D"/>
+  <rect x="180" y="430" width="450" height="16" rx="8" fill="#0EA5A0" fill-opacity="0.25"/>
+  <text x="128" y="514" fill="#E2E8F0" font-family="Inter, Arial, sans-serif" font-size="42" font-weight="700">CLEANING</text>
+</svg>
