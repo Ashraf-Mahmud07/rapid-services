@@ -1,6 +1,4 @@
-import React from "react";
 import Image, { StaticImageData } from "next/image";
-import Navbar from "@/shared/components/layout/Navbar";
 
 interface HeroSectionProps {
   title: string;
@@ -10,7 +8,7 @@ interface HeroSectionProps {
 
 export default function HeroSection({ title, subtitle, backgroundImage }: HeroSectionProps) {
   return (
-    <section className="relative flex min-h-[500px] flex-col overflow-hidden bg-slate-900 pt-0">
+    <section className="relative flex min-h-125 flex-col overflow-hidden bg-slate-900 pt-0">
       {/* Background image overlay */}
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 z-10 bg-black/50 mix-blend-multiply" />
@@ -23,11 +21,6 @@ export default function HeroSection({ title, subtitle, backgroundImage }: HeroSe
             priority
           />
         )}
-      </div>
-
-      {/* Navbar at the top of the hero */}
-      <div className="relative z-50 w-full">
-        <Navbar variant="transparent" />
       </div>
 
       {/* Hero Content */}
