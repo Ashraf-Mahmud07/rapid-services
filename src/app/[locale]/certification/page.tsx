@@ -5,8 +5,8 @@ import {
   CertificationCredentials,
   MunicipalityHighlight,
 } from "@/modules/certification";
-import { FaqSection, Footer, Navbar, PageHero } from "@/shared/components/layout";
-import { ROUTES } from "@/shared/constants/routes";
+import FAQCTASection from "@/modules/service/components/FAQCTASection";
+import { Footer, Navbar, PageHero } from "@/shared/components/layout";
 
 export const metadata: Metadata = {
   title: "Certification | Rapid",
@@ -23,13 +23,12 @@ export default function CertificationPage() {
         description="Our internationally recognized certifications reflect our commitment to quality, safety, and industry-leading standards."
       />
 
-      <div className="container-page">
+      <div className="mx-auto max-w-7xl px-4 md:px-6 lg:px-8">
         <CertificationCredentials />
         <MunicipalityHighlight />
         <ApprovalGrid />
-        <FaqSection askHref={ROUTES.CONTACT} />
       </div>
-
+      <FAQCTASection />
       <Footer />
     </div>
   );

@@ -1,6 +1,6 @@
+import { Link } from "@/i18n/navigation";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
-import { Link } from "@/i18n/navigation";
 
 import { ROUTES } from "@/shared/constants/routes";
 import { cn } from "@/shared/utils/cn";
@@ -17,7 +17,7 @@ export default function ProductsHelp({ className }: ProductsHelpProps) {
   return (
     <section
       className={cn(
-        "mt-[18] flex h-[250] w-full max-w-[288px] flex-col rounded-md bg-[#0e0e0e] px-7 py-7 text-white",
+        "mt-[18] flex h-[250] w-full max-w-[288px] flex-col rounded-md bg-primary px-7 py-7 text-white",
         className
       )}
     >
@@ -38,13 +38,13 @@ export default function ProductsHelp({ className }: ProductsHelpProps) {
         {t("notSureWhereToStart")}
       </h2>
 
-      <p className="mt-3.5 max-w-55.5 text-[13px] leading-[20.15px] font-normal text-[#a8a8a8]">
+      <p className="mt-3.5 max-w-55.5 text-[13px] leading-[20.15px] font-normal text-[#ffffff]">
         {t("helpDesc")}
       </p>
 
       <Link
         href={ROUTES.CONTACT}
-        className="mt-5 inline-flex w-fit items-center gap-3 border-b border-primary pb-1 text-[14px] leading-none font-medium text-white transition-colors hover:text-[#00b7aa]"
+        className="mt-5 inline-flex w-fit items-center gap-3 border-b border-primary pb-1 text-[14px] leading-none font-medium text-white transition-colors"
       >
         <span>{t("talkToExpert")}</span>
         <span aria-hidden="true" className="text-primary">

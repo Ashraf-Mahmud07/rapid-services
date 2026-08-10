@@ -77,7 +77,7 @@ interface FaqSectionProps {
   askHref?: string;
 }
 
-export default function FaqSection({ askHref = "#contact-form" }: FaqSectionProps) {
+export default function FaqSection({ askHref = "contact-us" }: FaqSectionProps) {
   const [openId, setOpenId] = useState<string | null>(FAQ_LEFT[0].id);
 
   const onToggle = (id: string) => setOpenId((current) => (current === id ? null : id));

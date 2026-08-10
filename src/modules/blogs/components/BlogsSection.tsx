@@ -1,10 +1,9 @@
 "use client";
 
-import React from "react";
-import Image from "next/image";
 import { Link } from "@/i18n/navigation";
-import { useTranslations } from "next-intl";
 import { blogDetailRoute } from "@/shared/constants/routes";
+import { useTranslations } from "next-intl";
+import Image from "next/image";
 import { featuredBlogs, listBlogs } from "../constants/mock-blogs";
 
 export function BlogsSection() {

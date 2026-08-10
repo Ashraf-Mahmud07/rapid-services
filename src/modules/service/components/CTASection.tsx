@@ -1,10 +1,9 @@
-import React from "react";
 import { Link } from "@/i18n/navigation";
 
 export default function CTASection() {
   return (
     <div className="mx-auto max-w-7xl px-4 pb-16 md:px-6 md:pb-24 lg:px-8">
-      <div className="relative flex flex-col items-center justify-between gap-6 overflow-hidden rounded-xl bg-[#111111] p-6 sm:p-8 md:flex-row md:gap-8 md:p-12 lg:p-16">
+      <div className="relative flex flex-col items-center justify-between gap-6 overflow-hidden rounded-xl bg-primary p-6 sm:p-8 md:flex-row md:gap-8 md:p-12 lg:p-16">
         <div className="pointer-events-none absolute top-0 right-0 h-64 w-64 translate-x-1/3 -translate-y-1/3 rounded-full bg-primary/10 blur-3xl"></div>
 
         <div className="relative z-10 md:max-w-xl">
@@ -17,10 +16,10 @@ export default function CTASection() {
           </p>
         </div>
 
-        <div className="relative z-10 flex w-full flex-shrink-0 flex-col gap-4 sm:flex-row md:w-auto">
+        <div className="relative z-10 flex w-full shrink-0 flex-col gap-4 sm:flex-row md:w-auto">
           <Link
             href="/appointment"
-            className="rounded-full bg-primary px-6 py-3.5 text-center font-semibold text-white transition-colors hover:bg-primary/90"
+            className="rounded-full bg-white px-6 py-3.5 text-center font-semibold text-primary transition-colors hover:bg-white/90"
           >
             Book a technician
           </Link>

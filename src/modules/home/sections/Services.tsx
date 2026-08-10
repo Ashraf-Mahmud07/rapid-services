@@ -31,7 +31,7 @@ const services = [
 export default function Services() {
   return (
     <section className="section-space">
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto">
         <div className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
           <div className="max-w-[518px]">
             <p className="text-[16px] font-semibold tracking-[0.72px] text-primary uppercase">

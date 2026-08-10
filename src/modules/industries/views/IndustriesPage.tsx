@@ -1,6 +1,6 @@
+import FAQCTASection from "@/modules/service/components/FAQCTASection";
 import bgImage from "@/shared/assets/png/service-banner.jpg";
 import HeroSection from "@/shared/components/layout/HeroSection";
-import CTASection from "../components/CTASection";
 import IndustriesSection from "../components/IndustriesSection";
 import StatsSection from "../components/StatsSection";
 
@@ -14,7 +14,7 @@ export default function IndustriesPage() {
       />
       <StatsSection />
       <IndustriesSection />
-      <CTASection />
+      <FAQCTASection />
     </div>
   );
 }

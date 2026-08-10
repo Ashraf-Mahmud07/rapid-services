@@ -25,7 +25,7 @@ const steps = [
 export default function Steps() {
   return (
     <section className="section-space overflow-hidden bg-[#0a0e1c] py-[90px]">
-      <div className="container mx-auto grid gap-10 px-4 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
+      <div className="container mx-auto grid gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
         <div className="max-w-[560px]">
           <h2 className="text-[34px] leading-[43.1px] font-semibold tracking-[-0.988px] text-white sm:text-[40px]">
             A Refined Process Built for <span className="text-primary">Precision & Excellence</span>

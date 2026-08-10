@@ -93,8 +93,8 @@ export default function ProductPagination({
               onClick={() => onPageChange(page)}
               className={`flex h-[44] w-[44] cursor-pointer items-center justify-center overflow-hidden rounded-[6] border p-[11] text-center leading-[18] font-normal text-[#0f0f0f] text-[12] transition-colors ${
                 isActive
-                  ? "border-[#00a79d] bg-[#dffffd]"
-                  : "border-[rgba(0,0,0,0.2)] bg-white hover:border-[#00a79d] hover:bg-[#dffffd]"
+                  ? "border-primary bg-[#dffffd]"
+                  : "border-[rgba(0,0,0,0.2)] bg-white hover:border-primary hover:bg-[#dffffd]"
               }`}
               aria-current={isActive ? "page" : undefined}
             >
@@ -138,7 +138,7 @@ function PaginationControl({
       type="button"
       disabled={disabled}
       onClick={onClick}
-      className="flex h-[44] w-[44] cursor-pointer items-center justify-center overflow-hidden rounded-[5.859px] border border-[rgba(0,0,0,0.2)] bg-white px-[11.717px] py-[13.182px] transition-colors hover:border-[#00a79d] hover:bg-[#dffffd] disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:border-[rgba(0,0,0,0.2)] disabled:hover:bg-white"
+      className="flex h-[44] w-[44] cursor-pointer items-center justify-center overflow-hidden rounded-[5.859px] border border-[rgba(0,0,0,0.2)] bg-white px-[11.717px] py-[13.182px] transition-colors hover:border-primary hover:bg-[#dffffd] disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:border-[rgba(0,0,0,0.2)] disabled:hover:bg-white"
       aria-label={ariaLabel}
     >
       {children}

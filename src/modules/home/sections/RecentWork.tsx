@@ -21,7 +21,7 @@ const recentWorks = [
 export default function RecentWork() {
   return (
     <section className="section-space overflow-hidden bg-[#0a0e1c] py-[72px]">
-      <div className="container mx-auto px-4 lg:px-8">
+      <div className="container mx-auto">
         <div className="grid gap-10 lg:grid-cols-[320px_minmax(0,1fr)] lg:items-start">
           <div className="max-w-[320px]">
             <h2 className="text-[34px] leading-[38px] font-semibold tracking-[-1.02px] text-white">

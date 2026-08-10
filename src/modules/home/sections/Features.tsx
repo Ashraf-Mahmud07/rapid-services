@@ -36,7 +36,7 @@ const promises = [
 export default function Features() {
   return (
     <section className="section-space">
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto">
         <div className="grid gap-10 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:items-start lg:gap-[60px]">
           <div className="max-w-[520px]">
             <p className="text-[11px] font-semibold tracking-[1.1px] text-primary uppercase">

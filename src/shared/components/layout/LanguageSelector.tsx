@@ -1,22 +1,39 @@
 "use client";
 
 import { useState } from "react";
-import { CheckIcon, ChevronDownIcon } from "lucide-react";
+import { CheckIcon, ChevronDownIcon, SearchIcon } from "lucide-react";
 
 import { FlagIcon } from "@/shared/assets/icons";
 import { LANGUAGES } from "@/shared/constants/languages";
 import { cn } from "@/shared/utils/cn";
 
-export default function LanguageSelector() {
+type Props = {
+  /** Matches the navbar: outlined over a hero image, bare on the teal bar. */
+  variant?: "transparent" | "solid";
+};
+
+export default function LanguageSelector({ variant = "transparent" }: Props) {
   const [selected, setSelected] = useState(LANGUAGES[0].code);
+  const [query, setQuery] = useState("");
   const current = LANGUAGES.find((language) => language.code === selected) ?? LANGUAGES[0];
+
+  const term = query.trim().toLowerCase();
+  const visible = term
+    ? LANGUAGES.filter(
+        (language) =>
+          language.label.toLowerCase().includes(term) || language.code.toLowerCase().includes(term)
+      )
+    : LANGUAGES;
 
   return (
     <div className="group relative">
       <button
         type="button"
         aria-haspopup="listbox"
-        className="flex items-center gap-2 text-white"
+        className={cn(
+          "flex h-11 items-center gap-2 text-white",
+          variant === "solid" ? "" : "rounded-full border border-primary px-3"
+        )}
         onClick={(event) => event.currentTarget.focus()}
       >
         <FlagIcon code={current.code} className="size-6 flex-none rounded-full" />
@@ -36,8 +53,20 @@ export default function LanguageSelector() {
             </span>
           </div>
 
+          <div className="mb-3 flex items-center gap-2 rounded-lg border border-[#EDEFF1] px-2.5">
+            <SearchIcon className="size-3.5 flex-none text-[#8b9096]" strokeWidth={2} />
+            <input
+              type="search"
+              value={query}
+              onChange={(event) => setQuery(event.target.value)}
+              placeholder="Search Language..."
+              aria-label="Search language"
+              className="min-w-0 flex-1 bg-transparent py-2 text-[13px] text-[#17181a] outline-none placeholder:text-[#a9adb1]"
+            />
+          </div>
+
           <ul className="grid grid-cols-2 gap-2" role="listbox" aria-label="Choose language">
-            {LANGUAGES.map((language) => {
+            {visible.map((language) => {
               const isSelected = language.code === selected;
               return (
                 <li key={language.code} role="option" aria-selected={isSelected}>
@@ -63,6 +92,10 @@ export default function LanguageSelector() {
               );
             })}
           </ul>
+
+          {visible.length === 0 && (
+            <p className="py-3 text-center text-[13px] text-[#8b9096]">No languages match.</p>
+          )}
         </div>
       </div>
     </div>

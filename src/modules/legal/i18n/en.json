@@ -1,0 +1,14 @@
+{
+  "breadcrumbHome": "Home",
+  "index": "Index",
+  "makeRequest": "Make a request",
+  "contactSupport": "Contact support",
+  "privacy": {
+    "title": "Privacy Policy",
+    "subtitle": "What we collect, why we collect it, and the controls you have. Written to be read — no dense clauses, no buried defaults."
+  },
+  "terms": {
+    "title": "Terms & Conditions",
+    "subtitle": "The rules that apply when you shop with Rapid — orders, delivery, returns, warranty, and the limits of our liability."
+  }
+}

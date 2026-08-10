@@ -4,4 +4,7 @@ export { default as PageHero } from "./PageHero";
 export { default as FaqSection } from "./FaqSection";
 export { default as NotFoundContent } from "./NotFoundContent";
 export { default as LanguageSelector } from "./LanguageSelector";
+export { default as HeroSection } from "./HeroSection";
+export { default as MegaMenu } from "./MegaMenu";
+export { default as SearchModal } from "./SearchModal";
 export type { NavLink } from "./Navbar";

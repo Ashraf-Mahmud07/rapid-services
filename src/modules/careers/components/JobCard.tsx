@@ -38,7 +38,7 @@ export default function JobCard({ job }: JobCardProps) {
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none">
           <path
             d="M5 12h14M13 6l6 6-6 6"
-            stroke="#00A79D"
+            stroke="currentColor"
             strokeWidth="2"
             strokeLinecap="round"
             strokeLinejoin="round"

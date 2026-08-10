@@ -67,7 +67,7 @@ export default function AboutSlider() {
                 aria-current={index === activeSlide ? "true" : undefined}
                 onClick={() => setActiveSlide(index)}
                 className={`h-[6px] rounded-[99px] transition-all ${
-                  index === activeSlide ? "w-[26px] bg-[#00a79d]" : "w-[6px] bg-[#e5e7eb]"
+                  index === activeSlide ? "w-[26px] bg-primary" : "w-[6px] bg-[#e5e7eb]"
                 }`}
               />
             ))}
@@ -82,7 +82,7 @@ export default function AboutSlider() {
             type="button"
             aria-label="Previous slide"
             onClick={goToPreviousSlide}
-            className="flex size-11 cursor-pointer items-center justify-center rounded-full border border-[#e5e7eb] bg-white text-[#0E0E0E] transition transition-colors duration-200 hover:border-[#00a79d] hover:bg-[#00a79d] hover:text-white focus-visible:ring-2 focus-visible:ring-[#00a79d]/30 focus-visible:outline-none"
+            className="flex size-11 cursor-pointer items-center justify-center rounded-full border border-[#e5e7eb] bg-white text-[#0E0E0E] transition transition-colors duration-200 hover:border-primary hover:bg-primary hover:text-white focus-visible:ring-2 focus-visible:ring-primary/30 focus-visible:outline-none"
           >
             <LeftArrowIcon className="size-4.5 transition duration-200" />
           </button>
@@ -90,7 +90,7 @@ export default function AboutSlider() {
             type="button"
             aria-label="Next slide"
             onClick={goToNextSlide}
-            className="flex size-11 cursor-pointer items-center justify-center rounded-full border border-[#e5e7eb] bg-white text-[#0E0E0E] transition transition-colors duration-200 hover:border-[#00a79d] hover:bg-[#00a79d] hover:text-white focus-visible:ring-2 focus-visible:ring-[#00a79d]/30 focus-visible:outline-none"
+            className="flex size-11 cursor-pointer items-center justify-center rounded-full border border-[#e5e7eb] bg-white text-[#0E0E0E] transition transition-colors duration-200 hover:border-primary hover:bg-primary hover:text-white focus-visible:ring-2 focus-visible:ring-primary/30 focus-visible:outline-none"
           >
             <RightArrowIcon className="size-4.5" />
           </button>

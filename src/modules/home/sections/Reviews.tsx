@@ -6,8 +6,8 @@ const logos = ["A", "B", "C", "D", "E", "F", "G", "H"];
 export default function Reviews() {
   return (
     <section className="section-space">
-      <div className="container mx-auto px-4">
-        <div className="overflow-hidden rounded-[6px] bg-[#12172a]">
+      <div className="container mx-auto">
+        <div className="overflow-hidden rounded-[6px] bg-primary">
           <div className="grid gap-10 px-6 py-10 md:px-10 lg:grid-cols-[1.1fr_0.9fr] lg:px-16 lg:py-14">
             <div className="order-2 flex flex-col justify-center lg:order-1">
               <div className="flex items-center gap-3">

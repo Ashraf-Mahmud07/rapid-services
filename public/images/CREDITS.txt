@@ -1,0 +1,23 @@
+Stock photography provenance
+============================
+Sourced from Pexels under the Pexels License: free for commercial use,
+no attribution required, modification permitted.
+https://www.pexels.com/license/
+
+These are placeholders standing in for Rapid's own project and service
+photography. Replace in place - filenames and aspect ratios are fixed by
+the layouts, so swapping a file needs no code change.
+
+services/electrical-installation.jpg | https://www.pexels.com/photo/33531830/ | Pexels License (free commercial use, no attribution required)
+services/wiring-rewiring.jpg | https://www.pexels.com/photo/5691642/ | Pexels License (free commercial use, no attribution required)
+services/lighting-solutions.jpg | https://www.pexels.com/photo/30561628/ | Pexels License (free commercial use, no attribution required)
+services/panel-upgrades.jpg | https://www.pexels.com/photo/28265032/ | Pexels License (free commercial use, no attribution required)
+services/maintenance-repairs.jpg | https://www.pexels.com/photo/4792495/ | Pexels License (free commercial use, no attribution required)
+services/emergency-services.jpg | https://www.pexels.com/photo/5853932/ | Pexels License (free commercial use, no attribution required)
+projects/bathroom-reseal.jpg | https://www.pexels.com/photo/6957081/ | Pexels License (free commercial use, no attribution required)
+projects/move-out-clean.jpg | https://www.pexels.com/photo/6195274/ | Pexels License (free commercial use, no attribution required)
+projects/consumer-unit-upgrade.jpg | https://www.pexels.com/photo/34054464/ | Pexels License (free commercial use, no attribution required)
+projects/pipework-repair.jpg | https://www.pexels.com/photo/8488035/ | Pexels License (free commercial use, no attribution required)
+projects/panel-rewire.jpg | https://www.pexels.com/photo/7541342/ | Pexels License (free commercial use, no attribution required)
+projects/deep-clean-tall.jpg | https://www.pexels.com/photo/4008518/ | Pexels License (free commercial use, no attribution required)
+blog/blueprint-review.jpg | https://www.pexels.com/photo/4458205/ | Pexels License (free commercial use, no attribution required)

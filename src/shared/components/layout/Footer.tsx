@@ -156,7 +156,7 @@ function ColumnHeading({ children }: { children: ReactNode }) {
 export default function Footer() {
   return (
     <footer className="bg-primary pt-12 font-poppins sm:pt-14 lg:pt-16">
-      <div className="container-page grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-3 lg:gap-12 xl:grid-cols-[1.75fr_1fr_1fr_1fr_1fr_1.55fr] xl:gap-5">
+      <div className="container-wide grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-3 lg:gap-12 xl:grid-cols-[1.75fr_1fr_1fr_1fr_1fr_1.55fr] xl:gap-5">
         <div className="sm:col-span-2 lg:col-span-1">
           <p className="mb-5 text-[15px] leading-[1.5] text-white">
             <span style={{ color: TAGLINE_ACCENT }}>Building Better</span> Spaces For Tomorrow
@@ -256,7 +256,10 @@ export default function Footer() {
       </div>
 
       <div className="mt-12 border-t border-white/20 bg-black/5 lg:mt-14">
-        <div className="container-page flex flex-col items-center justify-between gap-3 py-4.5 sm:flex-row">
+        {/* Extra bottom padding keeps the legal links clear of the fixed
+            Ask AI / Request a call pills, which otherwise sit on top of them
+            once the page is scrolled to the end. */}
+        <div className="container-wide flex flex-col items-center justify-between gap-3 py-4.5 pb-24 sm:flex-row sm:pb-4.5 lg:pe-56">
           <p className="text-[13px] tracking-[0.6px] text-white uppercase">
             © Copyright 2026 <span className="font-bold">Rapid ERP</span>. All rights reserved.
           </p>

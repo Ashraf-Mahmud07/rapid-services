@@ -39,7 +39,7 @@ export default function ProductsFilter() {
           <button
             onClick={handleResetAll}
             type="button"
-            className="cursor-pointer text-[13px] font-medium text-[#00a79d] transition-colors hover:text-[#008d84]"
+            className="cursor-pointer text-[13px] font-medium text-primary transition-colors hover:text-brand-hover"
           >
             {t("resetAll")}
           </button>

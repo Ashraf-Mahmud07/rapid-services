@@ -19,7 +19,7 @@ import { CONTACT_TOPICS } from "../data/contact.data";
 import { contactSchema, type ContactFormData } from "../validation/contact.schema";
 
 const FIELD_CLASSNAME =
-  "h-auto rounded-none rounded-b-[10px] border-0 border-b border-b-[#00A79D] bg-transparent py-2 pe-0 ps-3 text-base text-[#333] placeholder:text-[#a9adb1] focus-visible:border-b-primary focus-visible:ring-0 md:text-base";
+  "h-auto rounded-none rounded-b-[10px] border-0 border-b border-b-primary bg-transparent py-2 pe-0 ps-3 text-base text-[#333] placeholder:text-[#a9adb1] focus-visible:border-b-primary focus-visible:ring-0 md:text-base";
 
 export default function ContactForm() {
   const {

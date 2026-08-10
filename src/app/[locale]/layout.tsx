@@ -3,6 +3,7 @@ import { getMessages } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { RTL_LOCALES } from "../../config/constants";
 import { routing } from "../../i18n/routing";
+import OverlayProvider from "../../shared/components/overlays/OverlayProvider";
 import StoreProvider from "../../store/StoreProvider";
 import "../globals.css";
 
@@ -21,17 +22,21 @@ export default async function LocaleLayout({
   const dir = RTL_LOCALES.includes(locale) ? "rtl" : "ltr";
 
   return (
-    /* Prevents hydration warnings caused by browser extensions injecting
-       attributes on the <html> and <body> tags (e.g. ColorZilla's
-       cz-shortcut-listen). suppressHydrationWarning only applies to the element
-       it is set on, so <body> needs its own.
-    */
-    <html lang={locale} dir={dir} suppressHydrationWarning>
-      <body suppressHydrationWarning>
-        <NextIntlClientProvider messages={messages}>
-          <StoreProvider>{children}</StoreProvider>
-        </NextIntlClientProvider>
-      </body>
-    </html>
+    /* This layout nests inside the root layout in app/layout.tsx, which owns
+       the single <html>/<body>. It previously rendered its own pair; browsers
+       merge a nested <html> into the existing one and keep the *first*
+       element's attributes, so lang and dir set here never reached the page
+       and /ar rendered as lang="en" dir="ltr".
+
+       Carrying them on a wrapper element instead is valid HTML, resolves
+       server-side with no direction flash, and drives both text direction and
+       every CSS logical property inside. */
+    <div lang={locale} dir={dir} className="contents">
+      <NextIntlClientProvider messages={messages}>
+        <StoreProvider>
+          <OverlayProvider>{children}</OverlayProvider>
+        </StoreProvider>
+      </NextIntlClientProvider>
+    </div>
   );
 }

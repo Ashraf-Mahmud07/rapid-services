@@ -37,7 +37,7 @@ const certifications = [
 export default function Certifications() {
   return (
     <section className="section-space">
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto">
         <div className="overflow-hidden rounded-[6px] bg-[#0a0e1c]">
           <div className="grid gap-10 px-6 py-10 md:px-10 lg:grid-cols-[0.95fr_1.05fr] lg:px-14 lg:py-14">
             <div className="flex flex-col justify-center">

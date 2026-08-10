@@ -11,7 +11,7 @@ export default function ApprovalCard({ approval }: ApprovalCardProps) {
   const Icon = CERTIFICATION_ICONS[approval.icon];
 
   return (
-    <article className="flex flex-col rounded-xl border border-[#EDEFF1] bg-[#FAFAFA] p-5 sm:p-6">
+    <article className="flex flex-col rounded-xl border border-[#EDEFF1] bg-panel-soft p-5 sm:p-6">
       <span className="flex size-10 flex-none items-center justify-center rounded-[10px] bg-primary">
         <Icon className="size-5 text-white" />
       </span>

@@ -1,5 +1,6 @@
 import {
   About,
+  Blog,
   Brands,
   Certifications,
   Commitment,
@@ -8,30 +9,43 @@ import {
   CTA,
   EngineeringSafety,
   Features,
+  HomeHero,
+  Newsletter,
   RecentWork,
+  Reviews,
+  Services,
+  Steps,
+  Team,
+  TradesTicker,
 } from "@/modules/home/sections";
 import { Footer, Navbar } from "@/shared/components/layout";
 
+/**
+ * Section order follows the reference top to bottom. The navbar is transparent
+ * here because it sits over the hero photograph.
+ */
 export default function HomePage() {
   return (
     <main>
-      <Navbar variant="solid" />
+      <Navbar />
+      <HomeHero />
+      <TradesTicker />
       <About />
-      <CounterSection />
+      <RecentWork />
       <EngineeringSafety />
       <Commitment />
-      <RecentWork />
-      <Features />
-      <Certifications />
+      <Services />
+      <Steps />
+      <Reviews />
       <Brands />
-      {/* Sections below wait on the /images/about/about-home.webp asset. */}
-      {/* <Services /> */}
-      {/* <Steps /> */}
-      {/* <Reviews /> */}
-      {/* <Team /> */}
-      {/* <Blog /> */}
-      <Contact />
+      <Features />
       <CTA />
+      <Certifications />
+      <Team />
+      <Blog />
+      <Contact />
+      <CounterSection />
+      <Newsletter />
       <Footer />
     </main>
   );

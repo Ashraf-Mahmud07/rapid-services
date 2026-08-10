@@ -1,6 +1,7 @@
 import { NextIntlClientProvider } from "next-intl";
 import { getLocale, getMessages } from "next-intl/server";
 
+import OverlayProvider from "@/shared/components/overlays/OverlayProvider";
 import { NotFoundContent } from "@/shared/components/layout";
 
 /* The global 404. Unmatched URLs resolve here rather than to
@@ -13,7 +14,9 @@ export default async function NotFound() {
 
   return (
     <NextIntlClientProvider locale={locale} messages={messages}>
-      <NotFoundContent />
+      <OverlayProvider>
+        <NotFoundContent />
+      </OverlayProvider>
     </NextIntlClientProvider>
   );
 }

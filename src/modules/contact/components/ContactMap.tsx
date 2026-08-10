@@ -23,11 +23,11 @@ export default function ContactMap() {
             viewBox="0 0 24 32"
             fill="none"
             aria-hidden="true"
-            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-full drop-shadow-[0_3px_6px_rgba(0,0,0,0.28)]"
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-full text-primary drop-shadow-[0_3px_6px_rgba(0,0,0,0.28)]"
           >
             <path
               d="M12 0C5.373 0 0 5.373 0 12c0 8.4 12 20 12 20s12-11.6 12-20C24 5.373 18.627 0 12 0z"
-              fill="#00A79D"
+              fill="currentColor"
             />
             <circle cx="12" cy="12" r="4.4" fill="#fff" />
           </svg>

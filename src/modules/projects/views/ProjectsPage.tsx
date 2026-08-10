@@ -1,7 +1,6 @@
+import FAQCTASection from "@/modules/service/components/FAQCTASection";
 import bgImage from "@/shared/assets/png/service-banner.jpg";
-import { FaqSection } from "@/shared/components/layout";
 import HeroSection from "@/shared/components/layout/HeroSection";
-import CTASection from "../components/CTASection";
 import ProjectsSection from "../components/ProjectsSection";
 import StatsSection from "../components/StatsSection";
 
@@ -15,10 +14,7 @@ export default function ProjectsPage() {
       />
       <StatsSection />
       <ProjectsSection />
-      <div className="mx-auto max-w-7xl px-4 md:px-6 lg:px-8">
-        <FaqSection />
-      </div>
-      <CTASection />
+      <FAQCTASection />
     </div>
   );
 }

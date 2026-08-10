@@ -58,14 +58,21 @@ export default function CounterSection() {
   return (
     <section
       ref={sectionRef}
-      className="section-space bg-[#0a0e1c] py-[87.5px]"
+      className="section-space bg-primary py-[87.5px]"
       aria-label="Company numbers"
     >
       <div className="container mx-auto grid gap-8 sm:grid-cols-2 xl:grid-cols-4 xl:gap-12">
         {counters.map((counter) => (
           <div key={counter.label} className="flex items-center gap-4">
-            <div className="relative flex size-[77.5px] shrink-0 items-center justify-center rounded-[6px] bg-[rgba(45,212,191,0.16)]">
-              <Image src={counter.icon} width={35} height={35} alt="" aria-hidden="true" />
+            <div className="relative flex size-[77.5px] shrink-0 items-center justify-center rounded-md bg-[rgba(45,212,191,0.16)]">
+              <Image
+                className="text-white"
+                src={counter.icon}
+                width={35}
+                height={35}
+                alt=""
+                aria-hidden="true"
+              />
             </div>
 
             <div className="min-w-0">

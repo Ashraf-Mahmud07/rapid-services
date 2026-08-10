@@ -5,31 +5,31 @@ const teamMembers = [
   {
     name: "Olivia Bennett",
     role: "CEO",
-    image: "/images/about/about-home.webp",
+    image: "/images/team/olivia-bennett.png",
   },
   {
     name: "Michael Anderson",
     role: "Site Supervisor",
-    image: "/images/about/about-home.webp",
+    image: "/images/team/michael-anderson.png",
   },
   {
     name: "Sophia Martinez",
     role: "Site Supervisor",
-    image: "/images/about/about-home.webp",
+    image: "/images/team/sophia-martinez.png",
   },
   {
     name: "Daniel Brooks",
     role: "Project Manager",
-    image: "/images/about/about-home.webp",
+    image: "/images/team/expert-1.jpg",
   },
 ];
 
 export default function Team() {
   return (
     <section className="section-space overflow-hidden bg-[#0a0e1c] py-[90px]">
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto">
         <div className="mx-auto flex max-w-[700px] flex-col items-center text-center">
-          <div className="rounded-[6px] bg-[rgba(0,167,157,0.14)] px-[16px] py-[8px] text-[10.5px] font-bold tracking-[1.26px] text-primary uppercase">
+          <div className="rounded-[6px] bg-primary/[0.14] px-[16px] py-[8px] text-[10.5px] font-bold tracking-[1.26px] text-primary uppercase">
             Meet our experts
           </div>
           <h2 className="mt-5 text-[32px] leading-[normal] font-bold tracking-[-0.704px] text-primary sm:text-[38px]">

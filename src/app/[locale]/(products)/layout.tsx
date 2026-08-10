@@ -1,4 +1,4 @@
-import { Footer, Navbar } from "@/shared/components/layout";
+import { FaqSection, Footer, Navbar } from "@/shared/components/layout";
 import React from "react";
 
 export default function ProductsLayout({
@@ -10,6 +10,9 @@ export default function ProductsLayout({
     <main>
       <Navbar variant="solid" />
       {children}
+      <div className="container-page">
+        <FaqSection />
+      </div>
       <Footer />
     </main>
   );
