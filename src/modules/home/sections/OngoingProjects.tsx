@@ -57,7 +57,7 @@ export default function OngoingProjects() {
       />
 
       <div className="container-page grid gap-10 lg:grid-cols-[280px_minmax(0,1fr)] lg:gap-12">
-        <div>
+        <div className="mt-3">
           <h2 className="text-[clamp(1.5rem,2.4vw,2.125rem)] leading-[1.21] font-bold tracking-[-0.026em] text-ink">
             Ongoing Projects
           </h2>
