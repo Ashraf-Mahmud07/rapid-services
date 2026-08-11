@@ -1,3 +1,4 @@
+import type { LucideIcon } from "lucide-react";
 import {
   Award,
   Briefcase,
@@ -20,7 +21,6 @@ import {
   Warehouse,
   Waves,
 } from "lucide-react";
-import type { LucideIcon } from "lucide-react";
 
 import { ROUTES } from "./routes";
 
@@ -31,19 +31,6 @@ export type MegaMenuItem = {
   icon: LucideIcon;
 };
 
-/**
- * The five header dropdowns. Each reference panel uses one of four layouts and
- * one of two icon treatments, so both are named here rather than duplicated
- * across five near-identical components.
- *
- *   list   — narrow single column, no strips        (About, Contact)
- *   split  — promo column beside a two-column grid  (Industry)
- *   cards  — bordered card grid between strips      (Service)
- *   grid   — two-column rows between strips         (Project)
- *
- *   solid  — filled teal shape, white glyph         (About, Contact, Project)
- *   tint   — dark teal-tinted shape, teal glyph     (Industry, Service)
- */
 export type MegaMenu =
   | {
       layout: "list";
@@ -85,37 +72,37 @@ export const MEGA_MENUS: Record<string, MegaMenu> = {
       {
         title: "Waterproofing",
         subtitle: "Membrane systems & leak protection",
-        href: ROUTES.SERVICE,
+        href: ROUTES.SERVICE + "?tab=heating",
         icon: Droplet,
       },
       {
         title: "GRP & Pool Lining",
         subtitle: "Fibreglass linings for pools & tanks",
-        href: ROUTES.SERVICE,
+        href: ROUTES.SERVICE + "?tab=painting",
         icon: Waves,
       },
       {
         title: "Polyurea Application",
         subtitle: "Fast-cure heavy-duty coatings",
-        href: ROUTES.SERVICE,
+        href: ROUTES.SERVICE + "?tab=repairs",
         icon: SprayCan,
       },
       {
         title: "Flooring & Roofing",
         subtitle: "Epoxy floors, screeds & roofing",
-        href: ROUTES.SERVICE,
+        href: ROUTES.SERVICE + "?tab=cleaning",
         icon: Home,
       },
       {
         title: "Structural Restoration",
         subtitle: "Concrete repair & strengthening",
-        href: ROUTES.SERVICE,
+        href: ROUTES.SERVICE + "?tab=electrical",
         icon: Hammer,
       },
       {
         title: "Refurbishment",
         subtitle: "Renovation and finishing works",
-        href: ROUTES.SERVICE,
+        href: ROUTES.SERVICE + "?tab=plumbing",
         icon: Paintbrush,
       },
     ],
@@ -133,37 +120,37 @@ export const MEGA_MENUS: Record<string, MegaMenu> = {
       {
         title: "Dubai Metro Station",
         subtitle: "Transit infrastructure",
-        href: ROUTES.PROJECT,
+        href: ROUTES.PROJECT + "?tab=bathroom_refits",
         icon: TrainFront,
       },
       {
         title: "City Hospital Tower",
         subtitle: "Healthcare facility",
-        href: ROUTES.PROJECT,
+        href: ROUTES.PROJECT + "?tab=panel_upgrades",
         icon: Hospital,
       },
       {
         title: "Palm Jumeirah Villa",
         subtitle: "Private residence",
-        href: ROUTES.PROJECT,
+        href: ROUTES.PROJECT + "?tab=full_repaints",
         icon: Home,
       },
       {
         title: "Industrial Hangar",
         subtitle: "Industrial facility",
-        href: ROUTES.PROJECT,
+        href: ROUTES.PROJECT + "?tab=move_out_cleans",
         icon: Warehouse,
       },
       {
         title: "Office Complex",
         subtitle: "Commercial building",
-        href: ROUTES.PROJECT,
+        href: ROUTES.PROJECT + "?tab=kitchen_installs",
         icon: Building2,
       },
       {
         title: "Residential Complex",
         subtitle: "Residential development",
-        href: ROUTES.PROJECT,
+        href: ROUTES.PROJECT + "?tab=damp_leak",
         icon: Building,
       },
     ],
@@ -181,37 +168,37 @@ export const MEGA_MENUS: Record<string, MegaMenu> = {
       {
         title: "Residential Spaces",
         subtitle: "Homes, villas & private residences",
-        href: ROUTES.INDUSTRY,
+        href: ROUTES.INDUSTRY + "?tab=homeowners",
         icon: Home,
       },
       {
         title: "Commercial Projects",
         subtitle: "Offices, retail & hospitality fit-outs",
-        href: ROUTES.INDUSTRY,
+        href: ROUTES.INDUSTRY + "?tab=offices",
         icon: Building2,
       },
       {
         title: "Industrial Facilities",
         subtitle: "Warehouses, plants & operational sites",
-        href: ROUTES.INDUSTRY,
+        href: ROUTES.INDUSTRY + "?tab=construction",
         icon: Factory,
       },
       {
         title: "Aviation & Transport",
         subtitle: "Terminals & transit infrastructure",
-        href: ROUTES.INDUSTRY,
+        href: ROUTES.INDUSTRY + "?tab=landlords",
         icon: Plane,
       },
       {
         title: "Civil Infrastructure",
         subtitle: "Public works & structural foundations",
-        href: ROUTES.INDUSTRY,
+        href: ROUTES.INDUSTRY + "?tab=retail",
         icon: Landmark,
       },
       {
         title: "Government Projects",
         subtitle: "Municipal & federal contracts",
-        href: ROUTES.INDUSTRY,
+        href: ROUTES.INDUSTRY + "?tab=property_managers",
         icon: Building,
       },
     ],

@@ -1,11 +1,11 @@
 "use client";
 
+import { Link, usePathname, useRouter } from "@/i18n/navigation";
 import project1Image from "@/shared/assets/png/projects1.jpg";
 import { ROUTES } from "@/shared/constants/routes";
 import { ArrowRight, Bath } from "lucide-react";
 import Image from "next/image";
-import { Link } from "@/i18n/navigation";
-import { useState } from "react";
+import { useSearchParams } from "next/navigation";
 import { bookingSteps, projects, tabData } from "../constants/mock-projects";
 
 const CheckIconFilled = ({ className }: { className?: string }) => (
@@ -21,10 +21,31 @@ const CheckIconFilled = ({ className }: { className?: string }) => (
   </svg>
 );
 
-export default function ProjectsSection() {
-  const [activeTab, setActiveTab] = useState("bathroom_refits");
+const DEFAULT_TAB = "bathroom_refits";
+const VALID_TAB_IDS = projects.map((project) => project.id);
 
-  const activeData = tabData[activeTab as keyof typeof tabData] || tabData["bathroom_refits"];
+function resolveTab(tabParam: string | null): string {
+  if (tabParam && VALID_TAB_IDS.includes(tabParam)) {
+    return tabParam;
+  }
+  return DEFAULT_TAB;
+}
+
+export default function ProjectsSection() {
+  const router = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+
+  const activeTab = resolveTab(searchParams.get("tab"));
+
+  function handleTabChange(tabId: string) {
+    const params = new URLSearchParams(searchParams.toString());
+    params.set("tab", tabId);
+
+    router.replace(`${pathname}?${params.toString()}`, { scroll: false });
+  }
+
+  const activeData = tabData[activeTab as keyof typeof tabData] || tabData[DEFAULT_TAB];
   const ActiveIcon = projects.find((t) => t.id === activeTab)?.icon || Bath;
 
   return (
@@ -46,7 +67,7 @@ export default function ProjectsSection() {
                 return (
                   <button
                     key={project.id}
-                    onClick={() => setActiveTab(project.id)}
+                    onClick={() => handleTabChange(project.id)}
                     className={`flex w-full cursor-pointer items-center gap-3.5 rounded-xl px-3 py-2.5 text-left text-[14px] font-medium whitespace-nowrap transition-all duration-200 ${
                       isActive ? "bg-primary text-white" : "text-gray-700 hover:bg-gray-100"
                     }`}

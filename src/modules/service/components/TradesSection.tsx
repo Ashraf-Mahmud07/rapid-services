@@ -1,10 +1,10 @@
 "use client";
 
-import React, { useState } from "react";
-import { Link } from "@/i18n/navigation";
-import { ArrowRight, Zap } from "lucide-react";
+import { Link, usePathname, useRouter } from "@/i18n/navigation";
 import { ROUTES } from "@/shared/constants/routes";
-import { trades, tabData } from "../constants/mock-services";
+import { ArrowRight, Zap } from "lucide-react";
+import { useSearchParams } from "next/navigation";
+import { tabData, trades } from "../constants/mock-services";
 
 const CheckIconFilled = ({ className }: { className?: string }) => (
   <svg viewBox="0 0 24 24" className={className} xmlns="http://www.w3.org/2000/svg">
@@ -19,10 +19,31 @@ const CheckIconFilled = ({ className }: { className?: string }) => (
   </svg>
 );
 
-export default function TradesSection() {
-  const [activeTab, setActiveTab] = useState("electrical");
+const DEFAULT_TAB = "electrical";
+const VALID_TAB_IDS = trades.map((trade) => trade.id);
 
-  const activeData = tabData[activeTab as keyof typeof tabData] || tabData["electrical"];
+function resolveTab(tabParam: string | null): string {
+  if (tabParam && VALID_TAB_IDS.includes(tabParam)) {
+    return tabParam;
+  }
+  return DEFAULT_TAB;
+}
+
+export default function TradesSection() {
+  const router = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+
+  const activeTab = resolveTab(searchParams.get("tab"));
+
+  function handleTabChange(tabId: string) {
+    const params = new URLSearchParams(searchParams.toString());
+    params.set("tab", tabId);
+
+    router.replace(`${pathname}?${params.toString()}`, { scroll: false });
+  }
+
+  const activeData = tabData[activeTab as keyof typeof tabData] || tabData[DEFAULT_TAB];
   const ActiveIcon = trades.find((t) => t.id === activeTab)?.icon || Zap;
 
   return (
@@ -42,7 +63,7 @@ export default function TradesSection() {
               return (
                 <button
                   key={trade.id}
-                  onClick={() => setActiveTab(trade.id)}
+                  onClick={() => handleTabChange(trade.id)}
                   className={`flex w-full cursor-pointer items-center gap-3.5 rounded-xl px-3 py-2.5 text-left text-[15px] font-medium whitespace-nowrap transition-all duration-200 ${
                     isActive ? "bg-primary text-white" : "text-gray-700 hover:bg-gray-100"
                   }`}

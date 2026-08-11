@@ -1,10 +1,10 @@
 "use client";
 
-import React, { useState } from "react";
-import { Link } from "@/i18n/navigation";
-import { ArrowRight, Home } from "lucide-react";
+import { Link, usePathname, useRouter } from "@/i18n/navigation";
 import { ROUTES } from "@/shared/constants/routes";
-import { industries, tabData, bookingSteps } from "../constants/mock-industries";
+import { ArrowRight, Home } from "lucide-react";
+import { useSearchParams } from "next/navigation";
+import { bookingSteps, industries, tabData } from "../constants/mock-industries";
 
 const CheckIconFilled = ({ className }: { className?: string }) => (
   <svg viewBox="0 0 24 24" className={className} xmlns="http://www.w3.org/2000/svg">
@@ -19,10 +19,31 @@ const CheckIconFilled = ({ className }: { className?: string }) => (
   </svg>
 );
 
-export default function IndustriesSection() {
-  const [activeTab, setActiveTab] = useState("homeowners");
+const DEFAULT_TAB = "homeowners";
+const VALID_TAB_IDS = industries.map((industry) => industry.id);
 
-  const activeData = tabData[activeTab as keyof typeof tabData] || tabData["homeowners"];
+function resolveTab(tabParam: string | null): string {
+  if (tabParam && VALID_TAB_IDS.includes(tabParam)) {
+    return tabParam;
+  }
+  return DEFAULT_TAB;
+}
+
+export default function IndustriesSection() {
+  const router = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+
+  const activeTab = resolveTab(searchParams.get("tab"));
+
+  function handleTabChange(tabId: string) {
+    const params = new URLSearchParams(searchParams.toString());
+    params.set("tab", tabId);
+
+    router.replace(`${pathname}?${params.toString()}`, { scroll: false });
+  }
+
+  const activeData = tabData[activeTab as keyof typeof tabData] || tabData[DEFAULT_TAB];
   const ActiveIcon = industries.find((t) => t.id === activeTab)?.icon || Home;
 
   return (
@@ -44,7 +65,7 @@ export default function IndustriesSection() {
                 return (
                   <button
                     key={industry.id}
-                    onClick={() => setActiveTab(industry.id)}
+                    onClick={() => handleTabChange(industry.id)}
                     className={`flex w-full cursor-pointer items-center gap-3.5 rounded-xl px-3 py-2.5 text-left text-[14px] font-medium whitespace-nowrap transition-all duration-200 ${
                       isActive ? "bg-primary text-white" : "text-gray-700 hover:bg-gray-100"
                     }`}
