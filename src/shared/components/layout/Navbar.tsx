@@ -5,10 +5,10 @@ import Image from "next/image";
 import * as React from "react";
 
 import { Link, usePathname } from "@/i18n/navigation";
+import { useOverlays } from "@/shared/components/overlays/OverlayProvider";
 import { MEGA_MENUS } from "@/shared/constants/navigation";
 import { ROUTES } from "@/shared/constants/routes";
 import { cn } from "@/shared/utils/cn";
-import { useOverlays } from "@/shared/components/overlays/OverlayProvider";
 import LanguageSelector from "./LanguageSelector";
 import MegaMenu from "./MegaMenu";
 import SearchModal from "./SearchModal";
@@ -69,7 +69,7 @@ export default function Navbar({
   React.useEffect(() => {
     const onKey = (event: KeyboardEvent) => {
       if (event.key === "Escape") setMenu(null);
-      if (event.key.toLowerCase() === "k" && (event.ctrlKey || event.metaKey)) {
+      if (event.key?.toLowerCase() === "k" && (event.ctrlKey || event.metaKey)) {
         event.preventDefault();
         setMenu(null);
         setSearchOpen(true);

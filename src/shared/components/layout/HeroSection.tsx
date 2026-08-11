@@ -16,12 +16,6 @@ interface HeroSectionProps {
   title: string;
   subtitle: string;
   backgroundImage?: string | StaticImageData;
-  /**
-   * Extra slides. The references show circular prev/next controls at the
-   * vertical midpoint and a three-dot indicator, with the active dot drawn as a
-   * short brand pill. Omit this and the section renders exactly as before —
-   * static, with no controls — so existing callers are unaffected.
-   */
   slides?: HeroSlide[];
 }
 

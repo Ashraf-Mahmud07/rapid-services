@@ -1,8 +1,6 @@
 import { useTranslations } from "next-intl";
-import Image from "next/image";
+import ShareIcon from "../icons/ShareIcon";
 import { Product } from "../types/product.type";
-
-const shareIcon = "/shareIcon.svg";
 
 export default function ProductShortOverview({ product }: { product: Product }) {
   const t = useTranslations("product");
@@ -37,9 +35,9 @@ export default function ProductShortOverview({ product }: { product: Product }) 
       <button
         type="button"
         aria-label={t("shareProduct")}
-        className="mt-6 inline-flex size-10.5 shrink-0 items-center justify-center rounded-full bg-[#f8f8f8] backdrop-blur-[2.529px]"
+        className="mt-6 inline-flex size-10.5 shrink-0 items-center justify-center rounded-full bg-[#f8f8f8] p-2 backdrop-blur-[2.529px]"
       >
-        <Image alt="" src={shareIcon} width={24} height={24} className="block max-w-none" />
+        <ShareIcon />
       </button>
     </section>
   );

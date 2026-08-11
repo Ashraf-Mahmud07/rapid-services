@@ -2,6 +2,7 @@
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import Image from "next/image";
+import { useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 
 import { Button } from "@/shared/components/ui/Button";
@@ -22,6 +23,8 @@ const FIELD_CLASSNAME =
   "h-auto rounded-none rounded-b-[10px] border-0 border-b border-b-primary bg-transparent py-2 pe-0 ps-3 text-base text-[#333] placeholder:text-[#a9adb1] focus-visible:border-b-primary focus-visible:ring-0 md:text-base";
 
 export default function ContactForm() {
+  const [isSubmitted, setIsSubmitted] = useState(false);
+
   const {
     register,
     control,
@@ -35,6 +38,11 @@ export default function ContactForm() {
 
   function onSubmit() {
     reset();
+    setIsSubmitted(true);
+  }
+
+  function handleSendAnother() {
+    setIsSubmitted(false);
   }
 
   return (
@@ -54,81 +62,118 @@ export default function ContactForm() {
       />
 
       <div className="pe-0 pb-2 lg:py-2 lg:pe-2">
-        <h2 className="mb-2 text-[26px] font-semibold text-[#17181a] sm:text-[30px] lg:text-[34px]">
-          Contact
-        </h2>
-        <p className="mb-7 text-sm text-[#7c8288] lg:mb-[34px] lg:text-[15px]">
-          Send a message and our team will get back to within 24 hrs
-        </p>
+        {isSubmitted ? (
+          <div className="flex h-full min-h-[340px] flex-col items-center justify-center text-center">
+            <div className="mb-5 flex size-16 items-center justify-center rounded-full bg-primary/10">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="size-8 text-primary"
+                aria-hidden="true"
+              >
+                <path d="M20 6 9 17l-5-5" />
+              </svg>
+            </div>
 
-        <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-6 lg:gap-[26px]">
-          <div>
-            <label htmlFor="name" className="mb-1.5 block ps-3 text-[13px] text-[#9aa0a5]">
-              Name
-            </label>
-            <Input
-              id="name"
-              placeholder="Type full name here..."
-              className={FIELD_CLASSNAME}
-              error={errors.name?.message}
-              {...register("name")}
-            />
+            <h2 className="mb-2 text-[26px] font-semibold text-[#17181a] sm:text-[30px] lg:text-[34px]">
+              Message sent
+            </h2>
+            <p className="mb-7 max-w-[380px] text-sm text-[#7c8288] lg:text-[15px]">
+              Thanks for reaching out. Our team will get back to you within 24 hrs.
+            </p>
+
+            <Button
+              type="button"
+              onClick={handleSendAnother}
+              className="h-auto rounded-full px-10 py-3.5 text-[15px] font-semibold"
+            >
+              Send another message
+            </Button>
           </div>
+        ) : (
+          <>
+            <h2 className="mb-2 text-[26px] font-semibold text-[#17181a] sm:text-[30px] lg:text-[34px]">
+              Contact
+            </h2>
+            <p className="mb-7 text-sm text-[#7c8288] lg:mb-[34px] lg:text-[15px]">
+              Send a message and our team will get back to within 24 hrs
+            </p>
 
-          <Input
-            id="email"
-            type="email"
-            placeholder="Email"
-            aria-label="Email"
-            className={FIELD_CLASSNAME}
-            error={errors.email?.message}
-            {...register("email")}
-          />
-
-          <Controller
-            control={control}
-            name="topic"
-            render={({ field }) => (
-              <div className="w-full">
-                <Select value={field.value} onValueChange={field.onChange}>
-                  <SelectTrigger
-                    aria-label="What are you looking for"
-                    className="h-auto w-full rounded-none rounded-b-[10px] border-0 border-b border-b-primary bg-transparent py-2 ps-3 pe-0 text-base text-[#333] focus-visible:ring-0 data-placeholder:text-[#7c8288] data-[size=default]:h-auto"
-                  >
-                    <SelectValue placeholder="Select what you are looking for" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    {CONTACT_TOPICS.map((topic) => (
-                      <SelectItem key={topic} value={topic}>
-                        {topic}
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
-                {errors.topic && (
-                  <p className="mt-1 text-xs text-destructive">{errors.topic.message}</p>
-                )}
+            <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-6 lg:gap-[26px]">
+              <div>
+                <label htmlFor="name" className="mb-1.5 block ps-3 text-[13px] text-[#9aa0a5]">
+                  Name
+                </label>
+                <Input
+                  id="name"
+                  placeholder="Type full name here..."
+                  className={FIELD_CLASSNAME}
+                  error={errors.name?.message}
+                  {...register("name")}
+                />
               </div>
-            )}
-          />
 
-          <Input
-            id="message"
-            placeholder="Message"
-            aria-label="Message"
-            className={`${FIELD_CLASSNAME} pt-2 pb-9`}
-            error={errors.message?.message}
-            {...register("message")}
-          />
+              <Input
+                id="email"
+                type="email"
+                placeholder="Email"
+                aria-label="Email"
+                className={FIELD_CLASSNAME}
+                error={errors.email?.message}
+                {...register("email")}
+              />
 
-          <Button
-            type="submit"
-            isLoading={isSubmitting}
-            className="h-auto w-full self-start rounded-full px-10 py-3.5 text-[15px] font-semibold sm:w-auto"
-          >
-            Submit
-          </Button>
-        </form>
+              <Controller
+                control={control}
+                name="topic"
+                render={({ field }) => (
+                  <div className="w-full">
+                    <Select value={field.value} onValueChange={field.onChange}>
+                      <SelectTrigger
+                        aria-label="What are you looking for"
+                        className="h-auto w-full rounded-none rounded-b-[10px] border-0 border-b border-b-primary bg-transparent py-2 ps-3 pe-0 text-base text-[#333] focus-visible:ring-0 data-placeholder:text-[#7c8288] data-[size=default]:h-auto"
+                      >
+                        <SelectValue placeholder="Select what you are looking for" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        {CONTACT_TOPICS.map((topic) => (
+                          <SelectItem key={topic} value={topic}>
+                            {topic}
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                    {errors.topic && (
+                      <p className="mt-1 text-xs text-destructive">{errors.topic.message}</p>
+                    )}
+                  </div>
+                )}
+              />
+
+              <Input
+                id="message"
+                placeholder="Message"
+                aria-label="Message"
+                className={`${FIELD_CLASSNAME} pt-2 pb-9`}
+                error={errors.message?.message}
+                {...register("message")}
+              />
+
+              <Button
+                type="submit"
+                isLoading={isSubmitting}
+                className="h-auto w-full self-start rounded-full px-10 py-3.5 text-[15px] font-semibold sm:w-auto"
+              >
+                Submit
+              </Button>
+            </form>
+          </>
+        )}
       </div>
     </div>
   );

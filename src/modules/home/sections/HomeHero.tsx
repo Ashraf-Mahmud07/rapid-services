@@ -1,9 +1,9 @@
 "use client";
 
-import { ChevronRight, Volume2 } from "lucide-react";
+import { ChevronRight, Volume2, VolumeX } from "lucide-react";
+import * as React from "react";
 
 import { Link } from "@/i18n/navigation";
-import { useOverlays } from "@/shared/components/overlays/OverlayProvider";
 import { ROUTES } from "@/shared/constants/routes";
 
 const STATS = [
@@ -12,23 +12,63 @@ const STATS = [
   { value: "120+", label: "Happy Clients" },
 ];
 
-/**
- * The home hero. The navbar renders over it in its transparent variant, so the
- * section owns the full band from the top of the page down to the trades strip
- * and carries its own top padding to clear the 96px bar.
- */
 export default function HomeHero() {
-  const overlays = useOverlays();
+  const videoRef = React.useRef<HTMLVideoElement>(null);
+  const [isMuted, setIsMuted] = React.useState(false);
+
+  React.useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    const handleVolumeChange = () => setIsMuted(video.muted);
+    video.addEventListener("volumechange", handleVolumeChange);
+
+    video.muted = false;
+    video.play().catch(() => {
+      video.muted = true;
+      video.play().catch(() => {
+        // Even muted autoplay failed (rare) - leave it paused; the poster
+        // frame still shows.
+      });
+    });
+
+    return () => {
+      video.removeEventListener("volumechange", handleVolumeChange);
+    };
+  }, []);
+
+  const toggleMute = () => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    const nextMuted = !video.muted;
+    video.muted = nextMuted;
+
+    // Unmuting is a genuine user gesture, so this is a reliable place to
+    // retry unmuted playback if the initial autoplay attempt was blocked.
+    if (!nextMuted) {
+      video.play().catch(() => {
+        // If it still fails, just leave it muted rather than fighting the browser.
+        video.muted = true;
+      });
+    }
+  };
 
   return (
-    <section className="relative isolate flex min-h-[560px] items-center overflow-hidden lg:min-h-[915px]">
-      {/* The photograph sits behind a left-weighted scrim so the copy stays
-          legible over the bright right-hand side of the frame. */}
-      <div
+    <section className="relative isolate flex min-h-140 items-center overflow-hidden lg:min-h-228.75">
+      <video
+        ref={videoRef}
+        loop
+        playsInline
+        preload="auto"
+        poster="/images/careers-hero.jpg"
         aria-hidden="true"
-        className="absolute inset-0 -z-10 bg-cover bg-center"
-        style={{ backgroundImage: "url('/images/careers-hero.jpg')" }}
-      />
+        disablePictureInPicture
+        controlsList="nodownload noplaybackrate"
+        className="absolute inset-0 -z-10 h-full w-full object-cover"
+      >
+        <source src="/hero-background.mp4" type="video/mp4" />
+      </video>
       <div
         aria-hidden="true"
         className="absolute inset-0 -z-10 bg-[linear-gradient(90deg,rgba(8,10,12,0.94)_0%,rgba(8,10,12,0.82)_38%,rgba(8,10,12,0.45)_62%,rgba(8,10,12,0.25)_100%)]"
@@ -49,7 +89,7 @@ export default function HomeHero() {
           Waterproofing <span className="text-primary">Excellence</span>
         </p>
 
-        <p className="mt-6 max-w-[720px] border-s-[3px] border-primary ps-5 text-[clamp(0.9375rem,1.1vw,1.0625rem)] leading-[2.15] text-white/80 italic">
+        <p className="mt-6 max-w-180 border-s-[3px] border-primary ps-5 text-[clamp(0.9375rem,1.1vw,1.0625rem)] leading-[2.15] text-white/80 italic">
           Combining technical expertise with superior craftsmanship, we provide durable cost
           effective solutions that safeguard properties, enhance performance and deliver long term
           value for our clients.
@@ -58,11 +98,16 @@ export default function HomeHero() {
         <div className="mt-6 flex flex-wrap gap-3.5">
           <button
             type="button"
-            onClick={() => overlays.open("quote")}
-            className="inline-flex h-14 items-center gap-2.5 rounded-full bg-primary px-8 text-[15px] font-semibold text-white transition-opacity hover:opacity-90"
+            onClick={toggleMute}
+            aria-pressed={!isMuted}
+            className="inline-flex h-14 cursor-pointer items-center gap-2.5 rounded-full bg-primary px-8 text-[15px] font-semibold text-white transition-opacity hover:opacity-90"
           >
-            Unmute Video
-            <Volume2 className="size-[18px]" strokeWidth={2} />
+            {isMuted ? "Unmute Video" : "Mute Video"}
+            {isMuted ? (
+              <VolumeX className="size-4.5" strokeWidth={2} />
+            ) : (
+              <Volume2 className="size-4.5" strokeWidth={2} />
+            )}
           </button>
           <Link
             href={ROUTES.PROJECT}

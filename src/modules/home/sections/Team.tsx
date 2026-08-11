@@ -1,3 +1,5 @@
+"use client";
+import { useOverlays } from "@/shared/components/overlays/OverlayProvider";
 import { Phone } from "lucide-react";
 import TeamCard from "../components/TeamCard";
 
@@ -25,6 +27,7 @@ const teamMembers = [
 ];
 
 export default function Team() {
+  const overlays = useOverlays();
   return (
     <section className="relative isolate overflow-hidden py-10 lg:py-14">
       <div
@@ -52,15 +55,15 @@ export default function Team() {
         </div>
 
         <div className="mt-10 flex justify-center">
-          <a
-            href="#"
-            className="inline-flex items-center gap-2 rounded-full bg-primary px-4.5 py-2.5 text-[15px] font-medium text-white transition-opacity hover:opacity-90"
+          <p
+            onClick={() => overlays.open("quote")}
+            className="inline-flex cursor-pointer items-center gap-2 rounded-full bg-primary px-4.5 py-2.5 text-[15px] font-medium text-white transition-opacity hover:opacity-90"
           >
             <span className="flex size-5.5 items-center justify-center rounded-full bg-white text-primary">
               <Phone className="size-3.5" aria-hidden="true" />
             </span>
             Request a call
-          </a>
+          </p>
         </div>
       </div>
     </section>

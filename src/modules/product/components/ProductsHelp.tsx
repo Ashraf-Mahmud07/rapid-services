@@ -5,7 +5,7 @@ import Image from "next/image";
 import { ROUTES } from "@/shared/constants/routes";
 import { cn } from "@/shared/utils/cn";
 
-const helpIcon = "/helpIcon.svg";
+const helpIcon = "/icons/headphone.svg";
 
 type ProductsHelpProps = {
   className?: string;
