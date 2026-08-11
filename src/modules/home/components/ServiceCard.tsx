@@ -10,7 +10,7 @@ interface ServiceCardProps {
 
 export default function ServiceCard({ title, description, tag, image }: ServiceCardProps) {
   return (
-    <article className="group flex h-full flex-col overflow-hidden rounded-[6px] border border-[#e3e3e3] bg-[#fafafa]">
+    <article className="group flex h-full flex-col overflow-hidden rounded-md border border-[#e3e3e3] bg-[#fafafa]">
       <div className="relative h-[268px] overflow-hidden rounded-t-[6px] bg-[#f4f4f4]">
         <Image
           src={image}
@@ -19,7 +19,7 @@ export default function ServiceCard({ title, description, tag, image }: ServiceC
           sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
           className="object-cover transition-transform duration-300 group-hover:scale-105"
         />
-        <div className="absolute top-[14px] left-[14px] rounded-[6px] bg-primary px-[10px] py-[6px] text-[11px] font-bold tracking-[0.66px] text-white uppercase">
+        <div className="absolute top-[14px] left-[14px] rounded-md bg-primary px-[10px] py-[6px] text-[11px] font-bold tracking-[0.66px] text-white uppercase">
           {tag}
         </div>
       </div>

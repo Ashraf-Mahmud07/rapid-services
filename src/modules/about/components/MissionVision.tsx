@@ -16,7 +16,7 @@ export default function MissionVision() {
             </p>
           </div>
 
-          <div className="relative order-first aspect-[380/255] w-full overflow-hidden rounded-[8px] lg:order-none">
+          <div className="relative order-first aspect-380/255 w-full overflow-hidden rounded-lg lg:order-0">
             <Image
               src="/images/about/mission-vision.jpg"
               alt="Two technicians working on a plant room installation"

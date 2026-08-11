@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 
-import { CareersHero, JobBoard, NewsletterSection } from "@/modules/careers";
+import { CareersHero, JobBoard } from "@/modules/careers";
+import { Newsletter } from "@/modules/home/sections";
 import { Footer, Navbar } from "@/shared/components/layout";
 
 export const metadata: Metadata = {
@@ -14,9 +15,9 @@ export default function CareerPage() {
       <Navbar />
       <CareersHero />
 
-      <div className="container-page pt-10 sm:pt-14 lg:pt-[76px]">
+      <div className="container-page pt-10 sm:pt-14 lg:pt-19">
         <JobBoard />
-        <NewsletterSection />
+        <Newsletter />
       </div>
 
       <Footer />

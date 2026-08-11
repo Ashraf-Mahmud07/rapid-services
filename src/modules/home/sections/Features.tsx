@@ -79,7 +79,7 @@ export default function Features() {
               return (
                 <article
                   key={feature.title}
-                  className="flex h-full flex-col rounded-[6px] border border-[#efefef] bg-[#fafafa] px-[24px] py-[26px]"
+                  className="flex h-full flex-col rounded-md border border-[#efefef] bg-[#fafafa] px-[24px] py-[26px]"
                 >
                   <span className="mb-[18px] flex size-[52px] items-center justify-center rounded-[12px] bg-primary text-white">
                     <Icon className="size-6" aria-hidden="true" />

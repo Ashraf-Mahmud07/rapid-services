@@ -29,7 +29,7 @@ export default function TradesTicker() {
 
   return (
     <section className="bg-brand-tint">
-      <div className="container-page flex items-center gap-4 py-5">
+      <div className="container-page flex items-center gap-4 py-14">
         <button
           type="button"
           aria-label="Previous trades"

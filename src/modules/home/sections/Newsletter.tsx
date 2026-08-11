@@ -22,7 +22,7 @@ export default function Newsletter() {
   return (
     <section className="section-space">
       <div className="container-narrow">
-        <div className="grid items-center gap-8 rounded-[14px] bg-primary px-7 py-10 sm:px-10 lg:grid-cols-[360px_minmax(0,1fr)] lg:gap-12 lg:px-14 lg:py-12">
+        <div className="grid items-center gap-8 rounded-[14px] bg-primary px-7 py-8 sm:px-10 lg:grid-cols-[360px_minmax(0,1fr)] lg:gap-12 lg:px-14 lg:py-10">
           <div className="mx-auto w-full max-w-[320px] lg:mx-0">
             <Image
               src={newsletterArt}
@@ -34,10 +34,10 @@ export default function Newsletter() {
           </div>
 
           <div>
-            <h2 className="max-w-[640px] text-[clamp(1.5rem,2.3vw,2rem)] leading-[1.22] font-bold tracking-[-0.015em] text-white">
+            <h2 className="max-w-160 text-[clamp(1.5rem,2.3vw,2rem)] leading-[1.22] font-bold tracking-[-0.015em] text-white">
               Subscribe to our email newsletter and get best deals or offers
             </h2>
-            <p className="mt-3 max-w-[620px] text-[14.5px] leading-[1.6] text-white/80">
+            <p className="mt-3 max-w-155 text-[14.5px] leading-[1.6] text-white/80">
               Stay in the loop with the latest updates, exclusive offers, and exciting product
               launches by subscribing to our email newsletter.
             </p>

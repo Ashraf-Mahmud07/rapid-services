@@ -1,13 +1,27 @@
+import asusLogo from "@/modules/home/assets/images/asus.png";
+import lenovoLogo from "@/modules/home/assets/images/lenovo.png";
+import siemensLogo from "@/modules/home/assets/images/siemens.png";
+import sonyLogo from "@/modules/home/assets/images/sony.png";
 import { ArrowLeft, ArrowRight, Quote } from "lucide-react";
 import Image from "next/image";
 
-const logos = ["A", "B", "C", "D", "E", "F", "G", "H"];
+const logos = [
+  sonyLogo,
+  asusLogo,
+  siemensLogo,
+  lenovoLogo,
+  sonyLogo,
+  asusLogo,
+  siemensLogo,
+  lenovoLogo,
+  sonyLogo,
+];
 
 export default function Reviews() {
   return (
     <section className="section-space">
       <div className="container mx-auto">
-        <div className="overflow-hidden rounded-[6px] bg-primary">
+        <div className="overflow-hidden rounded-md bg-primary">
           <div className="grid gap-10 px-6 py-10 md:px-10 lg:grid-cols-[1.1fr_0.9fr] lg:px-16 lg:py-14">
             <div className="order-2 flex flex-col justify-center lg:order-1">
               <div className="flex items-center gap-3">
@@ -51,7 +65,7 @@ export default function Reviews() {
               </div>
             </div>
 
-            <div className="relative order-1 min-h-[320px] overflow-hidden rounded-[6px] lg:order-2 lg:min-h-[420px]">
+            <div className="relative order-1 min-h-[320px] overflow-hidden rounded-md lg:order-2 lg:min-h-[420px]">
               <Image
                 src="/images/team/expert-2.jpg"
                 alt="Customer testimonial"
@@ -68,13 +82,13 @@ export default function Reviews() {
           </div>
         </div>
 
-        <div className="mt-8 flex flex-wrap items-center justify-center gap-4 rounded-[6px] border border-[#efefef] bg-white p-4 shadow-sm sm:gap-6 md:gap-8">
-          {logos.map((logo) => (
+        <div className="mt-3 flex flex-wrap items-center justify-center gap-4 border-0 bg-white p-4 sm:gap-6 md:gap-8">
+          {logos.map((logo, index) => (
             <div
-              key={logo}
-              className="flex size-[110px] items-center justify-center rounded-full border border-[#efefef] bg-white text-[24px] font-semibold text-[#0e0e0e] shadow-sm"
+              key={index}
+              className="flex size-27.5 items-center justify-center rounded-full bg-[#F6F6F6] p-3 shadow-sm"
             >
-              {logo}
+              <Image src={logo} alt="Company logo" />
             </div>
           ))}
         </div>

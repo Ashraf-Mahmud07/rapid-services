@@ -9,9 +9,11 @@ export default function ProductsLayout({
   return (
     <main>
       <Navbar variant="solid" />
-      {children}
-      <div className="container-page">
-        <FaqSection />
+      <div className="section-background">
+        {children}
+        <div className="container-page">
+          <FaqSection />
+        </div>
       </div>
       <Footer />
     </main>

@@ -31,20 +31,15 @@ const SOCIALS = [
   },
 ];
 
-/**
- * Portrait grid. The card is quiet until pointed at, then a scrim carries the
- * name, role and socials — so the reveal is driven by hover *and* focus-within,
- * which keeps it reachable from the keyboard.
- */
 export default function MeetTheExperts() {
   return (
     <section className="section-space">
-      <div className="container-page">
+      <div className="container-narrow">
         <div className="flex flex-col gap-5 lg:flex-row lg:items-center lg:justify-between lg:gap-12">
           <h2 className="text-[clamp(1.5rem,2.4vw,2.125rem)] leading-[1.21] font-bold tracking-[-0.026em] text-ink">
             Meet the Experts
           </h2>
-          <p className="max-w-[470px] text-[14.5px] leading-[1.66] text-body-soft">
+          <p className="max-w-117.5 text-[14.5px] leading-[1.66] text-body-soft">
             Our skilled team of certified electricians is dedicated to delivering safe, efficient,
             and high-quality electrical services you can trust.
           </p>
@@ -59,7 +54,7 @@ export default function MeetTheExperts() {
         <ul className="mt-10 grid gap-6 sm:grid-cols-2 xl:grid-cols-4">
           {EXPERTS.map((expert) => (
             <li key={expert.name}>
-              <div className="group relative aspect-[10/11] overflow-hidden rounded-[10px] focus-within:ring-2 focus-within:ring-primary">
+              <div className="group relative aspect-10/11 overflow-hidden rounded-[10px] focus-within:ring-2 focus-within:ring-primary">
                 <Image
                   src={expert.image}
                   alt={expert.name}

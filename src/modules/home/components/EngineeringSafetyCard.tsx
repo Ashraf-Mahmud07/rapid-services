@@ -17,7 +17,7 @@ interface EngineeringSafetyCardProps {
 
 const EngineeringSafetyCard = ({ item }: EngineeringSafetyCardProps) => {
   return (
-    <article className="flex min-h-[121px] items-center rounded-[6px] border border-[#efefef] bg-[#fafafa] px-[24px] py-[24px] shadow-[0_0_0_1px_rgba(0,0,0,0.01)]">
+    <article className="flex min-h-[121px] items-center rounded-md border border-[#efefef] bg-[#fafafa] px-[24px] py-[24px] shadow-[0_0_0_1px_rgba(0,0,0,0.01)]">
       <div className="mr-[20px] flex size-[52px] shrink-0 items-center justify-center rounded-[12px] bg-primary text-white">
         {iconMap[item.icon]}
       </div>

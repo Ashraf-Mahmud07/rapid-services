@@ -35,45 +35,45 @@ export default function HomeHero() {
       />
 
       <div className="container-page pt-32 pb-14 lg:pt-40 lg:pb-20">
-        <p className="inline-flex rounded-[6px] border border-primary px-4 py-2.5 text-eyebrow font-semibold text-primary uppercase">
+        <p className="inline-flex rounded-md border border-primary px-4 py-2.5 text-eyebrow font-semibold text-primary uppercase">
           Trusted Waterproofing Expert
         </p>
 
-        <h1 className="mt-6 max-w-[15ch] text-[clamp(2.25rem,5.8vw,5.32rem)] leading-[1.02] font-bold tracking-[-0.03em] text-white">
+        <h1 className="mt-6 max-w-[15ch] text-[clamp(2.25rem,6.1vw,5.85rem)] leading-[1.02] font-bold tracking-[-0.045em] text-white">
           Rapid Contracting
         </h1>
 
-        <p className="mt-4 text-[clamp(1.375rem,2.2vw,2.125rem)] leading-[1.24] font-bold tracking-[-0.01em] text-white">
+        <p className="mt-6 text-[clamp(1.375rem,2.2vw,2.125rem)] leading-[1.24] font-bold tracking-[-0.01em] text-white">
           Contracting &amp;
           <br />
           Waterproofing <span className="text-primary">Excellence</span>
         </p>
 
-        <p className="mt-7 max-w-[830px] border-s-[3px] border-primary ps-5 text-[clamp(0.9375rem,1.1vw,1.0625rem)] leading-[1.75] text-white/80 italic">
+        <p className="mt-6 max-w-[720px] border-s-[3px] border-primary ps-5 text-[clamp(0.9375rem,1.1vw,1.0625rem)] leading-[2.15] text-white/80 italic">
           Combining technical expertise with superior craftsmanship, we provide durable cost
           effective solutions that safeguard properties, enhance performance and deliver long term
           value for our clients.
         </p>
 
-        <div className="mt-8 flex flex-wrap gap-3.5">
+        <div className="mt-6 flex flex-wrap gap-3.5">
           <button
             type="button"
             onClick={() => overlays.open("quote")}
-            className="inline-flex h-13 items-center gap-2.5 rounded-full bg-primary px-7 text-[15px] font-semibold text-white transition-opacity hover:opacity-90"
+            className="inline-flex h-14 items-center gap-2.5 rounded-full bg-primary px-8 text-[15px] font-semibold text-white transition-opacity hover:opacity-90"
           >
             Unmute Video
             <Volume2 className="size-[18px]" strokeWidth={2} />
           </button>
           <Link
             href={ROUTES.PROJECT}
-            className="inline-flex h-13 items-center gap-2.5 rounded-full border border-primary px-7 text-[15px] font-semibold text-white transition-colors hover:bg-white/10"
+            className="inline-flex h-14 items-center gap-2.5 rounded-full border border-primary px-8 text-[15px] font-semibold text-white transition-colors hover:bg-white/10"
           >
             Explore Projects
             <ChevronRight className="size-[18px]" strokeWidth={2.2} />
           </Link>
         </div>
 
-        <dl className="mt-12 flex flex-wrap items-center gap-y-6">
+        <dl className="mt-8 flex flex-wrap items-center gap-y-6">
           {STATS.map((stat, index) => (
             <div
               key={stat.label}

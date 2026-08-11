@@ -37,7 +37,7 @@ export default function Steps() {
         </div>
 
         <div className="flex flex-col gap-6">
-          <div className="overflow-hidden rounded-[6px] border border-white/20 bg-[#0f1626]">
+          <div className="overflow-hidden rounded-md border border-white/20 bg-[#0f1626]">
             <div className="relative h-[300px] w-full sm:h-[360px] lg:h-[420px]">
               <Image
                 src="/images/services/wiring-rewiring.jpg"

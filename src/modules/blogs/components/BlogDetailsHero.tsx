@@ -1,10 +1,9 @@
-import React from "react";
-import Image, { StaticImageData } from "next/image";
 import { Link } from "@/i18n/navigation";
-import { ChevronLeft, Share2 } from "lucide-react";
 import Navbar from "@/shared/components/layout/Navbar";
 import { ROUTES } from "@/shared/constants/routes";
+import { ChevronLeft, Share2 } from "lucide-react";
 import { useTranslations } from "next-intl";
+import Image, { StaticImageData } from "next/image";
 
 interface BlogDetailsHeroProps {
   title: string;
@@ -16,7 +15,7 @@ export function BlogDetailsHero({ title, subtitle, backgroundImage }: BlogDetail
   const t = useTranslations("blogs");
 
   return (
-    <section className="relative flex min-h-[450px] flex-col overflow-hidden bg-slate-900 pt-0">
+    <section className="relative flex min-h-112.5 flex-col overflow-hidden bg-slate-900 pt-0">
       {/* Background image overlay */}
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 z-10 bg-black/60 mix-blend-multiply" />

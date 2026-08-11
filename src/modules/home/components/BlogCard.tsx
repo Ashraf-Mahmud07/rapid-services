@@ -19,7 +19,7 @@ export default function BlogCard({
 }: BlogCardProps) {
   return (
     <article
-      className={`overflow-hidden rounded-[6px] border border-[#efefef] bg-[#fafafa] ${
+      className={`overflow-hidden rounded-md border border-[#efefef] bg-[#fafafa] ${
         featured ? "flex flex-col" : "grid gap-4 md:grid-cols-[170px_1fr]"
       }`}
     >
@@ -61,7 +61,7 @@ export default function BlogCard({
         {featured ? (
           <a
             href="#"
-            className="mt-6 inline-flex w-fit rounded-[6px] bg-primary px-[22px] py-[12px] text-[15px] font-semibold text-white transition-opacity hover:opacity-90"
+            className="mt-6 inline-flex w-fit rounded-md bg-primary px-[22px] py-[12px] text-[15px] font-semibold text-white transition-opacity hover:opacity-90"
           >
             Read More
           </a>

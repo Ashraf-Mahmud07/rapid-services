@@ -1,5 +1,5 @@
-import { Award, Building2, Droplet, ShieldCheck } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
+import { Award, Building2, Droplet, ShieldCheck } from "lucide-react";
 
 import { Link } from "@/i18n/navigation";
 import { ROUTES } from "@/shared/constants/routes";
@@ -17,10 +17,10 @@ const CREDENTIALS: Credential[] = [
 export default function Certifications() {
   return (
     <section className="section-space">
-      <div className="container-page">
+      <div className="container-narrow">
         <div className="grid gap-10 rounded-[14px] bg-primary px-7 py-10 sm:px-10 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] lg:items-center lg:gap-16 lg:px-14 lg:py-14">
           <div>
-            <p className="inline-flex rounded-[6px] border border-white/45 px-3.5 py-1.5 text-[10.5px] font-semibold tracking-[0.14em] text-white uppercase">
+            <p className="inline-flex rounded-md border border-white/45 px-3.5 py-1.5 text-[10.5px] font-semibold tracking-[0.14em] text-white uppercase">
               Certifications
             </p>
             <h2 className="mt-5 max-w-[15ch] text-[clamp(1.4rem,2.2vw,2rem)] leading-[1.24] font-bold tracking-[-0.02em] text-white">

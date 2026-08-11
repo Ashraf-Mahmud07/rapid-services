@@ -1,13 +1,9 @@
 import { Link } from "@/i18n/navigation";
 import { ROUTES } from "@/shared/constants/routes";
 
-/**
- * Left-aligned hero with the two stacked calls to action on the right, over the
- * same workshop photograph the other page heroes use.
- */
 export default function AboutHero() {
   return (
-    <section className="relative isolate flex min-h-[380px] items-center overflow-hidden lg:min-h-[480px]">
+    <section className="relative isolate flex min-h-95 items-center overflow-hidden lg:min-h-120">
       <div
         aria-hidden="true"
         className="absolute inset-0 -z-10 bg-cover bg-center"
@@ -25,7 +21,7 @@ export default function AboutHero() {
             <br />
             <span className="text-primary">One standard.</span>
           </h1>
-          <p className="mt-4 max-w-[620px] text-[15px] leading-[1.72] text-white/80">
+          <p className="mt-4 max-w-155 text-[15px] leading-[1.72] text-white/80">
             A Sharjah maintenance contractor that employs its own technicians, quotes the job before
             it starts, and hands it back with the work signed off in writing.
           </p>

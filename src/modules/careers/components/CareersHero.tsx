@@ -12,7 +12,7 @@ export default function CareersHero() {
       <h1 className="mb-4 text-[30px] leading-[1.15] font-semibold text-white sm:text-[38px] lg:mb-[22px] lg:text-[46px] lg:leading-[1.1]">
         Build Your Career With Us
       </h1>
-      <p className="max-w-[640px] text-[15px] leading-[1.6] font-normal text-white/[0.82] sm:text-base lg:text-[18px]">
+      <p className="max-w-160 text-[15px] leading-[1.6] font-normal text-white/[0.82] sm:text-base lg:text-[18px]">
         Explore rewarding career opportunities and grow with a company committed to innovation,
         excellence, and your success.
       </p>

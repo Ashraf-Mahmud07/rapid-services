@@ -83,7 +83,7 @@ export default function FaqSection({ askHref = "contact-us" }: FaqSectionProps) 
   const onToggle = (id: string) => setOpenId((current) => (current === id ? null : id));
 
   return (
-    <section className="mt-14 mb-16 sm:mt-16 sm:mb-20 lg:mt-20 lg:mb-24">
+    <section className="mt-14 pb-16 sm:mt-16 sm:pb-20 lg:mt-20 lg:pb-24">
       <div className="mb-5 flex flex-col items-start gap-2 sm:flex-row sm:items-center sm:justify-between sm:gap-4 lg:mb-7.5">
         <h2 className="text-[28px] font-bold text-[#17181a] sm:text-[34px] lg:text-[40px]">FAQ</h2>
         <a href={askHref} className="text-sm text-primary underline lg:text-[15px]">

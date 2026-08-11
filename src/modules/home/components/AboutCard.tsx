@@ -16,8 +16,8 @@ interface AboutCardProps {
 
 const AboutCard = ({ item }: AboutCardProps) => {
   return (
-    <div className="flex-1 basis-[230px] rounded-[6px] bg-[#FAFAFA] px-[21px] py-[27px]">
-      <div className="mb-2.5 flex size-12 content-center items-center rounded-[6px] bg-primary p-2 text-white">
+    <div className="flex-1 basis-[230px] rounded-md bg-[#FAFAFA] px-[21px] py-[27px]">
+      <div className="mb-2.5 flex size-12 content-center items-center rounded-md bg-primary p-2 text-white">
         {iconMap[item.icon]}
       </div>
       <h3 className="mb-3 text-base font-medium text-[#0E0E0E]">{item.title}</h3>

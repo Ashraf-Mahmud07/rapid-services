@@ -1,8 +1,8 @@
 "use client";
 
 import { ChevronUp, Star } from "lucide-react";
-import * as React from "react";
 import { useTranslations } from "next-intl";
+import * as React from "react";
 
 import { cn } from "@/shared/utils/cn";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
@@ -132,7 +132,7 @@ function CategoryRow({ item, isSelected, onSelect }: CategoryRowProps) {
         <span
           aria-hidden="true"
           className={cn(
-            "grid size-5 place-items-center rounded-[6px] border",
+            "grid size-5 place-items-center rounded-md border",
             isSelected ? "border border-primary text-primary" : "border-[#d8d8d8]"
           )}
         >

@@ -334,6 +334,19 @@ body {
   padding-inline: var(--gutter);
 }
 
+@utility section-background {
+  background-image: url("/images/section-background.png");
+  background-repeat: no-repeat;
+  background-position: bottom;
+  /* opacity: 0.1;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1; */
+}
+
 /* Card-style sections — CTA, team, blog, contact, newsletter. 1240px. */
 @utility container-narrow {
   width: 100%;
@@ -400,7 +413,7 @@ body {
 }
 
 @utility section-space {
-  @apply my-20 lg:my-24 xl:my-28 2xl:my-32;
+  @apply my-12 lg:my-16 xl:my-20 2xl:my-28;
 }
 
 /* ─── Pale diagonal wash ─────────────────────────────── */

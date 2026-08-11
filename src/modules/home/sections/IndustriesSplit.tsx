@@ -1,5 +1,5 @@
-import { Building, Building2, Factory, Home, Landmark, Wrench } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
+import { Building, Building2, Factory, Home, Landmark, Wrench } from "lucide-react";
 import Image from "next/image";
 
 type Industry = { title: string; body: string; icon: LucideIcon };
@@ -60,10 +60,14 @@ function Item({ item, align }: { item: Industry; align: "start" | "end" }) {
 
 export default function IndustriesSplit() {
   return (
-    <section className="surface-wash py-16 lg:py-20">
+    <section className="relative isolate overflow-hidden surface-wash py-10 lg:py-14">
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 -z-10 section-background bg-cover opacity-30"
+      />
       <div className="container-page">
-        <div className="mx-auto flex max-w-[640px] flex-col items-center text-center">
-          <p className="inline-flex rounded-[6px] bg-brand-tint px-3 py-1.5 text-[10.5px] font-bold tracking-[0.13em] text-primary uppercase">
+        <div className="mx-auto flex max-w-160 flex-col items-center text-center">
+          <p className="inline-flex rounded-md bg-brand-tint px-3 py-1.5 text-[10.5px] font-bold tracking-[0.13em] text-primary uppercase">
             Industries we serve
           </p>
           <h2 className="mt-4 text-[clamp(1.5rem,2.4vw,2.125rem)] leading-[1.21] font-bold tracking-[-0.026em] text-ink">
