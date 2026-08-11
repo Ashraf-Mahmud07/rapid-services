@@ -9,7 +9,7 @@ export const engineeringSafetyIntro = {
   title: "Engineering Safety Across",
   highlight: "Every Industry",
   description:
-    "At Taj Alrahmah, we provide expert waterproofing and structural solutions tailored to the needs of diverse industries, ensuring long-lasting protection, safety, and reliable performance.",
+    "At Rapid, we provide expert waterproofing and structural solutions tailored to the needs of diverse industries, ensuring long-lasting protection, safety, and reliable performance.",
 };
 
 export const engineeringSafetyItems: EngineeringSafetyItem[] = [
