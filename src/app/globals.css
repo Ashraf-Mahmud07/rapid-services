@@ -179,8 +179,10 @@
   --color-brand-navy: #0e1a2b;
   /* Footer tagline accent — was a TAGLINE_ACCENT constant inside Footer.tsx. */
   --color-brand-navy-accent: #123a7a;
-  /* Product rating stars. */
-  --color-star: #f5a524;
+  /* Product rating stars. Sampled from the reference (warm orange, ~#fb8443
+     at the antialiased edge); this is the value the components already used
+     before they were consolidated onto the token, so appearance is unchanged. */
+  --color-star: #fa5b05;
 
   /* ─── Surface & text greys (measured from the references) ─ */
   --color-ink: #0e0e0e;

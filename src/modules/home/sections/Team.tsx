@@ -27,7 +27,7 @@ const teamMembers = [
 export default function Team() {
   return (
     <section className="section-space overflow-hidden bg-[#0a0e1c] py-[90px]">
-      <div className="container mx-auto">
+      <div className="container-narrow">
         <div className="mx-auto flex max-w-[700px] flex-col items-center text-center">
           <div className="rounded-[6px] bg-primary/[0.14] px-[16px] py-[8px] text-[10.5px] font-bold tracking-[1.26px] text-primary uppercase">
             Meet our experts

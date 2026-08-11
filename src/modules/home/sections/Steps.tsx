@@ -40,7 +40,7 @@ export default function Steps() {
           <div className="overflow-hidden rounded-[6px] border border-white/20 bg-[#0f1626]">
             <div className="relative h-[300px] w-full sm:h-[360px] lg:h-[420px]">
               <Image
-                src="/images/about/about-home.webp"
+                src="/images/services/wiring-rewiring.jpg"
                 alt="Project workflow"
                 fill
                 sizes="(max-width: 768px) 100vw, 50vw"

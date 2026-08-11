@@ -37,7 +37,7 @@ export function BlogDetailsHero({ title, subtitle, backgroundImage }: BlogDetail
       </div>
 
       {/* Hero Content */}
-      <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-1 flex-col justify-center px-4 pt-16 pb-20 text-white sm:pt-20 sm:pb-24 md:px-6 lg:px-8">
+      <div className="relative z-10 container-page flex w-full flex-1 flex-col justify-center pt-16 pb-20 text-white sm:pt-20 sm:pb-24">
         <Link
           href={ROUTES.BLOG}
           className="mb-8 inline-flex w-fit items-center gap-1.5 rounded-full bg-white px-4 py-1.5 text-sm font-semibold text-primary transition-colors hover:bg-gray-100"

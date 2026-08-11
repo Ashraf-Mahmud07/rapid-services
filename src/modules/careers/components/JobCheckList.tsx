@@ -10,7 +10,7 @@ export default function JobCheckList({ items, className }: JobCheckListProps) {
     <ul className={cn("m-0 list-none p-0", className)}>
       {items.map((item) => (
         <li key={item} className="flex items-start gap-3.5 py-2.75">
-          <span className="mt-px flex size-6 flex-none items-center justify-center rounded-full bg-[#E5FFFD]">
+          <span className="mt-px flex size-6 flex-none items-center justify-center rounded-full bg-brand-tint">
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" className="text-primary">
               <path
                 d="M20 6L9 17l-5-5"

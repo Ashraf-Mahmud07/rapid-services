@@ -56,7 +56,7 @@ export default function ProductRatings({ product }: { product?: Product }) {
                   <div className="flex items-center gap-2.75">
                     <span
                       aria-hidden="true"
-                      className="inline-flex text-[14px] tracking-[0.19em] text-[#fa5b05] select-none"
+                      className="inline-flex text-[14px] tracking-[0.19em] text-star select-none"
                     >
                       {"★".repeat(Math.round(review.count || 5))}
                     </span>

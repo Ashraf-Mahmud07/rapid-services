@@ -189,9 +189,7 @@ function StarRow({ item, isSelected, onSelect }: StarRowProps) {
                   key={i}
                   className={cn(
                     "size-4",
-                    i < ratingNum
-                      ? "fill-[#fa5b05] text-[#fa5b05]"
-                      : "fill-[#e5e7eb] text-[#e5e7eb]"
+                    i < ratingNum ? "fill-star text-star" : "fill-[#e5e7eb] text-[#e5e7eb]"
                   )}
                 />
               ))}

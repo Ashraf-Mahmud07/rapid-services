@@ -12,7 +12,7 @@ export function BlogDetailsSection({ blog }: BlogDetailsSectionProps) {
       {/* Decorative background swoosh - mostly visible on large screens */}
       <div className="pointer-events-none absolute right-0 bottom-0 hidden h-3/4 w-3/4 rounded-tl-[100px] bg-gradient-to-tl from-gray-50/80 to-transparent md:block" />
 
-      <div className="relative z-10 mx-auto max-w-7xl px-4 pt-12 md:px-6 md:pt-16 lg:px-8">
+      <div className="relative z-10 container-page pt-12 md:pt-16">
         {/* Large Feature Image */}
         <div className="relative mb-12 aspect-[16/9] w-full overflow-hidden rounded-2xl bg-gray-100 md:mb-16 md:aspect-[2/1]">
           <Image src={blog.image} alt={blog.title} fill className="object-cover" priority />

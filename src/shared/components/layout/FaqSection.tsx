@@ -22,7 +22,7 @@ function FaqColumn({ items, openId, onToggle }: FaqColumnProps) {
             key={item.id}
             className={cn(
               "overflow-hidden rounded-xl transition-colors duration-150",
-              isOpen ? "bg-[#E9F6F3]" : "bg-[#F5F6F7]"
+              isOpen ? "bg-brand-tint" : "bg-[#F5F6F7]"
             )}
           >
             <button

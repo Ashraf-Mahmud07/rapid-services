@@ -26,7 +26,7 @@ export default function TradesSection() {
   const ActiveIcon = trades.find((t) => t.id === activeTab)?.icon || Zap;
 
   return (
-    <div className="mx-auto max-w-7xl px-4 py-10 md:px-6 md:py-16 lg:px-8">
+    <div className="container-page py-10 md:py-16">
       <div className="flex min-h-[550px] flex-col overflow-hidden rounded-xl border border-gray-200 bg-white lg:flex-row">
         {/* Sidebar Tabs */}
         <div className="flex w-full flex-shrink-0 flex-col border-b border-gray-100 bg-[#f8f9fa] py-6 lg:h-[630px] lg:w-[280px] lg:self-start lg:border-r lg:border-b-0 lg:py-8">

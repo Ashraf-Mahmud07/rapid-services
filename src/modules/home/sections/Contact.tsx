@@ -1,106 +1,167 @@
-import { Link } from "@/i18n/navigation";
-import { ROUTES } from "@/shared/constants/routes";
-import { Clock, MapPin, Phone } from "lucide-react";
+"use client";
 
-const contactDetails = [
+import { zodResolver } from "@hookform/resolvers/zod";
+import { ArrowUpRight, Mail, MapPin, MessageSquare } from "lucide-react";
+import type { LucideIcon } from "lucide-react";
+import * as React from "react";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
+
+const schema = z.object({
+  firstName: z.string().min(1, "Name is required"),
+  lastName: z.string().optional(),
+  email: z.string().email("Enter a valid email address"),
+  phone: z.string().optional(),
+  message: z.string().min(1, "Tell us what you need"),
+});
+type FormData = z.infer<typeof schema>;
+
+type Detail = { label: string; value: string; href?: string; icon: LucideIcon };
+
+const DETAILS: Detail[] = [
   {
-    label: "Address",
-    value: "Industrial Area No 5, Sharjah, UAE",
+    label: "For project inquiries",
+    value: "info@rapidsmarterp.com",
+    href: "mailto:info@rapidsmarterp.com",
+    icon: Mail,
+  },
+  { label: "Expert consultation", value: "Connect with our team today", icon: MessageSquare },
+  {
+    label: "Visit our office",
+    value: "Al Muteena, Fish Roundabout\nDeira, Dubai, United Arab Emirates",
     icon: MapPin,
-  },
-  {
-    label: "Call us",
-    value: "+971 56 440 6456",
-    href: "tel:+971564406456",
-    icon: Phone,
-  },
-  {
-    label: "Hours",
-    value: "Sat–Thu: 8:00 am – 9:00 pm",
-    icon: Clock,
   },
 ];
 
+/** Fields are a translucent wash on the brand panel — no border in the reference. */
+const FIELD =
+  "h-13 w-full rounded-[8px] bg-white/18 px-4 text-[15px] text-white outline-none transition-colors placeholder:text-white/75 focus:bg-white/25";
+
 export default function Contact() {
+  const [sent, setSent] = React.useState(false);
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<FormData>({ resolver: zodResolver(schema) });
+
   return (
     <section className="section-space">
-      <div className="container mx-auto">
-        <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,0.85fr)] lg:items-center lg:gap-[60px]">
-          <div className="max-w-[560px]">
-            <p className="text-[11px] font-semibold tracking-[1.1px] text-primary uppercase">
-              Get in touch
-            </p>
-            <h2 className="mt-4 text-[34px] leading-[41px] font-semibold tracking-[-0.884px] text-[#0e0e0e] sm:text-[38px]">
-              Tell us what needs doing, <span className="text-primary">we quote the same day</span>
+      <div className="container-narrow">
+        <div className="grid overflow-hidden rounded-[14px] lg:grid-cols-[minmax(0,0.92fr)_minmax(0,1.08fr)]">
+          {/* Left: the brand panel. Its bottom-right corner is cut away in the
+              reference, and the mint panel shows through the notch. */}
+          <div className="bg-primary px-7 py-10 sm:px-10 lg:px-12 lg:py-14 lg:[clip-path:polygon(0_0,100%_0,100%_81%,90.6%_100%,0_100%)]">
+            <h2 className="text-[clamp(1.4rem,2vw,1.75rem)] leading-[1.24] font-bold tracking-[-0.015em] text-white">
+              Request a Free Consultation
             </h2>
-            <p className="mt-4 text-[14.5px] leading-[24.65px] text-[#737373]">
-              Send us the details of the job or call the workshop directly. You get a fixed price
-              and a two-hour arrival window before anyone is booked in.
+            <p className="mt-3 max-w-[380px] text-[14px] leading-[1.6] text-white/85">
+              Fill out the form below and one of our specialists will get back to you within 24
+              hours.
             </p>
 
-            <div className="mt-8 grid gap-[14px] sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2">
-              {contactDetails.map((detail) => {
-                const Icon = detail.icon;
+            {sent ? (
+              <p className="mt-8 text-[15px] font-semibold text-white">
+                Thanks — a specialist will be in touch within 24 hours.
+              </p>
+            ) : (
+              <form
+                onSubmit={handleSubmit(() => setSent(true))}
+                noValidate
+                className="mt-7 flex flex-col gap-4 lg:max-w-[530px]"
+              >
+                <div className="grid gap-4 sm:grid-cols-2">
+                  <input
+                    {...register("firstName")}
+                    placeholder="Name"
+                    aria-label="Name"
+                    className={FIELD}
+                  />
+                  <input
+                    {...register("lastName")}
+                    placeholder="Last name"
+                    aria-label="Last name"
+                    className={FIELD}
+                  />
+                </div>
+                <div className="grid gap-4 sm:grid-cols-2">
+                  <input
+                    {...register("email")}
+                    placeholder="Email Address"
+                    aria-label="Email address"
+                    className={FIELD}
+                  />
+                  <input
+                    {...register("phone")}
+                    placeholder="Phone Number"
+                    aria-label="Phone number"
+                    className={FIELD}
+                  />
+                </div>
+                <textarea
+                  {...register("message")}
+                  rows={4}
+                  placeholder="Message"
+                  aria-label="Message"
+                  className={`${FIELD} h-auto resize-none py-3.5 leading-[1.6]`}
+                />
 
-                const content = (
-                  <>
-                    <span className="flex size-[46px] flex-none items-center justify-center rounded-[6px] bg-primary text-white">
-                      <Icon className="size-[22px]" aria-hidden="true" />
-                    </span>
-                    <span className="min-w-0">
-                      <span className="block text-[11px] font-semibold tracking-[1.1px] text-[#a3a3a3] uppercase">
-                        {detail.label}
-                      </span>
-                      <span className="mt-1 block text-[14.5px] leading-[22px] text-[#0e0e0e]">
-                        {detail.value}
-                      </span>
-                    </span>
-                  </>
-                );
+                {(errors.firstName || errors.email || errors.message) && (
+                  <p className="text-[13px] text-white">
+                    {errors.firstName?.message ?? errors.email?.message ?? errors.message?.message}
+                  </p>
+                )}
 
-                return detail.href ? (
-                  <a
-                    key={detail.label}
-                    href={detail.href}
-                    className="flex items-center gap-4 rounded-[6px] border border-[#efefef] bg-[#fafafa] px-[18px] py-[16px] transition-colors hover:border-primary/40"
-                  >
-                    {content}
-                  </a>
-                ) : (
-                  <div
-                    key={detail.label}
-                    className="flex items-center gap-4 rounded-[6px] border border-[#efefef] bg-[#fafafa] px-[18px] py-[16px]"
-                  >
-                    {content}
-                  </div>
-                );
-              })}
-            </div>
+                <button
+                  type="submit"
+                  className="mt-1 inline-flex h-12 w-fit items-center gap-2.5 rounded-full bg-white ps-6 pe-2 text-[15px] font-semibold text-ink transition-opacity hover:opacity-90"
+                >
+                  Send Message
+                  <span className="flex size-8 items-center justify-center rounded-full bg-primary text-white">
+                    <ArrowUpRight className="size-4" strokeWidth={2.2} />
+                  </span>
+                </button>
+              </form>
+            )}
           </div>
 
-          <div className="overflow-hidden rounded-[18px] bg-[#0a0e1c] px-[28px] py-[36px] sm:px-[38px] sm:py-[46px]">
-            <h3 className="max-w-[320px] text-[26px] leading-[32px] font-semibold tracking-[-0.52px] text-white">
-              Request a fixed quote
+          {/* Right: the pale mint panel. */}
+          <div className="bg-brand-tint px-7 py-10 sm:px-10 lg:px-12 lg:py-14">
+            <p className="text-eyebrow font-semibold text-primary uppercase">Get in touch</p>
+            <h3 className="mt-3 text-[clamp(1.4rem,2.1vw,1.9rem)] leading-[1.24] font-bold tracking-[-0.015em] text-ink">
+              Let&apos;s Build Your <span className="text-primary">Next Project</span> Together
             </h3>
-            <p className="mt-4 max-w-[360px] text-[14.5px] leading-[24.65px] text-[rgba(255,255,255,0.56)]">
-              Describe the problem and we will tell you which trade you need, what it costs and when
-              we can be there.
+            <p className="mt-4 max-w-[470px] text-[14.5px] leading-[1.66] text-body-soft">
+              Fill out the form and our team will get back to you shortly. Whether it&apos;s a new
+              construction, renovation, or consultation, we&apos;re here to help.
             </p>
 
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <Link
-                href={ROUTES.CONTACT}
-                className="inline-flex justify-center rounded-full bg-primary px-[24px] py-[12px] text-[15px] font-semibold text-white transition-opacity hover:opacity-90"
-              >
-                Send a request
-              </Link>
-              <a
-                href="tel:+971564406456"
-                className="inline-flex justify-center rounded-full border border-white/20 px-[24px] py-[12px] text-[15px] font-semibold text-white transition-colors hover:border-white/40 hover:bg-white/5"
-              >
-                +971 56 440 6456
-              </a>
-            </div>
+            <ul className="mt-8 flex flex-col gap-6">
+              {DETAILS.map((detail) => (
+                <li key={detail.label} className="flex items-start gap-4">
+                  <span className="flex size-11 flex-none items-center justify-center rounded-[8px] bg-primary text-white">
+                    <detail.icon className="size-5" strokeWidth={1.9} />
+                  </span>
+                  <span className="min-w-0">
+                    <span className="block text-[11.5px] font-semibold tracking-[0.1em] text-primary uppercase">
+                      {detail.label}
+                    </span>
+                    {detail.href ? (
+                      <a
+                        href={detail.href}
+                        className="mt-1 block text-[15px] text-ink transition-opacity hover:opacity-70"
+                      >
+                        {detail.value}
+                      </a>
+                    ) : (
+                      <span className="mt-1 block text-[15px] whitespace-pre-line text-ink">
+                        {detail.value}
+                      </span>
+                    )}
+                  </span>
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
       </div>

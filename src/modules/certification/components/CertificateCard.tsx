@@ -14,7 +14,7 @@ export default function CertificateCard({ certificate }: CertificateCardProps) {
         <span className="flex size-10 flex-none items-center justify-center rounded-[10px] bg-primary">
           <Icon className="size-5.25 text-white" />
         </span>
-        <span className="inline-flex items-center rounded-full bg-[#E6F7F4] px-2.5 py-1 text-[10px] leading-none font-bold tracking-[1px] text-primary uppercase">
+        <span className="inline-flex items-center rounded-full bg-brand-tint px-2.5 py-1 text-[10px] leading-none font-bold tracking-[1px] text-primary uppercase">
           {certificate.status}
         </span>
       </div>

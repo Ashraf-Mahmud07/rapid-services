@@ -9,7 +9,10 @@ import {
   CTA,
   EngineeringSafety,
   Features,
+  FinishedProjects,
   HomeHero,
+  IndustriesSplit,
+  MeetTheExperts,
   Newsletter,
   RecentWork,
   Reviews,
@@ -34,14 +37,17 @@ export default function HomePage() {
       <RecentWork />
       <EngineeringSafety />
       <Commitment />
+      <FinishedProjects />
       <Services />
       <Steps />
       <Reviews />
       <Brands />
+      <IndustriesSplit />
       <Features />
       <CTA />
       <Certifications />
       <Team />
+      <MeetTheExperts />
       <Blog />
       <Contact />
       <CounterSection />

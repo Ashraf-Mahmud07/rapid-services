@@ -16,13 +16,13 @@ export const featuredBlogs: Blog[] = [
   },
   {
     id: "f2",
-    category: "Plumbing",
-    date: "Jul 28, 2026",
-    readTime: "4 min",
-    title: "The five leaks worth fixing before winter",
+    category: "Waterproofing",
+    date: "Jul 21, 2026",
+    readTime: "6 min",
+    title: "Why membranes fail early, and how to spot it",
     description:
-      "Most water damage we see started as a drip somebody stopped noticing. Here is what to check before the first freeze, and which of them you can handle yourself.",
-    image: project1Image,
+      "Most premature failures trace back to surface prep rather than the product. Here is what a proper substrate looks like before anything gets laid down.",
+    image: blogImage,
     isFeatured: true,
   },
 ];
@@ -39,12 +39,13 @@ export const listBlogs: Blog[] = [
   },
   {
     id: "l2",
-    category: "Electrical",
-    date: "Jul 14, 2026",
-    readTime: "6 min",
-    title: "What a socket that feels warm is telling you",
-    description: "Heat at the faceplate is rarely the socket itself. A short guide to what sits.",
-    image: project1Image,
+    category: "Heating & Cooling",
+    date: "Jul 07, 2026",
+    readTime: "4 min",
+    title: "Sizing a split unit for a Dubai summer",
+    description:
+      "Undersized units run constantly and still lose. A short guide to matching capacity to the room rather than the price list.",
+    image: blogImage,
   },
   {
     id: "l3",
@@ -58,13 +59,13 @@ export const listBlogs: Blog[] = [
   },
   {
     id: "l4",
-    category: "Cleaning",
-    date: "Jun 30, 2026",
-    readTime: "3 min",
-    title: "A deep clean checklist landlords actually accept",
+    category: "Painting",
+    date: "Jun 23, 2026",
+    readTime: "5 min",
+    title: "Getting a finish that survives the handover",
     description:
-      "The eleven items inspectors look for, in the order a professional crew works through them.",
-    image: project1Image,
+      "Two coats is not a spec. What we actually agree with clients before a brush comes out, and why it saves a repaint.",
+    image: blogImage,
   },
   {
     id: "l5",
@@ -77,12 +78,13 @@ export const listBlogs: Blog[] = [
   },
   {
     id: "l6",
-    category: "Repairs",
-    date: "Jun 18, 2026",
-    readTime: "5 min",
-    title: "Hairline cracks: when to fill and when to call",
-    description: "A quick way to tell settling from movement, without guessing at it.",
-    image: project1Image,
+    category: "Flooring",
+    date: "Jun 11, 2026",
+    readTime: "7 min",
+    title: "Epoxy floors in working plant rooms",
+    description:
+      "Downtime is the real cost. How we phase a pour so the room keeps running while the floor goes down.",
+    image: blogImage,
   },
 ];
 

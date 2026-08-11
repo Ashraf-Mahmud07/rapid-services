@@ -23,7 +23,7 @@ export default function CertificationPage() {
         description="Our internationally recognized certifications reflect our commitment to quality, safety, and industry-leading standards."
       />
 
-      <div className="mx-auto max-w-7xl px-4 md:px-6 lg:px-8">
+      <div className="container-page">
         <CertificationCredentials />
         <MunicipalityHighlight />
         <ApprovalGrid />

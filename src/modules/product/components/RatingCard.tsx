@@ -46,9 +46,7 @@ export default function RatingCard({ product }: { product?: Product }) {
               <span
                 key={i}
                 aria-hidden="true"
-                className={`text-[24px] select-none ${
-                  isFilled ? "text-[#fa5b05]" : "text-[#d8d8d8]"
-                }`}
+                className={`text-[24px] select-none ${isFilled ? "text-star" : "text-[#d8d8d8]"}`}
               >
                 ★
               </span>
@@ -70,7 +68,7 @@ export default function RatingCard({ product }: { product?: Product }) {
 
               <div className="h-2.5 overflow-hidden rounded-full bg-[#f0f0f0]">
                 <div
-                  className="h-full rounded-full bg-[#fa5b05] transition-all duration-500"
+                  className="h-full rounded-full bg-star transition-all duration-500"
                   style={{ width: `${percentage}%` }}
                 />
               </div>

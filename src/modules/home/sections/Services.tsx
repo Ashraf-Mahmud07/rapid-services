@@ -5,26 +5,26 @@ const services = [
     title: "Panel upgrades & rewires",
     description: "Fuse boards, circuit testing and full rewires, certified before we leave.",
     tag: "Electrical",
-    image: "/images/about/about-home.webp",
+    image: "/images/services/panel-upgrades.jpg",
   },
   {
     title: "Leak tracing & repair",
     description: "We find the source before opening the wall, then repair and reseal.",
     tag: "Plumbing",
-    image: "/images/about/about-home.webp",
+    image: "/images/projects/pipework-repair.jpg",
   },
   {
     title: "Interior repaints",
     description: "Filled, sanded and primed properly, then two trade coats per room.",
     tag: "Painting",
-    image: "/images/about/about-home.webp",
+    image: "/images/services/maintenance-repairs.jpg",
   },
   {
     title: "Professional Cleaning",
     description:
       "We clean homes and workplaces, leaving every space fresh, hygienic, and spotless.",
     tag: "Cleaning",
-    image: "/images/about/about-home.webp",
+    image: "/images/projects/move-out-clean.jpg",
   },
 ];
 

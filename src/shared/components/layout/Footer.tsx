@@ -14,7 +14,6 @@ const FOOTER_LINKS = [
   { label: "Services", href: ROUTES.SERVICE },
   { label: "Projects", href: ROUTES.PROJECT },
   { label: "Career", href: ROUTES.CAREER },
-  { label: "Gallery", href: ROUTES.GALLERY },
   { label: "Contact", href: ROUTES.CONTACT },
 ];
 

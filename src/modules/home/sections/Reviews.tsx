@@ -53,7 +53,7 @@ export default function Reviews() {
 
             <div className="relative order-1 min-h-[320px] overflow-hidden rounded-[6px] lg:order-2 lg:min-h-[420px]">
               <Image
-                src="/images/about/about-home.webp"
+                src="/images/team/expert-2.jpg"
                 alt="Customer testimonial"
                 fill
                 sizes="(max-width: 768px) 100vw, 50vw"

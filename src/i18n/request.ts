@@ -7,7 +7,7 @@ export default getRequestConfig(async ({ requestLocale }) => {
     locale = routing.defaultLocale;
   }
 
-  const [auth, common, product, blogs, industries, service, projects] = await Promise.all([
+  const [auth, common, product, blogs, industries, service, projects, legal] = await Promise.all([
     import(`../modules/auth/i18n/${locale}.json`),
     import(`../shared/i18n/${locale}.json`),
     import(`../modules/product/i18n/${locale}.json`),
@@ -15,6 +15,7 @@ export default getRequestConfig(async ({ requestLocale }) => {
     import(`../modules/industries/i18n/${locale}.json`),
     import(`../modules/service/i18n/${locale}.json`),
     import(`../modules/projects/i18n/${locale}.json`),
+    import(`../modules/legal/i18n/${locale}.json`),
   ]);
 
   return {
@@ -27,6 +28,7 @@ export default getRequestConfig(async ({ requestLocale }) => {
       industries: industries.default,
       service: service.default,
       projects: projects.default,
+      legal: legal.default,
     },
   };
 });

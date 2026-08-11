@@ -6,7 +6,7 @@ const featuredPost = {
     "Learn how specialized membrane applications and chemical coatings can extend the lifespan of your building's foundation by preventing moisture intrusion and surface damage.",
   category: "Waterproofing",
   date: "Mar 12, 2026",
-  image: "/images/about/about-home.webp",
+  image: "/images/blog/blueprint-review.jpg",
   featured: true,
 };
 
@@ -17,7 +17,7 @@ const posts = [
       "A deep dive into the techniques used to reinforce older structures without compromising their original architectural integrity.",
     category: "Project Management",
     date: "Feb 25, 2026",
-    image: "/images/about/about-home.webp",
+    image: "/images/services/electrical-installation.jpg",
   },
   {
     title: "Essential Maintenance Tips for Luxury Swimming Pools",
@@ -25,14 +25,14 @@ const posts = [
       "Keep your pool crystal clear with these professional chemical balancing and filtration tips.",
     category: "Maintenance Dept",
     date: "Feb 15, 2026",
-    image: "/images/about/about-home.webp",
+    image: "/images/projects/move-out-clean.jpg",
   },
 ];
 
 export default function Blog() {
   return (
     <section className="section-space">
-      <div className="container mx-auto">
+      <div className="container-narrow">
         <div className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
           <div>
             <p className="text-[12px] font-semibold tracking-[1.44px] text-primary uppercase">

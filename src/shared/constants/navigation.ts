@@ -4,7 +4,6 @@ import {
   Building,
   Building2,
   CircleHelp,
-  CirclePlay,
   Droplet,
   Factory,
   Hammer,
@@ -260,12 +259,6 @@ export const MEGA_MENUS: Record<string, MegaMenu> = {
         subtitle: "Insights, Updates, And Industry News",
         href: ROUTES.BLOG,
         icon: Newspaper,
-      },
-      {
-        title: "Video Library",
-        subtitle: "Guides, Insights, And Project Videos",
-        href: ROUTES.GALLERY,
-        icon: CirclePlay,
       },
       {
         title: "Contact Us",

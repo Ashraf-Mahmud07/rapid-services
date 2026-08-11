@@ -28,7 +28,7 @@ export default function ProjectsSection() {
   const ActiveIcon = projects.find((t) => t.id === activeTab)?.icon || Bath;
 
   return (
-    <div className="mx-auto max-w-7xl px-4 py-10 md:px-6 md:py-16 lg:px-8">
+    <div className="container-page py-10 md:py-16">
       <div className="overflow-hidden rounded-xl border border-gray-200 bg-white">
         {/* Top Section */}
         <div className="flex min-h-[550px] flex-col lg:flex-row">
