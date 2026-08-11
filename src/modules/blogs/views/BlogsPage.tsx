@@ -10,7 +10,9 @@ export function BlogsPage() {
         subtitle="Explore our latest articles, industry insights, product updates, and company news. Stay informed with valuable resources, expert knowledge, and the latest developments from our team."
         backgroundImage={serviceBanner}
       />
-      <BlogsSection />
+      <div className="section-background">
+        <BlogsSection />
+      </div>
     </main>
   );
 }

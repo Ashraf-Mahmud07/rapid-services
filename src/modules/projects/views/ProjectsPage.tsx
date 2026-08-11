@@ -12,9 +12,11 @@ export default function ProjectsPage() {
         subtitle="The work we are booked for most often. Pick a project to see what is included, what it starts at and how long it takes on site."
         backgroundImage={bgImage}
       />
-      <StatsSection />
-      <ProjectsSection />
-      <FAQCTASection />
+      <div className="section-background">
+        <StatsSection />
+        <ProjectsSection />
+        <FAQCTASection />
+      </div>
     </div>
   );
 }

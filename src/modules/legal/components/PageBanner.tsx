@@ -10,7 +10,7 @@ const PageBanner = ({ eyebrow, title, description, className = "" }: PageBannerP
     <section
       className={`relative overflow-hidden ${className}`}
       style={{
-        backgroundImage: "url('/images/section-background.png')",
+        backgroundImage: "url('/images/section-background.svg')",
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",

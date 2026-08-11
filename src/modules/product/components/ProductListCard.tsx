@@ -1,11 +1,10 @@
 "use client";
 
+import { Link } from "@/i18n/navigation";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
-import { Link } from "@/i18n/navigation";
+import ShareIcon from "../icons/ShareIcon";
 import { Product } from "../types/product.type";
-
-const shareIcon = "/shareIcon.svg";
 
 export default function ProductListCard({ product }: { product: Product }) {
   const t = useTranslations("product");
@@ -36,7 +35,7 @@ export default function ProductListCard({ product }: { product: Product }) {
         <div className="flex items-center">
           <div className="flex h-5.5 items-center gap-2 rounded-md bg-[#f6f6f6] px-2.25 text-[12px] leading-none">
             <span className="font-normal text-primary">★</span>
-            <span className="font-medium text-[#5b5b5b]">{product.reviews?.average || "4.5"}</span>
+            <span className="font-medium text-body">{product.reviews?.average || "4.5"}</span>
           </div>
         </div>
       </div>
@@ -47,9 +46,9 @@ export default function ProductListCard({ product }: { product: Product }) {
         <button
           type="button"
           aria-label={t("shareProduct")}
-          className="absolute top-2.5 left-2.5 z-10 flex size-7.25 items-center justify-center rounded-full bg-[#f8f8f8] backdrop-blur-[2px] 2xl:static 2xl:mx-6.25"
+          className="size-7.50 absolute top-2.5 left-2.5 z-10 flex items-center justify-center rounded-full bg-[#f8f8f8] p-2 backdrop-blur-[2px] 2xl:static 2xl:mx-6.25"
         >
-          <Image alt="" src={shareIcon} width={14} height={14} className="block max-w-none" />
+          <ShareIcon />
         </button>
       </div>
     </article>

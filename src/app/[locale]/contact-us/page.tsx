@@ -13,14 +13,14 @@ export default function ContactUsPage() {
     <div className="relative w-full overflow-x-hidden font-poppins">
       <Navbar />
       <ContactHero />
-
-      <div className="container-page pt-10 sm:pt-12 lg:pt-15">
-        <ContactDetailCards />
-        <ContactForm />
-        <ContactMap />
-        <FaqSection />
+      <div className="section-background">
+        <div className="container-page pt-10 sm:pt-12 lg:pt-15">
+          <ContactDetailCards />
+          <ContactForm />
+          <ContactMap />
+          <FaqSection />
+        </div>
       </div>
-
       <Footer />
     </div>
   );

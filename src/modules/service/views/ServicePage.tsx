@@ -12,9 +12,11 @@ export default function ServicePage() {
         subtitle="Browse our full range of professional services designed to meet your home, business, and maintenance needs with quality you can trust."
         backgroundImage={bgImage}
       />
-      <StatsSection />
-      <TradesSection />
-      <FAQCTASection />
+      <div className="section-background">
+        <StatsSection />
+        <TradesSection />
+        <FAQCTASection />
+      </div>
     </div>
   );
 }

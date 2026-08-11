@@ -22,13 +22,14 @@ export default function CertificationPage() {
         title="Certification"
         description="Our internationally recognized certifications reflect our commitment to quality, safety, and industry-leading standards."
       />
-
-      <div className="container-page">
-        <CertificationCredentials />
-        <MunicipalityHighlight />
-        <ApprovalGrid />
+      <div className="section-background">
+        <div className="container-page">
+          <CertificationCredentials />
+          <MunicipalityHighlight />
+          <ApprovalGrid />
+        </div>
+        <FAQCTASection />
       </div>
-      <FAQCTASection />
       <Footer />
     </div>
   );

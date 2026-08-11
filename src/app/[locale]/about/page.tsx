@@ -16,13 +16,15 @@ export default function AboutPage() {
     <main className="relative w-full overflow-x-hidden">
       <Navbar />
       <AboutHero />
-      <CeoQuote />
-      <StatsBand />
-      <HowItWorks />
-      <MissionVision />
-      <Certifications />
-      <div className="container-page">
-        <FaqSection askHref={ROUTES.FAQ} />
+      <div className="section-background">
+        <CeoQuote />
+        <StatsBand />
+        <HowItWorks />
+        <MissionVision />
+        <Certifications />
+        <div className="container-page">
+          <FaqSection askHref={ROUTES.FAQ} />
+        </div>
       </div>
       <Footer />
     </main>

@@ -14,12 +14,12 @@ export default function CareerPage() {
     <div className="relative w-full overflow-x-hidden font-poppins">
       <Navbar />
       <CareersHero />
-
-      <div className="container-page pt-10 sm:pt-14 lg:pt-19">
-        <JobBoard />
-        <Newsletter />
+      <div className="section-background">
+        <div className="container-page pt-10 sm:pt-14 lg:pt-19">
+          <JobBoard />
+          <Newsletter />
+        </div>
       </div>
-
       <Footer />
     </div>
   );

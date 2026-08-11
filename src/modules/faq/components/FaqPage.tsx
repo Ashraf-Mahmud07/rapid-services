@@ -10,7 +10,9 @@ export default function FaqPage() {
         subtitle="Find quick answers to common questions about our services, processes, and support."
         backgroundImage={bgImage}
       />
-      <FAQCTASection />
+      <div className="section-background">
+        <FAQCTASection />
+      </div>
     </div>
   );
 }

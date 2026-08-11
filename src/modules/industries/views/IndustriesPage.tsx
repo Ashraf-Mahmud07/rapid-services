@@ -12,9 +12,11 @@ export default function IndustriesPage() {
         subtitle="One crew covering electrical, plumbing, painting, cleaning and repairs. Pick who you are and see how the work is scheduled, priced and signed off."
         backgroundImage={bgImage}
       />
-      <StatsSection />
-      <IndustriesSection />
-      <FAQCTASection />
+      <div className="section-background">
+        <StatsSection />
+        <IndustriesSection />
+        <FAQCTASection />
+      </div>
     </div>
   );
 }

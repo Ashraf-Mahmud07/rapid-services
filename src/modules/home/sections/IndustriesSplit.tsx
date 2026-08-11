@@ -65,7 +65,7 @@ export default function IndustriesSplit() {
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 -z-10 section-background bg-cover opacity-30"
       />
-      <div className="container-page">
+      <div className="container-narrow">
         <div className="mx-auto flex max-w-160 flex-col items-center text-center">
           <p className="inline-flex rounded-md bg-brand-tint px-3 py-1.5 text-[10.5px] font-bold tracking-[0.13em] text-primary uppercase">
             Industries we serve
@@ -75,14 +75,14 @@ export default function IndustriesSplit() {
           </h2>
         </div>
 
-        <div className="mt-12 grid items-center gap-10 lg:grid-cols-[minmax(0,1fr)_380px_minmax(0,1fr)] lg:gap-12">
+        <div className="mt-12 grid items-center gap-10 py-5 lg:grid-cols-[minmax(0,1fr)_380px_minmax(0,1fr)] lg:gap-12">
           <ul className="flex flex-col gap-10">
             {LEFT.map((item) => (
               <Item key={item.title} item={item} align="end" />
             ))}
           </ul>
 
-          <div className="relative order-first aspect-[380/445] w-full overflow-hidden rounded-[10px] lg:order-none">
+          <div className="relative order-first aspect-380/445 w-full overflow-hidden rounded-[10px] lg:order-0">
             <Image
               src="/images/services/electrical-installation.jpg"
               alt="Technician working on an electrical installation"
