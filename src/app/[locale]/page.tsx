@@ -17,6 +17,7 @@ import {
   Team,
   TradesTicker,
 } from "@/modules/home/sections";
+import ProcessSection from "@/modules/home/sections/ProcessSection";
 import { Footer, Navbar } from "@/shared/components/layout";
 
 export default function HomePage() {
@@ -31,6 +32,7 @@ export default function HomePage() {
       <Commitment />
       <FinishedProjects />
       <Services />
+      <ProcessSection />
       <Reviews />
       <IndustriesSplit />
       <CTA />
