@@ -59,6 +59,8 @@ export default function Navbar({
   /** href of the link whose mega-menu is showing, or null. */
   const [menu, setMenu] = React.useState<string | null>(null);
   const [searchOpen, setSearchOpen] = React.useState(false);
+  /** href of the expanded group in the mobile sheet, or null. */
+  const [mobileGroup, setMobileGroup] = React.useState<string | null>(null);
   const overlays = useOverlays();
   const pathname = usePathname();
   const isSolid = variant === "solid";
@@ -88,6 +90,7 @@ export default function Navbar({
   const closeAll = () => {
     setMenu(null);
     setOpen(false);
+    setMobileGroup(null);
   };
 
   const isActive = (href: string) =>
@@ -116,7 +119,10 @@ export default function Navbar({
   return (
     <nav
       className={cn(
-        "z-40",
+        // The nav's own z-index caps everything inside it, so raising just the
+        // sheet was not enough — while it is open the whole bar has to clear
+        // the fixed Ask AI / Request-a-call pills (z-90).
+        open ? "z-100" : "z-40",
         variant === "transparent" ? "absolute top-0 right-0 left-0" : "relative w-full bg-primary"
       )}
     >
@@ -250,21 +256,65 @@ export default function Navbar({
         </div>
 
         {open && (
-          <div className="absolute top-full right-5 left-5 z-50 rounded-[10px] bg-[#0C0C0C] p-5 sm:right-6 sm:left-6 sm:p-6 md:right-10 md:left-10 lg:right-12 lg:left-12 xl:hidden">
-            <div className="flex flex-col gap-1">
-              {links.map((link) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  onClick={() => setOpen(false)}
-                  className={cn(
-                    "flex min-h-11 items-center text-[15px] font-semibold tracking-[0.3px] transition-colors",
-                    isActive(link.href) ? "text-primary" : "text-white/90 hover:text-white"
-                  )}
-                >
-                  {link.label}
-                </Link>
-              ))}
+          <div className="absolute top-full right-5 left-5 z-100 rounded-[10px] bg-[#0C0C0C] p-5 sm:right-6 sm:left-6 sm:p-6 md:right-10 md:left-10 lg:right-12 lg:left-12 xl:hidden">
+            <div className="flex flex-col">
+              {/* The reference has no mobile frames, so the desktop panels fold
+                  down into expandable groups here rather than being dropped. */}
+              {links.map((link) => {
+                const config = MEGA_MENUS[link.href];
+                const expanded = mobileGroup === link.href;
+
+                return (
+                  <div key={link.href} className="border-b border-white/8 last:border-b-0">
+                    <div className="flex items-center">
+                      <Link
+                        href={link.href}
+                        onClick={closeAll}
+                        className={cn(
+                          "flex min-h-12 flex-1 items-center text-[15px] font-semibold tracking-[0.3px] transition-colors",
+                          isActive(link.href) ? "text-primary" : "text-white/90 hover:text-white"
+                        )}
+                      >
+                        {link.label}
+                      </Link>
+
+                      {config && (
+                        <button
+                          type="button"
+                          aria-label={`${expanded ? "Collapse" : "Expand"} ${link.label}`}
+                          aria-expanded={expanded}
+                          onClick={() => setMobileGroup(expanded ? null : link.href)}
+                          className="flex size-10 flex-none items-center justify-center text-white/70 transition-colors hover:text-white"
+                        >
+                          <ChevronDownIcon
+                            className={cn("size-4 transition-transform", expanded && "rotate-180")}
+                          />
+                        </button>
+                      )}
+                    </div>
+
+                    {config && expanded && (
+                      <ul className="mb-2 flex flex-col gap-0.5 ps-1 pb-1">
+                        {config.items.map((item) => (
+                          <li key={item.title}>
+                            <Link
+                              href={item.href}
+                              onClick={closeAll}
+                              className="flex items-center gap-3 rounded-lg py-2.5 ps-2 text-[14px] text-white/70 transition-colors hover:bg-white/5 hover:text-white"
+                            >
+                              <item.icon
+                                className="size-4 flex-none text-primary"
+                                strokeWidth={1.9}
+                              />
+                              {item.title}
+                            </Link>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                  </div>
+                );
+              })}
 
               <div className="mt-3 flex gap-2">
                 <button

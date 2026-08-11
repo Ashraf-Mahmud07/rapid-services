@@ -1,28 +1,33 @@
-import { ClipboardCheck, Lightbulb, PhoneCall, Wrench } from "lucide-react";
-import type { LucideIcon } from "lucide-react";
+import Image from "next/image";
+import type { StaticImageData } from "next/image";
 
-type Step = { title: string; body: string; icon: LucideIcon };
+import step2 from "../assets/Icon-1.svg";
+import step3 from "../assets/Icon-2.svg";
+import step1 from "../assets/Icon.svg";
+import step4 from "../assets/step-4.svg";
+
+type Step = { title: string; body: string; icon: StaticImageData };
 
 const STEPS: Step[] = [
   {
     title: "Request & Consultation",
     body: "Tell us your requirements and schedule a consultation. We understand your needs and provide the best solution.",
-    icon: PhoneCall,
+    icon: step1,
   },
   {
     title: "Inspection & Planning",
     body: "Our experts inspect your site, identify issues, and create a clear plan to ensure safe and efficient electrical work.",
-    icon: Lightbulb,
+    icon: step2,
   },
   {
     title: "Execution & Installation",
     body: "We carry out the work using modern tools and techniques, ensuring precision, safety, and high-quality results.",
-    icon: Wrench,
+    icon: step3,
   },
   {
     title: "Testing & Completion",
     body: "After completion, we thoroughly test everything to ensure safety, performance & satisfaction.",
-    icon: ClipboardCheck,
+    icon: step4,
   },
 ];
 
@@ -62,7 +67,12 @@ export default function HowItWorks() {
                 .join(" ")}
             >
               <span className="mb-4 flex size-11 items-center justify-center rounded-full bg-primary text-white">
-                <step.icon className="size-5" strokeWidth={1.9} />
+                <Image
+                  src={step.icon}
+                  alt=""
+                  aria-hidden="true"
+                  className="size-5 brightness-0 invert"
+                />
               </span>
               <h3 className="max-w-[14ch] text-[17px] leading-[1.28] font-semibold text-ink">
                 {step.title}
