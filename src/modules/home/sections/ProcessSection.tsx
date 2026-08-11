@@ -32,7 +32,7 @@ export default function ProcessSection() {
         <div className="grid gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:items-center">
           {/* Image */}
           <div>
-            <h2 className="mb-6 max-w-[440px] text-[26px] font-bold tracking-[-0.52px] text-black">
+            <h2 className="mb-6 max-w-110 text-[26px] font-bold tracking-[-0.52px] text-black">
               A Refined Process Built for{" "}
               <span className="text-primary">Precision &amp; Excellence</span>
             </h2>
@@ -62,7 +62,7 @@ export default function ProcessSection() {
                   </div>
                   <div>
                     <h3 className="text-[16.5px] font-bold text-black">{step.title}</h3>
-                    <p className="mt-2 max-w-[460px] text-[14.5px] leading-[24px] text-black/55">
+                    <p className="mt-2 max-w-115 text-[14.5px] leading-6 text-black/55">
                       {step.description}
                     </p>
                   </div>

@@ -27,9 +27,9 @@ export default function Reviews() {
     <section className="section-space">
       <div className="container mx-auto">
         <div className="overflow-hidden rounded-md bg-primary">
-          <div className="grid min-h-[420px] lg:grid-cols-[0.85fr_1.15fr]">
+          <div className="grid min-h-105 lg:grid-cols-[0.85fr_1.15fr]">
             {/* Photo panel */}
-            <div className="relative min-h-[280px] lg:min-h-full">
+            <div className="relative min-h-70 lg:min-h-full">
               <Image
                 src="/images/team/review.png"
                 alt="Customer testimonial"
@@ -47,7 +47,7 @@ export default function Reviews() {
                 What Customer <span className="text-white">Say</span>
               </h2>
 
-              <p className="mt-5 max-w-[560px] text-[15px] leading-[25.5px] text-white/68">
+              <p className="mt-5 max-w-140 text-[15px] leading-[25.5px] text-white/68">
                 &ldquo;We engaged Taj Al Rahmah for our new commercial build, and they proved to be
                 a reliable and dedicated partner throughout the project. Their team delivered
                 high-quality workmanship, maintained clear communication, and completed every stage
@@ -67,16 +67,16 @@ export default function Reviews() {
                   <button
                     type="button"
                     aria-label="Previous review"
-                    className="flex size-[38px] items-center justify-center rounded-full border border-white/40 bg-transparent text-white transition hover:bg-white/10"
+                    className="flex size-9.5 items-center justify-center rounded-full border border-white/40 bg-transparent text-white transition hover:bg-white/10"
                   >
-                    <ArrowLeft className="size-[15px]" aria-hidden="true" />
+                    <ArrowLeft className="size-3.75" aria-hidden="true" />
                   </button>
                   <button
                     type="button"
                     aria-label="Next review"
-                    className="flex size-[38px] items-center justify-center rounded-full bg-white text-primary transition hover:opacity-90"
+                    className="flex size-9.5 items-center justify-center rounded-full bg-white text-primary transition hover:opacity-90"
                   >
-                    <ArrowRight className="size-[15px]" aria-hidden="true" />
+                    <ArrowRight className="size-3.75" aria-hidden="true" />
                   </button>
                 </div>
               </div>
