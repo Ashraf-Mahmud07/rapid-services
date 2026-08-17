@@ -1,6 +1,5 @@
 "use client";
 
-import { useState } from "react";
 import { Button } from "@/shared/components/ui/Button";
 import { Input } from "@/shared/components/ui/Input";
 import { PasswordInput } from "@/shared/components/ui/PasswordInput";
@@ -8,38 +7,11 @@ import { Checkbox } from "@/shared/components/ui/Checkbox";
 import { Label } from "@/shared/components/ui/Label";
 import { GoogleIcon } from "@/shared/assets/icons";
 import { Link } from "@/i18n/navigation";
-import { useTranslations } from "next-intl";
 import { ROUTES } from "@/shared/constants/routes";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { getErrorMessage } from "@/shared/utils";
-import { loginSchema, type LoginFormData } from "../validation/auth.schema";
-import { useLoginMutation } from "../authApi";
+import { useLoginForm } from "../hooks/useLoginForm";
 
 export default function LoginForm() {
-  const t = useTranslations("auth");
-  const [login, { isLoading }] = useLoginMutation();
-  const [apiError, setApiError] = useState<string | null>(null);
-
-  const {
-    register,
-    handleSubmit,
-    formState: { errors, isSubmitting },
-  } = useForm<LoginFormData>({
-    resolver: zodResolver(loginSchema),
-    defaultValues: { email: "", password: "", remember: false },
-  });
-
-  async function onSubmit(data: LoginFormData) {
-    setApiError(null);
-    try {
-      await login(data).unwrap();
-    } catch (err: unknown) {
-      setApiError(getErrorMessage(err, "Login failed. Please check your credentials."));
-    }
-  }
-
-  const isPending = isSubmitting || isLoading;
+  const { register, onSubmit, getFieldError, isPending, apiError, t } = useLoginForm();
 
   return (
     <div className="flex min-h-dvh items-center justify-center bg-neutral-50 p-4">
@@ -59,7 +31,7 @@ export default function LoginForm() {
             </div>
           )}
 
-          <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
+          <form onSubmit={onSubmit} className="space-y-5">
             <div className="space-y-2">
               <Label htmlFor="email">{t("email")}</Label>
               <Input
@@ -67,7 +39,7 @@ export default function LoginForm() {
                 type="email"
                 placeholder={t("emailPlaceholder")}
                 autoComplete="email"
-                error={errors.email && t(errors.email.message as string)}
+                error={getFieldError("email")}
                 {...register("email")}
               />
             </div>
@@ -86,7 +58,7 @@ export default function LoginForm() {
                 id="password"
                 placeholder={t("passwordPlaceholder")}
                 autoComplete="current-password"
-                error={errors.password && t(errors.password.message as string)}
+                error={getFieldError("password")}
                 {...register("password")}
               />
             </div>

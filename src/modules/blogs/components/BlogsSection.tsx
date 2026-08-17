@@ -2,12 +2,11 @@
 
 import { Link } from "@/i18n/navigation";
 import { blogDetailRoute } from "@/shared/constants/routes";
-import { useTranslations } from "next-intl";
 import Image from "next/image";
-import { featuredBlogs, listBlogs } from "../constants/mock-blogs";
+import { useBlogs } from "../hooks/useBlogs";
 
 export function BlogsSection() {
-  const t = useTranslations("blogs");
+  const { t, featuredBlogs, listBlogs } = useBlogs();
 
   return (
     <div className="bg-[#f8f9fa] pt-16 pb-24">
@@ -36,7 +35,7 @@ export function BlogsSection() {
                 <span>•</span>
                 <span>{blog.date}</span>
                 <span>•</span>
-                <span>{blog.readTime}</span>
+                <span>{t("readTime", { time: blog.readTime.replace(/\s*min/, "") })}</span>
               </div>
               <h3 className="mb-3 text-xl leading-tight font-bold text-gray-900 transition-colors group-hover:text-primary md:text-2xl">
                 {blog.title}
@@ -75,7 +74,7 @@ export function BlogsSection() {
                   <span>•</span>
                   <span>{blog.date}</span>
                   <span>•</span>
-                  <span>{blog.readTime}</span>
+                  <span>{t("readTime", { time: blog.readTime.replace(/\s*min/, "") })}</span>
                 </div>
                 <h4 className="mb-2 line-clamp-2 text-[15px] leading-snug font-bold text-gray-900 transition-colors group-hover:text-primary md:text-[17px]">
                   {blog.title}

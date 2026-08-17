@@ -1,37 +1,4 @@
-import { CalendarCheck, FileCheck2, ShieldCheck, Wallet } from "lucide-react";
-
-const features = [
-  {
-    title: "Fixed price up front",
-    description:
-      "You approve the number before a tool comes out of the van. No callout fee and nothing added afterwards.",
-    icon: Wallet,
-  },
-  {
-    title: "Licensed and insured crews",
-    description:
-      "Every technician is licensed for the work they carry out, background checked and insured to $2M.",
-    icon: ShieldCheck,
-  },
-  {
-    title: "Two-hour arrival windows",
-    description:
-      "You get a named technician and a two-hour window, not a full day of waiting at home.",
-    icon: CalendarCheck,
-  },
-  {
-    title: "Certified and documented",
-    description:
-      "Circuits tested, work signed off and certificates issued in writing before we leave site.",
-    icon: FileCheck2,
-  },
-];
-
-const promises = [
-  "One team across electrical, plumbing, painting, cleaning and repairs",
-  "90-day workmanship guarantee on every visit",
-  "Pay on completion by card, transfer or cash",
-];
+import { FEATURE_PROMISES, HOME_FEATURES } from "../data/home.data";
 
 export default function Features() {
   return (
@@ -51,7 +18,7 @@ export default function Features() {
             </p>
 
             <ul className="mt-8 flex flex-col gap-[14px]">
-              {promises.map((promise) => (
+              {FEATURE_PROMISES.map((promise) => (
                 <li key={promise} className="flex items-start gap-3">
                   <span className="mt-[3px] flex size-[18px] shrink-0 items-center justify-center rounded-full bg-primary text-white">
                     <svg
@@ -73,7 +40,7 @@ export default function Features() {
           </div>
 
           <div className="grid gap-[20px] sm:grid-cols-2">
-            {features.map((feature) => {
+            {HOME_FEATURES.map((feature) => {
               const Icon = feature.icon;
 
               return (

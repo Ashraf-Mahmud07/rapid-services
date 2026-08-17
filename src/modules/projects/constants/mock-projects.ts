@@ -1,59 +1,212 @@
-import { Bath, Zap, Paintbrush, Sparkles, Utensils, Droplet } from "lucide-react";
-import type { Project, ProjectContent, BookingStep } from "../types/projects.types";
+import type { ProjectCategory, BookingStep } from "../types/projects.types";
+import project1Image from "@/shared/assets/png/projects1.jpg";
+import { Building2, Zap, Wrench, HardHat, Flame, Truck, Factory, Coffee } from "lucide-react";
 
-export const projects: Project[] = [
-  { id: "bathroom_refits", label: "Bathroom refits", icon: Bath },
-  { id: "panel_upgrades", label: "Panel upgrades", icon: Zap },
-  { id: "full_repaints", label: "Full repaints", icon: Paintbrush },
-  { id: "move_out_cleans", label: "Move-out cleans", icon: Sparkles },
-  { id: "kitchen_installs", label: "Kitchen installs", icon: Utensils },
-  { id: "damp_leak", label: "Damp & leak repair", icon: Droplet },
+export const projectCategories: ProjectCategory[] = [
+  {
+    id: "civil",
+    title: "Civil",
+    icon: Building2,
+    badge: "CIVIL",
+    projects: [
+      {
+        id: "pumping-station",
+        title: "Pumping Station",
+        shortDesc: "Water Infrastructure",
+        image: project1Image,
+        content: [
+          { type: 1, title: "Project Overview", description: "Pumping Station located in Makkah, Saudi Arabia." },
+          { type: 2, title: "Project Details", description: "Key information and metrics for this project:", bullets: [
+            { label: "Project Type:", text: "Water Infrastructure" },
+            { label: "Project Awarding Authority:", text: "DEWA" },
+            { label: "Project Value:", text: "45,500,000.00 SAR" },
+            { label: "Location:", text: "Makkah, Saudi Arabia" }
+          ]}
+        ],
+        gallery: [project1Image, project1Image, project1Image]
+      }
+    ]
+  },
+  {
+    id: "electrical",
+    title: "Electrical",
+    icon: Zap,
+    badge: "ELECTRICAL",
+    projects: []
+  },
+  {
+    id: "mechanical",
+    title: "Mechanical",
+    icon: Wrench,
+    badge: "MECHANICAL",
+    projects: []
+  },
+  {
+    id: "construction",
+    title: "Construction",
+    icon: HardHat,
+    badge: "CONSTRUCTION",
+    projects: [
+      {
+        id: "falcon-city",
+        title: "Falcon City",
+        shortDesc: "Boundary Wall Construction",
+        image: project1Image,
+        content: [
+          { type: 1, title: "Project Overview", description: "Falcon City located in Makkah, Saudi Arabia." },
+          { type: 2, title: "Project Details", description: "Key information and metrics for this project:", bullets: [
+            { label: "Project Type:", text: "Boundary Wall Construction" },
+            { label: "Project Awarding Authority:", text: "SEPCOII" },
+            { label: "Project Value:", text: "57,631,881.00 SAR" },
+            { label: "Location:", text: "Makkah, Saudi Arabia" }
+          ]}
+        ],
+        gallery: [project1Image, project1Image, project1Image]
+      },
+      {
+        id: "al-saaf-residential",
+        title: "Al Saaf Residential",
+        shortDesc: "Boundary Wall Construction",
+        image: project1Image,
+        content: [
+          { type: 1, title: "Project Overview", description: "Al Saaf Residential located in Makkah, Saudi Arabia." },
+          { type: 2, title: "Project Details", description: "Key information and metrics for this project:", bullets: [
+            { label: "Project Type:", text: "Boundary Wall Construction" },
+            { label: "Project Awarding Authority:", text: "SEPCOII" },
+            { label: "Project Value:", text: "57,631,881.00 SAR" },
+            { label: "Location:", text: "Makkah, Saudi Arabia" }
+          ]}
+        ],
+        gallery: [project1Image, project1Image, project1Image]
+      },
+      {
+        id: "baniyas-north-phase",
+        title: "Baniyas North Phase",
+        shortDesc: "Boundary Wall Construction",
+        image: project1Image,
+        content: [
+          { type: 1, title: "Project Overview", description: "Baniyas North Phase located in Makkah, Saudi Arabia." },
+          { type: 2, title: "Project Details", description: "Key information and metrics for this project:", bullets: [
+            { label: "Project Type:", text: "Boundary Wall Construction" },
+            { label: "Project Awarding Authority:", text: "SEPCOII" },
+            { label: "Project Value:", text: "57,631,881.00 SAR" },
+            { label: "Location:", text: "Makkah, Saudi Arabia" }
+          ]}
+        ],
+        gallery: [project1Image, project1Image, project1Image]
+      },
+      {
+        id: "al-jada-development",
+        title: "Al Jada Development",
+        shortDesc: "Boundary Wall Construction",
+        image: project1Image,
+        content: [
+          { type: 1, title: "Project Overview", description: "Al Jada Development located in Makkah, Saudi Arabia." },
+          { type: 2, title: "Project Details", description: "Key information and metrics for this project:", bullets: [
+            { label: "Project Type:", text: "Boundary Wall Construction" },
+            { label: "Project Awarding Authority:", text: "SEPCOII" },
+            { label: "Project Value:", text: "57,631,881.00 SAR" },
+            { label: "Location:", text: "Makkah, Saudi Arabia" }
+          ]}
+        ],
+        gallery: [project1Image, project1Image, project1Image]
+      },
+      {
+        id: "emaar-south-parkside",
+        title: "Emaar South - Parkside",
+        shortDesc: "Boundary Wall Construction",
+        image: project1Image,
+        content: [
+          { type: 1, title: "Project Overview", description: "Emaar South - Parkside located in Makkah, Saudi Arabia." },
+          { type: 2, title: "Project Details", description: "Key information and metrics for this project:", bullets: [
+            { label: "Project Type:", text: "Boundary Wall Construction" },
+            { label: "Project Awarding Authority:", text: "SEPCOII" },
+            { label: "Project Value:", text: "57,631,881.00 SAR" },
+            { label: "Location:", text: "Makkah, Saudi Arabia" }
+          ]}
+        ],
+        gallery: [project1Image, project1Image, project1Image]
+      },
+      {
+        id: "dubai-investment-park",
+        title: "Dubai Investment Park",
+        shortDesc: "Boundary Wall Construction",
+        image: project1Image,
+        content: [
+          { type: 1, title: "Project Overview", description: "Dubai Investment Park located in Makkah, Saudi Arabia." },
+          { type: 2, title: "Project Details", description: "Key information and metrics for this project:", bullets: [
+            { label: "Project Type:", text: "Boundary Wall Construction" },
+            { label: "Project Awarding Authority:", text: "SEPCOII" },
+            { label: "Project Value:", text: "57,631,881.00 SAR" },
+            { label: "Location:", text: "Makkah, Saudi Arabia" }
+          ]}
+        ],
+        gallery: [project1Image, project1Image, project1Image]
+      },
+      {
+        id: "sharjah-sustainable-city",
+        title: "Sharjah Sustainable City",
+        shortDesc: "Boundary Wall Construction",
+        image: project1Image,
+        content: [
+          { type: 1, title: "Project Overview", description: "Sharjah Sustainable City located in Makkah, Saudi Arabia." },
+          { type: 2, title: "Project Details", description: "Key information and metrics for this project:", bullets: [
+            { label: "Project Type:", text: "Boundary Wall Construction" },
+            { label: "Project Awarding Authority:", text: "SEPCOII" },
+            { label: "Project Value:", text: "57,631,881.00 SAR" },
+            { label: "Location:", text: "Makkah, Saudi Arabia" }
+          ]}
+        ],
+        gallery: [project1Image, project1Image, project1Image]
+      }
+    ]
+  },
+  {
+    id: "oil-and-gas",
+    title: "Oil and Gas",
+    icon: Flame,
+    badge: "ENERGY",
+    projects: []
+  },
+  {
+    id: "transportation",
+    title: "Transportation",
+    icon: Truck,
+    badge: "TRANSPORT",
+    projects: [
+      {
+        id: "al-maktoum-airport",
+        title: "Al Maktoum Airport",
+        shortDesc: "Boundary Wall Construction",
+        image: project1Image,
+        content: [
+          { type: 1, title: "Project Overview", description: "Al Maktoum Airport located in Makkah, Saudi Arabia." },
+          { type: 2, title: "Project Details", description: "Key information and metrics for this project:", bullets: [
+            { label: "Project Type:", text: "Boundary Wall Construction" },
+            { label: "Project Awarding Authority:", text: "SEPCOII" },
+            { label: "Project Value:", text: "57,631,881.00 SAR" },
+            { label: "Location:", text: "Makkah, Saudi Arabia" }
+          ]}
+        ],
+        gallery: [project1Image, project1Image, project1Image]
+      }
+    ]
+  },
+  {
+    id: "manufacturing",
+    title: "Manufacturing",
+    icon: Factory,
+    badge: "INDUSTRIAL",
+    projects: []
+  },
+  {
+    id: "hospitality",
+    title: "Hospitality",
+    icon: Coffee,
+    badge: "HOSPITALITY",
+    projects: []
+  }
 ];
-
-export const tabData: Record<string, ProjectContent> = {
-  bathroom_refits: {
-    title: "Bathroom refits",
-    badge: "PLUMBING PROJECT",
-    highlightTitle: "From a failed seal to a room finished in a week",
-    highlightDesc:
-      "Bathrooms fail slowly and then all at once. We strip back to what is sound, replace the valves and waste runs, reset the pan or tray, tile and reseal, and finish with the decorating so you are not left booking a painter afterwards. Water is off for hours, not days, and the room is usable each evening on longer jobs.",
-    featuresTitle: "What we cover",
-    features: [
-      "Leak and damp assessment first",
-      "Valve, cistern and waste replacement",
-      "Pan or shower tray reset",
-      "Tiling, grouting and resealing",
-      "Finishing paintwork included",
-    ],
-    benefitsTitle: "Included in the price",
-    benefits: [
-      "One crew across plumbing and finishing.",
-      "Fixed price agreed before stripping out.",
-      "Room usable between working days.",
-    ],
-  },
-  panel_upgrades: {
-    title: "Panel upgrades",
-    badge: "ELECTRICAL PROJECT",
-    highlightTitle: "Modernize your electrical system safely",
-    highlightDesc:
-      "Upgrade your electrical panel to handle modern loads and improve safety. We handle everything from the initial assessment to coordinating with your utility company and ensuring everything is up to code.",
-    featuresTitle: "What we cover",
-    features: [
-      "Load capacity assessment",
-      "Panel and breaker replacement",
-      "Grounding system updates",
-      "Permitting and inspections",
-      "Labeling and documentation",
-    ],
-    benefitsTitle: "Included in the price",
-    benefits: [
-      "All necessary permits and fees.",
-      "Coordination with utility providers.",
-      "Comprehensive safety guarantee.",
-    ],
-  },
-};
 
 export const bookingSteps: BookingStep[] = [
   {

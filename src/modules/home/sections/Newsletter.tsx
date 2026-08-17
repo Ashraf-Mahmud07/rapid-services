@@ -34,8 +34,8 @@ export default function Newsletter() {
           </div>
 
           <div>
-            <h2 className="max-w-160 text-[clamp(1.375rem,5vw,2rem)] leading-tight font-bold tracking-[-0.015em] text-white">
-              Subscribe to our email newsletter and get best deals or offers
+            <h2 className="max-w-160 text-[clamp(1.375rem,5vw,2.5rem)] leading-tight font-medium tracking-[-0.015em] text-white">
+              Subscribe to our email newsletter and get best deals or offers{" "}
             </h2>
             <p className="mt-3 max-w-155 text-[13.5px] leading-[1.6] text-white/80 sm:text-[14.5px]">
               Stay in the loop with the latest updates, exclusive offers, and exciting product

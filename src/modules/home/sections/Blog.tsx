@@ -2,58 +2,7 @@ import Image from "next/image";
 
 import { Link } from "@/i18n/navigation";
 import { ROUTES } from "@/shared/constants/routes";
-
-type Post = {
-  category: string;
-  date: string;
-  title: string;
-  description: string;
-  image: string;
-};
-
-const FEATURED: Post = {
-  category: "Waterproofing",
-  date: "Mar 12, 2026",
-  title: "Advanced Waterproofing: Protecting Concrete from Harsh Climates",
-  description:
-    "Learn how specialized membrane applications and chemical coatings can extend the lifespan of your building's foundation by preventing moisture seepage and salt…",
-  image: "/images/services/electrical-installation.jpg",
-};
-
-const POSTS: Post[] = [
-  {
-    category: "Project Management",
-    date: "Feb 25, 2026",
-    title: "Structural Restoration: Reviving Heritage Buildings",
-    description:
-      "A deep dive into the techniques used to reinforce older structures without compromising their original architectural integrity.",
-    image: "/images/blog/blueprint-review.jpg",
-  },
-  {
-    category: "Project Management",
-    date: "Feb 18, 2026",
-    title: "Sequencing a fit-out around a live building",
-    description:
-      "How we phase work so tenants keep operating while the trades move through floor by floor.",
-    image: "/images/projects/consumer-unit-upgrade.jpg",
-  },
-  {
-    category: "Waterproofing",
-    date: "Feb 11, 2026",
-    title: "Why substrate prep decides the warranty",
-    description:
-      "Most early membrane failures trace back to what happened before the product was ever opened.",
-    image: "/images/projects/pipework-repair.jpg",
-  },
-  {
-    category: "Maintenance Dept",
-    date: "Feb 15, 2026",
-    title: "Essential Maintenance Tips for Luxury Swimming Pools",
-    description:
-      "Keep your pool crystal clear with these professional chemical balancing and filtration tips.",
-    image: "/images/projects/move-out-clean.jpg",
-  },
-];
+import { FEATURED_POST, HOME_POSTS } from "../data/home.data";
 
 const META = "text-[11px] tracking-[0.06em] text-body-soft uppercase";
 
@@ -83,20 +32,22 @@ export default function Blog() {
           <article className="flex flex-col rounded-[6px] bg-panel p-5">
             <p className="flex items-center gap-2">
               <span className="text-[11px] font-bold tracking-[0.1em] text-primary uppercase">
-                {FEATURED.category}
+                {FEATURED_POST.category}
               </span>
               <span className="text-[11px] text-body-soft">·</span>
-              <span className="text-[11px] text-body-soft">{FEATURED.date}</span>
+              <span className="text-[11px] text-body-soft">{FEATURED_POST.date}</span>
             </p>
 
             <h3 className="mt-3 text-[clamp(1.05rem,1.5vw,1.3rem)] leading-[1.3] font-semibold text-primary">
-              {FEATURED.title}
+              {FEATURED_POST.title}
             </h3>
-            <p className="mt-3 text-[13px] leading-[1.6] text-body-soft">{FEATURED.description}</p>
+            <p className="mt-3 text-[13px] leading-[1.6] text-body-soft">
+              {FEATURED_POST.description}
+            </p>
 
             <div className="relative mt-4 aspect-[376/213] w-full overflow-hidden rounded-[4px]">
               <Image
-                src={FEATURED.image}
+                src={FEATURED_POST.image}
                 alt=""
                 aria-hidden="true"
                 fill
@@ -114,7 +65,7 @@ export default function Blog() {
           </article>
 
           <ul className="flex flex-col gap-3">
-            {POSTS.map((post) => (
+            {HOME_POSTS.map((post) => (
               <li key={post.title}>
                 <Link
                   href={ROUTES.BLOG}

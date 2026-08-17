@@ -3,7 +3,7 @@
 import { Link } from "@/i18n/navigation";
 import { useTranslations } from "next-intl";
 import { useAppDispatch } from "@/store/hooks";
-import { setSelectedCategories } from "../productFilterSlice";
+import { setSelectedCategories } from "../store/productFilterSlice";
 import { Product } from "../types/product.type";
 
 export default function ProductsBreadcrumb({ product }: { product?: Product }) {

@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
-import { CookiePolicyPage } from "@/modules/legal";
+import { CookiePolicyView } from "@/modules/legal";
 
 export const metadata: Metadata = {
   title: "Cookie Policy | Rapid",
-  description: "What Rapid stores on your device, why, and how to change it.",
+  description: "How we use cookies and similar tracking technologies to improve your experience.",
 };
 
-export default function CookiePolicy() {
-  return <CookiePolicyPage />;
+export default function CookiePolicyPage() {
+  return <CookiePolicyView />;
 }

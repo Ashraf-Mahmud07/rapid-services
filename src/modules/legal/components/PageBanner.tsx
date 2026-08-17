@@ -1,11 +1,24 @@
+"use client";
+
 interface PageBannerProps {
   eyebrow?: string;
   title: string;
+  subtitle?: string;
   description?: string;
+  date?: string;
   className?: string;
 }
 
-const PageBanner = ({ eyebrow, title, description, className = "" }: PageBannerProps) => {
+const PageBanner = ({
+  eyebrow,
+  title,
+  subtitle,
+  description,
+  date,
+  className = "",
+}: PageBannerProps) => {
+  const displaySub = subtitle || description;
+
   return (
     <section
       className={`relative overflow-hidden ${className}`}
@@ -16,14 +29,12 @@ const PageBanner = ({ eyebrow, title, description, className = "" }: PageBannerP
         backgroundRepeat: "no-repeat",
       }}
     >
-      {/* Background overlay */}
       <div className="absolute inset-0 bg-white/30" />
 
-      {/* Content */}
       <div className="relative z-10 container py-13">
         <div className="max-w-155">
           {eyebrow && (
-            <span className="mb-3.5 block text-[11px] font-medium tracking-[1.2px] text-[#00A9A5] uppercase">
+            <span className="mb-3.5 block text-[11px] font-medium tracking-[1.2px] text-primary uppercase">
               {eyebrow}
             </span>
           )}
@@ -32,11 +43,13 @@ const PageBanner = ({ eyebrow, title, description, className = "" }: PageBannerP
             {title}
           </h1>
 
-          {description && (
+          {displaySub && (
             <p className="mt-2.5 max-w-150 text-[14px] leading-[1.6] font-normal text-[#777777]">
-              {description}
+              {displaySub}
             </p>
           )}
+
+          {date && <p className="mt-2 text-[12px] font-medium text-primary">{date}</p>}
         </div>
       </div>
     </section>

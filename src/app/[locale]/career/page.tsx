@@ -1,8 +1,5 @@
 import type { Metadata } from "next";
-
-import { CareersHero, JobBoard } from "@/modules/careers";
-import { Newsletter } from "@/modules/home/sections";
-import { Footer, Navbar } from "@/shared/components/layout";
+import { CareersView } from "@/modules/careers";
 
 export const metadata: Metadata = {
   title: "Careers | Rapid",
@@ -10,17 +7,5 @@ export const metadata: Metadata = {
 };
 
 export default function CareerPage() {
-  return (
-    <div className="relative w-full overflow-x-hidden font-poppins">
-      <Navbar />
-      <CareersHero />
-      <div className="section-background">
-        <div className="container-page pt-10 sm:pt-14 lg:pt-19">
-          <JobBoard />
-          <Newsletter />
-        </div>
-      </div>
-      <Footer />
-    </div>
-  );
+  return <CareersView />;
 }

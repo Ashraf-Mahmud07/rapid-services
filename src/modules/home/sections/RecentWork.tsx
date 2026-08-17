@@ -1,22 +1,5 @@
 import Image from "next/image";
-
-const recentWorks = [
-  {
-    title: "Leaking cistern and full bathroom reseal",
-    category: "Plumbing",
-    image: "/images/recent-works/plumbing.svg",
-  },
-  {
-    title: "Move-out deep clean, two-bed apartment",
-    category: "Cleaning",
-    image: "/images/recent-works/cleaning.svg",
-  },
-  {
-    title: "Consumer unit upgrade and RCD test",
-    category: "Electrical",
-    image: "/images/recent-works/electrical.svg",
-  },
-];
+import { RECENT_WORKS } from "../data/home.data";
 
 export default function RecentWork() {
   return (
@@ -45,7 +28,7 @@ export default function RecentWork() {
           </div>
 
           <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
-            {recentWorks.map((work) => (
+            {RECENT_WORKS.map((work) => (
               <article
                 key={work.title}
                 className="group relative h-[320px] overflow-hidden rounded-[12px] bg-[#1a1a1a]"

@@ -2,33 +2,10 @@ import Image from "next/image";
 
 import { Link } from "@/i18n/navigation";
 import { ROUTES } from "@/shared/constants/routes";
+import { FINISHED_PROJECTS_STACKED, FINISHED_PROJECTS_TALL } from "../data/home.data";
+import type { HomeFinishedProject } from "../types/home.types";
 
-type Job = { pill: string; title: string; body: string; image: string };
-
-/** One tall card beside two stacked ones, as the reference lays it out. */
-const TALL: Job = {
-  pill: "Cleaning · 6 hours",
-  title: "Move-out deep clean, two-bed apartment",
-  body: "Oven, extractor, grout and windows — handed back for a full deposit return the same week.",
-  image: "/images/projects/deep-clean-tall.jpg",
-};
-
-const STACKED: Job[] = [
-  {
-    pill: "Electrical · 1 day",
-    title: "Consumer unit upgrade and RCD test",
-    body: "Old fuse board swapped for a modern unit, every circuit tested and certified.",
-    image: "/images/projects/consumer-unit-upgrade.jpg",
-  },
-  {
-    pill: "Plumbing · 2 hours",
-    title: "Leaking cistern and full bathroom reseal",
-    body: "Replaced the fill valve, reset the pan and resealed the shower tray after two years of wear.",
-    image: "/images/projects/bathroom-reseal.jpg",
-  },
-];
-
-function Card({ job, tall }: { job: Job; tall?: boolean }) {
+function Card({ job, tall }: { job: HomeFinishedProject; tall?: boolean }) {
   return (
     <article
       className={`group relative isolate overflow-hidden rounded-xl ${
@@ -79,10 +56,7 @@ export default function FinishedProjects() {
           </h2>
           <p className="mt-4 text-[14px] leading-[1.7] text-body-soft">
             Every job closes with a photo report — this is a live sample from the crew&apos;s
-            schedule, not a portfolio shoot.Every job closes with a photo report — this is a live
-            sample from the crew&apos;s schedule, not a portfolio shoot.Every job closes with a
-            photo report — this is a live sample from the crew&apos;s schedule, not a portfolio
-            shoot.
+            schedule, not a portfolio shoot.
           </p>
           <Link
             href={ROUTES.PROJECT}
@@ -93,9 +67,9 @@ export default function FinishedProjects() {
         </div>
 
         <div className="grid gap-5 sm:grid-cols-2">
-          <Card job={TALL} tall />
+          <Card job={FINISHED_PROJECTS_TALL} tall />
           <div className="grid gap-5">
-            {STACKED.map((job) => (
+            {FINISHED_PROJECTS_STACKED.map((job) => (
               <Card key={job.title} job={job} />
             ))}
           </div>

@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
-
-import { BlogsPage } from "@/modules/blogs";
+import { BlogsView } from "@/modules/blogs";
 
 export const metadata: Metadata = {
   title: "Blogs | Rapid",
@@ -9,5 +8,5 @@ export const metadata: Metadata = {
 };
 
 export default function Page() {
-  return <BlogsPage />;
+  return <BlogsView />;
 }

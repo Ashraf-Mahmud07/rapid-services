@@ -1,3 +1,6 @@
+"use client";
+
+import { useTranslations } from "next-intl";
 import type { Job } from "../types/careers.types";
 import JobCheckList from "./JobCheckList";
 
@@ -6,10 +9,12 @@ interface JobDetailContentProps {
 }
 
 export default function JobDetailContent({ job }: JobDetailContentProps) {
+  const t = useTranslations("careers");
+
   return (
     <div>
       <h2 className="mb-4 text-xl font-bold text-[#17181a] lg:mb-[22px] lg:text-2xl">
-        About the role
+        {t("aboutRole")}
       </h2>
       {job.about.map((paragraph, index) => (
         <p
@@ -25,12 +30,12 @@ export default function JobDetailContent({ job }: JobDetailContentProps) {
       ))}
 
       <h2 className="mb-3 text-xl font-bold text-[#17181a] lg:mb-[18px] lg:text-2xl">
-        What you&apos;ll do
+        {t("whatYouWillDo")}
       </h2>
       <JobCheckList items={job.responsibilities} className="mb-8 lg:mb-[52px]" />
 
       <h2 className="mb-3 text-xl font-bold text-[#17181a] lg:mb-[18px] lg:text-2xl">
-        What we&apos;re looking for
+        {t("whatLookingFor")}
       </h2>
       <JobCheckList items={job.requirements} className="mb-6 lg:mb-[34px]" />
 

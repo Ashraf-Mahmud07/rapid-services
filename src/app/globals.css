@@ -18,15 +18,14 @@
      that only resolved because the root layout injected the real stack as an
      inline style on <html>. It is a concrete value now, so the inline style is
      no longer needed and the variable resolves on its own. */
-  --font-sans:
-    "Geist", "Inter", "Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+  --font-sans: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
   --font-heading: var(--font-sans);
   --font-body: var(--font-sans);
   --font-mono: "JetBrains Mono", "Fira Code", ui-monospace, monospace;
   /* Kept so existing `font-poppins` markup keeps resolving, but pointed at the
      design's actual family — the reference set never uses Poppins. */
   --font-poppins: var(--font-sans);
-  --font-inter: "Inter", "Segoe UI", system-ui, sans-serif;
+  --font-inter: var(--font-sans);
 
   /* ─── Page containers ───────────────────────────────── */
   /* The references use three distinct content widths, measured off the 1905px
@@ -291,11 +290,27 @@ body {
   * {
     @apply border-border outline-ring/50;
   }
+  html,
+  body,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p,
+  span,
+  a,
+  button,
+  input,
+  textarea,
+  label,
+  select {
+    font-family: var(--font-sans);
+  }
+
   body {
     @apply bg-background text-foreground;
-  }
-  html {
-    @apply font-sans;
   }
 }
 

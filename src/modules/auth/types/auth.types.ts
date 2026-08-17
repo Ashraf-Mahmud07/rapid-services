@@ -1,18 +1,12 @@
-export interface User {
-  id: string;
-  email: string;
-  fullName: string;
-}
+import type {
+  UserSchema,
+  LoginResponseSchema,
+  RegisterResponseSchema,
+} from "../validation/auth.schema";
 
-export interface LoginResponse {
-  user: User;
-  token: string;
-}
-
-export interface RegisterResponse {
-  user: User;
-  token: string;
-}
+export type User = UserSchema;
+export type LoginResponse = LoginResponseSchema;
+export type RegisterResponse = RegisterResponseSchema;
 
 export interface AuthState {
   isAuthenticated: boolean;

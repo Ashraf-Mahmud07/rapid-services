@@ -1,7 +1,12 @@
+"use client";
+
+import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { ROUTES } from "@/shared/constants/routes";
 
 export default function AboutHero() {
+  const t = useTranslations("about");
+
   return (
     <section className="relative isolate flex min-h-95 items-center overflow-hidden lg:min-h-120">
       <div
@@ -17,13 +22,12 @@ export default function AboutHero() {
       <div className="container-page grid gap-8 pt-28 pb-14 lg:grid-cols-[minmax(0,1fr)_290px] lg:items-center lg:gap-16 lg:pt-32 lg:pb-20">
         <div>
           <h1 className="text-[clamp(1.75rem,3.2vw,2.5rem)] leading-[1.18] font-bold tracking-[-0.02em] text-white">
-            One crew. Six trades.
+            {t("heroTitlePrefix")}
             <br />
-            <span className="text-primary">One standard.</span>
+            <span className="text-primary">{t("heroTitleSuffix")}</span>
           </h1>
           <p className="mt-4 max-w-155 text-[15px] leading-[1.72] text-white/80">
-            A Sharjah maintenance contractor that employs its own technicians, quotes the job before
-            it starts, and hands it back with the work signed off in writing.
+            {t("heroSubtitle")}
           </p>
         </div>
 
@@ -32,13 +36,13 @@ export default function AboutHero() {
             href={ROUTES.PRODUCT}
             className="inline-flex h-12 items-center justify-center rounded-full bg-primary px-7 text-[15px] font-semibold text-white transition-opacity hover:opacity-90"
           >
-            Open Products
+            {t("openProducts")}
           </Link>
           <Link
             href={ROUTES.CAREER}
             className="inline-flex h-12 items-center justify-center rounded-full bg-white px-7 text-[15px] font-semibold text-ink transition-opacity hover:opacity-90"
           >
-            Work with us
+            {t("workWithUs")}
           </Link>
         </div>
       </div>

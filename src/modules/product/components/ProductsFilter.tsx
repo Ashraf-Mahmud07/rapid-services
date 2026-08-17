@@ -2,34 +2,26 @@
 
 import { ChevronUp, Star } from "lucide-react";
 import { useTranslations } from "next-intl";
-import * as React from "react";
-
 import { cn } from "@/shared/utils/cn";
-import { useAppDispatch, useAppSelector } from "@/store/hooks";
-import { categoryItems, ratingItems } from "../data/filter.data";
-import { resetFilters, setSelectedRating, toggleCategory } from "../productFilterSlice";
 import { CategoryRowProps, StarRowProps } from "../types/product-filter.types";
 import ProductsHelp from "./ProductsHelp";
+import { useProductFilter } from "../hooks/useProductFilter";
 
 export default function ProductsFilter() {
-  const t = useTranslations("product");
-  const dispatch = useAppDispatch();
-  const { selectedCategories, selectedRating } = useAppSelector((state) => state.productFilter);
-
-  const [categoryOpen, setCategoryOpen] = React.useState(true);
-  const [ratingOpen, setRatingOpen] = React.useState(true);
-
-  function handleCategoryChange(category: string) {
-    dispatch(toggleCategory(category));
-  }
-
-  function handleRatingChange(rating: string) {
-    dispatch(setSelectedRating(rating));
-  }
-
-  function handleResetAll() {
-    dispatch(resetFilters());
-  }
+  const {
+    t,
+    selectedCategories,
+    selectedRating,
+    categoryOpen,
+    setCategoryOpen,
+    ratingOpen,
+    setRatingOpen,
+    handleCategoryChange,
+    handleRatingChange,
+    handleResetAll,
+    categoryItems,
+    ratingItems,
+  } = useProductFilter();
 
   return (
     <>
@@ -109,7 +101,7 @@ function SectionHeader({
     <button
       type="button"
       onClick={onToggle}
-      className="flex w-full items-center justify-between text-left"
+      className="flex w-full cursor-pointer items-center justify-between text-left"
       aria-expanded={open}
     >
       <span className="text-[12px] font-semibold tracking-[1.2px] text-[#737373] uppercase">

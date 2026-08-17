@@ -3,41 +3,7 @@ import Image from "next/image";
 
 import { Link } from "@/i18n/navigation";
 import { ROUTES } from "@/shared/constants/routes";
-
-type Service = { title: string; description: string; image: string };
-
-const SERVICES: Service[] = [
-  {
-    title: "Electrical Installation",
-    description: "Complete electrical setups for new homes and businesses, ensuring safe.",
-    image: "/images/services/electrical-installation.jpg",
-  },
-  {
-    title: "Wiring & Rewiring",
-    description: "Upgrade or repair outdated wiring with modern solutions that improve safety.",
-    image: "/images/services/wiring-rewiring.jpg",
-  },
-  {
-    title: "Lighting Solutions",
-    description: "Design and install indoor, outdoor, and smart lighting systems to enhance.",
-    image: "/images/services/lighting-solutions.jpg",
-  },
-  {
-    title: "Panel Upgrades",
-    description: "Replace or upgrade electrical panels to handle modern power demands.",
-    image: "/images/services/panel-upgrades.jpg",
-  },
-  {
-    title: "Maintenance & Repairs",
-    description: "Routine maintenance and fast repairs to keep your electrical systems running.",
-    image: "/images/services/maintenance-repairs.jpg",
-  },
-  {
-    title: "Emergency Services",
-    description: "24/7 emergency electrical support to quickly resolve urgent issues and restore.",
-    image: "/images/services/emergency-services.jpg",
-  },
-];
+import { HOME_SERVICES } from "../data/home.data";
 
 export default function Services() {
   return (
@@ -60,7 +26,7 @@ export default function Services() {
         </div>
 
         <ul className="mt-9 grid gap-x-13 gap-y-9 sm:grid-cols-2 xl:grid-cols-3">
-          {SERVICES.map((service) => (
+          {HOME_SERVICES.map((service) => (
             <li key={service.title}>
               <Link href={ROUTES.SERVICE} className="group block">
                 <div className="relative aspect-[292/193] w-full overflow-hidden rounded-[8px]">
@@ -82,8 +48,6 @@ export default function Services() {
                     </p>
                   </div>
 
-                  {/* Outlined until the card is pointed at, then it fills brand —
-                      the reference shows one card in that state. */}
                   <span className="mt-1 flex size-7 flex-none items-center justify-center rounded-full border border-[#d5d8da] text-[#5a5f63] transition-colors group-hover:border-primary group-hover:bg-primary group-hover:text-white">
                     <ArrowUpRight className="size-3.5" strokeWidth={2.2} />
                   </span>

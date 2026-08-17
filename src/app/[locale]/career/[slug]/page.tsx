@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-
-import { JobDetailContent, JobDetailHero, JobSidebar, getJobBySlug } from "@/modules/careers";
-import { Footer, Navbar } from "@/shared/components/layout";
+import { JobDetailView, getJobBySlug } from "@/modules/careers";
 
 interface CareerDetailPageProps {
   params: Promise<{ slug: string }>;
@@ -26,17 +24,5 @@ export default async function CareerDetailPage({ params }: CareerDetailPageProps
 
   if (!job) notFound();
 
-  return (
-    <div className="relative w-full overflow-x-hidden font-poppins">
-      <Navbar />
-      <JobDetailHero title={job.title} />
-
-      <div className="container-page grid items-start gap-10 pt-10 pb-14 sm:pt-12 lg:grid-cols-[1fr_372px] lg:gap-[clamp(40px,5.21vw,100px)] lg:pt-16 lg:pb-[90px]">
-        <JobDetailContent job={job} />
-        <JobSidebar job={job} />
-      </div>
-
-      <Footer />
-    </div>
-  );
+  return <JobDetailView job={job} />;
 }

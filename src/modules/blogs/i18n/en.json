@@ -1,6 +1,10 @@
 {
+  "heroTitle": "Our articles and news",
+  "heroSubtitle": "Explore our latest articles, industry insights, product updates, and company news. Stay informed with valuable resources, expert knowledge, and the latest developments from our team.",
   "blogList": "Blog List",
   "featured": "FEATURED",
   "back": "Back",
-  "share": "Share"
+  "share": "Share",
+  "shareSuccess": "Link copied to clipboard!",
+  "readTime": "{time} min read"
 }

@@ -1,25 +1,5 @@
 import Image from "next/image";
-
-const steps = [
-  {
-    number: "01",
-    title: "Discovery & Consultation",
-    description:
-      "We begin by understanding your vision, goals, and requirements to create a strong foundation for your project.",
-  },
-  {
-    number: "02",
-    title: "Design & Planning",
-    description:
-      "Our experts craft detailed plans and innovative designs tailored to your space, budget, and expectations.",
-  },
-  {
-    number: "03",
-    title: "Construction & Execution",
-    description:
-      "With precision and expertise, we bring your vision to life using high-quality materials and skilled craftsmanship.",
-  },
-];
+import { HOME_PROCESS_STEPS } from "../data/home.data";
 
 export default function ProcessSection() {
   return (
@@ -50,7 +30,7 @@ export default function ProcessSection() {
           {/* Steps */}
           <div>
             <div className="mt-2 flex flex-col gap-8 lg:mt-14">
-              {steps.map((step) => (
+              {HOME_PROCESS_STEPS.map((step) => (
                 <div key={step.number} className="flex gap-6">
                   <div className="shrink-0">
                     <span className="block text-[11.5px] font-semibold tracking-[0.92px] text-primary uppercase">

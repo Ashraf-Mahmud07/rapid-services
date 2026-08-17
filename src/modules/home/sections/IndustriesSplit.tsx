@@ -1,47 +1,8 @@
-import type { LucideIcon } from "lucide-react";
-import { Building, Building2, Factory, Home, Landmark, Wrench } from "lucide-react";
 import Image from "next/image";
+import { INDUSTRIES_LEFT, INDUSTRIES_RIGHT } from "../data/home.data";
+import type { IndustrySplitItem } from "../types/home.types";
 
-type Industry = { title: string; body: string; icon: LucideIcon };
-
-/** Left column is right-aligned against the photograph, right column left-aligned. */
-const LEFT: Industry[] = [
-  {
-    title: "Residential Spaces",
-    body: "Crafting Comfortable, Functional & Elegant Homes",
-    icon: Home,
-  },
-  {
-    title: "Commercial Projects",
-    body: "Innovative Spaces Designed for Business Success",
-    icon: Building2,
-  },
-  {
-    title: "Industrial Facilities",
-    body: "Engineered for Efficiency, Safety & Operational Excellence",
-    icon: Factory,
-  },
-];
-
-const RIGHT: Industry[] = [
-  {
-    title: "Civil Infrastructure",
-    body: "Building Strong Foundations for Sustainable Communities",
-    icon: Landmark,
-  },
-  {
-    title: "Government Projects",
-    body: "Delivering Trusted Infrastructure for Public Excellence",
-    icon: Building,
-  },
-  {
-    title: "Custom Developments",
-    body: "Tailored Solutions Designed Around Your Vision",
-    icon: Wrench,
-  },
-];
-
-function Item({ item, align }: { item: Industry; align: "start" | "end" }) {
+function Item({ item, align }: { item: IndustrySplitItem; align: "start" | "end" }) {
   const end = align === "end";
   return (
     <li className={end ? "lg:text-end" : ""}>
@@ -77,7 +38,7 @@ export default function IndustriesSplit() {
 
         <div className="mt-12 grid items-center gap-10 py-5 lg:grid-cols-[minmax(0,1fr)_380px_minmax(0,1fr)] lg:gap-12">
           <ul className="flex flex-col gap-10">
-            {LEFT.map((item) => (
+            {INDUSTRIES_LEFT.map((item) => (
               <Item key={item.title} item={item} align="end" />
             ))}
           </ul>
@@ -93,7 +54,7 @@ export default function IndustriesSplit() {
           </div>
 
           <ul className="flex flex-col gap-10">
-            {RIGHT.map((item) => (
+            {INDUSTRIES_RIGHT.map((item) => (
               <Item key={item.title} item={item} align="start" />
             ))}
           </ul>

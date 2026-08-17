@@ -1,48 +1,12 @@
-import {
-  About,
-  Blog,
-  Certifications,
-  Commitment,
-  Contact,
-  CTA,
-  EngineeringSafety,
-  FinishedProjects,
-  HomeHero,
-  IndustriesSplit,
-  MeetTheExperts,
-  Newsletter,
-  OngoingProjects,
-  Reviews,
-  Services,
-  Team,
-  TradesTicker,
-} from "@/modules/home/sections";
-import ProcessSection from "@/modules/home/sections/ProcessSection";
-import { Footer, Navbar } from "@/shared/components/layout";
+import type { Metadata } from "next";
+import { HomeView } from "@/modules/home";
+
+export const metadata: Metadata = {
+  title: "Rapid | Contracting & Maintenance Services",
+  description:
+    "One crew covering six trades across Sharjah & the Emirates. In-house technicians, upfront fixed quotes, and guaranteed workmanship.",
+};
 
 export default function HomePage() {
-  return (
-    <main>
-      <Navbar />
-      <HomeHero />
-      <TradesTicker />
-      <About />
-      <OngoingProjects />
-      <EngineeringSafety />
-      <Commitment />
-      <FinishedProjects />
-      <Services />
-      <ProcessSection />
-      <Reviews />
-      <IndustriesSplit />
-      <CTA />
-      <Certifications />
-      <Team />
-      <MeetTheExperts />
-      <Blog />
-      <Contact />
-      <Newsletter />
-      <Footer />
-    </main>
-  );
+  return <HomeView />;
 }

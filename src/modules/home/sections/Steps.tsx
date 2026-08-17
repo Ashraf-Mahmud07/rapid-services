@@ -1,26 +1,6 @@
 import Image from "next/image";
 import StepsCard from "../components/StepsCard";
-
-const steps = [
-  {
-    step: "01",
-    title: "Discovery & Consultation",
-    description:
-      "We begin by understanding your vision, goals, and requirements to create a strong foundation for your project.",
-  },
-  {
-    step: "02",
-    title: "Design & Planning",
-    description:
-      "Our experts craft detailed plans and innovative designs tailored to your space, budget, and expectations.",
-  },
-  {
-    step: "03",
-    title: "Construction & Execution",
-    description:
-      "With precision and expertise, we bring your vision to life using high-quality materials and skilled craftsmanship.",
-  },
-];
+import { STEPS_LIST } from "../data/home.data";
 
 export default function Steps() {
   return (
@@ -51,7 +31,7 @@ export default function Steps() {
           </div>
 
           <div className="flex flex-col gap-5">
-            {steps.map((step, index) => (
+            {STEPS_LIST.map((step, index) => (
               <StepsCard key={step.step} {...step} align={index === 1 ? "right" : "left"} />
             ))}
           </div>

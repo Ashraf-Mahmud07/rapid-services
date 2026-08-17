@@ -1,6 +1,5 @@
 "use client";
 
-import { useState } from "react";
 import { Button } from "@/shared/components/ui/Button";
 import { Input } from "@/shared/components/ui/Input";
 import { PasswordInput } from "@/shared/components/ui/PasswordInput";
@@ -8,44 +7,11 @@ import { Checkbox } from "@/shared/components/ui/Checkbox";
 import { Label } from "@/shared/components/ui/Label";
 import { GoogleIcon } from "@/shared/assets/icons";
 import { Link } from "@/i18n/navigation";
-import { useTranslations } from "next-intl";
 import { ROUTES } from "@/shared/constants/routes";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { getErrorMessage } from "@/shared/utils";
-import { registerSchema, type RegisterFormData } from "../validation/auth.schema";
-import { useRegisterMutation } from "../authApi";
+import { useRegisterForm } from "../hooks/useRegisterForm";
 
 export default function RegisterForm() {
-  const t = useTranslations("auth");
-  const [registerAccount, { isLoading }] = useRegisterMutation();
-  const [apiError, setApiError] = useState<string | null>(null);
-
-  const {
-    register,
-    handleSubmit,
-    formState: { errors, isSubmitting },
-  } = useForm<RegisterFormData>({
-    resolver: zodResolver(registerSchema),
-    defaultValues: {
-      fullName: "",
-      email: "",
-      password: "",
-      confirmPassword: "",
-      agreeTerms: false as unknown as true,
-    },
-  });
-
-  async function onSubmit(data: RegisterFormData) {
-    setApiError(null);
-    try {
-      await registerAccount(data).unwrap();
-    } catch (err: unknown) {
-      setApiError(getErrorMessage(err, "Registration failed. Please try again."));
-    }
-  }
-
-  const isPending = isSubmitting || isLoading;
+  const { register, onSubmit, getFieldError, isPending, apiError, t } = useRegisterForm();
 
   return (
     <div className="flex min-h-dvh items-center justify-center bg-neutral-50 p-4">
@@ -65,7 +31,7 @@ export default function RegisterForm() {
             </div>
           )}
 
-          <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
+          <form onSubmit={onSubmit} className="space-y-5">
             <div className="space-y-2">
               <Label htmlFor="fullName" required>
                 {t("fullName")}
@@ -75,7 +41,7 @@ export default function RegisterForm() {
                 type="text"
                 placeholder={t("fullNamePlaceholder")}
                 autoComplete="name"
-                error={errors.fullName && t(errors.fullName.message as string)}
+                error={getFieldError("fullName")}
                 {...register("fullName")}
               />
             </div>
@@ -89,7 +55,7 @@ export default function RegisterForm() {
                 type="email"
                 placeholder={t("emailPlaceholder")}
                 autoComplete="email"
-                error={errors.email && t(errors.email.message as string)}
+                error={getFieldError("email")}
                 {...register("email")}
               />
             </div>
@@ -102,7 +68,7 @@ export default function RegisterForm() {
                 id="password"
                 placeholder={t("passwordPlaceholder")}
                 autoComplete="new-password"
-                error={errors.password && t(errors.password.message as string)}
+                error={getFieldError("password")}
                 {...register("password")}
               />
             </div>
@@ -115,7 +81,7 @@ export default function RegisterForm() {
                 id="confirmPassword"
                 placeholder={t("passwordPlaceholder")}
                 autoComplete="new-password"
-                error={errors.confirmPassword && t(errors.confirmPassword.message as string)}
+                error={getFieldError("confirmPassword")}
                 {...register("confirmPassword")}
               />
             </div>
@@ -123,7 +89,7 @@ export default function RegisterForm() {
             <Checkbox
               id="agreeTerms"
               label={t("agreeTerms")}
-              error={errors.agreeTerms && t(errors.agreeTerms.message as string)}
+              error={getFieldError("agreeTerms")}
               {...register("agreeTerms")}
             />
 

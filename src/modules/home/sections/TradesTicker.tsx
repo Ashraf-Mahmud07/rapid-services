@@ -2,23 +2,7 @@
 
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import * as React from "react";
-
-/**
- * The pale mint strip under the hero. Trades alternate between ink and brand
- * teal, separated by teal dots, and the rail fades out at both edges so the
- * list reads as continuous. Arrows scroll it; on touch it scrolls directly.
- */
-const TRADES = [
-  "Electrical",
-  "Plumbing",
-  "Painting",
-  "Cleaning",
-  "Repairs",
-  "Heating & Cooling",
-  "Electrical",
-  "Plumbing",
-  "Painting",
-];
+import { TRADES } from "../data/home.data";
 
 export default function TradesTicker() {
   const railRef = React.useRef<HTMLDivElement>(null);

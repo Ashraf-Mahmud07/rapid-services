@@ -1,7 +1,9 @@
+"use client";
+
 import { Link } from "@/i18n/navigation";
 import Navbar from "@/shared/components/layout/Navbar";
 import { ROUTES } from "@/shared/constants/routes";
-import { ChevronLeft, Share2 } from "lucide-react";
+import { ChevronLeft, Share2, Check } from "lucide-react";
 import { useTranslations } from "next-intl";
 import Image, { StaticImageData } from "next/image";
 
@@ -9,9 +11,17 @@ interface BlogDetailsHeroProps {
   title: string;
   subtitle: string;
   backgroundImage?: string | StaticImageData;
+  onShare?: () => void;
+  copied?: boolean;
 }
 
-export function BlogDetailsHero({ title, subtitle, backgroundImage }: BlogDetailsHeroProps) {
+export function BlogDetailsHero({
+  title,
+  subtitle,
+  backgroundImage,
+  onShare,
+  copied,
+}: BlogDetailsHeroProps) {
   const t = useTranslations("blogs");
 
   return (
@@ -55,8 +65,22 @@ export function BlogDetailsHero({ title, subtitle, backgroundImage }: BlogDetail
             </p>
           </div>
 
-          <button className="group flex w-fit items-center gap-2 text-sm font-semibold transition-colors hover:text-gray-300">
-            {t("share")} <Share2 className="h-4 w-4 transition-transform group-hover:scale-110" />
+          <button
+            type="button"
+            onClick={onShare}
+            className="group flex w-fit cursor-pointer items-center gap-2 text-sm font-semibold transition-colors hover:text-gray-300"
+          >
+            {copied ? (
+              <>
+                <span>{t("shareSuccess")}</span>
+                <Check className="h-4 w-4 text-emerald-400" />
+              </>
+            ) : (
+              <>
+                <span>{t("share")}</span>
+                <Share2 className="h-4 w-4 transition-transform group-hover:scale-110" />
+              </>
+            )}
           </button>
         </div>
       </div>

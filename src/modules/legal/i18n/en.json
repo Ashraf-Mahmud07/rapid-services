@@ -3,6 +3,15 @@
   "index": "Index",
   "makeRequest": "Make a request",
   "contactSupport": "Contact support",
+  "termsTitle": "Terms & Conditions",
+  "termsSubtitle": "The rules that apply when you shop with Rapid — orders, delivery, returns, warranty, and the limits of our liability.",
+  "termsDate": "Effective August 2026",
+  "privacyTitle": "Privacy Policy",
+  "privacySubtitle": "What we collect, why we collect it, and the controls you have. Written to be read — no dense clauses, no buried defaults.",
+  "privacyDate": "Effective August 2026",
+  "cookieTitle": "Cookie Policy",
+  "cookieSubtitle": "How we use cookies and similar tracking technologies to improve your experience.",
+  "cookieDate": "Effective August 2026",
   "privacy": {
     "title": "Privacy Policy",
     "subtitle": "What we collect, why we collect it, and the controls you have. Written to be read — no dense clauses, no buried defaults."

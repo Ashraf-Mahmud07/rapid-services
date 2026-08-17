@@ -1,18 +1,6 @@
-import type { LucideIcon } from "lucide-react";
-import { Award, Building2, Droplet, ShieldCheck } from "lucide-react";
-
 import { Link } from "@/i18n/navigation";
 import { ROUTES } from "@/shared/constants/routes";
-
-type Credential = { title: string; subtitle: string; icon: LucideIcon };
-
-/** The reference card carries four credentials, not the six listed before. */
-const CREDENTIALS: Credential[] = [
-  { title: "ISO 9001:2015", subtitle: "Quality management systems", icon: Award },
-  { title: "ISO 14001:2015", subtitle: "Environmental management", icon: Droplet },
-  { title: "ISO 45001:2018", subtitle: "Occupational health & safety", icon: ShieldCheck },
-  { title: "Dubai Municipality", subtitle: "Approved contractor registration", icon: Building2 },
-];
+import { CERTIFICATIONS } from "../data/home.data";
 
 export default function Certifications() {
   return (
@@ -39,7 +27,7 @@ export default function Certifications() {
           </div>
 
           <ul className="grid gap-4 sm:grid-cols-2">
-            {CREDENTIALS.map((item) => (
+            {CERTIFICATIONS.map((item) => (
               <li
                 key={item.title}
                 className="flex items-center gap-4 rounded-[10px] bg-white/12 p-4 lg:p-5"

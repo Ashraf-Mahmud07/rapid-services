@@ -1,13 +1,11 @@
-import Image from "next/image";
+"use client";
 
-/**
- * The reference quote talks about reselling consumer electronics and names a
- * co-founder who appears nowhere else on the site — clearly carried over from
- * the template it was built on. The layout is reproduced exactly; the words are
- * Rapid's own trade. Swap the quote and bio for the CEO's real copy when you
- * have it.
- */
+import Image from "next/image";
+import { useTranslations } from "next-intl";
+
 export default function CeoQuote() {
+  const t = useTranslations("about");
+
   return (
     <section className="section-space">
       <div className="container-page">
@@ -15,7 +13,7 @@ export default function CeoQuote() {
           <div className="relative aspect-square w-full overflow-hidden rounded-[10px] lg:aspect-[290/340]">
             <Image
               src="/images/about/ceo.png"
-              alt="Mohammed Jahangir Alam"
+              alt={t("ceoImageAlt")}
               fill
               sizes="(max-width: 1024px) 100vw, 290px"
               className="object-cover"
@@ -24,26 +22,20 @@ export default function CeoQuote() {
 
           <figure className="flex flex-col justify-center">
             <figcaption className="text-eyebrow font-semibold text-primary uppercase">
-              From the CEO
+              {t("ceoEyebrow")}
             </figcaption>
 
             <blockquote className="mt-4 text-[clamp(1.125rem,1.9vw,1.6rem)] leading-[1.34] font-semibold tracking-[-0.015em] text-ink">
-              &ldquo;We would rather quote the whole job honestly than win it cheap and come back
-              for the rest later. That has cost us work. It is still the best decision this company
-              has made.&rdquo;
+              {t("ceoQuote")}
             </blockquote>
 
             <p className="mt-5 max-w-[720px] text-[14.5px] leading-[1.7] text-body-soft">
-              Mohammed Jahangir Alam founded Rapid in 2009 after years on the tools across the
-              Emirates. He still reviews the pricing on every major job and reads the customer
-              feedback one morning a week.
+              {t("ceoBio")}
             </p>
 
             <div className="mt-6 border-t border-black/10 pt-5">
-              <p className="text-[15px] font-semibold text-ink">Mohammed Jahangir Alam</p>
-              <p className="mt-0.5 text-[13.5px] text-body-soft">
-                Co-founder &amp; Chief Executive Officer
-              </p>
+              <p className="text-[15px] font-semibold text-ink">{t("ceoName")}</p>
+              <p className="mt-0.5 text-[13.5px] text-body-soft">{t("ceoTitle")}</p>
             </div>
           </figure>
         </div>

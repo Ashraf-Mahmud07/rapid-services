@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-
+import { useTranslations } from "next-intl";
 import { Button } from "@/shared/components/ui/Button";
 import type { Job } from "../types/careers.types";
 import ApplyModal from "./ApplyModal";
@@ -12,11 +12,12 @@ interface JobSidebarProps {
 }
 
 export default function JobSidebar({ job }: JobSidebarProps) {
+  const t = useTranslations("careers");
   const [open, setOpen] = useState(false);
 
   return (
     <aside className="rounded-2xl bg-[#F6F7F8] px-5 pt-5 pb-6 lg:px-[26px] lg:pt-[26px] lg:pb-7">
-      <p className="mb-1.5 text-[13px] text-[#8b9096]">Base salary range</p>
+      <p className="mb-1.5 text-[13px] text-[#8b9096]">{t("baseSalaryRange")}</p>
       <SalaryRange
         low={job.salaryLow}
         high={job.salaryHigh}
@@ -39,7 +40,7 @@ export default function JobSidebar({ job }: JobSidebarProps) {
         onClick={() => setOpen(true)}
         className="mt-[26px] h-auto w-full rounded-full p-3.5 text-sm font-semibold"
       >
-        Apply now
+        {t("applyNow")}
       </Button>
 
       <ApplyModal open={open} onOpenChange={setOpen} />

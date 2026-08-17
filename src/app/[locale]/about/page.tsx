@@ -1,9 +1,5 @@
 import type { Metadata } from "next";
-
-import { AboutHero, CeoQuote, HowItWorks, MissionVision, StatsBand } from "@/modules/about";
-import { Certifications } from "@/modules/home/sections";
-import { FaqSection, Footer, Navbar } from "@/shared/components/layout";
-import { ROUTES } from "@/shared/constants/routes";
+import { AboutView } from "@/modules/about";
 
 export const metadata: Metadata = {
   title: "About Us | Rapid",
@@ -12,21 +8,5 @@ export const metadata: Metadata = {
 };
 
 export default function AboutPage() {
-  return (
-    <main className="relative w-full overflow-x-hidden">
-      <Navbar />
-      <AboutHero />
-      <div className="section-background">
-        <CeoQuote />
-        <StatsBand />
-        <HowItWorks />
-        <MissionVision />
-        <Certifications />
-        <div className="container-page">
-          <FaqSection askHref={ROUTES.FAQ} />
-        </div>
-      </div>
-      <Footer />
-    </main>
-  );
+  return <AboutView />;
 }

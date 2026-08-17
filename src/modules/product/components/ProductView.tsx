@@ -1,50 +1,33 @@
 "use client";
 
-import { useAppDispatch, useAppSelector } from "@/store/hooks";
-import { products } from "../data/product.data";
-import { setActiveView, setCurrentPage } from "../productFilterSlice";
 import ProductGridCardSkeleton from "../skeleton/ProductGridCardSkeleton";
 import ProductListCardSkeleton from "../skeleton/ProductListCardSkeleton";
 import { Product } from "../types/product.type";
 import NoProductFound from "./NoProductFound";
 import ProductGridCard from "./ProductGridCard";
-import ProductHeder from "./ProductHeder";
+import ProductHeader from "./ProductHeader";
 import ProductListCard from "./ProductListCard";
 import ProductPagination from "./ProductPagination";
+import { useProductView } from "../hooks/useProductView";
 
 export default function ProductView() {
-  const dispatch = useAppDispatch();
-  const { activeView, selectedCategories, selectedRating, itemsPerPage, currentPage, isLoading } =
-    useAppSelector((state) => state.productFilter);
-
-  const filteredProducts = products.filter((product) => {
-    const matchesCategory =
-      selectedCategories.length === 0 || selectedCategories.includes(product.category);
-
-    const productRating = Number(product.reviews?.average || 0);
-    const requiredRating = Number(selectedRating);
-    const matchesRating =
-      selectedRating === "any" || isNaN(requiredRating) || productRating >= requiredRating;
-
-    return matchesCategory && matchesRating;
-  });
-
-  const totalPages = Math.ceil(filteredProducts.length / itemsPerPage);
-  const startIndex = (currentPage - 1) * itemsPerPage;
-  const displayedProducts = filteredProducts.slice(startIndex, startIndex + itemsPerPage);
-
-  const handlePageChange = (page: number) => {
-    dispatch(setCurrentPage(page));
-    if (typeof window !== "undefined") {
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    }
-  };
+  const {
+    activeView,
+    itemsPerPage,
+    currentPage,
+    isLoading,
+    filteredProducts,
+    displayedProducts,
+    totalPages,
+    handlePageChange,
+    handleViewChange,
+  } = useProductView();
 
   return (
     <main className="min-w-0 flex-1">
-      <ProductHeder
+      <ProductHeader
         activeView={activeView}
-        setActiveView={(view) => dispatch(setActiveView(view))}
+        setActiveView={handleViewChange}
         productCount={filteredProducts.length}
       />
       {isLoading ? (

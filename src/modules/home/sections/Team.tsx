@@ -1,30 +1,9 @@
 "use client";
+
 import { useOverlays } from "@/shared/components/overlays/OverlayProvider";
 import { Phone } from "lucide-react";
 import TeamCard from "../components/TeamCard";
-
-const teamMembers = [
-  {
-    name: "Olivia Bennett",
-    role: "CEO",
-    image: "/images/team/olivia-bennett.png",
-  },
-  {
-    name: "Michael Anderson",
-    role: "Site Supervisor",
-    image: "/images/team/michael-anderson.png",
-  },
-  {
-    name: "Sophia Martinez",
-    role: "Site Supervisor",
-    image: "/images/team/sophia-martinez.png",
-  },
-  {
-    name: "Daniel Brooks",
-    role: "Project Manager",
-    image: "/images/team/expert-1.jpg",
-  },
-];
+import { TEAM_MEMBERS } from "../data/home.data";
 
 export default function Team() {
   const overlays = useOverlays();
@@ -49,7 +28,7 @@ export default function Team() {
         </div>
 
         <div className="mt-10 grid gap-4.5 md:grid-cols-2 xl:grid-cols-4">
-          {teamMembers.map((member) => (
+          {TEAM_MEMBERS.map((member) => (
             <TeamCard key={member.name} {...member} />
           ))}
         </div>

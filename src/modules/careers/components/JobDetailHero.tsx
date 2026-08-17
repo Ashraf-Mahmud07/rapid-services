@@ -1,3 +1,6 @@
+"use client";
+
+import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { ROUTES } from "@/shared/constants/routes";
 import ShareButton from "./ShareButton";
@@ -7,6 +10,8 @@ interface JobDetailHeroProps {
 }
 
 export default function JobDetailHero({ title }: JobDetailHeroProps) {
+  const t = useTranslations("careers");
+
   return (
     <section
       className="relative h-90 sm:h-105 lg:h-115.25"
@@ -31,7 +36,7 @@ export default function JobDetailHero({ title }: JobDetailHeroProps) {
               strokeLinejoin="round"
             />
           </svg>
-          Back
+          {t("back")}
         </Link>
 
         <ShareButton

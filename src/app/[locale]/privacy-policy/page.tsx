@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
-import { PrivacyPolicyPage } from "@/modules/legal";
+import { PrivacyPolicyView } from "@/modules/legal";
 
 export const metadata: Metadata = {
   title: "Privacy Policy | Rapid",
-  description: "What Rapid collects, why we collect it, and the controls you have.",
+  description: "What we collect, why we collect it, and the controls you have.",
 };
 
-export default function PrivacyPolicy() {
-  return <PrivacyPolicyPage />;
+export default function PrivacyPolicyPage() {
+  return <PrivacyPolicyView />;
 }

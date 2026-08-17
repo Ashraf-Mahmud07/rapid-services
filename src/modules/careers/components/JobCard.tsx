@@ -1,3 +1,6 @@
+"use client";
+
+import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { careerDetailRoute } from "@/shared/constants/routes";
 import type { Job } from "../types/careers.types";
@@ -8,6 +11,8 @@ interface JobCardProps {
 }
 
 export default function JobCard({ job }: JobCardProps) {
+  const t = useTranslations("careers");
+
   return (
     <Link
       href={careerDetailRoute(job.slug)}
@@ -19,7 +24,9 @@ export default function JobCard({ job }: JobCardProps) {
             {job.title}
           </span>
           {job.isNew && (
-            <span className="text-[11px] font-bold tracking-[1px] text-primary">NEW</span>
+            <span className="text-[11px] font-bold tracking-[1px] text-primary">
+              {t("newBadge")}
+            </span>
           )}
         </div>
         <div className="mt-3 flex flex-wrap items-center gap-3 text-[13px] text-[#8b9096] sm:text-sm lg:gap-4">
@@ -34,7 +41,7 @@ export default function JobCard({ job }: JobCardProps) {
       </div>
 
       <span className="flex flex-none items-center gap-2 text-[15px] font-semibold whitespace-nowrap text-primary">
-        View role
+        {t("viewRole")}
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none">
           <path
             d="M5 12h14M13 6l6 6-6 6"

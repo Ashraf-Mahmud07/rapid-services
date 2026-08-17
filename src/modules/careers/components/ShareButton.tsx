@@ -1,11 +1,15 @@
 "use client";
 
+import { useTranslations } from "next-intl";
+
 interface ShareButtonProps {
   title: string;
   className?: string;
 }
 
 export default function ShareButton({ title, className }: ShareButtonProps) {
+  const t = useTranslations("careers");
+
   async function onShare() {
     const url = window.location.href;
     try {
@@ -21,7 +25,7 @@ export default function ShareButton({ title, className }: ShareButtonProps) {
 
   return (
     <button type="button" onClick={onShare} className={className}>
-      Share
+      {t("share")}
       <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2">
         <circle cx="18" cy="5" r="2.6" />
         <circle cx="6" cy="12" r="2.6" />

@@ -13,6 +13,7 @@ export { default as IndustriesSplit } from "./IndustriesSplit";
 export { default as MeetTheExperts } from "./MeetTheExperts";
 export { default as Newsletter } from "./Newsletter";
 export { default as OngoingProjects } from "./OngoingProjects";
+export { default as ProcessSection } from "./ProcessSection";
 export { default as RecentWork } from "./RecentWork";
 export { default as Reviews } from "./Reviews";
 export { default as Services } from "./Services";

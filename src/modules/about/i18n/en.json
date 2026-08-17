@@ -1,0 +1,37 @@
+{
+  "heroTitlePrefix": "One crew. Six trades.",
+  "heroTitleSuffix": "One standard.",
+  "heroSubtitle": "A Sharjah maintenance contractor that employs its own technicians, quotes the job before it starts, and hands it back with the work signed off in writing.",
+  "openProducts": "Open Products",
+  "workWithUs": "Work with us",
+  "ceoEyebrow": "From the CEO",
+  "ceoQuote": "\"We would rather quote the whole job honestly than win it cheap and come back for the rest later. That has cost us work. It is still the best decision this company has made.\"",
+  "ceoBio": "Mohammed Jahangir Alam founded Rapid in 2009 after years on the tools across the Emirates. He still reviews the pricing on every major job and reads the customer feedback one morning a week.",
+  "ceoName": "Mohammed Jahangir Alam",
+  "ceoTitle": "Co-founder & Chief Executive Officer",
+  "ceoImageAlt": "Mohammed Jahangir Alam",
+  "howItWorksEyebrow": "How it works",
+  "howItWorksTitle": "Simple, Safe and Efficient Process to Get Your Electrical Work Done Right.",
+  "howItWorksSubtitle": "We follow a clear and professional process to ensure every project is handled smoothly, safely, and with the highest level of quality.",
+  "ourMission": "Our Mission",
+  "missionText": "We price the whole job before we start and judge every decision on whether the repair still holds in five years — not on what is quickest to close today.",
+  "ourVision": "Our Vision",
+  "visionText": "We want workmanship to be measurable. So we publish what we track — how often we return to a job, how fast we arrive, and how many jobs close on the first visit.",
+  "missionVisionImageAlt": "Two technicians working on a plant room installation",
+  "stats": {
+    "projectsCompleted": "Successfully completed projects",
+    "yearsExperience": "Years of industry experience",
+    "investmentValue": "Total project investment value",
+    "skilledProfessionals": "Skilled professionals & engineers"
+  },
+  "steps": {
+    "step1Title": "Request & Consultation",
+    "step1Body": "Tell us your requirements and schedule a consultation. We understand your needs and provide the best solution.",
+    "step2Title": "Inspection & Planning",
+    "step2Body": "Our experts inspect your site, identify issues, and create a clear plan to ensure safe and efficient electrical work.",
+    "step3Title": "Execution & Installation",
+    "step3Body": "We carry out the work using modern tools and techniques, ensuring precision, safety, and high-quality results.",
+    "step4Title": "Testing & Completion",
+    "step4Body": "After completion, we thoroughly test everything to ensure safety, performance & satisfaction."
+  }
+}

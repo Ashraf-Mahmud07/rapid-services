@@ -2,33 +2,7 @@
 
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
-
-const counters = [
-  {
-    value: 20,
-    suffix: "+",
-    label: "Successfully completed projects",
-    icon: "/icons/counter-projects.svg",
-  },
-  {
-    value: 17,
-    suffix: "+",
-    label: "Years of industry experience",
-    icon: "/icons/counter-experience.svg",
-  },
-  {
-    value: 10,
-    suffix: "M+",
-    label: "Total project investment value",
-    icon: "/icons/counter-investment.svg",
-  },
-  {
-    value: 120,
-    suffix: "+",
-    label: "Skilled professionals & engineers",
-    icon: "/icons/counter-professionals.svg",
-  },
-];
+import { COUNTERS } from "../data/home.data";
 
 const animationDuration = 1400;
 
@@ -62,7 +36,7 @@ export default function CounterSection() {
       aria-label="Company numbers"
     >
       <div className="container mx-auto grid gap-8 sm:grid-cols-2 xl:grid-cols-4 xl:gap-12">
-        {counters.map((counter) => (
+        {COUNTERS.map((counter) => (
           <div key={counter.label} className="flex items-center gap-4">
             <div className="relative flex size-[77.5px] shrink-0 items-center justify-center rounded-md bg-[rgba(45,212,191,0.16)]">
               <Image
