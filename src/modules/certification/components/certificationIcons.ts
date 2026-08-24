@@ -14,10 +14,7 @@ import type { CertificationIconName } from "../types/certification.types";
  * Figma-exported marks drawn with `currentColor`, so the card controls the colour:
  * `text-primary` on the tinted certificate tile, `text-white` on the solid approval tile.
  */
-export const CERTIFICATION_ICONS: Record<
-  CertificationIconName,
-  (props: SVGProps<SVGSVGElement>) => React.ReactElement
-> = {
+export const CERTIFICATION_ICONS: Record<CertificationIconName, any> = {
   shield: ShieldIcon,
   droplet: DropletIcon,
   "shield-check": ShieldCheckIcon,
