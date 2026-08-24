@@ -169,7 +169,7 @@ export default function Navbar({
         </div>
 
         {wideMenu && (
-          <div className="absolute top-full right-0 left-0 z-50 hidden justify-center px-[var(--gutter)] pt-4.5 xl:flex">
+          <div className="absolute top-full right-0 left-0 z-50 hidden justify-center px-[var(--gutter)] pt-[18px] xl:flex">
             <MegaMenu
               config={wideMenu}
               activeHref={menu ?? undefined}

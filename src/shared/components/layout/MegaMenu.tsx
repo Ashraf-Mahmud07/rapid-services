@@ -115,7 +115,7 @@ export default function MegaMenu({
   }
 
   return (
-    <div className={cn(PANEL, "w-[940px] max-w-full overflow-hidden")}>
+    <div className={cn(PANEL, "w-235 max-w-full")}>
       <div
         className={cn(
           "absolute -top-2 z-10 size-3.5 rotate-45 border-t border-l border-[#00A99D]/20 bg-[#E6F7F5]",
