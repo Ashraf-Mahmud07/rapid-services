@@ -4,7 +4,6 @@ import type { LucideIcon } from "lucide-react";
 
 import { Link } from "@/i18n/navigation";
 import type { MegaMenu as MegaMenuConfig, MegaMenuItem } from "@/shared/constants/navigation";
-import { ROUTES } from "@/shared/constants/routes";
 import { cn } from "@/shared/utils/cn";
 
 function ArrowRightSvg({ className }: { className?: string }) {
@@ -81,30 +80,27 @@ function CtaPill({
 const PANEL =
   "relative rounded-[16px] bg-white border border-gray-100/90 shadow-[0_20px_50px_rgba(0,0,0,0.12)] text-gray-900";
 
+const ARROW =
+  "absolute -top-2 z-10 size-3.5 rotate-45 border-t border-l border-gray-200/80 bg-white";
+
 export default function MegaMenu({
   config,
   activeHref,
   onNavigate,
+  arrowOffset,
 }: {
   config: MegaMenuConfig;
   activeHref?: string;
   onNavigate: () => void;
+
+  arrowOffset?: number;
 }) {
   const { layout, items } = config;
-
-  // Determine top pointer arrow position
-  const getPointerPosition = () => {
-    if (layout === "list") return "left-1/2 -translate-x-1/2";
-    if (activeHref === ROUTES.PROJECT) return "left-[28%]";
-    if (activeHref === ROUTES.SERVICE) return "left-[43%]";
-    if (activeHref === ROUTES.INDUSTRY) return "left-[56%]";
-    return "left-1/2 -translate-x-1/2";
-  };
 
   if (layout === "list") {
     return (
       <div className={cn(PANEL, "w-[364px] p-4")}>
-        <div className="absolute -top-2 left-1/2 z-10 size-3.5 -translate-x-1/2 rotate-45 border-t border-l border-gray-200/80 bg-white" />
+        <div className={cn(ARROW, "left-1/2 -translate-x-1/2")} />
         <div className="relative z-20 flex flex-col gap-1">
           {items.map((item) => (
             <Row key={item.title} item={item} arrow={false} onNavigate={onNavigate} />
@@ -115,52 +111,56 @@ export default function MegaMenu({
   }
 
   return (
-    <div className={cn(PANEL, "w-235 max-w-full")}>
+    <div className={cn(PANEL, "w-[940px] max-w-full")}>
       <div
-        className={cn(
-          "absolute -top-2 z-10 size-3.5 rotate-45 border-t border-l border-[#00A99D]/20 bg-[#E6F7F5]",
-          getPointerPosition()
-        )}
+        className={cn(ARROW, "-translate-x-1/2")}
+        style={{ left: `calc(50% + ${arrowOffset ?? 0}px)` }}
       />
 
-      {/* Top Header Strip with gradient background */}
-      <div className="relative z-20 flex h-[54px] items-center justify-between gap-6 rounded-t-[16px] border-b border-gray-100/80 bg-gradient-to-r from-[#E6F7F5] via-[#EAF9F7] to-white px-7">
-        <span className="text-[12px] font-bold tracking-[0.08em] text-[#00A99D] uppercase">
-          {"headerEyebrow" in config && config.headerEyebrow
-            ? config.headerEyebrow
-            : config.eyebrow}
-        </span>
-        <span className="text-[13px] font-normal text-gray-500">
-          {"headerNote" in config && config.headerNote
-            ? config.headerNote
-            : "note" in config
-              ? config.note
-              : "Six Key Divisions — One Proven Expertise"}
-        </span>
-      </div>
-
-      <div className="relative z-20 grid grid-cols-[1fr_auto_310px]">
-        {/* Left main content area */}
-        <div className="flex flex-col p-6">
-          <div className="grid grid-cols-2 gap-x-4 gap-y-2">
-            {items.map((item) => (
-              <Row key={item.title} item={item} arrow onNavigate={onNavigate} />
-            ))}
-          </div>
+      {/* overflow-hidden lives on this inner wrapper only, so it never
+          clips the arrow sitting on the outer panel above. */}
+      <div className="relative z-20 overflow-hidden rounded-[16px]">
+        {/* Top Header Strip with gradient background */}
+        <div className="flex h-[54px] items-center justify-between gap-6 border-b border-gray-100/80 bg-gradient-to-r from-[#E6F7F5] via-[#EAF9F7] to-white px-7">
+          <span className="text-[12px] font-bold tracking-[0.08em] text-[#00A99D] uppercase">
+            {"headerEyebrow" in config && config.headerEyebrow
+              ? config.headerEyebrow
+              : config.eyebrow}
+          </span>
+          <span className="text-[13px] font-normal text-gray-500">
+            {"headerNote" in config && config.headerNote
+              ? config.headerNote
+              : "note" in config
+                ? config.note
+                : "Six Key Divisions — One Proven Expertise"}
+          </span>
         </div>
 
-        {/* Divider */}
-        <div className="my-5 w-px bg-gray-100" />
+        <div className="grid grid-cols-[1fr_auto_310px]">
+          {/* Left main content area */}
+          <div className="flex flex-col p-6">
+            <div className="grid grid-cols-2 gap-x-4 gap-y-2">
+              {items.map((item) => (
+                <Row key={item.title} item={item} arrow onNavigate={onNavigate} />
+              ))}
+            </div>
+          </div>
 
-        {/* Right sidebar info box */}
-        <div className="flex flex-col justify-center p-7">
-          <p className="mb-2 text-[12px] font-bold tracking-[0.08em] text-[#00A99D] uppercase">
-            {config.eyebrow}
-          </p>
-          <h3 className="mb-3 text-[24px] leading-tight font-bold text-gray-900">{config.title}</h3>
-          <p className="mb-6 text-[13.5px] leading-relaxed text-gray-500">{config.blurb}</p>
-          <div>
-            <CtaPill {...config.cta} onNavigate={onNavigate} />
+          {/* Divider */}
+          <div className="my-5 w-px bg-gray-100" />
+
+          {/* Right sidebar info box */}
+          <div className="flex flex-col justify-center p-7">
+            <p className="mb-2 text-[12px] font-bold tracking-[0.08em] text-[#00A99D] uppercase">
+              {config.eyebrow}
+            </p>
+            <h3 className="mb-3 text-[24px] leading-tight font-bold text-gray-900">
+              {config.title}
+            </h3>
+            <p className="mb-6 text-[13.5px] leading-relaxed text-gray-500">{config.blurb}</p>
+            <div>
+              <CtaPill {...config.cta} onNavigate={onNavigate} />
+            </div>
           </div>
         </div>
       </div>

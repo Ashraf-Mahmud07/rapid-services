@@ -46,9 +46,13 @@ export default function Navbar({
   const [menu, setMenu] = React.useState<string | null>(null);
   const [searchOpen, setSearchOpen] = React.useState(false);
   const [mobileGroup, setMobileGroup] = React.useState<string | null>(null);
+  const [arrowOffset, setArrowOffset] = React.useState(0);
   const overlays = useOverlays();
   const pathname = usePathname();
   const isSolid = variant === "solid";
+
+  const linksWrapRef = React.useRef<HTMLDivElement>(null);
+  const linkBoxRefs = React.useRef<Record<string, HTMLDivElement | null>>({});
 
   React.useEffect(() => {
     const onKey = (event: KeyboardEvent) => {
@@ -78,6 +82,27 @@ export default function Navbar({
 
   const isActive = (href: string) =>
     href === ROUTES.HOME ? pathname === href : pathname === href || pathname.startsWith(`${href}/`);
+
+  // Measures the hovered/focused link's horizontal center *relative to the
+  // links row's own center* (not its left edge). The wide panel is centered
+  // on that same point via `left-1/2 -translate-x-1/2`, so its horizontal
+  // midpoint always equals the links row's center too — meaning this offset
+  // can be applied inside the panel as `calc(50% + offset)` and stay correct
+  // no matter how wide the panel is or where the viewport puts the row.
+  const activateMenu = (href: string, hasConfig: boolean) => {
+    setMenu(hasConfig ? href : null);
+    if (!hasConfig) return;
+
+    const linkBox = linkBoxRefs.current[href];
+    const wrap = linksWrapRef.current;
+    if (!linkBox || !wrap) return;
+
+    const linkRect = linkBox.getBoundingClientRect();
+    const wrapRect = wrap.getBoundingClientRect();
+    const wrapCenter = wrapRect.left + wrapRect.width / 2;
+    const linkCenter = linkRect.left + linkRect.width / 2;
+    setArrowOffset(linkCenter - wrapCenter);
+  };
 
   const openMenu = menu ? MEGA_MENUS[menu] : undefined;
   const wideMenu = openMenu && openMenu.layout !== "list" ? openMenu : undefined;
@@ -123,7 +148,11 @@ export default function Navbar({
           )}
         </Link>
 
-        <div className="hidden items-center gap-10 xl:flex">
+        {/* This wrapper is the shared positioning anchor for every dropdown:
+            its height matches the link text only (not the full navbar row),
+            so `top-full` gives the same tight gap for every menu type, and
+            it's also the reference box that arrowOffset is measured against. */}
+        <div ref={linksWrapRef} className="relative hidden items-center gap-10 xl:flex">
           {links.map((link) => {
             const config = MEGA_MENUS[link.href];
             const isOpen = menu === link.href;
@@ -131,14 +160,17 @@ export default function Navbar({
             return (
               <div
                 key={link.href}
+                ref={(el) => {
+                  linkBoxRefs.current[link.href] = el;
+                }}
                 className="relative"
-                onMouseEnter={() => setMenu(config ? link.href : null)}
+                onMouseEnter={() => activateMenu(link.href, !!config)}
               >
                 <Link
                   href={link.href}
                   aria-expanded={config ? isOpen : undefined}
                   aria-haspopup={config ? "menu" : undefined}
-                  onFocus={() => setMenu(config ? link.href : null)}
+                  onFocus={() => activateMenu(link.href, !!config)}
                   onClick={closeAll}
                   className={cn(
                     "block border-b-2 border-transparent pb-0.5 text-[15px] font-semibold tracking-[0.3px] whitespace-nowrap transition-colors",
@@ -166,17 +198,21 @@ export default function Navbar({
               </div>
             );
           })}
-        </div>
 
-        {wideMenu && (
-          <div className="absolute top-full right-0 left-0 z-50 hidden justify-center px-[var(--gutter)] pt-[18px] xl:flex">
-            <MegaMenu
-              config={wideMenu}
-              activeHref={menu ?? undefined}
-              onNavigate={() => setMenu(null)}
-            />
-          </div>
-        )}
+          {/* Wide (grid) menus are centered on the links row itself, and use
+              the same top-full + pt-[18px] anchor as the list menu above,
+              so the gap is identical for every menu type. */}
+          {wideMenu && (
+            <div className="absolute top-full left-1/2 z-50 hidden -translate-x-1/2 pt-[18px] xl:flex">
+              <MegaMenu
+                config={wideMenu}
+                activeHref={menu ?? undefined}
+                onNavigate={() => setMenu(null)}
+                arrowOffset={arrowOffset}
+              />
+            </div>
+          )}
+        </div>
 
         <div className="flex items-center gap-4 xl:gap-5">
           <button
