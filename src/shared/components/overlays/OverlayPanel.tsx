@@ -6,26 +6,28 @@ import type { ReactNode } from "react";
 
 import { cn } from "@/shared/utils/cn";
 
+export const NO_CALLOUT = "No callout fee. Fixed pricing before any work begins.";
+
 /**
  * The shell shared by Book an Appointment, Request a Quote and Request a Call.
- * All three are the same panel in the references — navy header with a collapse
- * affordance, white body, right-anchored on desktop — so only the width and the
- * fields differ.
+ * All three use the unified Figma design — teal header with close button,
+ * white body, right-anchored card on desktop.
  */
 export default function OverlayPanel({
   open,
   onOpenChange,
   title,
   description,
-  width = "narrow",
+  width = "figma",
+  headerClassName = "bg-primary px-7 py-6 flex justify-between items-center gap-4",
   children,
 }: {
   open: boolean;
   onOpenChange: (open: boolean) => void;
   title: string;
   description: string;
-  /** The quote panel is wider to fit its two-column row. */
-  width?: "narrow" | "wide";
+  width?: "narrow" | "wide" | "figma";
+  headerClassName?: string;
   children: ReactNode;
 }) {
   return (
@@ -35,26 +37,26 @@ export default function OverlayPanel({
         <DialogPrimitive.Content
           className={cn(
             // Full-height sheet on small screens, right-anchored card above it.
-            "fixed inset-x-0 bottom-0 z-100 max-h-[92dvh] animate-[modalIn_0.22s_ease] overflow-y-auto rounded-t-[16px] bg-white shadow-[0_28px_70px_rgba(10,17,40,0.32)] focus:outline-none",
-            "sm:inset-x-auto sm:top-[132px] sm:right-11 sm:bottom-auto sm:max-h-[calc(100dvh-176px)] sm:rounded-[14px]",
-            width === "wide" ? "sm:w-[525px]" : "sm:w-[440px]"
+            "fixed inset-x-0 bottom-0 z-100 max-h-[92dvh] animate-[modalIn_0.22s_ease] overflow-y-auto rounded-t-[20px] bg-white shadow-[0_28px_70px_rgba(10,17,40,0.32)] focus:outline-none",
+            "sm:inset-x-auto sm:top-[120px] sm:right-11 sm:bottom-auto sm:max-h-[calc(100dvh-150px)] sm:rounded-[20px]",
+            width === "wide" ? "sm:w-[525px]" : width === "narrow" ? "sm:w-[440px]" : "sm:w-[660px]"
           )}
         >
-          <div className="bg-[#141a2e] px-7 py-6">
-            <div className="flex items-start justify-between gap-4">
-              <DialogPrimitive.Title className="text-[25px] leading-tight font-bold tracking-[-0.01em] text-white">
+          <div className={cn("px-7 py-6", headerClassName)}>
+            <div className="flex flex-col items-start gap-1">
+              <DialogPrimitive.Title className="text-[26px] leading-tight font-medium tracking-[-0.624px] text-white">
                 {title}
               </DialogPrimitive.Title>
-              <DialogPrimitive.Close
-                aria-label="Close"
-                className="flex size-9 flex-none items-center justify-center rounded-full bg-white/10 text-white transition-colors hover:bg-white/20"
-              >
-                <ArrowRightToLine className="size-[18px]" strokeWidth={2} />
-              </DialogPrimitive.Close>
+              <DialogPrimitive.Description className="text-[14.5px] text-white/80">
+                {description}
+              </DialogPrimitive.Description>
             </div>
-            <DialogPrimitive.Description className="mt-2 text-[14.5px] text-white/60">
-              {description}
-            </DialogPrimitive.Description>
+            <DialogPrimitive.Close
+              aria-label="Close"
+              className="flex size-10 flex-none items-center justify-center rounded-full bg-white/15 text-white transition-colors hover:bg-white/25 focus:outline-none"
+            >
+              <ArrowRightToLine className="size-5" strokeWidth={2} />
+            </DialogPrimitive.Close>
           </div>
 
           <div className="px-7 py-7">{children}</div>
@@ -64,45 +66,35 @@ export default function OverlayPanel({
   );
 }
 
-/* ── Field primitives, shared by all three forms ──────────────────────── */
+/* ── Common Form Footer ────────────────────────────────────────────────── */
 
-export const FIELD =
-  "h-13 w-full rounded-[10px] border border-[#edeff1] bg-[#f7f8f9] px-4 text-[15px] text-[#17181a] outline-none transition-colors placeholder:text-[#9aa0a6] focus:border-primary";
-
-export const LABEL = "mb-2 block text-[14px] font-semibold text-[#2a2d30]";
-
-export function Field({
-  label,
-  error,
-  children,
+export function FormSubmitFooter({
+  pending,
+  label = "Submit request",
+  footnote = NO_CALLOUT,
 }: {
-  label: string;
-  error?: string;
-  children: ReactNode;
+  pending?: boolean;
+  label?: string;
+  footnote?: string;
 }) {
   return (
-    <div>
-      <label className={LABEL}>{label}</label>
-      {children}
-      {error && <p className="mt-1.5 text-[13px] text-destructive">{error}</p>}
+    <div className="mt-2">
+      <button
+        type="submit"
+        disabled={pending}
+        className="h-[55px] w-full rounded-full bg-primary text-[17px] font-semibold text-white shadow-sm transition-all hover:opacity-90 focus:ring-2 focus:ring-primary/50 focus:outline-none disabled:opacity-60"
+      >
+        {pending ? "Sending…" : label}
+      </button>
+      {footnote && <Footnote>{footnote}</Footnote>}
     </div>
   );
 }
 
-export function SubmitButton({ children, pending }: { children: ReactNode; pending?: boolean }) {
-  return (
-    <button
-      type="submit"
-      disabled={pending}
-      className="h-14 w-full rounded-full bg-primary text-[17px] font-semibold text-white transition-opacity hover:opacity-90 disabled:opacity-60"
-    >
-      {pending ? "Sending…" : children}
-    </button>
-  );
-}
+/* ── Feedback & Footnote primitives ───────────────────────────────────── */
 
 export function Footnote({ children }: { children: ReactNode }) {
-  return <p className="mt-4 text-center text-[13px] text-[#9aa0a6]">{children}</p>;
+  return <p className="mt-4 text-center text-[13px] text-[#8e959e]">{children}</p>;
 }
 
 export function Sent({ message }: { message: string }) {

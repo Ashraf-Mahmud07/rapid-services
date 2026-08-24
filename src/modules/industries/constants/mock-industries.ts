@@ -138,3 +138,56 @@ export const bookingSteps: BookingStep[] = [
     desc: "Photo report on completion and 90 days of cover on all workmanship.",
   },
 ];
+
+export const industryCards = [
+  {
+    title: "Healthcare",
+    description:
+      "We support hospitals, clinics, and medical groups with secure, reliable infrastructure that keeps patient care connected and compliant. We support hospitals, clinics, and medical groups with secure, reliable infrastructure that keeps patient care connected and compliant. We support hospitals, clinics, and medical groups with secure, reliable infrastructure that keeps patient care connected and compliant.",
+  },
+  {
+    title: "Education",
+    description:
+      "From K-12 to higher ed, we help schools modernize learning environments with scalable, secure solutions for classrooms and campuses. From K-12 to higher ed, we help schools modernize learning environments with scalable, secure solutions for classrooms and campuses.From K-12 to higher ed, we help schools modernize learning environments with scalable, secure solutions for classrooms and campuses.",
+  },
+  {
+    title: "Finance",
+    description:
+      "Banks, insurers, and fintechs rely on us for high-security infrastructure that protects transactions, data, and compliance.Banks, insurers, and fintechs rely on us for high-security infrastructure that protects transactions, data, and compliance. Banks, insurers, and fintechs rely on us for high-security infrastructure that protects transactions, data, and compliance.",
+  },
+  {
+    title: "Retail",
+    description:
+      "We power omnichannel retail with fast, reliable connectivity that keeps stores running smoothly and customers engaged.We power omnichannel retail with fast, reliable connectivity that keeps stores running smoothly and customers engaged.We power omnichannel retail with fast, reliable connectivity that keeps stores running smoothly and customers engaged.",
+  },
+  {
+    title: "Manufacturing",
+    description:
+      "We help manufacturers build resilient operations with IoT-ready networks that improve efficiency, safety, and supply chain visibility.We help manufacturers build resilient operations with IoT-ready networks that improve efficiency, safety, and supply chain visibility.We help manufacturers build resilient operations with IoT-ready networks that improve efficiency, safety, and supply chain visibility.",
+  },
+  {
+    title: "Technology",
+    description:
+      "Software, SaaS, and IT teams trust us to deliver scalable infrastructure that supports rapid development and global deployment.Software, SaaS, and IT teams trust us to deliver scalable infrastructure that supports rapid development and global deployment.Software, SaaS, and IT teams trust us to deliver scalable infrastructure that supports rapid development and global deployment.",
+  },
+  {
+    title: "Real Estate",
+    description:
+      "Property developers and managers use our solutions to build smart, connected buildings that attract tenants and reduce operational costs. Property developers and managers use our solutions to build smart, connected buildings that attract tenants and reduce operational costs.Property developers and managers use our solutions to build smart, connected buildings that attract tenants and reduce operational costs.",
+  },
+  {
+    title: "Logistics",
+    description:
+      "We help logistics and distribution teams streamline operations with reliable connectivity for warehouses, yards, and fleet management.We help logistics and distribution teams streamline operations with reliable connectivity for warehouses, yards, and fleet management.We help logistics and distribution teams streamline operations with reliable connectivity for warehouses, yards, and fleet management.",
+  },
+  {
+    title: "Energy",
+    description:
+      "Utilities and energy providers partner with us to secure grid operations, remote monitoring, and critical infrastructure.Utilities and energy providers partner with us to secure grid operations, remote monitoring, and critical infrastructure.Utilities and energy providers partner with us to secure grid operations, remote monitoring, and critical infrastructure.",
+  },
+  {
+    title: "Entertainment",
+    description:
+      "Venues, studios, and streaming services rely on us for low-latency connectivity that keeps experiences seamless and engaging.Venues, studios, and streaming services rely on us for low-latency connectivity that keeps experiences seamless and engaging.Venues, studios, and streaming services rely on us for low-latency connectivity that keeps experiences seamless and engaging.",
+  },
+];

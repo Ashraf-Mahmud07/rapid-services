@@ -7,6 +7,10 @@ import OverlayProvider from "../../shared/components/overlays/OverlayProvider";
 import StoreProvider from "../../store/StoreProvider";
 import "../globals.css";
 
+export function generateStaticParams() {
+  return routing.locales.map((locale) => ({ locale }));
+}
+
 export default async function LocaleLayout({
   children,
   params,

@@ -1,32 +1,26 @@
 "use client";
 
-import { ArrowRight } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
 import { Link } from "@/i18n/navigation";
 import type { MegaMenu as MegaMenuConfig, MegaMenuItem } from "@/shared/constants/navigation";
+import { ROUTES } from "@/shared/constants/routes";
 import { cn } from "@/shared/utils/cn";
 
-type IconStyle = "solid" | "tint";
-type IconShape = "circle" | "square";
-
-function MenuIcon({
-  icon: Icon,
-  style,
-  shape,
-}: {
-  icon: LucideIcon;
-  style: IconStyle;
-  shape: IconShape;
-}) {
+function ArrowRightSvg({ className }: { className?: string }) {
   return (
-    <span
-      className={cn(
-        "flex size-11 flex-none items-center justify-center",
-        shape === "circle" ? "rounded-full" : "rounded-[10px]",
-        style === "solid" ? "bg-primary text-white" : "bg-primary/15 text-primary"
-      )}
-    >
+    <svg width="12" height="6" viewBox="0 0 12 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path
+        d="M-0.000488281 2.22461H9.87744L8.85645 1.22852V0L11.5127 2.75586V2.78906L8.85645 5.54492V4.31641L9.86084 3.33691H-0.000488281V2.22461Z"
+        fill="#00A79D"
+      />
+    </svg>
+  );
+}
+
+function MenuIcon({ icon: Icon }: { icon: LucideIcon }) {
+  return (
+    <span className="flex size-11 flex-none items-center justify-center rounded-[12px] bg-[#E6F7F5] text-[#00A99D] transition-transform group-hover/row:scale-105">
       <Icon className="size-5" strokeWidth={1.8} />
     </span>
   );
@@ -34,14 +28,10 @@ function MenuIcon({
 
 function Row({
   item,
-  style,
-  shape,
-  arrow,
+  arrow = true,
   onNavigate,
 }: {
   item: MegaMenuItem;
-  style: IconStyle;
-  shape: IconShape;
   arrow?: boolean;
   onNavigate: () => void;
 }) {
@@ -49,19 +39,19 @@ function Row({
     <Link
       href={item.href}
       onClick={onNavigate}
-      className="group/row flex items-center gap-3 rounded-[10px] p-2.5 transition-colors hover:bg-white/5"
+      className="group/row flex items-center gap-3.5 rounded-[12px] p-2.5 transition-all hover:bg-gray-50/80"
     >
-      <MenuIcon icon={item.icon} style={style} shape={shape} />
+      <MenuIcon icon={item.icon} />
       <span className="min-w-0 flex-1">
-        <span className="block text-[16px] leading-tight font-semibold text-white">
+        <span className="block text-[15px] leading-tight font-semibold text-gray-900 transition-colors group-hover/row:text-[#00A99D]">
           {item.title}
         </span>
-        <span className="mt-0.5 block text-[13px] leading-[1.35] whitespace-nowrap text-white/55">
+        <span className="mt-0.5 block truncate text-[13px] leading-tight whitespace-nowrap text-gray-500">
           {item.subtitle}
         </span>
       </span>
       {arrow && (
-        <ArrowRight className="size-4 flex-none text-primary opacity-70 transition-transform group-hover/row:translate-x-0.5" />
+        <ArrowRightSvg className="text-[#00A99D] opacity-70 transition-all group-hover/row:translate-x-1 group-hover/row:opacity-100" />
       )}
     </Link>
   );
@@ -80,123 +70,99 @@ function CtaPill({
     <Link
       href={href}
       onClick={onNavigate}
-      className="inline-flex h-11 items-center gap-2 rounded-full bg-primary px-6 text-[15px] font-semibold whitespace-nowrap text-white transition-opacity hover:opacity-90"
+      className="inline-flex h-11 items-center justify-center gap-2 rounded-full bg-[#00A99D] px-6 text-[14px] font-semibold text-white shadow-xs transition-all hover:bg-[#008f84] hover:shadow-md"
     >
       {label}
-      <ArrowRight className="size-4" />
+      <ArrowRightSvg />
     </Link>
   );
 }
 
-const PANEL = "rounded-b-[14px] bg-[#0f1320] shadow-[0_24px_60px_rgba(0,0,0,0.45)]";
-const STRIP = "bg-[#0b1622]";
-const EYEBROW = "text-[11.5px] font-semibold tracking-[0.16em] text-primary uppercase";
-const HAIRLINE = "border-white/8";
+const PANEL =
+  "relative rounded-[16px] bg-white border border-gray-100/90 shadow-[0_20px_50px_rgba(0,0,0,0.12)] text-gray-900";
 
 export default function MegaMenu({
   config,
+  activeHref,
   onNavigate,
 }: {
   config: MegaMenuConfig;
+  activeHref?: string;
   onNavigate: () => void;
 }) {
-  const { layout, iconStyle, iconShape, items } = config;
+  const { layout, items } = config;
+
+  // Determine top pointer arrow position
+  const getPointerPosition = () => {
+    if (layout === "list") return "left-1/2 -translate-x-1/2";
+    if (activeHref === ROUTES.PROJECT) return "left-[28%]";
+    if (activeHref === ROUTES.SERVICE) return "left-[43%]";
+    if (activeHref === ROUTES.INDUSTRY) return "left-[56%]";
+    return "left-1/2 -translate-x-1/2";
+  };
 
   if (layout === "list") {
     return (
-      <div className={cn(PANEL, "w-[314px] p-2")}>
-        <div className="flex flex-col gap-1">
+      <div className={cn(PANEL, "w-[364px] p-4")}>
+        <div className="absolute -top-2 left-1/2 z-10 size-3.5 -translate-x-1/2 rotate-45 border-t border-l border-gray-200/80 bg-white" />
+        <div className="relative z-20 flex flex-col gap-1">
           {items.map((item) => (
-            <Row
-              key={item.title}
-              item={item}
-              style={iconStyle}
-              shape={iconShape}
-              onNavigate={onNavigate}
-            />
+            <Row key={item.title} item={item} arrow={false} onNavigate={onNavigate} />
           ))}
         </div>
       </div>
     );
   }
 
-  if (layout === "split") {
-    return (
+  return (
+    <div className={cn(PANEL, "w-[940px] max-w-full overflow-hidden")}>
       <div
         className={cn(
-          PANEL,
-          "grid w-[1034px] max-w-full grid-cols-[284px_minmax(0,1fr)] overflow-hidden"
+          "absolute -top-2 z-10 size-3.5 rotate-45 border-t border-l border-[#00A99D]/20 bg-[#E6F7F5]",
+          getPointerPosition()
         )}
-      >
-        <div className="flex flex-col justify-center gap-4 bg-[#0b1622] p-7">
-          <p className={EYEBROW}>{config.eyebrow}</p>
-          <h3 className="text-[27px] leading-[1.15] font-semibold tracking-[-0.02em] text-white">
-            {config.title}
-          </h3>
-          <p className="text-[14.5px] leading-[1.6] text-white/55">{config.blurb}</p>
-          <div className="mt-1">
-            <CtaPill {...config.cta} onNavigate={onNavigate} />
+      />
+
+      {/* Top Header Strip with gradient background */}
+      <div className="relative z-20 flex h-[54px] items-center justify-between gap-6 rounded-t-[16px] border-b border-gray-100/80 bg-gradient-to-r from-[#E6F7F5] via-[#EAF9F7] to-white px-7">
+        <span className="text-[12px] font-bold tracking-[0.08em] text-[#00A99D] uppercase">
+          {"headerEyebrow" in config && config.headerEyebrow
+            ? config.headerEyebrow
+            : config.eyebrow}
+        </span>
+        <span className="text-[13px] font-normal text-gray-500">
+          {"headerNote" in config && config.headerNote
+            ? config.headerNote
+            : "note" in config
+              ? config.note
+              : "Six Key Divisions — One Proven Expertise"}
+        </span>
+      </div>
+
+      <div className="relative z-20 grid grid-cols-[1fr_auto_310px]">
+        {/* Left main content area */}
+        <div className="flex flex-col p-6">
+          <div className="grid grid-cols-2 gap-x-4 gap-y-2">
+            {items.map((item) => (
+              <Row key={item.title} item={item} arrow onNavigate={onNavigate} />
+            ))}
           </div>
         </div>
 
-        <div className="grid grid-cols-2 gap-x-4 p-4">
-          {items.map((item, index) => (
-            <div
-              key={item.title}
-              className={cn("border-b", HAIRLINE, index >= items.length - 2 && "border-b-0")}
-            >
-              <Row item={item} style={iconStyle} shape={iconShape} arrow onNavigate={onNavigate} />
-            </div>
-          ))}
-        </div>
-      </div>
-    );
-  }
+        {/* Divider */}
+        <div className="my-5 w-px bg-gray-100" />
 
-  // "cards" and "grid" share the strip-header / body / strip-footer frame.
-  return (
-    <div className={cn(PANEL, "w-[892px] max-w-full overflow-hidden")}>
-      <div
-        className={cn(
-          STRIP,
-          "flex items-center justify-between gap-6 border-b px-7 py-4",
-          HAIRLINE
-        )}
-      >
-        <p className={EYEBROW}>{config.eyebrow}</p>
-        <p className="text-[14px] text-white/55">{config.note}</p>
-      </div>
-
-      {layout === "cards" ? (
-        <div className="grid grid-cols-3 gap-3.5 p-5">
-          {items.map((item) => (
-            <div key={item.title} className={cn("rounded-xl border", HAIRLINE)}>
-              <Row item={item} style={iconStyle} shape={iconShape} onNavigate={onNavigate} />
-            </div>
-          ))}
+        {/* Right sidebar info box */}
+        <div className="flex flex-col justify-center p-7">
+          <p className="mb-2 text-[12px] font-bold tracking-[0.08em] text-[#00A99D] uppercase">
+            {config.eyebrow}
+          </p>
+          <h3 className="mb-3 text-[24px] leading-tight font-bold text-gray-900">{config.title}</h3>
+          <p className="mb-6 text-[13.5px] leading-relaxed text-gray-500">{config.blurb}</p>
+          <div>
+            <CtaPill {...config.cta} onNavigate={onNavigate} />
+          </div>
         </div>
-      ) : (
-        <div className="grid grid-cols-2 gap-x-5 px-5 py-2">
-          {items.map((item, index) => (
-            <div
-              key={item.title}
-              className={cn("border-b", HAIRLINE, index >= items.length - 2 && "border-b-0")}
-            >
-              <Row item={item} style={iconStyle} shape={iconShape} arrow onNavigate={onNavigate} />
-            </div>
-          ))}
-        </div>
-      )}
-
-      <div
-        className={cn(
-          STRIP,
-          "flex items-center justify-between gap-6 border-t px-7 py-4",
-          HAIRLINE
-        )}
-      >
-        <p className="text-[14px] text-white/55">{config.footnote}</p>
-        <CtaPill {...config.cta} onNavigate={onNavigate} />
       </div>
     </div>
   );

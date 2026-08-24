@@ -50,11 +50,11 @@ export default function HeroSection({
         )}
       </div>
 
-      <div className="relative z-10 flex flex-1 flex-col items-center justify-center px-4 pt-16 pb-24 text-center text-white sm:pt-20 sm:pb-32 md:pt-28 md:pb-40">
-        <h1 className="mb-5 text-3xl font-bold tracking-tight drop-shadow-sm md:text-4xl lg:text-5xl">
+      <div className="relative z-10 flex flex-1 flex-col items-center justify-center px-4 py-16 text-center text-white sm:py-24 md:py-28">
+        <h1 className="mb-4 text-2xl font-bold tracking-tight drop-shadow-sm md:text-3xl lg:text-4xl">
           {current.title}
         </h1>
-        <p className="mx-auto max-w-2xl text-base leading-relaxed font-medium text-white/90 drop-shadow-sm md:text-lg">
+        <p className="mx-auto max-w-4xl text-[15px] leading-relaxed font-medium text-white/90 drop-shadow-sm md:text-base">
           {current.subtitle}
         </p>
       </div>

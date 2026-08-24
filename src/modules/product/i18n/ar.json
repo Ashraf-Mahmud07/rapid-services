@@ -35,5 +35,10 @@
   "verified": "مُوثّق",
   "defaultReviewText": "منتج عالي الجودة، ينصح به بشدة!",
   "loadMore": "تحميل المزيد",
-  "basedOnVerifiedReviews": "بناءً على {count} مراجعة موثقة"
+  "basedOnVerifiedReviews": "بناءً على {count} مراجعة موثقة",
+  "shareNow": "شارك الآن",
+  "shareLinkVia": "شارك هذا الرابط عبر",
+  "orCopyLink": "أو انسخ الرابط",
+  "copy": "نسخ",
+  "copied": "تم النسخ!"
 }

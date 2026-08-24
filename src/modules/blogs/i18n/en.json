@@ -1,10 +1,13 @@
 {
-  "heroTitle": "Our articles and news",
+  "heroTitle": "Blogs",
   "heroSubtitle": "Explore our latest articles, industry insights, product updates, and company news. Stay informed with valuable resources, expert knowledge, and the latest developments from our team.",
   "blogList": "Blog List",
   "featured": "FEATURED",
   "back": "Back",
   "share": "Share",
   "shareSuccess": "Link copied to clipboard!",
-  "readTime": "{time} min read"
+  "readTime": "{time} min read",
+  "ctaTitle": "Boost Your Construction Project Efficiency with Our Solutions",
+  "ctaSubtitle": "With our innovative solutions and dedicated expertise, success is a guaranteed outcome. Let's accelerate together towards your goals and beyond.",
+  "ctaButton": "Let's Build Your Project"
 }

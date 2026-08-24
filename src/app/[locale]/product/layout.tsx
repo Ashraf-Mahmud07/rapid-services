@@ -9,7 +9,7 @@ export default function ProductLayout({
   return (
     <main>
       <Navbar variant="solid" />
-      <div className="section-background">
+      <div className="bg-white">
         {children}
         <div className="container-page">
           <FaqSection />

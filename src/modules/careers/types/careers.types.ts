@@ -13,13 +13,13 @@ export interface Job {
   department: JobDepartment;
   location: string;
   employmentType: string;
-  salaryLow: string;
-  salaryHigh: string;
-  salaryNote: string;
-  isNew: boolean;
   about: string[];
   responsibilities: string[];
   requirements: string[];
-  closingNote: string;
-  meta: JobMetaRow[];
+  closingNote?: string;
+  salaryLow?: string;
+  salaryHigh?: string;
+  salaryNote?: string;
+  isNew?: boolean;
+  meta?: JobMetaRow[];
 }

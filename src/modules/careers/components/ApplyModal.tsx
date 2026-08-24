@@ -1,33 +1,25 @@
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
+import { Dialog as DialogPrimitive } from "radix-ui";
 import { useState } from "react";
 import { useForm, useWatch } from "react-hook-form";
 
-import { Button } from "@/shared/components/ui/Button";
-import {
-  Dialog,
-  DialogClose,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-} from "@/shared/components/ui/Dialog";
 import { Input } from "@/shared/components/ui/Input";
-import { Label } from "@/shared/components/ui/Label";
 import { Textarea } from "@/shared/components/ui/Textarea";
+import { CloseIcon } from "../icons/CloseIcon";
+import { UploadIcon } from "../icons/UploadIcon";
+import type { Job } from "../types/careers.types";
 import { jobApplicationSchema, type JobApplicationFormData } from "../validation/careers.schema";
-
-const FIELD_CLASSNAME =
-  "h-auto rounded-lg border-[#E4E6E8] px-3.5 py-[13px] text-[15px] text-[#333] md:text-[15px]";
-const LABEL_CLASSNAME = "mb-2 block text-[13px] font-medium text-[#3a3d40]";
+import ApplicationSubmitted from "./ApplicationSubmitted";
 
 interface ApplyModalProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;
+  job?: Job;
 }
 
-export default function ApplyModal({ open, onOpenChange }: ApplyModalProps) {
+export default function ApplyModal({ open, onOpenChange, job }: ApplyModalProps) {
   const [submitted, setSubmitted] = useState(false);
 
   const {
@@ -69,178 +61,118 @@ export default function ApplyModal({ open, onOpenChange }: ApplyModalProps) {
   }
 
   return (
-    <Dialog open={open} onOpenChange={onOpenChangeInternal}>
-      <DialogContent
-        showCloseButton={false}
-        className="px-5 pt-6 pb-6 font-poppins sm:px-8 sm:pt-8 lg:px-10 lg:pt-[38px] lg:pb-[34px]"
-      >
-        <DialogHeader>
-          <div>
-            <DialogTitle className="mb-2 text-xl font-bold text-[#17181a] lg:text-2xl">
-              Apply for this role
-            </DialogTitle>
-            <DialogDescription className="text-[13px] text-[#8b9096] lg:text-sm">
-              No cover letter needed. Six fields, then a real human reads it.
-            </DialogDescription>
-          </div>
-          <DialogClose
-            aria-label="Close"
-            className="flex size-9 flex-none cursor-pointer items-center justify-center rounded-full bg-[#f2f3f4] transition-colors hover:bg-[#e7e9eb]"
-          >
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-              <path
-                d="M6 6l12 12M18 6L6 18"
-                stroke="#3a3d40"
-                strokeWidth="2"
-                strokeLinecap="round"
-              />
-            </svg>
-          </DialogClose>
-        </DialogHeader>
+    <DialogPrimitive.Root open={open} onOpenChange={onOpenChangeInternal}>
+      <DialogPrimitive.Portal>
+        {/* Dark Backdrop Overlay */}
+        <DialogPrimitive.Overlay className="fixed inset-0 z-100 animate-[fadeIn_0.2s_ease] bg-black/50 backdrop-blur-xs" />
 
-        {submitted ? (
-          <div className="flex flex-col items-center px-0 pt-8 pb-6 text-center sm:px-5 lg:pt-11 lg:pb-10">
-            <div className="flex size-[74px] animate-[pop_0.4s_ease] items-center justify-center rounded-full bg-[#22B14C]">
-              <svg width="34" height="34" viewBox="0 0 24 24" fill="none">
-                <path
-                  d="M20 6L9 17l-5-5"
-                  stroke="#fff"
-                  strokeWidth="2.8"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-            </div>
-            <p className="mt-[22px] text-[13px] font-semibold tracking-[2px] text-primary">
-              CONFIRMED
-            </p>
-            <h3 className="mt-4 text-[24px] font-semibold text-[#17181a] lg:text-[30px]">
-              Application received
-            </h3>
-            <p className="mt-4 max-w-[430px] text-sm leading-[1.6] text-[#7c8288] lg:text-[15px]">
-              Rapid team reviews every application within five business days — you&apos;ll hear from
-              us either way.
-            </p>
-          </div>
-        ) : (
-          <form
-            onSubmit={handleSubmit(onSubmit)}
-            className="mt-6 flex flex-col gap-5 lg:mt-[30px] lg:gap-[22px]"
-          >
-            <div className="grid gap-4 sm:grid-cols-2 lg:gap-5">
-              <div>
-                <Label htmlFor="firstName" className={LABEL_CLASSNAME}>
-                  First name
-                </Label>
-                <Input
-                  id="firstName"
-                  placeholder="Ethan"
-                  className={FIELD_CLASSNAME}
-                  error={errors.firstName?.message}
-                  {...register("firstName")}
-                />
-              </div>
-              <div>
-                <Label htmlFor="lastName" className={LABEL_CLASSNAME}>
-                  Last name
-                </Label>
-                <Input
-                  id="lastName"
-                  placeholder="Brooks"
-                  className={FIELD_CLASSNAME}
-                  error={errors.lastName?.message}
-                  {...register("lastName")}
-                />
+        {/* Modal Window Container */}
+        <DialogPrimitive.Content className="fixed top-1/2 left-1/2 z-100 w-[802px] max-w-[calc(100%-32px)] -translate-x-1/2 -translate-y-1/2 animate-[modalIn_0.25s_ease] overflow-hidden rounded-[20px] border border-gray-100 bg-white font-poppins shadow-2xl outline-none">
+          {/* Top Header Strip with soft cyan gradient */}
+          <div className="relative flex items-center justify-between border-b border-gray-100/80 bg-gradient-to-r from-[#E6F7F5] via-[#EAF9F7] to-[#E6F7F5] px-7 py-6">
+            <div>
+              <h2 className="text-[19px] leading-tight font-semibold text-[#111827] sm:text-[20px]">
+                {job?.title ?? "Senior Frontend Engineer, Storefront"}
+              </h2>
+              <div className="mt-1 flex flex-wrap items-center gap-2 text-[13.5px] text-[#6B7280]">
+                <span>{job?.department ?? "Engineering"}</span>
+                <span className="text-gray-300">|</span>
+                <span>{job?.location ?? "San Francisco or Remote (US)"}</span>
+                <span className="text-gray-300">|</span>
+                <span>{job?.employmentType ?? "Full-time"}</span>
               </div>
             </div>
 
-            <div className="grid gap-4 sm:grid-cols-2 lg:gap-5">
-              <div>
-                <Label htmlFor="email" className={LABEL_CLASSNAME}>
-                  Email
-                </Label>
+            {/* Circular Close Button */}
+            <DialogPrimitive.Close
+              aria-label="Close"
+              className="flex size-9 flex-none cursor-pointer items-center justify-center rounded-full bg-white text-gray-500 shadow-xs transition-colors outline-none hover:bg-gray-100"
+            >
+              <CloseIcon className="size-4 text-gray-600" />
+            </DialogPrimitive.Close>
+          </div>
+
+          {/* Modal Body */}
+          <div className="p-7 sm:p-8">
+            {submitted ? (
+              <ApplicationSubmitted />
+            ) : (
+              <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4.5">
+                {/* Row 1: First name & Last name */}
+                <div className="grid gap-4.5 sm:grid-cols-2">
+                  <Input
+                    label="First name"
+                    error={errors.firstName?.message}
+                    {...register("firstName")}
+                  />
+                  <Input
+                    label="Last name"
+                    error={errors.lastName?.message}
+                    {...register("lastName")}
+                  />
+                </div>
+
+                {/* Row 2: Email address */}
                 <Input
-                  id="email"
+                  label="Email address"
                   type="email"
-                  placeholder="you@example.com"
-                  className={FIELD_CLASSNAME}
                   error={errors.email?.message}
                   {...register("email")}
                 />
-              </div>
-              <div>
-                <Label htmlFor="portfolio" className={LABEL_CLASSNAME}>
-                  Portfolio or GitHub
-                </Label>
+
+                {/* Row 3: Portfolio link */}
                 <Input
-                  id="portfolio"
-                  placeholder="github.com/you"
-                  className={FIELD_CLASSNAME}
+                  label="Portfolio link"
                   error={errors.portfolio?.message}
                   {...register("portfolio")}
                 />
-              </div>
-            </div>
 
-            <div>
-              <Label htmlFor="resume" className={LABEL_CLASSNAME}>
-                Resume
-              </Label>
-              <label
-                htmlFor="resume"
-                className="flex cursor-pointer items-center justify-center gap-2.5 rounded-lg border border-[#E4E6E8] bg-[#fafbfb] p-[18px] text-sm text-[#6b7075] transition-colors hover:bg-[#f4f6f6]"
-              >
-                <svg
-                  width="16"
-                  height="16"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="#6b7075"
-                  strokeWidth="1.8"
-                >
-                  <path d="M12 15V4M8 8l4-4 4 4" strokeLinecap="round" strokeLinejoin="round" />
-                  <path d="M4 16v3a1 1 0 001 1h14a1 1 0 001-1v-3" />
-                </svg>
-                {resumeName || "Drop a PDF or click to upload"}
-              </label>
-              <input
-                id="resume"
-                type="file"
-                accept="application/pdf"
-                className="sr-only"
-                onChange={onFileChange}
-              />
-              {errors.resume && (
-                <p className="mt-1 text-xs text-destructive">{errors.resume.message}</p>
-              )}
-            </div>
+                {/* Row 4: Upload Resume */}
+                <div>
+                  <label
+                    htmlFor="resume-upload"
+                    className="flex h-[56px] w-full cursor-pointer items-center justify-center gap-2.5 rounded-[24px] border border-dashed border-gray-300 bg-[#F8F9FA] px-5 text-[15px] font-medium text-gray-500 transition-colors hover:bg-[#F3F4F6]"
+                  >
+                    <UploadIcon className="size-4 text-gray-500" />
+                    <span>{resumeName || "Upload Resume"}</span>
+                  </label>
+                  <input
+                    id="resume-upload"
+                    type="file"
+                    accept="application/pdf"
+                    className="sr-only"
+                    onChange={onFileChange}
+                  />
+                  {errors.resume && (
+                    <p className="mt-1 pl-3 text-xs text-red-500">{errors.resume.message}</p>
+                  )}
+                </div>
 
-            <div>
-              <Label htmlFor="motivation" className={LABEL_CLASSNAME}>
-                Why this role? (optional)
-              </Label>
-              <Textarea
-                id="motivation"
-                placeholder="A few sentences is plenty."
-                className="field-sizing-fixed min-h-24 resize-y rounded-lg border-[#E4E6E8] px-3.5 py-[13px] text-[15px] text-[#333] md:text-[15px]"
-                error={errors.motivation?.message}
-                {...register("motivation")}
-              />
-            </div>
+                {/* Row 5: Cover Letter */}
+                <Textarea
+                  label="Cover Letter"
+                  error={errors.motivation?.message}
+                  {...register("motivation")}
+                />
 
-            <Button
-              type="submit"
-              isLoading={isSubmitting}
-              className="h-auto w-full rounded-full p-4 text-base font-semibold"
-            >
-              Submit application
-            </Button>
-            <p className="text-center text-[13px] text-[#9aa0a5]">
-              We keep your application on file for 12 months unless you ask us not to.
-            </p>
-          </form>
-        )}
-      </DialogContent>
-    </Dialog>
+                {/* Row 6 & 7: Submit button & Footnote */}
+                <div className="mt-2">
+                  <button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="h-[54px] w-full cursor-pointer rounded-full bg-[#00A99D] text-[16px] font-semibold text-white shadow-xs transition-all hover:bg-[#008f84] hover:shadow-md disabled:opacity-60"
+                  >
+                    {isSubmitting ? "Submitting..." : "Submit application"}
+                  </button>
+                  <p className="mt-3 text-center text-[13px] text-gray-400">
+                    We keep your application on file for 12 months unless you ask us not to.
+                  </p>
+                </div>
+              </form>
+            )}
+          </div>
+        </DialogPrimitive.Content>
+      </DialogPrimitive.Portal>
+    </DialogPrimitive.Root>
   );
 }

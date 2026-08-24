@@ -1,28 +1,32 @@
 import { Blog } from "../types/blogs.types";
+import blog1Image from "@/modules/blogs/assets/1.jpg";
+import blog2Image from "@/modules/blogs/assets/2.jpg";
+import blog3Image from "@/modules/blogs/assets/3.jpg";
+import blog4Image from "@/modules/blogs/assets/4.jpg";
 import project1Image from "@/shared/assets/png/projects1.jpg";
 import blogImage from "@/shared/assets/png/blog.jpg";
 
 export const featuredBlogs: Blog[] = [
   {
     id: "f1",
-    category: "Plumbing",
-    date: "Jul 28, 2026",
+    category: "Inspection",
+    date: "Aug 17, 2026",
     readTime: "4 min",
-    title: "The five leaks worth fixing before winter",
+    title: "Ensuring Quality with Comprehensive Inspection Services",
     description:
-      "Most water damage we see started as a drip somebody stopped noticing. Here is what to check before the first freeze, and which of them you can handle yourself.",
-    image: project1Image,
+      "Inspection services are crucial for maintaining safety, quality, and compliance across industries. From vendor checks to factory audits, thorough inspections help identify risks early.",
+    image: blog1Image,
     isFeatured: true,
   },
   {
     id: "f2",
-    category: "Waterproofing",
-    date: "Jul 21, 2026",
+    category: "Force & Torque",
+    date: "Aug 12, 2026",
     readTime: "6 min",
-    title: "Why membranes fail early, and how to spot it",
+    title: "Precision Matters: Force Torque Testing Solutions",
     description:
-      "Most premature failures trace back to surface prep rather than the product. Here is what a proper substrate looks like before anything gets laid down.",
-    image: blogImage,
+      "Force and torque measurement is vital for industrial efficiency and safety. Our services include calibration of torque wrenches, gauges, and other precision equipment.",
+    image: blog2Image,
     isFeatured: true,
   },
 ];
@@ -30,22 +34,23 @@ export const featuredBlogs: Blog[] = [
 export const listBlogs: Blog[] = [
   {
     id: "l1",
-    category: "Electrical",
-    date: "Jul 14, 2026",
+    category: "Process Control Instrumentation",
+    date: "Aug 7, 2026",
     readTime: "6 min",
-    title: "What a socket that feels warm is telling you",
-    description: "Heat at the faceplate is rarely the socket itself. A short guide to what sits.",
-    image: project1Image,
+    title: "Advanced Process Control Instrumentation for Industrial Efficiency",
+    description:
+      "Process control instrumentation monitors and regulates critical processes accurately. Pressure, temperature, flow, and level transmitters help maintain operational stability. Safety devices...",
+    image: blog3Image,
   },
   {
     id: "l2",
-    category: "Heating & Cooling",
-    date: "Jul 07, 2026",
+    category: "Electrical & Electronics",
+    date: "Aug 2, 2026",
     readTime: "4 min",
-    title: "Sizing a split unit for a Dubai summer",
+    title: "Electrical & Electronics Testing for Reliable Operations",
     description:
-      "Undersized units run constantly and still lose. A short guide to matching capacity to the room rather than the price list.",
-    image: blogImage,
+      "Accurate testing of electrical and electronic systems prevents failures and ensures safety. Digital & analogue multimeters, high-voltage testers, and power supplies are calibrated to meet...",
+    image: blog4Image,
   },
   {
     id: "l3",

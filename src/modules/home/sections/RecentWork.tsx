@@ -1,57 +1,69 @@
 import Image from "next/image";
-import { RECENT_WORKS } from "../data/home.data";
+
+import { Link } from "@/i18n/navigation";
+import { recentProjectsData } from "../data/recentProjects.data";
 
 export default function RecentWork() {
   return (
-    <section className="section-space overflow-hidden bg-[#0a0e1c] py-[72px]">
-      <div className="container mx-auto">
-        <div className="grid gap-10 lg:grid-cols-[320px_minmax(0,1fr)] lg:items-start">
-          <div className="max-w-[320px]">
-            <h2 className="text-[34px] leading-[38px] font-semibold tracking-[-1.02px] text-white">
-              Our <span className="text-primary">Recent Work</span>
-            </h2>
-            <p className="mt-4 text-[16px] leading-[24.65px] text-[rgba(255,255,255,0.56)]">
-              We take pride in offering you the best services available, backed by full
-              documentation on every job.
-            </p>
-            <a
-              href="#"
-              className="mt-6 inline-flex rounded-full bg-primary px-[24px] py-[12px] text-[15px] font-semibold text-white transition-opacity hover:opacity-90"
-            >
-              View More
-            </a>
-            <div className="mt-8 flex items-center gap-2">
-              <span className="h-[6px] w-[38px] rounded-full bg-primary" />
-              <span className="h-[6px] w-[18px] rounded-full bg-white/20" />
-              <span className="h-[6px] w-[18px] rounded-full bg-white/20" />
+    <section className="bg-[#E5FBFB] py-14 sm:py-16 lg:py-20">
+      <div className="container-page">
+        {/* Header Row */}
+        <div className="flex flex-col gap-6 sm:gap-8 md:flex-row md:items-end md:justify-between">
+          <div className="max-w-[560px]">
+            <div className="inline-flex rounded-md bg-[#C6F8F3] px-3.5 py-1.5">
+              <span className="text-[13px] font-semibold text-[#00A79D]">
+                {recentProjectsData.eyebrow}
+              </span>
             </div>
+
+            <h2 className="mt-3 text-[32px] font-bold tracking-tight text-[#0E1A2B] sm:text-[38px] lg:text-[42px]">
+              {recentProjectsData.title}
+            </h2>
+
+            <p className="mt-2.5 text-[15px] leading-[1.65] text-[#556980]">
+              {recentProjectsData.subtitle}
+            </p>
           </div>
 
-          <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
-            {RECENT_WORKS.map((work) => (
-              <article
-                key={work.title}
-                className="group relative h-[320px] overflow-hidden rounded-[12px] bg-[#1a1a1a]"
-              >
+          <div className="shrink-0">
+            <Link
+              href={recentProjectsData.cta.href}
+              className="inline-flex h-11 items-center justify-center rounded-full bg-primary px-7 text-[15px] font-semibold text-white transition-all hover:bg-primary/90 hover:shadow-lg active:scale-[0.98]"
+            >
+              {recentProjectsData.cta.label}
+            </Link>
+          </div>
+        </div>
+
+        {/* 3 Cards Grid */}
+        <div className="mt-10 grid grid-cols-1 gap-6 sm:mt-12 md:grid-cols-2 lg:grid-cols-3 lg:gap-7">
+          {recentProjectsData.items.map((item) => (
+            <article
+              key={item.id}
+              className="group flex flex-col overflow-hidden rounded-[24px] bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
+            >
+              {/* Card Image */}
+              <div className="relative aspect-[462/236] w-full overflow-hidden bg-neutral-100">
                 <Image
-                  src={work.image}
-                  alt={work.title}
+                  src={item.image}
+                  alt={item.title}
                   fill
-                  sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   className="object-cover transition-transform duration-500 group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[rgba(0,0,0,0.85)] via-[rgba(0,0,0,0.25)] to-transparent" />
-                <div className="absolute inset-x-0 bottom-0 p-[20px]">
-                  <p className="text-[11px] font-semibold tracking-[1.1px] text-primary uppercase">
-                    {work.category}
-                  </p>
-                  <h3 className="mt-2 text-[18px] leading-[24px] font-semibold tracking-[-0.27px] text-white">
-                    {work.title}
-                  </h3>
-                </div>
-              </article>
-            ))}
-          </div>
+              </div>
+
+              {/* Card Content */}
+              <div className="flex flex-1 flex-col p-6 sm:p-7">
+                <h3 className="text-[20px] font-bold text-[#0E1A2B] transition-colors group-hover:text-primary sm:text-[22px]">
+                  {item.title}
+                </h3>
+                <p className="mt-2 text-[14px] leading-[1.6] text-[#737373] sm:text-[14.5px]">
+                  {item.description}
+                </p>
+              </div>
+            </article>
+          ))}
         </div>
       </div>
     </section>

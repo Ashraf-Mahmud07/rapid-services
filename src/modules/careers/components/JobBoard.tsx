@@ -19,10 +19,10 @@ export default function JobBoard() {
     <>
       <div className="flex flex-wrap items-end justify-between gap-5 border-b border-[#EAEBED] pb-5 lg:pb-[26px]">
         <div>
-          <h2 className="text-[26px] font-bold text-[#17181a] sm:text-[30px] lg:text-[34px]">
+          <h2 className="relative pl-3.5 text-[26px] leading-tight font-bold text-[#17181a] before:absolute before:top-1 before:bottom-1 before:left-0 before:w-[3.5px] before:rounded-full before:bg-primary sm:text-[30px] lg:text-[34px]">
             All Jobs
           </h2>
-          <p className="mt-2 text-sm text-[#8b9096] lg:text-[15px]">{JOBS.length} roles open</p>
+          <p className="mt-1 text-sm text-[#8b9096] lg:text-[15px]">{JOBS.length} roles open</p>
         </div>
         <div className="flex flex-wrap gap-2 lg:gap-3">
           {JOB_FILTERS.map((name) => (

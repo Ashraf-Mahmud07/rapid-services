@@ -1,6 +1,18 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { JobDetailView, getJobBySlug } from "@/modules/careers";
+import { JobDetailView, getJobBySlug, JOBS } from "@/modules/careers";
+import { routing } from "@/i18n/routing";
+
+export function generateStaticParams() {
+  const uniqueSlugs = Array.from(new Set(JOBS.map((j) => j.slug)));
+
+  return routing.locales.flatMap((locale) =>
+    uniqueSlugs.map((slug) => ({
+      locale,
+      slug,
+    }))
+  );
+}
 
 interface CareerDetailPageProps {
   params: Promise<{ slug: string }>;

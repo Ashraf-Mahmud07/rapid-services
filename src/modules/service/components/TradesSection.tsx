@@ -47,12 +47,12 @@ export default function TradesSection() {
 
   return (
     <div className="container-page py-10 md:py-16">
-      <div className="flex min-h-[550px] lg:h-[630px] flex-col overflow-hidden rounded-xl border border-gray-200 bg-white lg:flex-row shadow-sm">
+      <div className="flex min-h-[550px] flex-col overflow-hidden rounded-xl border border-[#EFEFEF] bg-white lg:h-[800px] lg:flex-row">
         <TradeSidebar activeTab={activeTab} onTabChange={handleTabChange} />
-        <TradeContentArea 
-          activeData={activeData} 
-          activeItem={activeItem} 
-          onItemChange={handleItemChange} 
+        <TradeContentArea
+          activeData={activeData}
+          activeItem={activeItem}
+          onItemChange={handleItemChange}
         />
       </div>
     </div>

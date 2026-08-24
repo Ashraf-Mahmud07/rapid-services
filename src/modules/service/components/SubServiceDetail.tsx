@@ -22,10 +22,10 @@ export default function SubServiceDetail({ subService, onBack }: SubServiceDetai
   const slides = subService.gallery?.map((img) => ({ src: img.src || img })) || [];
 
   return (
-    <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 flex flex-col min-h-full">
+    <div className="animate-in fade-in slide-in-from-bottom-4 flex min-h-full flex-col duration-500">
       <button
         onClick={onBack}
-        className="mb-6 flex cursor-pointer items-center gap-2 text-sm font-medium text-gray-500 hover:text-primary transition-colors"
+        className="mb-6 flex cursor-pointer items-center gap-2 text-sm font-medium text-gray-500 transition-colors hover:text-primary"
       >
         <ArrowLeft className="h-4 w-4" />
         Back to services
@@ -41,8 +41,8 @@ export default function SubServiceDetail({ subService, onBack }: SubServiceDetai
             {subService.content.map((block, index) => {
               if (block.type === 1) {
                 return (
-                  <div key={index} className="flex flex-col relative">
-                    <h2 className="mb-4 text-[18px] md:text-xl font-bold text-primary leading-snug tracking-tight">
+                  <div key={index} className="relative flex flex-col">
+                    <h2 className="mb-4 text-[18px] leading-snug font-bold tracking-tight text-primary md:text-xl">
                       {block.title}
                     </h2>
                     <p className="text-[15px] leading-relaxed text-slate-600">
@@ -52,8 +52,8 @@ export default function SubServiceDetail({ subService, onBack }: SubServiceDetai
                 );
               } else if (block.type === 2) {
                 return (
-                  <div key={index} className="flex flex-col p-5 md:p-6 bg-slate-50/50 rounded-2xl border border-slate-100 hover:border-slate-200 transition-colors shadow-sm">
-                    <h3 className="mb-3 text-base md:text-[18px] font-semibold text-primary">
+                  <div key={index} className="flex flex-col rounded-2xl bg-white p-5 md:p-6">
+                    <h3 className="mb-3 text-base font-semibold text-primary md:text-[18px]">
                       {block.title}
                     </h3>
                     <p className="mb-5 text-[14.5px] leading-relaxed text-slate-600">
@@ -63,12 +63,14 @@ export default function SubServiceDetail({ subService, onBack }: SubServiceDetai
                       <ul className="space-y-3">
                         {block.bullets.map((bullet, bIdx) => (
                           <li key={bIdx} className="flex items-start text-[14.5px]">
-                            <div className="flex-shrink-0 mt-0.5">
+                            <div className="mt-0.5 flex-shrink-0">
                               <CheckCircle2 className="h-4 w-4 text-primary" />
                             </div>
                             <div className="ml-3">
-                              <strong className="font-semibold text-slate-900">{bullet.label} </strong>
-                              <span className="text-slate-600 leading-relaxed">{bullet.text}</span>
+                              <strong className="font-semibold text-slate-900">
+                                {bullet.label}{" "}
+                              </strong>
+                              <span className="leading-relaxed text-slate-600">{bullet.text}</span>
                             </div>
                           </li>
                         ))}
@@ -81,7 +83,7 @@ export default function SubServiceDetail({ subService, onBack }: SubServiceDetai
             })}
           </div>
         ) : (
-          <div className="prose prose-slate max-w-none text-[15px] leading-relaxed text-slate-600 mb-8">
+          <div className="prose prose-slate mb-8 max-w-none text-[15px] leading-relaxed text-slate-600">
             {subService.content}
           </div>
         )}
@@ -93,7 +95,7 @@ export default function SubServiceDetail({ subService, onBack }: SubServiceDetai
             {subService.gallery.map((img, idx) => (
               <div
                 key={idx}
-                className="relative aspect-square overflow-hidden bg-gray-100 cursor-pointer group"
+                className="group relative aspect-square cursor-pointer overflow-hidden bg-gray-100"
                 onClick={() => setIndex(idx)}
               >
                 <Image
@@ -114,24 +116,24 @@ export default function SubServiceDetail({ subService, onBack }: SubServiceDetai
             close={() => setIndex(-1)}
             slides={slides}
             styles={{
-              container: { backgroundColor: "rgba(0, 0, 0, 0.5)", backdropFilter: "blur(4px)" }
+              container: { backgroundColor: "rgba(0, 0, 0, 0.5)", backdropFilter: "blur(4px)" },
             }}
           />
         </>
       )}
 
       <div className="mb-10 text-center">
-        <Link href={ROUTES.CONTACT} className="inline-block w-full md:w-auto cursor-pointer">
-          <Button size="lg" className="w-full md:w-auto uppercase tracking-wide cursor-pointer">
+        <Link href={ROUTES.CONTACT} className="inline-block w-full cursor-pointer md:w-auto">
+          <Button size="lg" className="w-full cursor-pointer tracking-wide uppercase md:w-auto">
             TECHNICIAN VISIT
           </Button>
         </Link>
       </div>
 
-      <div className="mt-auto pt-6 border-t border-gray-100">
+      <div className="mt-auto border-t border-gray-100 pt-6">
         <button
           onClick={onBack}
-          className="flex cursor-pointer items-center gap-2 text-sm font-medium text-gray-500 hover:text-primary transition-colors w-full"
+          className="flex w-full cursor-pointer items-center gap-2 text-sm font-medium text-gray-500 transition-colors hover:text-primary"
         >
           <ArrowLeft className="h-4 w-4" />
           Back to services

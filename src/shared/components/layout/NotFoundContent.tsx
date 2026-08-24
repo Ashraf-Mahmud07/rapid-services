@@ -2,9 +2,9 @@ import { ArrowLeft } from "lucide-react";
 import Image from "next/image";
 
 import { Link } from "@/i18n/navigation";
+import { ROUTES } from "@/shared/constants/routes";
 import Footer from "./Footer";
 import Navbar from "./Navbar";
-import { ROUTES } from "@/shared/constants/routes";
 
 export default function NotFoundContent() {
   return (
@@ -24,27 +24,27 @@ export default function NotFoundContent() {
               className="object-contain"
             />
           </div>
-
           <div className="w-full max-w-[420px] text-center lg:text-start">
-            <p className="text-[64px] leading-none font-bold tracking-[-2px] text-[#0a0e1c] sm:text-[76px] lg:text-[86px]">
+            <p className="text-[64px] leading-[49px] font-bold tracking-[-2px] text-primary sm:text-[76px] lg:text-[90px]">
               404
             </p>
-            <h1 className="mt-3 text-[30px] leading-[1.15] font-bold tracking-[-0.8px] text-[#0a0e1c] sm:text-[38px] lg:text-[44px]">
+            <h1 className="tracking[-1.2px] mt-3 text-[30px] font-semibold text-[#0D1B2A] sm:text-[38px] lg:text-[40px]">
               Page Not Found
             </h1>
-            <p className="mt-4 text-[16px] leading-[26px] text-[#5b5b5b] sm:text-[17px]">
+            <p className="mt-4 text-[16px] leading-[24px] font-normal text-[#555555] sm:text-[17px]">
               The link you&apos;re trying to access is probably broken, or the page has been
               removed.
             </p>
 
             <Link
               href={ROUTES.HOME}
-              className="mt-8 inline-flex items-center gap-2.5 border-b-2 border-[#0a0e1c] pb-2 text-[13px] font-semibold tracking-[0.8px] text-[#0a0e1c] uppercase transition-colors hover:border-primary hover:text-primary"
+              className="mt-[21px] inline-flex items-center gap-2.5 pb-2 text-[13px] font-semibold tracking-[0.8px] text-primary uppercase transition-colors hover:text-[#0E504C]"
             >
               <ArrowLeft className="size-4" aria-hidden="true" />
               Back to home page
             </Link>
           </div>
+          ``
         </div>
       </main>
 

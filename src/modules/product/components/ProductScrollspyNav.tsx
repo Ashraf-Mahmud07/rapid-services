@@ -1,7 +1,7 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
+import { useEffect, useState } from "react";
 
 const navItems = [
   { key: "overview", targetId: "product-overview" },
@@ -46,8 +46,8 @@ export default function ProductScrollspyNav() {
   };
 
   return (
-    <div className="sticky top-0 left-0 z-20 mb-8 w-full border-b border-solid border-[#f2f2f2] bg-white/95 pt-4 pb-0 backdrop-blur-md">
-      <nav className="flex items-center gap-2">
+    <div className="sticky top-0 left-0 z-20 mb-6 w-full border-b border-solid border-[#f2f2f2] bg-white/95 pt-3 pb-0 backdrop-blur-md sm:mb-8 sm:pt-4">
+      <nav className="no-scrollbar flex items-center gap-1 overflow-x-auto sm:gap-2">
         {navItems.map((item) => {
           const isActive = activeId === item.targetId;
 
@@ -56,13 +56,13 @@ export default function ProductScrollspyNav() {
               key={item.targetId}
               type="button"
               onClick={() => handleNavClick(item.targetId)}
-              className={`relative cursor-pointer px-5 pt-2 pb-4 text-[15px] font-medium transition-colors ${
-                isActive ? "font-semibold text-[#0e0e0e]" : "text-[#737373] hover:text-[#0e0e0e]"
+              className={`relative cursor-pointer px-3 pt-2 pb-3 text-[15px] font-medium whitespace-nowrap transition-colors sm:px-5 sm:pb-4 sm:text-[15px] ${
+                isActive ? "font-semibold text-primary" : "text-[#737373] hover:text-[#0e0e0e]"
               }`}
             >
               {t(item.key)}
               {isActive && (
-                <span className="absolute bottom-0 left-0 h-0.5 w-full bg-[#0e0e0e] transition-all" />
+                <span className="absolute bottom-0 left-0 h-0.5 w-full bg-primary transition-all" />
               )}
             </button>
           );

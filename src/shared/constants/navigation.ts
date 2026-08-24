@@ -18,6 +18,7 @@ import {
   Plane,
   SprayCan,
   TrainFront,
+  Video,
   Warehouse,
   Waves,
 } from "lucide-react";
@@ -34,39 +35,36 @@ export type MegaMenuItem = {
 export type MegaMenu =
   | {
       layout: "list";
-      iconStyle: "solid";
-      iconShape: "circle";
+      iconStyle: "solid" | "tint";
+      iconShape: "circle" | "square";
       items: MegaMenuItem[];
     }
   | {
-      layout: "split";
-      iconStyle: "tint";
-      iconShape: "square";
+      layout: "split" | "cards" | "grid";
+      iconStyle: "tint" | "solid";
+      iconShape: "square" | "circle";
+      headerEyebrow?: string;
+      headerNote?: string;
       eyebrow: string;
       title: string;
       blurb: string;
-      cta: { label: string; href: string };
-      items: MegaMenuItem[];
-    }
-  | {
-      layout: "cards" | "grid";
-      iconStyle: "tint" | "solid";
-      iconShape: "square";
-      eyebrow: string;
-      note: string;
-      footnote: string;
+      note?: string;
+      footnote?: string;
       cta: { label: string; href: string };
       items: MegaMenuItem[];
     };
 
 export const MEGA_MENUS: Record<string, MegaMenu> = {
   [ROUTES.SERVICE]: {
-    layout: "cards",
+    layout: "split",
     iconStyle: "tint",
     iconShape: "square",
-    eyebrow: "Our services",
-    note: "Six specialist divisions — one guarantee",
-    footnote: "Not sure which service you need? We'll survey the site first.",
+    headerEyebrow: "OUR SERVICES",
+    headerNote: "Six Specialist Divisions — One Guarantee",
+    eyebrow: "SERVICES",
+    title: "Services we provide",
+    blurb:
+      "Explore our specialized contracting and waterproofing solutions designed for long-term durability and performance.",
     cta: { label: "All Services", href: ROUTES.SERVICE },
     items: [
       {
@@ -109,12 +107,15 @@ export const MEGA_MENUS: Record<string, MegaMenu> = {
   },
 
   [ROUTES.PROJECT]: {
-    layout: "grid",
-    iconStyle: "solid",
+    layout: "split",
+    iconStyle: "tint",
     iconShape: "square",
-    eyebrow: "Selected projects",
-    note: "Delivered across the UAE",
-    footnote: "Over 400 completed jobs since 2009.",
+    headerEyebrow: "FEATURED PROJECTS",
+    headerNote: "Delivered Across The UAE",
+    eyebrow: "PROJECTS",
+    title: "Projects we delivered",
+    blurb:
+      "Take a look at our landmark developments and specialized execution across industrial, commercial, and public sectors.",
     cta: { label: "All Projects", href: ROUTES.PROJECT },
     items: [
       {
@@ -160,44 +161,47 @@ export const MEGA_MENUS: Record<string, MegaMenu> = {
     layout: "split",
     iconStyle: "tint",
     iconShape: "square",
-    eyebrow: "Industries",
+    headerEyebrow: "INDUSTRY WE SERVE",
+    headerNote: "Six Key Industries — One Proven Expertise",
+    eyebrow: "INDUSTRIES",
     title: "Industries we serve",
-    blurb: "Pick the sector your project falls under to see the work we do there.",
+    blurb:
+      "Select the sector your project falls under to explore our experience, capabilities, and proven expertise, and discover the quality of work we deliver across a wide range.",
     cta: { label: "All Industries", href: ROUTES.INDUSTRY },
     items: [
       {
         title: "Residential Spaces",
-        subtitle: "Homes, villas & private residences",
+        subtitle: "Homes, Villas & High-End Pri...",
         href: ROUTES.INDUSTRY + "?tab=homeowners",
         icon: Home,
       },
       {
         title: "Commercial Projects",
-        subtitle: "Offices, retail & hospitality fit-outs",
+        subtitle: "Corporate Offices, Retail Spaces...",
         href: ROUTES.INDUSTRY + "?tab=offices",
         icon: Building2,
       },
       {
         title: "Industrial Facilities",
-        subtitle: "Warehouses, plants & operational sites",
+        subtitle: "Warehouses, Industrial Plants &...",
         href: ROUTES.INDUSTRY + "?tab=construction",
         icon: Factory,
       },
       {
         title: "Aviation & Transport",
-        subtitle: "Terminals & transit infrastructure",
+        subtitle: "Airports, Terminals, Transit Hub...",
         href: ROUTES.INDUSTRY + "?tab=landlords",
         icon: Plane,
       },
       {
         title: "Civil Infrastructure",
-        subtitle: "Public works & structural foundations",
+        subtitle: "Public Works, Civil Engineering...",
         href: ROUTES.INDUSTRY + "?tab=retail",
         icon: Landmark,
       },
       {
         title: "Government Projects",
-        subtitle: "Municipal & federal contracts",
+        subtitle: "Municipal, Government & Fe...",
         href: ROUTES.INDUSTRY + "?tab=property_managers",
         icon: Building,
       },
@@ -206,8 +210,8 @@ export const MEGA_MENUS: Record<string, MegaMenu> = {
 
   [ROUTES.ABOUT]: {
     layout: "list",
-    iconStyle: "solid",
-    iconShape: "circle",
+    iconStyle: "tint",
+    iconShape: "square",
     items: [
       {
         title: "About Us",
@@ -238,14 +242,20 @@ export const MEGA_MENUS: Record<string, MegaMenu> = {
 
   [ROUTES.CONTACT]: {
     layout: "list",
-    iconStyle: "solid",
-    iconShape: "circle",
+    iconStyle: "tint",
+    iconShape: "square",
     items: [
       {
         title: "Blogs",
         subtitle: "Insights, Updates, And Industry News",
         href: ROUTES.BLOG,
         icon: Newspaper,
+      },
+      {
+        title: "Video Library",
+        subtitle: "Guides, Insights, And Project Videos",
+        href: ROUTES.BLOG + "?type=video",
+        icon: Video,
       },
       {
         title: "Contact Us",

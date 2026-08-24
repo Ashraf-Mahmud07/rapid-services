@@ -4,10 +4,14 @@ import {
   Briefcase,
   Building2,
   ChevronRight,
+  ClipboardList,
+  Factory,
+  Home,
+  Mic,
   Package,
   Phone,
   Search,
-  Sparkles,
+  Store,
   Wrench,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
@@ -16,104 +20,91 @@ import * as React from "react";
 
 import { Link } from "@/i18n/navigation";
 import { ROUTES } from "@/shared/constants/routes";
-import { cn } from "@/shared/utils/cn";
 
 type Entry = {
   title: string;
-  subtitle?: string;
   href: string;
   icon: LucideIcon;
-  group: "services" | "products" | "projects";
 };
 
 /**
- * The reference panel is populated with another product's navigation, so the
- * shape is reproduced exactly and the content is Rapid's own.
+ * Items exactly matching Figma node 606:18527 under "Most used"
+ * along with core site destinations for search.
  */
 const ENTRIES: Entry[] = [
   {
+    title: "Homeowners",
+    href: ROUTES.INDUSTRY + "?tab=homeowners",
+    icon: Home,
+  },
+  {
+    title: "Landlords",
+    href: ROUTES.INDUSTRY + "?tab=landlords",
+    icon: Building2,
+  },
+  {
+    title: "Property managers",
+    href: ROUTES.INDUSTRY + "?tab=offices",
+    icon: ClipboardList,
+  },
+  {
+    title: "Retail & hospitality",
+    href: ROUTES.INDUSTRY + "?tab=retail",
+    icon: Store,
+  },
+  {
     title: "Services",
-    subtitle: "Trades we cover",
     href: ROUTES.SERVICE,
     icon: Wrench,
-    group: "services",
   },
   {
     title: "Products",
-    subtitle: "Parts & equipment",
     href: ROUTES.PRODUCT,
     icon: Package,
-    group: "products",
   },
   {
     title: "Projects",
-    subtitle: "Recent work",
     href: ROUTES.PROJECT,
     icon: Building2,
-    group: "projects",
   },
   {
     title: "Industries",
-    subtitle: "Sectors we serve",
     href: ROUTES.INDUSTRY,
-    icon: Building2,
-    group: "services",
+    icon: Factory,
   },
   {
     title: "Careers",
-    subtitle: "Open roles",
     href: ROUTES.CAREER,
     icon: Briefcase,
-    group: "services",
   },
   {
     title: "Contact us",
-    subtitle: "Get in touch",
     href: ROUTES.CONTACT,
     icon: Phone,
-    group: "services",
   },
 ];
-
-const FILTERS = [
-  { id: "overview", label: "Overview" },
-  { id: "services", label: "Services" },
-  { id: "products", label: "Products" },
-] as const;
-
-type FilterId = (typeof FILTERS)[number]["id"];
 
 export default function SearchModal({
   open,
   onOpenChange,
-  onAskAi,
 }: {
   open: boolean;
   onOpenChange: (open: boolean) => void;
   onAskAi?: () => void;
 }) {
   const [query, setQuery] = React.useState("");
-  const [filter, setFilter] = React.useState<FilterId>("overview");
 
   const term = query.trim().toLowerCase();
   const matches = ENTRIES.filter((entry) => {
-    const inFilter = filter === "overview" || entry.group === filter;
-    const inTerm =
-      !term ||
-      entry.title.toLowerCase().includes(term) ||
-      (entry.subtitle?.toLowerCase().includes(term) ?? false);
-    return inFilter && inTerm;
+    return !term || entry.title.toLowerCase().includes(term);
   });
 
-  // The reference lists four shortcuts under "Most used"; the rest stay
-  // reachable by typing.
+  // Default to the 4 "Most used" entries from Figma design, or matching results when typing
   const results = term ? matches : matches.slice(0, 4);
 
-  // Reset back to a clean panel each time it is dismissed.
   const handleOpenChange = (next: boolean) => {
     if (!next) {
       setQuery("");
-      setFilter("overview");
     }
     onOpenChange(next);
   };
@@ -124,75 +115,53 @@ export default function SearchModal({
         <DialogPrimitive.Overlay className="fixed inset-0 z-100 animate-[fadeIn_0.18s_ease] bg-[rgba(20,22,24,0.55)]" />
         <DialogPrimitive.Content
           aria-label="Search"
-          className="fixed top-[120px] left-1/2 z-100 w-[calc(100vw-40px)] max-w-[720px] -translate-x-1/2 animate-[modalIn_0.2s_ease] rounded-[14px] bg-white p-6 shadow-[0_28px_70px_rgba(10,17,40,0.28)] focus:outline-none sm:p-7"
+          className="fixed top-[120px] left-1/2 z-100 w-[calc(100vw-32px)] max-w-[720px] -translate-x-1/2 animate-[modalIn_0.2s_ease] rounded-[16px] bg-white p-6 shadow-[0_28px_70px_rgba(10,17,40,0.28)] focus:outline-none"
         >
           <DialogPrimitive.Title className="sr-only">Search Rapid Services</DialogPrimitive.Title>
 
-          <div className="flex items-center gap-3 rounded-[10px] border border-[#e7e9eb] px-4">
-            <Search className="size-[18px] flex-none text-[#8b9096]" strokeWidth={2} />
-            <input
-              autoFocus
-              value={query}
-              onChange={(event) => setQuery(event.target.value)}
-              placeholder="Search..."
-              aria-label="Search"
-              className="min-w-0 flex-1 bg-transparent py-3.5 text-[15px] text-[#17181a] outline-none placeholder:text-[#8b9096]"
-            />
-            <span className="hidden flex-none items-center gap-1.5 sm:flex" aria-hidden="true">
-              <kbd className="rounded-md bg-[#f1f2f4] px-2 py-1 text-[11px] font-medium text-[#5a5f63]">
-                Ctrl
-              </kbd>
-              <kbd className="rounded-md bg-[#f1f2f4] px-2 py-1 text-[11px] font-medium text-[#5a5f63]">
-                K
-              </kbd>
-            </span>
+          {/* Search Input Bar (Figma: 672x40px, rounded, search icon left, mic icon right) */}
+          <div className="flex h-[42px] w-full items-center justify-between rounded-[10px] border border-[#E5E7EB] bg-[#F8F9FA] px-3.5 transition-all focus-within:border-primary focus-within:bg-white focus-within:ring-2 focus-within:ring-primary/20">
+            <div className="flex flex-1 items-center gap-2.5">
+              <Search className="size-[18px] flex-none text-[#5A5F63]" strokeWidth={2} />
+              <input
+                autoFocus
+                value={query}
+                onChange={(event) => setQuery(event.target.value)}
+                placeholder="Search..."
+                aria-label="Search"
+                className="w-full bg-transparent text-[14.5px] text-[#111827] outline-none placeholder:text-[#9CA3AF]"
+              />
+            </div>
+            <button
+              type="button"
+              aria-label="Voice search"
+              className="flex size-7 flex-none items-center justify-center rounded-full text-primary transition-opacity hover:opacity-80 focus:outline-none"
+            >
+              <Mic className="size-5" />
+            </button>
           </div>
 
-          <div className="mt-5 flex flex-wrap gap-2.5">
-            {FILTERS.map((item) => (
-              <button
-                key={item.id}
-                type="button"
-                onClick={() => setFilter(item.id)}
-                aria-pressed={filter === item.id}
-                className={cn(
-                  "h-10 rounded-full px-5 text-[15px] font-medium transition-colors",
-                  filter === item.id
-                    ? "bg-primary text-white"
-                    : "bg-[#f1f2f4] text-[#17181a] hover:bg-[#e7e9eb]"
-                )}
-              >
-                {item.label}
-              </button>
-            ))}
-          </div>
-
-          <p className="mt-6 mb-1 text-[14px] font-semibold text-[#17181a]">
+          {/* Section Heading */}
+          <p className="mt-5 mb-3 text-[15px] font-semibold text-[#111827]">
             {term ? "Results" : "Most used"}
           </p>
 
-          <ul className="max-h-[52vh] overflow-y-auto">
+          {/* List items (Figma: Homeowners, Landlords, Property managers, Retail & hospitality) */}
+          <ul className="max-h-[55vh] space-y-2.5 overflow-y-auto">
             {results.map((entry) => (
               <li key={entry.title}>
                 <Link
                   href={entry.href}
                   onClick={() => handleOpenChange(false)}
-                  className="group flex items-center gap-4 rounded-[10px] py-3 transition-colors hover:bg-[#f7f8f9]"
+                  className="group flex items-center justify-between rounded-[10px] p-1 transition-colors hover:bg-[#F8F9FA]"
                 >
-                  <span className="flex size-10 flex-none items-center justify-center rounded-[10px] bg-[#f1f2f4] text-[#3f4245]">
-                    <entry.icon className="size-5" strokeWidth={1.8} />
-                  </span>
-                  <span className="min-w-0 flex-1">
-                    <span className="block text-[15.5px] font-semibold text-[#17181a]">
-                      {entry.title}
+                  <div className="flex items-center gap-3.5">
+                    <span className="flex size-10 flex-none items-center justify-center rounded-[10px] bg-[#E6F7F6] text-primary transition-transform group-hover:scale-105">
+                      <entry.icon className="size-5" strokeWidth={1.8} />
                     </span>
-                    {entry.subtitle && (
-                      <span className="mt-0.5 block text-[14px] text-[#5a5f63]">
-                        {entry.subtitle}
-                      </span>
-                    )}
-                  </span>
-                  <ChevronRight className="size-5 flex-none text-[#a9adb1] transition-transform group-hover:translate-x-0.5" />
+                    <span className="text-[15px] font-medium text-[#111827]">{entry.title}</span>
+                  </div>
+                  <ChevronRight className="size-5 flex-none text-[#6B7280] transition-transform group-hover:translate-x-0.5" />
                 </Link>
               </li>
             ))}
@@ -204,20 +173,7 @@ export default function SearchModal({
             </p>
           )}
 
-          <div className="mt-6 flex items-center justify-between gap-4 border-t border-[#eef0f1] pt-5">
-            <p className="text-[15px] text-[#5a5f63]">Need help finding something?</p>
-            <button
-              type="button"
-              onClick={() => {
-                handleOpenChange(false);
-                onAskAi?.();
-              }}
-              className="inline-flex h-11 flex-none items-center gap-2 rounded-full bg-primary px-5 text-[15px] font-semibold text-white transition-opacity hover:opacity-90"
-            >
-              <Sparkles className="size-4" />
-              Ask AI
-            </button>
-          </div>
+          {/* AI Section hidden as requested */}
         </DialogPrimitive.Content>
       </DialogPrimitive.Portal>
     </DialogPrimitive.Root>

@@ -7,21 +7,26 @@ interface JobCheckListProps {
 
 export default function JobCheckList({ items, className }: JobCheckListProps) {
   return (
-    <ul className={cn("m-0 list-none p-0", className)}>
+    <ul className={cn("m-0 flex list-none flex-col gap-3 p-0", className)}>
       {items.map((item) => (
-        <li key={item} className="flex items-start gap-3.5 py-2.75">
-          <span className="mt-px flex size-6 flex-none items-center justify-center rounded-full bg-brand-tint">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" className="text-primary">
+        <li key={item} className="flex items-start gap-3">
+          <span className="mt-0.5 flex size-5 flex-none items-center justify-center rounded-full bg-[#00A99D] text-white">
+            <svg
+              className="size-3"
+              viewBox="0 0 12 12"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
               <path
-                d="M20 6L9 17l-5-5"
+                d="M10 3L4.5 8.5L2 6"
                 stroke="currentColor"
-                strokeWidth="2.4"
+                strokeWidth="2"
                 strokeLinecap="round"
                 strokeLinejoin="round"
               />
             </svg>
           </span>
-          <span className="text-[15px] leading-normal text-[#3f4245]">{item}</span>
+          <span className="text-[15px] leading-relaxed text-[#374151]">{item}</span>
         </li>
       ))}
     </ul>

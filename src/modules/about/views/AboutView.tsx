@@ -1,13 +1,12 @@
 "use client";
 
+import { Certifications } from "@/modules/home/sections";
+import { FaqSection, Footer, Navbar } from "@/shared/components/layout";
 import AboutHero from "../components/AboutHero";
 import CeoQuote from "../components/CeoQuote";
 import HowItWorks from "../components/HowItWorks";
 import MissionVision from "../components/MissionVision";
 import StatsBand from "../components/StatsBand";
-import { Certifications } from "@/modules/home/sections";
-import { FaqSection, Footer, Navbar } from "@/shared/components/layout";
-import { ROUTES } from "@/shared/constants/routes";
 
 export default function AboutView() {
   return (
@@ -21,7 +20,7 @@ export default function AboutView() {
         <MissionVision />
         <Certifications />
         <div className="container-page">
-          <FaqSection askHref={ROUTES.FAQ} />
+          <FaqSection />
         </div>
       </div>
       <Footer />

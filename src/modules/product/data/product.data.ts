@@ -828,3 +828,7 @@ export const products: Product[] = [
     ],
   },
 ];
+
+export function findProductBySlug(productSlug: string) {
+  return products.find((p) => p.slug === productSlug || p.id === productSlug);
+}

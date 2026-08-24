@@ -1,36 +1,41 @@
 import React from "react";
-import Image from "next/image";
+import { Link } from "@/i18n/navigation";
+import { ROUTES } from "@/shared/constants/routes";
+import { ChevronLeft } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { Blog } from "../types/blogs.types";
+import { defaultBlogDetail } from "../data/blogs.data";
 
 interface BlogDetailsSectionProps {
   blog: Blog;
 }
 
 export function BlogDetailsSection({ blog }: BlogDetailsSectionProps) {
-  return (
-    <div className="relative overflow-hidden bg-[#f8f9fa] pb-24 md:bg-white">
-      {/* Decorative background swoosh - mostly visible on large screens */}
-      <div className="pointer-events-none absolute right-0 bottom-0 hidden h-3/4 w-3/4 rounded-tl-[100px] bg-gradient-to-tl from-gray-50/80 to-transparent md:block" />
+  const t = useTranslations("blogs");
+  const contentToRender = blog.content || defaultBlogDetail.content;
 
-      <div className="relative z-10 container-page pt-12 md:pt-16">
-        {/* Large Feature Image */}
-        <div className="relative mb-12 aspect-[16/9] w-full overflow-hidden rounded-2xl bg-gray-100 md:mb-16 md:aspect-[2/1]">
-          <Image src={blog.image} alt={blog.title} fill className="object-cover" priority />
-        </div>
+  return (
+    <div className="bg-white py-12 md:py-16">
+      <div className="container-page mx-auto">
+        {/* Top Back Link */}
+        <Link
+          href={ROUTES.BLOG}
+          className="mb-10 flex w-fit items-center gap-1.5 text-[13px] font-medium text-primary transition-colors hover:text-primary/80"
+        >
+          <ChevronLeft className="h-4 w-4" />
+          {t("back")}
+        </Link>
 
         {/* Blog Content */}
-        <div className="mt-12 w-full md:mt-16">
-          {blog.content?.map((section, idx) => (
+        <div className="w-full">
+          {contentToRender?.map((section, idx) => (
             <div key={idx} className="mb-10 md:mb-12">
-              <h2 className="mb-4 text-[22px] leading-tight font-bold text-gray-900 md:mb-6 md:text-[26px]">
+              <h2 className="mb-4 text-[18px] leading-tight font-medium text-gray-900 md:mb-5 md:text-[20px]">
                 {section.heading}
               </h2>
-              <div className="space-y-4 md:space-y-5">
+              <div className="space-y-4">
                 {section.text.map((paragraph, pIdx) => (
-                  <p
-                    key={pIdx}
-                    className="text-[15px] leading-relaxed text-gray-500 md:text-[16px]"
-                  >
+                  <p key={pIdx} className="text-[14px] leading-relaxed text-gray-500">
                     {paragraph}
                   </p>
                 ))}
@@ -38,6 +43,15 @@ export function BlogDetailsSection({ blog }: BlogDetailsSectionProps) {
             </div>
           ))}
         </div>
+
+        {/* Bottom Back Link */}
+        <Link
+          href={ROUTES.BLOG}
+          className="mt-6 flex w-fit items-center gap-1.5 text-[13px] font-medium text-primary transition-colors hover:text-primary/80 md:mt-8"
+        >
+          <ChevronLeft className="h-4 w-4" />
+          {t("back")}
+        </Link>
       </div>
     </div>
   );

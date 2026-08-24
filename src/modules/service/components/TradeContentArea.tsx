@@ -11,7 +11,11 @@ interface TradeContentAreaProps {
   onItemChange: (itemId: string | null) => void;
 }
 
-export default function TradeContentArea({ activeData, activeItem, onItemChange }: TradeContentAreaProps) {
+export default function TradeContentArea({
+  activeData,
+  activeItem,
+  onItemChange,
+}: TradeContentAreaProps) {
   const scrollRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -27,9 +31,9 @@ export default function TradeContentArea({ activeData, activeItem, onItemChange 
   const activeSubService = activeData.subServices?.find((sub) => sub.id === activeItem);
 
   return (
-    <div 
+    <div
       ref={scrollRef}
-      className="flex-1 bg-white p-6 md:p-8 lg:p-10 relative overflow-y-auto hide-scrollbar rounded-b-xl lg:rounded-bl-none lg:rounded-r-xl border-t border-gray-100 lg:border-t-0"
+      className="relative custom-scrollbar flex-1 overflow-y-auto rounded-b-xl border-t border-gray-100 bg-[#F8F8F8] p-6 md:p-8 lg:rounded-r-xl lg:rounded-bl-none lg:border-t-0 lg:p-10"
     >
       {!activeSubService && (
         <div className="mb-8 flex flex-col justify-between gap-4 border-b border-gray-100 pb-6 sm:flex-row sm:items-center">
@@ -46,19 +50,11 @@ export default function TradeContentArea({ activeData, activeItem, onItemChange 
       )}
 
       {activeSubService ? (
-        <SubServiceDetail 
-          subService={activeSubService} 
-          onBack={() => onItemChange(null)} 
-        />
+        <SubServiceDetail subService={activeSubService} onBack={() => onItemChange(null)} />
       ) : activeData.subServices?.length > 0 ? (
-        <SubServiceGrid 
-          subServices={activeData.subServices} 
-          onCardClick={onItemChange} 
-        />
+        <SubServiceGrid subServices={activeData.subServices} onCardClick={onItemChange} />
       ) : (
-        <div className="py-10 text-center text-gray-500">
-          More details coming soon.
-        </div>
+        <div className="py-10 text-center text-gray-500">More details coming soon.</div>
       )}
     </div>
   );

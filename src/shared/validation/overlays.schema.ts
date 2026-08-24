@@ -1,17 +1,20 @@
 import { z } from "zod";
 
-/** Book an Appointment — the three fields the reference panel shows. */
+/** Book an Appointment — fields matching Figma design. */
 export const appointmentSchema = z.object({
-  fullName: z.string().min(1, "Full name is required"),
-  phone: z.string().min(6, "Enter a valid phone number"),
+  firstName: z.string().min(1, "First name is required"),
+  lastName: z.string().min(1, "Last name is required"),
   email: z.string().email("Enter a valid email address"),
+  phone: z.string().min(6, "Enter a valid phone number"),
+  description: z.string().min(1, "Tell us what needs doing"),
 });
 
 export type AppointmentFormData = z.infer<typeof appointmentSchema>;
 
-/** Request a quote — adds a description and an optional attachment. */
+/** Request a quote — fields matching Figma design. */
 export const quoteSchema = z.object({
-  fullName: z.string().min(1, "Full name is required"),
+  firstName: z.string().min(1, "First name is required"),
+  lastName: z.string().min(1, "Last name is required"),
   email: z.string().email("Enter a valid email address"),
   phone: z.string().min(6, "Enter a valid phone number"),
   description: z.string().min(1, "Tell us what needs doing"),
@@ -20,11 +23,12 @@ export const quoteSchema = z.object({
 
 export type QuoteFormData = z.infer<typeof quoteSchema>;
 
-/** Request a call — same as the quote minus the attachment. */
+/** Request a call — fields matching Figma design. */
 export const callbackSchema = z.object({
-  fullName: z.string().min(1, "Full name is required"),
-  phone: z.string().min(6, "Enter a valid phone number"),
+  firstName: z.string().min(1, "First name is required"),
+  lastName: z.string().min(1, "Last name is required"),
   email: z.string().email("Enter a valid email address"),
+  phone: z.string().min(6, "Enter a valid phone number"),
   description: z.string().min(1, "Tell us what needs doing"),
 });
 

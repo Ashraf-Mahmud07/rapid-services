@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 import { ContactDetailCards, ContactForm, ContactHero, ContactMap } from "@/modules/contact";
-import { FaqSection, Footer, Navbar } from "@/shared/components/layout";
+import { Footer, Navbar } from "@/shared/components/layout";
 
 export const metadata: Metadata = {
   title: "Contact Us | Rapid",
@@ -14,11 +14,10 @@ export default function ContactUsPage() {
       <Navbar />
       <ContactHero />
       <div className="section-background">
-        <div className="container-page pt-10 sm:pt-12 lg:pt-15">
+        <div className="container-page py-10 sm:py-12 lg:py-15">
           <ContactDetailCards />
           <ContactForm />
           <ContactMap />
-          <FaqSection />
         </div>
       </div>
       <Footer />

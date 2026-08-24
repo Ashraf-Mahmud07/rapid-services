@@ -8,14 +8,10 @@ import ProductsBreadcrumb from "../components/ProductsBreadcrumb";
 import ProductScrollspyNav from "../components/ProductScrollspyNav";
 import ProductShortOverview from "../components/ProductShortOverview";
 import ProductSpecifications from "../components/ProductSpecifications";
-import { products } from "../data/product.data";
+import { findProductBySlug, products } from "../data/product.data";
 
 export interface ProductDetailViewProps {
   productSlug: string;
-}
-
-export function findProductBySlug(productSlug: string) {
-  return products.find((p) => p.slug === productSlug || p.id === productSlug);
 }
 
 export default function ProductDetailView({ productSlug }: ProductDetailViewProps) {
@@ -26,11 +22,17 @@ export default function ProductDetailView({ productSlug }: ProductDetailViewProp
   }
 
   return (
-    <div className="container py-6">
+    <div className="container py-4 !pt-[58px] sm:py-6">
       <ProductsBreadcrumb product={product} />
-      <div className="flex gap-13 pt-7 pb-8">
-        <div className="relative flex h-158.75 w-137.5 shrink-0 items-center justify-center overflow-hidden rounded-xl bg-[#F8F8F8] p-6">
-          <Image src={product.thumb} fill className="object-contain p-6" alt={product.title} />
+      <div className="flex flex-col gap-6 pt-4 pb-6 sm:pt-7 sm:pb-8 lg:flex-row lg:gap-12">
+        <div className="xs:h-[360px] relative flex h-[280px] w-full shrink-0 items-center justify-center overflow-hidden rounded-xl bg-[#F8F8F8] p-4 sm:h-[480px] sm:p-6 lg:h-[clamp(400px,calc(400px+235*(100vw-1024px)/375),635px)] lg:w-[clamp(350px,calc(350px+200*(100vw-1024px)/375),550px)]">
+          <Image
+            src={product.thumb}
+            fill
+            className="object-contain p-4 sm:p-6"
+            alt={product.title}
+            priority
+          />
         </div>
         <ProductShortOverview product={product} />
       </div>

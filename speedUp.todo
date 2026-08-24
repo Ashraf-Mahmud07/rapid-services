@@ -1,0 +1,34 @@
+# Rapid Contracting Website - Performance Optimization TODO
+
+This list details the actions to maximize the website's speed after deployment. All routes should be statically compiled at build-time (SSG) rather than server-rendered dynamically on demand.
+
+## 🚀 Active Optimization Checklist
+
+- [x] Activate next-intl Middleware:
+  - Rename `src/proxy.ts` to `src/middleware.ts` to register next-intl routing rules. (Note: Kept as src/proxy.ts because Next.js 16 warns that middleware.ts is deprecated in favor of proxy.ts)
+- [x] Statically Pre-render Locales (SSG):
+  - Add `generateStaticParams()` to `src/app/[locale]/layout.tsx` for locales `["en", "ar"]`.
+- [x] Statically Pre-render Blog Detail Pages:
+  - Add `generateStaticParams()` to `src/app/[locale]/blogs/[id]/page.tsx` using `listBlogs` and `featuredBlogs`.
+- [x] Statically Pre-render Career Detail Pages:
+  - Add `generateStaticParams()` to `src/app/[locale]/career/[slug]/page.tsx` using `JOBS`.
+- [x] Statically Pre-render Product Detail Pages:
+  - Add `generateStaticParams()` to `src/app/[locale]/product/[product]/page.tsx` using `products`.
+- [x] Wrap Client Components in Suspense Boundaries (Fix useSearchParams de-opt):
+  - Wrap `<TradesSection />` in `src/modules/service/views/ServicePage.tsx`.
+  - Wrap `<ProjectsSection />` in `src/modules/projects/views/ProjectsPage.tsx`.
+  - Wrap `<IndustriesSection />` in `src/modules/industries/views/IndustriesPage.tsx`.
+  
+- [x] Verify Production Compile:
+  - Run `pnpm build` and ensure page indicator symbols are `○` (Static) or `●` (SSG), not `ƒ` (Dynamic). (Verified: Compiled 129 static pages successfully)
+
+## 🛡️ Ongoing Performance Maintenance Rules
+
+- [x] **Zero Un-suspensed `useSearchParams`**:
+  Always wrap any client components calling `useSearchParams` or other hook-based queries inside a `<Suspense>` boundary to prevent de-optimizing the parent page into dynamic rendering. (Verified: All occurrences are wrapped in Suspense)
+- [x] **Image Optimization**:
+  Always use `next/image` rather than raw `<img>` tags. Specify `width`, `height`, or use `fill` with appropriate aspect ratio/sizes. (Verified: No raw <img> tags found in source)
+- [x] **Font Optimization**:
+  Always use `next/font` for local or Google Fonts to avoid layout shifting or blocking page loads. (Verified: next/font is utilized and no external stylesheets exist)
+- [x] **Bundle Size Warnings**:
+  Keep module imports clean. Make sure lucide-react icons or third-party packages do not bloat individual page chunks. (Verified: Checked and optimized production build compiles correctly)

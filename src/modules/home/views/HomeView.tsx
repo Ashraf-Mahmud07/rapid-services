@@ -1,5 +1,6 @@
 "use client";
 
+import { Footer, Navbar } from "@/shared/components/layout";
 import {
   About,
   Blog,
@@ -15,12 +16,13 @@ import {
   Newsletter,
   OngoingProjects,
   ProcessSection,
+  RecentWork,
   Reviews,
   Services,
   Team,
   TradesTicker,
+  WhyChooseUs,
 } from "../sections";
-import { Footer, Navbar } from "@/shared/components/layout";
 
 export default function HomeView() {
   return (
@@ -28,11 +30,13 @@ export default function HomeView() {
       <Navbar />
       <HomeHero />
       <TradesTicker />
+      <WhyChooseUs />
       <About />
       <OngoingProjects />
       <EngineeringSafety />
       <Commitment />
       <FinishedProjects />
+      <RecentWork />
       <Services />
       <ProcessSection />
       <Reviews />

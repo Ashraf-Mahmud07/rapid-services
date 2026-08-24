@@ -20,3 +20,4 @@ export { default as Services } from "./Services";
 export { default as Steps } from "./Steps";
 export { default as Team } from "./Team";
 export { default as TradesTicker } from "./TradesTicker";
+export { default as WhyChooseUs } from "./WhyChooseUs";

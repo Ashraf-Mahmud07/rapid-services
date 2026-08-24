@@ -4,12 +4,21 @@ import type { ContactDetail } from "../types/contact.types";
 
 export const CONTACT_DETAILS: ContactDetail[] = [
   {
-    label: "ADDRESS",
-    value: "Al Muteena, Fish Roundabout, Deira, Dubai, UAE",
+    values: ["Al Muteena, Fish Roundabout", "Deira, Dubai, United Arab Emirates"],
     icon: "location",
   },
-  { label: "CALL US", value: "+971 55 516 4777", icon: "call" },
-  { label: "HOURS", value: "Sat – Thu, 9:00 AM – 6:00 PM", icon: "hour" },
+  {
+    values: ["+971 55 516 4777", "+971 55 516 4777"],
+    icon: "call",
+  },
+  {
+    values: ["info@rapidsmarterp.com", "career@rapidsmarterp.com"],
+    icon: "email",
+  },
+  {
+    values: ["Sat – Thu, Friday: Closed", "9:00 AM – 6:00 PM"],
+    icon: "hour",
+  },
 ];
 
 export const CONTACT_TOPICS = ["General enquiry", "Support", "Careers"];

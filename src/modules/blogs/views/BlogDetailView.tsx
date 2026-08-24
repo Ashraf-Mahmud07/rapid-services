@@ -17,7 +17,7 @@ export default function BlogDetailView({ id }: BlogDetailViewProps) {
       <BlogDetailsHero
         title={blog.title}
         subtitle={blog.description}
-        backgroundImage={serviceBanner}
+        backgroundImage={blog.image}
         onShare={handleShare}
         copied={copied}
       />

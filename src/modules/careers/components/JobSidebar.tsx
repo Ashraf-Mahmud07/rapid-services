@@ -19,15 +19,15 @@ export default function JobSidebar({ job }: JobSidebarProps) {
     <aside className="rounded-2xl bg-[#F6F7F8] px-5 pt-5 pb-6 lg:px-[26px] lg:pt-[26px] lg:pb-7">
       <p className="mb-1.5 text-[13px] text-[#8b9096]">{t("baseSalaryRange")}</p>
       <SalaryRange
-        low={job.salaryLow}
-        high={job.salaryHigh}
+        low={job.salaryLow ?? ""}
+        high={job.salaryHigh ?? ""}
         symbolClassName="h-[19px] align-[-2px] me-[3px]"
         className="mb-1.5 block text-[26px] font-bold text-[#17181a]"
       />
       <p className="mb-[22px] text-[13px] text-[#8b9096]">{job.salaryNote}</p>
 
       <div className="flex flex-col gap-3.5 border-t border-[#E6E8EA] pt-[22px]">
-        {job.meta.map((row) => (
+        {job.meta?.map((row) => (
           <div key={row.label} className="flex items-center justify-between gap-4">
             <span className="text-[13px] text-[#8b9096]">{row.label}</span>
             <span className="text-end text-[13px] font-semibold text-[#2b2e31]">{row.value}</span>

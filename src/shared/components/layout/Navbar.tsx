@@ -9,7 +9,6 @@ import { useOverlays } from "@/shared/components/overlays/OverlayProvider";
 import { MEGA_MENUS } from "@/shared/constants/navigation";
 import { ROUTES } from "@/shared/constants/routes";
 import { cn } from "@/shared/utils/cn";
-import LanguageSelector from "./LanguageSelector";
 import MegaMenu from "./MegaMenu";
 import SearchModal from "./SearchModal";
 
@@ -156,7 +155,11 @@ export default function Navbar({
 
                 {config?.layout === "list" && isOpen && (
                   <div className="absolute top-full left-1/2 z-50 -translate-x-1/2 pt-[18px]">
-                    <MegaMenu config={config} onNavigate={() => setMenu(null)} />
+                    <MegaMenu
+                      config={config}
+                      activeHref={link.href}
+                      onNavigate={() => setMenu(null)}
+                    />
                   </div>
                 )}
               </div>
@@ -166,7 +169,11 @@ export default function Navbar({
 
         {wideMenu && (
           <div className="absolute top-full right-0 left-0 z-50 hidden justify-center px-[var(--gutter)] pt-4.5 xl:flex">
-            <MegaMenu config={wideMenu} onNavigate={() => setMenu(null)} />
+            <MegaMenu
+              config={wideMenu}
+              activeHref={menu ?? undefined}
+              onNavigate={() => setMenu(null)}
+            />
           </div>
         )}
 
@@ -181,18 +188,20 @@ export default function Navbar({
             <SearchIcon className="size-5" strokeWidth={1.8} />
           </button>
 
-          <div className="hidden xl:block">
+          {/* Language dropdown hidden for this version */}
+          {/* <div className="hidden xl:block">
             <LanguageSelector variant={variant} />
-          </div>
+          </div> */}
 
-          <button
+          {/* Ask AI hidden for this version */}
+          {/* <button
             type="button"
             aria-haspopup="dialog"
             onClick={onAskAiClick ?? (() => overlays.open("ai"))}
             className={cn(control, "px-4 text-[15px] font-medium")}
           >
             Ask AI
-          </button>
+          </button> */}
 
           {appointmentHref ? (
             <Link href={appointmentHref} onClick={closeAll} className={appointmentClass}>
@@ -290,7 +299,8 @@ export default function Navbar({
                   <SearchIcon className="size-4" strokeWidth={1.8} />
                   Search
                 </button>
-                <button
+                {/* Ask AI hidden for this version */}
+                {/* <button
                   type="button"
                   onClick={() => {
                     closeAll();
@@ -300,7 +310,7 @@ export default function Navbar({
                   className="flex h-11 flex-1 items-center justify-center rounded-full border border-white/25 text-[15px] font-medium text-white"
                 >
                   Ask AI
-                </button>
+                </button> */}
               </div>
 
               {appointmentHref ? (
@@ -321,9 +331,10 @@ export default function Navbar({
                 </button>
               )}
 
-              <div className="mt-4 border-t border-white/10 pt-4">
+              {/* Language dropdown hidden for this version */}
+              {/* <div className="mt-4 border-t border-white/10 pt-4">
                 <LanguageSelector variant="solid" />
-              </div>
+              </div> */}
             </div>
           </div>
         )}

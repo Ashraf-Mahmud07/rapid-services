@@ -9,7 +9,7 @@ import RatingCard from "./RatingCard";
 function VerifiedBadge() {
   const t = useTranslations("product");
   return (
-    <span className="inline-flex h-6 items-center rounded-full border border-[#f2f2f2] px-3 text-[11px] font-semibold tracking-[0.06em] text-[#bbb] uppercase">
+    <span className="inline-flex h-6 items-center rounded-[6px] border border-[#bae0de] bg-[#effffe] px-2.5 text-[11px] font-semibold tracking-[0.66px] text-[#00a79d] uppercase">
       {t("verified")}
     </span>
   );
@@ -30,11 +30,11 @@ export default function ProductRatings({ product }: { product?: Product }) {
 
   return (
     <section className="flex flex-col gap-4" id="product-ratings">
-      <h2 className="text-[28px] leading-9 font-semibold tracking-[-0.02em] text-[#0e0e0e]">
+      <h2 className="text-[22px] leading-tight font-semibold tracking-[-0.02em] text-[#0e0e0e] sm:text-[28px] sm:leading-9">
         {t("ratings")}
       </h2>
 
-      <div className="grid gap-8 lg:grid-cols-[minmax(0,486px)_minmax(0,1fr)] lg:gap-22">
+      <div className="grid gap-6 sm:gap-8 lg:grid-cols-[minmax(0,486px)_minmax(0,1fr)] lg:gap-22">
         <RatingCard product={product} />
 
         <div className="flex flex-col gap-4">
@@ -50,13 +50,13 @@ export default function ProductRatings({ product }: { product?: Product }) {
             return (
               <article
                 key={idx}
-                className="rounded-[10px] border border-[#f2f2f2] bg-[#f8f8f8] px-7 py-7"
+                className="rounded-[10px] border border-[#f2f2f2] bg-[#f8f8f8] p-4 sm:p-7"
               >
                 <div className="flex flex-col gap-4">
                   <div className="flex items-center gap-2.75">
                     <span
                       aria-hidden="true"
-                      className="inline-flex text-[14px] tracking-[0.19em] text-star select-none"
+                      className="inline-flex text-[14px] tracking-[0.19em] text-[#fa5b05] select-none"
                     >
                       {"★".repeat(Math.round(review.count || 5))}
                     </span>

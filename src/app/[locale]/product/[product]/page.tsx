@@ -1,5 +1,17 @@
 import type { Metadata } from "next";
-import { ProductDetailView, findProductBySlug } from "@/modules/product";
+import { ProductDetailView, findProductBySlug, products } from "@/modules/product";
+import { routing } from "@/i18n/routing";
+
+export function generateStaticParams() {
+  const uniqueProducts = Array.from(new Set(products.map((p) => p.slug || p.id)));
+
+  return routing.locales.flatMap((locale) =>
+    uniqueProducts.map((product) => ({
+      locale,
+      product,
+    }))
+  );
+}
 
 interface ProductPageProps {
   params: Promise<{ locale: string; product: string }>;

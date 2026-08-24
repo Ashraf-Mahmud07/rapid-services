@@ -1,90 +1,117 @@
 "use client";
 
-import { Link } from "@/i18n/navigation";
-import { blogDetailRoute } from "@/shared/constants/routes";
-import Image from "next/image";
 import { useBlogs } from "../hooks/useBlogs";
+import { Mail, ArrowRight, ChevronsLeft, ChevronsRight } from "lucide-react";
+import { BlogCard } from "./BlogCard";
+
+const CATEGORIES = [
+  "All Categories",
+  "Inspection",
+  "Force & Torque",
+  "Process Control Instrumentation",
+  "Electrical & Electronics",
+  "Laboratories",
+  "Mechanical & Inspection Equipment",
+  "Force & Torque",
+  "Process Control Instrumentation",
+  "Electrical & Electronics",
+];
 
 export function BlogsSection() {
-  const { t, featuredBlogs, listBlogs } = useBlogs();
+  const { featuredBlogs, listBlogs } = useBlogs();
+
+  // Combine all blogs to feed the new unified grid design and slice to first 4
+  const allBlogs = [...featuredBlogs, ...listBlogs].slice(0, 4);
 
   return (
-    <div className="bg-[#f8f9fa] pt-16 pb-24">
+    <div className="bg-white py-16 md:py-24">
       <div className="container-page">
-        {/* Featured Blogs */}
-        <div className="mb-16 grid gap-6 md:grid-cols-2 lg:gap-8">
-          {featuredBlogs.map((blog) => (
-            <Link
-              href={blogDetailRoute(blog.id)}
-              key={blog.id}
-              className="group flex cursor-pointer flex-col"
-            >
-              <div className="relative mb-5 aspect-[4/3] w-full overflow-hidden rounded-xl sm:aspect-[16/9]">
-                <Image
-                  src={blog.image}
-                  alt={blog.title}
-                  fill
-                  className="object-cover transition-transform duration-500 group-hover:scale-105"
-                />
-                <div className="absolute top-4 left-4 rounded-full bg-primary px-3 py-1.5 text-[10px] font-bold tracking-widest text-white uppercase">
-                  {t("featured")}
+        <div className="grid gap-8 lg:grid-cols-[280px_1fr] xl:grid-cols-[320px_1fr] xl:gap-12">
+          {/* LEFT SIDEBAR */}
+          <div className="flex flex-col gap-8">
+            {/* Categories Widget */}
+            <div className="overflow-hidden rounded-xl bg-[#F8F8F8] pb-6">
+              <div className="bg-[#D8FFFD] px-6 py-5">
+                <h3 className="text-[18px] font-bold text-primary">Categories</h3>
+              </div>
+              <div className="px-6 pt-6">
+                <div className="flex custom-scrollbar max-h-[600px] flex-col gap-2 overflow-y-auto pr-2">
+                  {CATEGORIES.map((category, idx) => {
+                    const isActive = category === "All Categories"; // Default active state
+                    return (
+                      <button
+                        key={idx}
+                        className={`flex w-full cursor-pointer items-center rounded-lg px-5 py-3.5 text-left text-[13px] font-bold transition-all ${
+                          isActive
+                            ? "bg-primary text-white shadow-sm"
+                            : "bg-white text-primary hover:bg-gray-50"
+                        }`}
+                      >
+                        {category}
+                      </button>
+                    );
+                  })}
                 </div>
               </div>
-              <div className="mb-3 flex items-center gap-2 text-[12px] font-semibold tracking-wide text-gray-500 uppercase">
-                <span className="text-primary">{blog.category}</span>
-                <span>•</span>
-                <span>{blog.date}</span>
-                <span>•</span>
-                <span>{t("readTime", { time: blog.readTime.replace(/\s*min/, "") })}</span>
+            </div>
+
+            {/* Contact Widget */}
+            <div className="flex flex-col items-center rounded-xl bg-primary p-8 text-center shadow-sm">
+              <div className="mb-6 flex size-12 items-center justify-center rounded-xl bg-white shadow-sm">
+                <Mail className="size-5 text-primary" />
               </div>
-              <h3 className="mb-3 text-xl leading-tight font-bold text-gray-900 transition-colors group-hover:text-primary md:text-2xl">
-                {blog.title}
+              <h3 className="mb-6 text-[16px] leading-relaxed font-bold text-white">
+                We are always available to discuss with you
               </h3>
-              <p className="text-sm leading-relaxed text-gray-600 md:text-[15px]">
-                {blog.description}
-              </p>
-            </Link>
-          ))}
-        </div>
+              <a
+                href="mailto:info@majokaengineering.com"
+                className="mb-8 text-[13px] font-medium text-white/90 hover:text-white"
+              >
+                info@majokaengineering.com
+              </a>
+              <button className="flex items-center gap-2 rounded-full bg-white px-6 py-3 text-[13px] font-bold text-primary transition-all hover:bg-gray-50">
+                Contact Us <ArrowRight className="size-4" />
+              </button>
+            </div>
+          </div>
 
-        {/* Blog List Header */}
-        <div className="mb-8">
-          <h2 className="text-2xl font-bold text-gray-900 md:text-[28px]">{t("blogList")}</h2>
-        </div>
+          {/* RIGHT MAIN CONTENT */}
+          <div className="flex flex-col">
+            {/* Blog Grid */}
+            <div className="mb-12 grid gap-6 md:grid-cols-2 lg:gap-8">
+              {allBlogs.map((blog) => (
+                <BlogCard key={blog.id} blog={blog} />
+              ))}
+            </div>
 
-        {/* Blog List Grid */}
-        <div className="grid gap-4 md:grid-cols-2 lg:gap-6">
-          {listBlogs.map((blog) => (
-            <Link
-              href={blogDetailRoute(blog.id)}
-              key={blog.id}
-              className="group flex cursor-pointer items-start gap-4 rounded-xl border border-transparent bg-white p-4 transition-shadow hover:border-gray-100 hover:shadow-[0_4px_20px_-4px_rgba(0,0,0,0.05)] md:gap-5"
-            >
-              <div className="relative h-24 w-24 flex-shrink-0 overflow-hidden rounded-lg md:h-32 md:w-32">
-                <Image
-                  src={blog.image}
-                  alt={blog.title}
-                  fill
-                  className="object-cover transition-transform duration-500 group-hover:scale-105"
-                />
+            {/* Pagination */}
+            <div className="flex flex-col items-center justify-between gap-6 pt-2 sm:flex-row">
+              <span className="text-[13px] font-medium text-gray-600">Showing 1 to 5 of 120</span>
+              <div className="flex items-center gap-2">
+                <button className="flex size-9 items-center justify-center rounded border border-[#e6fbf9] text-primary transition-colors hover:bg-[#e6fbf9]">
+                  <ChevronsLeft className="size-4" />
+                </button>
+                <button className="flex size-9 items-center justify-center rounded bg-primary text-[13px] font-semibold text-white transition-colors">
+                  1
+                </button>
+                <button className="flex size-9 items-center justify-center rounded border border-[#e6fbf9] text-[13px] font-semibold text-primary transition-colors hover:bg-[#e6fbf9]">
+                  2
+                </button>
+                <button className="flex size-9 items-center justify-center rounded border border-[#e6fbf9] text-[13px] font-semibold text-primary transition-colors hover:bg-[#e6fbf9]">
+                  3
+                </button>
+                <span className="flex size-9 items-center justify-center text-[13px] font-semibold text-primary/50">
+                  ...
+                </span>
+                <button className="flex size-9 items-center justify-center rounded border border-[#e6fbf9] text-[13px] font-semibold text-primary transition-colors hover:bg-[#e6fbf9]">
+                  24
+                </button>
+                <button className="flex size-9 items-center justify-center rounded border border-[#e6fbf9] text-primary transition-colors hover:bg-[#e6fbf9]">
+                  <ChevronsRight className="size-4" />
+                </button>
               </div>
-              <div className="flex-1 py-1">
-                <div className="mb-2 flex items-center gap-1.5 text-[10px] font-bold tracking-wide text-gray-500 uppercase md:gap-2 md:text-[11px]">
-                  <span className="text-primary">{blog.category}</span>
-                  <span>•</span>
-                  <span>{blog.date}</span>
-                  <span>•</span>
-                  <span>{t("readTime", { time: blog.readTime.replace(/\s*min/, "") })}</span>
-                </div>
-                <h4 className="mb-2 line-clamp-2 text-[15px] leading-snug font-bold text-gray-900 transition-colors group-hover:text-primary md:text-[17px]">
-                  {blog.title}
-                </h4>
-                <p className="line-clamp-2 text-[13px] leading-relaxed text-gray-500 md:text-[14px]">
-                  {blog.description}
-                </p>
-              </div>
-            </Link>
-          ))}
+            </div>
+          </div>
         </div>
       </div>
     </div>

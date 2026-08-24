@@ -14,11 +14,6 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "www.figma.com",
-        pathname: "/api/mcp/**",
-      },
-      {
-        protocol: "https",
         hostname: "images.unsplash.com",
       },
     ],

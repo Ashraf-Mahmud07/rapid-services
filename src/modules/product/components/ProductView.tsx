@@ -57,7 +57,7 @@ export default function ProductView() {
 
 const GridSkeletonView = ({ count = 8 }: { count?: number }): React.JSX.Element => {
   return (
-    <section className="mt-6 grid gap-7 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">
+    <section className="mt-6 grid grid-cols-2 gap-3.5 sm:gap-[31px] md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">
       {Array.from({ length: count }).map((_, index) => (
         <ProductGridCardSkeleton key={index} />
       ))}
@@ -77,7 +77,7 @@ const ListSkeletonView = ({ count = 8 }: { count?: number }): React.JSX.Element 
 
 const GridView = ({ productsList }: { productsList: Product[] }): React.JSX.Element => {
   return (
-    <section className="mt-6 grid gap-7 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">
+    <section className="mt-6 grid grid-cols-2 gap-3.5 sm:gap-[31px] md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">
       {productsList.map((product) => (
         <div key={product.id} className="">
           <ProductGridCard product={product} />

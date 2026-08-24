@@ -1,4 +1,4 @@
-/** TEMPORARY SAMPLE DATA **/
+/** CAREERS SAMPLE DATA **/
 
 import type { Job, JobFilter } from "../types/careers.types";
 
@@ -11,10 +11,6 @@ export const JOBS: Job[] = [
     department: "Engineering",
     location: "San Francisco or Remote (US)",
     employmentType: "Full-time",
-    salaryLow: "185k",
-    salaryHigh: "225k",
-    salaryNote: "Plus equity and annual bonus",
-    isNew: true,
     about: [
       "Storefront is the surface 4.2 million people a month use to compare, configure, and buy hardware. You'll own the parts of it where decisions get made — product detail, compare, and the configurator — working alongside two engineers and a designer with no PM layer in between.",
       "This is a hands-on senior role. Expect to spend most of your week in React and TypeScript, and the rest arguing productively about performance budgets, accessibility, and what we can honestly promise a customer on a product page.",
@@ -35,13 +31,6 @@ export const JOBS: Job[] = [
     ],
     closingNote:
       "Nice to have, never required: design-systems experience, e-commerce at scale, or a stubborn opinion about Core Web Vitals. If you meet most of the list, apply.",
-    meta: [
-      { label: "Team", value: "Storefront (4 people)" },
-      { label: "Level", value: "Senior / IC4" },
-      { label: "Reports to", value: "Maya Rodriguez" },
-      { label: "Onsite days", value: "2 per week, if local" },
-      { label: "Visa support", value: "H-1B transfers" },
-    ],
   },
   {
     slug: "product-designer-checkout",
@@ -49,10 +38,6 @@ export const JOBS: Job[] = [
     department: "Design",
     location: "San Francisco",
     employmentType: "Full-time",
-    salaryLow: "185k",
-    salaryHigh: "225k",
-    salaryNote: "Plus equity and annual bonus",
-    isNew: true,
     about: [
       "Checkout is the last four screens between a customer and a completed order, and every point of friction there is measurable. You'll own the flow end to end — cart, payment, scheduling, and confirmation — with an engineer pairing with you from the first sketch.",
       "This is a craft-heavy role with real business weight. Expect prototypes in front of customers most weeks, and decisions defended with session recordings rather than taste alone.",
@@ -73,13 +58,6 @@ export const JOBS: Job[] = [
     ],
     closingNote:
       "Nice to have, never required: payments experience, motion design, or a background in service operations. If you meet most of the list, apply.",
-    meta: [
-      { label: "Team", value: "Checkout (5 people)" },
-      { label: "Level", value: "Senior / IC4" },
-      { label: "Reports to", value: "Daniel Okafor" },
-      { label: "Onsite days", value: "3 per week" },
-      { label: "Visa support", value: "H-1B transfers" },
-    ],
   },
   {
     slug: "warranty-operations-lead",
@@ -87,10 +65,6 @@ export const JOBS: Job[] = [
     department: "Operations",
     location: "Austin, TX",
     employmentType: "Full-time",
-    salaryLow: "185k",
-    salaryHigh: "225k",
-    salaryNote: "Plus equity and annual bonus",
-    isNew: false,
     about: [
       "Warranty is where a promise made at purchase either holds up or doesn't. You'll run the operation behind it — claims intake, parts sourcing, technician dispatch, and the reporting that tells us where products fail.",
       "You'll lead a team of six specialists and work directly with engineering and suppliers. The role suits someone who fixes the process rather than working around it.",
@@ -111,13 +85,6 @@ export const JOBS: Job[] = [
     ],
     closingNote:
       "Nice to have, never required: automotive or hardware service background, Lean or Six Sigma training, or supplier-side experience. If you meet most of the list, apply.",
-    meta: [
-      { label: "Team", value: "Warranty (6 people)" },
-      { label: "Level", value: "Manager / M2" },
-      { label: "Reports to", value: "Priya Raman" },
-      { label: "Onsite days", value: "4 per week" },
-      { label: "Visa support", value: "Not available" },
-    ],
   },
   {
     slug: "backend-engineer-fulfillment",
@@ -125,10 +92,6 @@ export const JOBS: Job[] = [
     department: "Engineering",
     location: "Remote (US / Canada)",
     employmentType: "Full-time",
-    salaryLow: "185k",
-    salaryHigh: "225k",
-    salaryNote: "Plus equity and annual bonus",
-    isNew: false,
     about: [
       "Fulfillment turns an order into a scheduled job with the right parts, the right technician, and an honest delivery date. You'll work on the services behind inventory allocation, routing, and supplier integrations.",
       "The systems are load-bearing and the failure modes are physical, so correctness matters more than novelty here. Expect careful migrations, good tests, and clear rollback plans.",
@@ -149,13 +112,6 @@ export const JOBS: Job[] = [
     ],
     closingNote:
       "Nice to have, never required: logistics or inventory domain knowledge, Go experience, or event-sourcing background. If you meet most of the list, apply.",
-    meta: [
-      { label: "Team", value: "Fulfillment (5 people)" },
-      { label: "Level", value: "Senior / IC4" },
-      { label: "Reports to", value: "Alex Chen" },
-      { label: "Onsite days", value: "Fully remote" },
-      { label: "Visa support", value: "H-1B transfers" },
-    ],
   },
   {
     slug: "lifecycle-marketing-manager",
@@ -163,10 +119,6 @@ export const JOBS: Job[] = [
     department: "Marketing",
     location: "Remote (US)",
     employmentType: "Full-time",
-    salaryLow: "185k",
-    salaryHigh: "225k",
-    salaryNote: "Plus equity and annual bonus",
-    isNew: true,
     about: [
       "Most of our revenue comes from customers who already bought something once. You'll own the programs that keep them — onboarding, service reminders, warranty renewals, and win-back — across email, SMS, and in-product messaging.",
       "You'll own the roadmap and the numbers. There's no separate team writing the copy or building the segments, so this suits someone who likes shipping their own work.",
@@ -187,13 +139,6 @@ export const JOBS: Job[] = [
     ],
     closingNote:
       "Nice to have, never required: e-commerce or services background, SMS compliance knowledge, or experience with a customer data platform. If you meet most of the list, apply.",
-    meta: [
-      { label: "Team", value: "Growth (7 people)" },
-      { label: "Level", value: "Senior / IC4" },
-      { label: "Reports to", value: "Hannah Weiss" },
-      { label: "Onsite days", value: "Fully remote" },
-      { label: "Visa support", value: "Not available" },
-    ],
   },
   {
     slug: "ux-researcher-service-experience",
@@ -201,10 +146,6 @@ export const JOBS: Job[] = [
     department: "Design",
     location: "Remote (US) or Austin, TX",
     employmentType: "Full-time",
-    salaryLow: "185k",
-    salaryHigh: "225k",
-    salaryNote: "Plus equity and annual bonus",
-    isNew: false,
     about: [
       "Our service experience spans a booking flow, a workshop visit, and everything customers are told in between. You'll be the first dedicated researcher on it, which means choosing which questions are worth answering.",
       "Expect a mix of field work in workshops and remote studies. The output is decisions the team acts on, not a research library nobody reads.",
@@ -225,13 +166,6 @@ export const JOBS: Job[] = [
     ],
     closingNote:
       "Nice to have, never required: survey design depth, diary study experience, or a background in service design. If you meet most of the list, apply.",
-    meta: [
-      { label: "Team", value: "Design (9 people)" },
-      { label: "Level", value: "Senior / IC4" },
-      { label: "Reports to", value: "Daniel Okafor" },
-      { label: "Onsite days", value: "2 per week, if local" },
-      { label: "Visa support", value: "Not available" },
-    ],
   },
   {
     slug: "fleet-operations-coordinator",
@@ -239,10 +173,6 @@ export const JOBS: Job[] = [
     department: "Operations",
     location: "Sharjah, UAE",
     employmentType: "Full-time",
-    salaryLow: "185k",
-    salaryHigh: "225k",
-    salaryNote: "Plus equity and annual bonus",
-    isNew: false,
     about: [
       "Our fleet customers run dozens of vehicles each, and a missed service window costs them a working day. You'll coordinate scheduling, parts, and technicians across those accounts from our Sharjah workshop.",
       "It's a role for someone who keeps a lot of moving parts straight and would rather call a customer early with bad news than late with an excuse.",
@@ -263,13 +193,6 @@ export const JOBS: Job[] = [
     ],
     closingNote:
       "Nice to have, never required: automotive technical knowledge, UAE market experience, or Arabic. If you meet most of the list, apply.",
-    meta: [
-      { label: "Team", value: "Workshop (12 people)" },
-      { label: "Level", value: "Mid / IC3" },
-      { label: "Reports to", value: "Omar Haddad" },
-      { label: "Onsite days", value: "5 per week" },
-      { label: "Visa support", value: "UAE sponsorship" },
-    ],
   },
   {
     slug: "platform-engineer-infrastructure",
@@ -277,10 +200,6 @@ export const JOBS: Job[] = [
     department: "Engineering",
     location: "Remote (US / Canada)",
     employmentType: "Full-time",
-    salaryLow: "185k",
-    salaryHigh: "225k",
-    salaryNote: "Plus equity and annual bonus",
-    isNew: false,
     about: [
       "Platform exists so product teams can ship without filing tickets. You'll own the build pipeline, deployment tooling, and the observability stack that tells everyone whether a release went well.",
       "We're small enough that you'll see the effect of your work within a week, and disciplined enough that you won't be firefighting to get there.",
@@ -301,13 +220,6 @@ export const JOBS: Job[] = [
     ],
     closingNote:
       "Nice to have, never required: cost-optimisation experience, developer-experience background, or time on a small team wearing several hats. If you meet most of the list, apply.",
-    meta: [
-      { label: "Team", value: "Platform (4 people)" },
-      { label: "Level", value: "Senior / IC4" },
-      { label: "Reports to", value: "Alex Chen" },
-      { label: "Onsite days", value: "Fully remote" },
-      { label: "Visa support", value: "H-1B transfers" },
-    ],
   },
   {
     slug: "content-strategist",
@@ -315,10 +227,6 @@ export const JOBS: Job[] = [
     department: "Marketing",
     location: "Remote (US) or San Francisco",
     employmentType: "Full-time",
-    salaryLow: "185k",
-    salaryHigh: "225k",
-    salaryNote: "Plus equity and annual bonus",
-    isNew: false,
     about: [
       "Customers arrive with a specific question — whether a repair is worth it, what a warranty covers, how long a part will last. You'll own the content that answers those questions honestly and ranks while doing it.",
       "This is a writing and editing role with a strategy title. You'll publish, not just plan.",
@@ -339,13 +247,6 @@ export const JOBS: Job[] = [
     ],
     closingNote:
       "Nice to have, never required: automotive or hardware knowledge, video scripting, or localisation experience. If you meet most of the list, apply.",
-    meta: [
-      { label: "Team", value: "Growth (7 people)" },
-      { label: "Level", value: "Senior / IC4" },
-      { label: "Reports to", value: "Hannah Weiss" },
-      { label: "Onsite days", value: "2 per week, if local" },
-      { label: "Visa support", value: "Not available" },
-    ],
   },
 ];
 

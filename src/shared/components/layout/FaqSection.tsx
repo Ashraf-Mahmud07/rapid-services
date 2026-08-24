@@ -1,98 +1,99 @@
-"use client";
-
-import { useState } from "react";
-
-import { FAQ_LEFT, FAQ_RIGHT } from "@/shared/constants/faq";
-import type { FaqItem } from "@/shared/types";
-import { cn } from "@/shared/utils/cn";
-
-interface FaqColumnProps {
-  items: FaqItem[];
-  openId: string | null;
-  onToggle: (id: string) => void;
-}
-
-function FaqColumn({ items, openId, onToggle }: FaqColumnProps) {
-  return (
-    <div className="flex flex-col gap-4">
-      {items.map((item) => {
-        const isOpen = openId === item.id;
-        return (
-          <div
-            key={item.id}
-            className={cn(
-              "overflow-hidden rounded-xl transition-colors duration-150",
-              isOpen ? "bg-brand-tint" : "bg-[#F5F6F7]"
-            )}
-          >
-            <button
-              type="button"
-              onClick={() => onToggle(item.id)}
-              aria-expanded={isOpen}
-              aria-controls={`faq-answer-${item.id}`}
-              className="flex w-full cursor-pointer items-center justify-between gap-3 px-4 py-4 text-start lg:gap-4 lg:px-5.5 lg:py-5"
-            >
-              <span className="text-[15px] font-semibold text-[#17181a] lg:text-base">
-                {item.question}
-              </span>
-              <span
-                className={cn(
-                  "flex size-6.5 flex-none items-center justify-center rounded-full",
-                  isOpen ? "bg-primary" : "bg-[#e7e9eb]"
-                )}
-              >
-                <svg
-                  width="14"
-                  height="14"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke={isOpen ? "#fff" : "#8b9096"}
-                  strokeWidth="2.4"
-                >
-                  <path
-                    d={isOpen ? "M6 15l6-6 6 6" : "M6 9l6 6 6-6"}
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              </span>
-            </button>
-            {isOpen && (
-              <p
-                id={`faq-answer-${item.id}`}
-                className="px-4 pb-4 text-sm leading-[1.6] text-[#5a5f63] lg:px-5.5 lg:pb-5.5 lg:text-[15px]"
-              >
-                {item.answer}
-              </p>
-            )}
-          </div>
-        );
-      })}
-    </div>
-  );
-}
+import { Link } from "@/i18n/navigation";
+import { ROUTES } from "@/shared/constants/routes";
+import { ArrowRight } from "lucide-react";
 
 interface FaqSectionProps {
-  /** Where "Ask us something else" points. Defaults to the form on the contact page. */
   askHref?: string;
 }
 
-export default function FaqSection({ askHref = "contact-us" }: FaqSectionProps) {
-  const [openId, setOpenId] = useState<string | null>(FAQ_LEFT[0].id);
+const FAQ_DATA = [
+  {
+    id: "f1",
+    question: "Can I try free trial?",
+    answer:
+      "Sit amet. Sem integer vitae justo eget magna fermentum iaculis. Facilisis magna etiam tempor orci eu lobortis.",
+  },
+  {
+    id: "f2",
+    question: "What's the pricing?",
+    answer:
+      "Sit amet. Sem integer vitae justo eget magna fermentum iaculis. Facilisis magna etiam tempor orci eu lobortis.",
+  },
+  {
+    id: "f3",
+    question: "Is there a refund?",
+    answer:
+      "Sit amet. Sem integer vitae justo eget magna fermentum iaculis. Facilisis magna etiam tempor orci eu lobortis.",
+  },
+  {
+    id: "f4",
+    question: "Where to chat with support?",
+    answer:
+      "Sit amet. Sem integer vitae justo eget magna fermentum iaculis. Facilisis magna etiam tempor orci eu lobortis.",
+  },
+  {
+    id: "f5",
+    question: "Can I try demo for free?",
+    answer:
+      "Sit amet. Sem integer vitae justo eget magna fermentum iaculis. Facilisis magna etiam tempor orci eu lobortis.",
+  },
+  {
+    id: "f6",
+    question: "Where can I leave feedback?",
+    answer:
+      "Sit amet. Sem integer vitae justo eget magna fermentum iaculis. Facilisis magna etiam tempor orci eu lobortis.",
+  },
+];
 
-  const onToggle = (id: string) => setOpenId((current) => (current === id ? null : id));
-
+export default function FaqSection({ askHref = ROUTES.CONTACT }: FaqSectionProps) {
   return (
-    <section className="mt-14 pb-16 sm:mt-16 sm:pb-20 lg:mt-20 lg:pb-24">
-      <div className="mb-5 flex flex-col items-start gap-2 sm:flex-row sm:items-center sm:justify-between sm:gap-4 lg:mb-7.5">
-        <h2 className="text-[28px] font-bold text-[#17181a] sm:text-[34px] lg:text-[40px]">FAQ</h2>
-        <a href={askHref} className="text-sm text-primary underline lg:text-[15px]">
-          Ask us something else
-        </a>
-      </div>
-      <div className="grid items-start gap-4 lg:grid-cols-2 lg:gap-5.5">
-        <FaqColumn items={FAQ_LEFT} openId={openId} onToggle={onToggle} />
-        <FaqColumn items={FAQ_RIGHT} openId={openId} onToggle={onToggle} />
+    <section className="my-14 sm:my-16 lg:my-20">
+      <div className="rounded-3xl bg-[#0A365C] px-6 py-12 sm:px-10 lg:px-12 lg:py-14">
+        {/* Header Section */}
+        <div className="mx-auto mb-8 max-w-4xl text-center">
+          <h2 className="mb-4 text-[32px] font-bold text-white sm:text-[40px] lg:text-[44px]">
+            Frequently Asked <span className="text-primary">Questions</span>
+          </h2>
+          <p className="mx-auto max-w-4xl text-[14px] leading-relaxed text-white/70">
+            Fermentum iaculis eu non diam phasellus vestibulum. Volutpat commodo sed egestas egestas
+            fringilla phasellus. Donec ac odio tempor orci dapibus ultrices.
+          </p>
+        </div>
+
+        {/* Divider */}
+        <div className="mx-auto mb-10 h-[1px] w-full max-w-4xl bg-white/10" />
+
+        {/* Content Wrapper */}
+        <div className="mx-auto w-full max-w-[1150px]">
+          {/* FAQs Grid */}
+          <div className="mb-10 grid w-full grid-cols-1 gap-x-16 gap-y-10 md:grid-cols-2 lg:grid-cols-3">
+            {FAQ_DATA.map((faq) => (
+              <div key={faq.id} className="flex flex-col">
+                <h3 className="mb-3 text-[16px] font-bold text-white">{faq.question}</h3>
+                <p className="text-[14px] leading-relaxed text-white/60">{faq.answer}</p>
+              </div>
+            ))}
+          </div>
+
+          {/* CTA Card */}
+          <div className="flex flex-col items-center justify-between gap-6 rounded-2xl bg-white/5 px-8 py-8 md:flex-row md:px-10 md:py-8 lg:px-12">
+            <div className="flex flex-col gap-1.5 text-center md:text-left">
+              <h3 className="text-[20px] font-bold text-white sm:text-[22px]">
+                Still have questions?
+              </h3>
+              <p className="text-[14px] text-white/70">
+                We understand. Let&apos;s get in touch directly with our team, then.
+              </p>
+            </div>
+            <Link
+              href={askHref}
+              className="group inline-flex shrink-0 items-center gap-2 rounded-full bg-primary px-7 py-3 text-[14px] font-bold text-white transition-all hover:bg-primary/90"
+            >
+              Contact Us
+              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+            </Link>
+          </div>
+        </div>
       </div>
     </section>
   );

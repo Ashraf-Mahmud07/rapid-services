@@ -84,7 +84,9 @@ export default function ProductHeader({
         </div>
 
         <div className="flex items-center gap-2.25">
-          <span className="text-[13px] leading-4 font-normal text-[#737373]">{t("showPage")}</span>
+          <span className="hidden text-[13px] leading-4 font-normal text-[#737373] sm:inline">
+            {t("showPage")}
+          </span>
           <div
             className="relative"
             onBlur={(event: React.FocusEvent<HTMLDivElement>) => {

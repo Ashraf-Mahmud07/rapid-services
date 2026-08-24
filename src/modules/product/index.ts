@@ -1,5 +1,5 @@
 export { default as ProductsView } from "./views/ProductsView";
-export { default as ProductDetailView, findProductBySlug } from "./views/ProductDetailView";
+export { default as ProductDetailView } from "./views/ProductDetailView";
 
 export { default as NoProductFound } from "./components/NoProductFound";
 export { default as ProductGridCard } from "./components/ProductGridCard";

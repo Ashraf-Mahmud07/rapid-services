@@ -11,7 +11,7 @@ export const ROUTES = {
   ABOUT: "/about",
   CONTACT: "/contact-us",
   APPOINTMENT: "/appointment",
-  GALLERY: "/gallery",
+  MEDIA: "/Media",
   PRIVACY: "/privacy-policy",
   TERMS: "/terms-conditions",
   COOKIE_POLICY: "/cookie-policy",

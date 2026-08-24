@@ -1,5 +1,18 @@
 import type { Metadata } from "next";
-import { BlogDetailView, getBlogById } from "@/modules/blogs";
+import { BlogDetailView, getBlogById, listBlogs, featuredBlogs } from "@/modules/blogs";
+import { routing } from "@/i18n/routing";
+
+export function generateStaticParams() {
+  const allBlogs = [...listBlogs, ...featuredBlogs];
+  const uniqueIds = Array.from(new Set(allBlogs.map((b) => b.id)));
+
+  return routing.locales.flatMap((locale) =>
+    uniqueIds.map((id) => ({
+      locale,
+      id,
+    }))
+  );
+}
 
 interface BlogDetailsPageProps {
   params: Promise<{ id: string }>;

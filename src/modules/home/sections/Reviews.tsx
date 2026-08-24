@@ -1,107 +1,139 @@
 "use client";
 
-import asusLogo from "@/modules/home/assets/images/asus.png";
-import lenovoLogo from "@/modules/home/assets/images/lenovo.png";
-import siemensLogo from "@/modules/home/assets/images/siemens.png";
-import sonyLogo from "@/modules/home/assets/images/sony.png";
-import { ArrowLeft, ArrowRight } from "lucide-react";
 import Image from "next/image";
 import { useState } from "react";
 
-const logos = [
-  sonyLogo,
-  lenovoLogo,
-  siemensLogo,
-  asusLogo,
-  lenovoLogo,
-  sonyLogo,
-  lenovoLogo,
-  siemensLogo,
-  sonyLogo,
-];
+import { reviewsData } from "../data/reviews.data";
+import LeftArrowIcon from "../icons/LeftArrowIcon";
+import RightArrowIcon from "../icons/RightArrowIcon";
 
 export default function Reviews() {
-  const [activeLogo, setActiveLogo] = useState(4);
+  const [activeIndex, setActiveIndex] = useState(3);
+  const totalReviews = reviewsData.items.length;
+  const currentReview = reviewsData.items[activeIndex] ?? reviewsData.items[0];
+
+  const handlePrev = () => {
+    setActiveIndex((prev) => (prev === 0 ? totalReviews - 1 : prev - 1));
+  };
+
+  const handleNext = () => {
+    setActiveIndex((prev) => (prev === totalReviews - 1 ? 0 : prev + 1));
+  };
+
+  // 7 visible logo slots with the active item fixed in the center (slot index 3, offset 0)
+  const slotOffsets = [-3, -2, -1, 0, 1, 2, 3];
 
   return (
-    <section className="section-space">
-      <div className="container mx-auto">
-        <div className="overflow-hidden rounded-md bg-primary">
-          <div className="grid min-h-105 lg:grid-cols-[0.85fr_1.15fr]">
-            {/* Photo panel */}
-            <div className="relative min-h-70 lg:min-h-full">
+    <section className="py-12 lg:py-20">
+      <div className="container-page">
+        <div className="overflow-hidden rounded-[24px] bg-[#0B2C4D] shadow-2xl">
+          <div className="grid min-h-[499px] grid-cols-1 lg:grid-cols-[40%_60%] xl:grid-cols-[42%_58%]">
+            {/* Left Column: Photographic Portrait */}
+            <div className="relative min-h-[380px] w-full bg-[#E5E7EB] sm:min-h-[460px] lg:min-h-[499px]">
               <Image
-                src="/images/team/review.png"
-                alt="Customer testimonial"
+                src={currentReview.image}
+                alt={currentReview.name}
                 fill
-                sizes="(max-width: 1024px) 100vw, 40vw"
-                className="object-cover"
+                priority
+                sizes="(max-width: 1024px) 100vw, 580px"
+                className="object-cover object-center"
               />
             </div>
 
-            {/* Text panel */}
-            <div className="flex flex-col justify-center px-6 py-10 md:px-10 lg:px-14 lg:py-14">
-              <span className="text-[40px] leading-none font-bold text-white/90">&ldquo;</span>
+            {/* Right Column: Testimonial & Client Badges */}
+            <div className="flex flex-col justify-between p-6 sm:p-10 lg:p-12 xl:p-14">
+              <div>
+                {/* Quote Mark Emblem */}
+                <div className="flex items-center gap-1.5" aria-hidden="true">
+                  <span className="inline-block h-6 w-2 -skew-x-[16deg] rounded-[2px] bg-white" />
+                  <span className="inline-block h-6 w-2 -skew-x-[16deg] rounded-[2px] bg-white" />
+                </div>
 
-              <h2 className="mt-2 text-[26px] font-bold tracking-[-0.52px] text-white">
-                What Customer <span className="text-white">Say</span>
-              </h2>
+                {/* Heading */}
+                <h2 className="mt-3 text-[26px] font-bold tracking-tight text-white sm:text-[30px] lg:text-[34px]">
+                  {reviewsData.title}
+                </h2>
 
-              <p className="mt-5 max-w-140 text-[15px] leading-[25.5px] text-white/68">
-                &ldquo;We engaged Taj Al Rahmah for our new commercial build, and they proved to be
-                a reliable and dedicated partner throughout the project. Their team delivered
-                high-quality workmanship, maintained clear communication, and completed every stage
-                with professionalism and attention to detail. We were impressed with their
-                commitment to excellence and would gladly recommend their services.&rdquo;
-              </p>
+                {/* Quote Body */}
+                <p className="mt-4 text-[14.5px] leading-[1.75] font-normal text-white/85 italic sm:text-[15.5px] lg:text-[16px]">
+                  &ldquo;{currentReview.review}&rdquo;
+                </p>
+              </div>
 
-              <div className="mt-8 flex items-center justify-between gap-6">
+              {/* Author Info & Navigation Controls */}
+              <div className="mt-6 flex items-center justify-between gap-4 border-t border-white/10 pt-6">
                 <div>
-                  <p className="text-[15.5px] font-bold text-white">Zayed Omar</p>
-                  <p className="mt-1 text-[11.5px] font-semibold tracking-[0.92px] text-white/80 uppercase">
-                    Regular customer
+                  <h3 className="text-[17px] font-bold text-white sm:text-[18px]">
+                    {currentReview.name}
+                  </h3>
+                  <p className="mt-0.5 text-[11px] font-semibold tracking-[1.2px] text-white/70 uppercase sm:text-[12px]">
+                    {currentReview.role}
                   </p>
                 </div>
 
-                <div className="flex items-center gap-3">
+                {/* Controls */}
+                <div className="flex items-center gap-2.5">
                   <button
                     type="button"
+                    onClick={handlePrev}
                     aria-label="Previous review"
-                    className="flex size-9.5 items-center justify-center rounded-full border border-white/40 bg-transparent text-white transition hover:bg-white/10"
+                    className="flex h-9 w-9 cursor-pointer items-center justify-center rounded-full border border-white/30 bg-transparent text-white/80 transition-all duration-200 hover:scale-105 hover:border-primary hover:bg-primary hover:text-white hover:shadow-md active:scale-95 sm:h-10 sm:w-10"
                   >
-                    <ArrowLeft className="size-3.75" aria-hidden="true" />
+                    <LeftArrowIcon className="h-4 w-4" />
                   </button>
                   <button
                     type="button"
+                    onClick={handleNext}
                     aria-label="Next review"
-                    className="flex size-9.5 items-center justify-center rounded-full bg-white text-primary transition hover:opacity-90"
+                    className="flex h-9 w-9 cursor-pointer items-center justify-center rounded-full border border-white/30 bg-transparent text-white/80 transition-all duration-200 hover:scale-105 hover:border-primary hover:bg-primary hover:text-white hover:shadow-md active:scale-95 sm:h-10 sm:w-10"
                   >
-                    <ArrowRight className="size-3.75" aria-hidden="true" />
+                    <RightArrowIcon className="h-4 w-4" />
                   </button>
                 </div>
               </div>
+
+              {/* Circular Client Logos: Fixed Center Active Ring with Rotating Images */}
+              <div className="mt-8 hide-scrollbar flex items-center justify-start gap-2.5 overflow-x-auto pt-4 pb-2 sm:gap-4 lg:justify-between">
+                {slotOffsets.map((offset) => {
+                  const targetIndex = (activeIndex + offset + totalReviews * 100) % totalReviews;
+                  const item = reviewsData.items[targetIndex];
+                  const isCenter = offset === 0;
+
+                  if (!item) return null;
+
+                  return (
+                    <button
+                      key={`${item.id}-${offset}`}
+                      type="button"
+                      onClick={() => setActiveIndex(targetIndex)}
+                      aria-label={`View review from ${item.companyName}`}
+                      className={`relative flex shrink-0 cursor-pointer items-center justify-center rounded-full bg-white transition-all duration-300 ${
+                        isCenter
+                          ? "h-[74px] w-[74px] border-[3px] border-primary shadow-xl sm:h-[84px] sm:w-[84px] lg:h-[92px] lg:w-[92px]"
+                          : "h-[54px] w-[54px] opacity-90 shadow-md hover:scale-105 hover:opacity-100 sm:h-[64px] sm:w-[64px] lg:h-[72px] lg:w-[72px]"
+                      }`}
+                    >
+                      {isCenter && (
+                        <span
+                          className="absolute -top-2.5 left-1/2 -translate-x-1/2 border-r-[8px] border-b-[9px] border-l-[8px] border-r-transparent border-b-primary border-l-transparent"
+                          aria-hidden="true"
+                        />
+                      )}
+                      <div className="relative flex h-full w-full items-center justify-center p-2.5 sm:p-3">
+                        <Image
+                          src={item.companyLogo}
+                          alt={item.companyName}
+                          className={`max-h-4.5 w-auto object-contain transition-opacity sm:max-h-5 lg:max-h-6 ${
+                            isCenter ? "opacity-100" : "opacity-75"
+                          }`}
+                        />
+                      </div>
+                    </button>
+                  );
+                })}
+              </div>
             </div>
           </div>
-        </div>
-
-        {/* Client logos */}
-        <div className="mt-3 flex flex-wrap items-center justify-center gap-4 bg-white p-4 sm:gap-6 md:gap-8">
-          {logos.map((logo, index) => {
-            const isActive = index === activeLogo;
-            return (
-              <button
-                type="button"
-                key={index}
-                onClick={() => setActiveLogo(index)}
-                aria-label={`Show client ${index + 1}`}
-                className={`flex size-27.5 shrink-0 items-center justify-center rounded-full bg-[#F6F6F6] p-3 transition-all ${
-                  isActive ? "scale-105 shadow-md ring-2 ring-primary" : "shadow-sm hover:shadow-md"
-                }`}
-              >
-                <Image src={logo} alt="Company logo" className="opacity-70" />
-              </button>
-            );
-          })}
         </div>
       </div>
     </section>

@@ -35,5 +35,10 @@
   "verified": "Verified",
   "defaultReviewText": "Great quality product, highly recommended!",
   "loadMore": "Load More",
-  "basedOnVerifiedReviews": "Based on {count} verified reviews"
+  "basedOnVerifiedReviews": "Based on {count} verified reviews",
+  "shareNow": "Share Now",
+  "shareLinkVia": "Share this link via",
+  "orCopyLink": "Or copy link",
+  "copy": "Copy",
+  "copied": "Copied!"
 }
