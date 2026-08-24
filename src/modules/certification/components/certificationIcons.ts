@@ -1,24 +1,16 @@
-import type { SVGProps } from "react";
-
-import {
-  BuildingIcon,
-  DropletIcon,
-  LabIcon,
-  LeafIcon,
-  ShieldCheckIcon,
-  ShieldIcon,
-} from "../assets/icons";
+import { Building2, Droplets, FlaskConical, Leaf, Shield, ShieldCheck } from "lucide-react";
+import type { ElementType } from "react";
 import type { CertificationIconName } from "../types/certification.types";
 
 /**
- * Figma-exported marks drawn with `currentColor`, so the card controls the colour:
+ * Marks drawn with `currentColor`, so the card controls the colour:
  * `text-primary` on the tinted certificate tile, `text-white` on the solid approval tile.
  */
-export const CERTIFICATION_ICONS: Record<CertificationIconName, any> = {
-  shield: ShieldIcon,
-  droplet: DropletIcon,
-  "shield-check": ShieldCheckIcon,
-  building: BuildingIcon,
-  lab: LabIcon,
-  leaf: LeafIcon,
+export const CERTIFICATION_ICONS: Record<CertificationIconName, ElementType> = {
+  shield: Shield,
+  droplet: Droplets,
+  "shield-check": ShieldCheck,
+  building: Building2,
+  lab: FlaskConical,
+  leaf: Leaf,
 };

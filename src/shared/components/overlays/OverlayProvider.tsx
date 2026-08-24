@@ -5,6 +5,7 @@ import * as React from "react";
 
 import AskAiPanel from "./AskAiPanel";
 import { AppointmentModal, RequestCallModal, RequestQuoteModal } from "./RequestForms";
+import WelcomeOfferModal from "./WelcomeOfferModal";
 
 type OverlayId = "appointment" | "quote" | "call" | "ai";
 
@@ -79,6 +80,7 @@ export default function OverlayProvider({ children }: { children: React.ReactNod
       <RequestQuoteModal open={current === "quote"} onOpenChange={toggle("quote")} />
       <RequestCallModal open={current === "call"} onOpenChange={toggle("call")} />
       <AskAiPanel open={current === "ai"} onOpenChange={toggle("ai")} />
+      <WelcomeOfferModal />
     </OverlayContext.Provider>
   );
 }
