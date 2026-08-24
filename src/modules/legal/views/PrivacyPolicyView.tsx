@@ -1,9 +1,9 @@
 "use client";
 
+import serviceBanner from "@/shared/assets/png/service-banner.jpg";
+import { Footer, HeroSection, Navbar } from "@/shared/components/layout";
 import LegalDocumentView from "../components/LegalDocumentView";
-import PageBanner from "../components/PageBanner";
 import { useLegal } from "../hooks/useLegal";
-import { Footer, Navbar } from "@/shared/components/layout";
 
 export default function PrivacyPolicyView() {
   const { t, privacyPolicy } = useLegal();
@@ -11,10 +11,16 @@ export default function PrivacyPolicyView() {
   return (
     <main>
       <Navbar />
-      <PageBanner
+      {/* <PageBanner
         title={t("privacyTitle")}
         subtitle={t("privacySubtitle")}
         date={t("privacyDate")}
+      /> */}
+      <HeroSection
+        title={t("privacyTitle")}
+        descriptionClassName="max-w-[509px] font-[17px] font-normal"
+        subtitle={t("privacySubtitle")}
+        backgroundImage={serviceBanner}
       />
       <LegalDocumentView document={privacyPolicy} />
       <Footer />

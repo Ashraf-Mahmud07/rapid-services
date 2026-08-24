@@ -1,9 +1,7 @@
 import {
-  Award,
   Building,
   Building2,
   CalendarCheck,
-  Droplet,
   Factory,
   FileCheck2,
   Home,
@@ -12,6 +10,11 @@ import {
   Wallet,
   Wrench,
 } from "lucide-react";
+
+import certificationIso9001 from "../assets/icons/certification-1.svg";
+import certificationIso14001 from "../assets/icons/certification-2.svg";
+import certificationIso45001 from "../assets/icons/certification-3.svg";
+import certificationMunicipality from "../assets/icons/certification-4.svg";
 
 import type {
   CounterItem,
@@ -222,17 +225,29 @@ export const FINISHED_PROJECTS_STACKED: HomeFinishedProject[] = [
 ];
 
 export const CERTIFICATIONS: HomeCertificationItem[] = [
-  { title: "ISO 9001:2015", subtitle: "Quality management systems", icon: Award },
-  { title: "ISO 14001:2015", subtitle: "Environmental management", icon: Droplet },
-  { title: "ISO 45001:2018", subtitle: "Occupational health & safety", icon: ShieldCheck },
-  { title: "Dubai Municipality", subtitle: "Approved contractor registration", icon: Building2 },
+  { title: "ISO 9001:2015", subtitle: "Quality management systems", icon: certificationIso9001 },
+  {
+    title: "ISO 14001:2015",
+    subtitle: "Environmental management",
+    icon: certificationIso14001,
+  },
+  {
+    title: "ISO 45001:2018",
+    subtitle: "Occupational health & safety",
+    icon: certificationIso45001,
+  },
+  {
+    title: "Dubai Municipality",
+    subtitle: "Approved contractor registration",
+    icon: certificationMunicipality,
+  },
 ];
 
 export const EXPERTS: HomeExpert[] = [
-  { name: "Ryan Mitchell", role: "Installation Specialist", image: "/images/team/expert-1.jpg" },
-  { name: "Adam Carter", role: "Senior Technician", image: "/images/team/expert-2.jpg" },
-  { name: "Luis Romero", role: "Site Electrician", image: "/images/team/expert-3.jpg" },
-  { name: "Owen Hayes", role: "Maintenance Lead", image: "/images/team/expert-4.jpg" },
+  { name: "Michael Carter", role: "Site Supervisor", image: "/images/team/expert-1.jpg" },
+  { name: "James Walker", role: "Senior Technician", image: "/images/team/expert-2.jpg" },
+  { name: "Ryan Mitchell", role: "Installation Specialist", image: "/images/team/expert-3.jpg" },
+  { name: "Daniel Brooks", role: "Maintenance Lead", image: "/images/team/expert-4.jpg" },
 ];
 
 export const EXPERT_SOCIALS: HomeSocialItem[] = [
@@ -315,7 +330,7 @@ export const FEATURED_POST: HomePostItem = {
   date: "Mar 12, 2026",
   title: "Advanced Waterproofing: Protecting Concrete from Harsh Climates",
   description:
-    "Learn how specialized membrane applications and chemical coatings can extend the lifespan of your building's foundation by preventing moisture seepage and salt…",
+    "Learn how specialized membrane applications and chemical coatings can extend the lifespan of your building's foundation by preventing moisture seepage and salt-related corrosion.",
   image: "/images/services/electrical-installation.jpg",
 };
 
@@ -330,26 +345,26 @@ export const HOME_POSTS: HomePostItem[] = [
   },
   {
     category: "Project Management",
-    date: "Feb 18, 2026",
-    title: "Sequencing a fit-out around a live building",
+    date: "Feb 25, 2026",
+    title: "Structural Restoration: Reviving Heritage Buildings",
     description:
-      "How we phase work so tenants keep operating while the trades move through floor by floor.",
-    image: "/images/projects/consumer-unit-upgrade.jpg",
+      "A deep dive into the techniques used to reinforce older structures without compromising their original architectural integrity.",
+    image: "/images/projects/panel-rewire.jpg",
   },
   {
-    category: "Waterproofing",
-    date: "Feb 11, 2026",
-    title: "Why substrate prep decides the warranty",
+    category: "Project Management",
+    date: "Feb 25, 2026",
+    title: "Structural Restoration: Reviving Heritage Buildings",
     description:
-      "Most early membrane failures trace back to what happened before the product was ever opened.",
-    image: "/images/projects/pipework-repair.jpg",
+      "A deep dive into the techniques used to reinforce older structures without compromising their original architectural integrity.",
+    image: "/images/blog/blueprint-review.jpg",
   },
   {
     category: "Maintenance Dept",
-    date: "Feb 15, 2026",
-    title: "Essential Maintenance Tips for Luxury Swimming Pools",
+    date: "Feb 25, 2026",
+    title: "Essential Maintenance Tips for Luxury Swimming",
     description:
       "Keep your pool crystal clear with these professional chemical balancing and filtration tips.",
-    image: "/images/projects/move-out-clean.jpg",
+    image: "/images/projects/panel-rewire.jpg",
   },
 ];

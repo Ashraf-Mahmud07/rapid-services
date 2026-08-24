@@ -59,7 +59,7 @@ export default function ProductListCard({ product }: { product: Product }) {
         isShareOpen ? "border-primary" : "border-[#efefef] hover:border-primary"
       }`}
     >
-      <Link className="absolute inset-0 z-0" href={detailsUrl} />
+      <Link className="absolute inset-0 z-1" href={detailsUrl} />
 
       {/* Left Image Box */}
       <div
@@ -81,10 +81,10 @@ export default function ProductListCard({ product }: { product: Product }) {
       </div>
 
       {/* Right Content */}
-      <div className="inset relative mr-0 ml-0 flex min-w-0 flex-1 flex-col justify-center sm:mr-2 sm:ml-6">
+      <div className="inset mr-0 ml-0 flex min-w-0 flex-1 flex-col justify-center sm:mr-2 sm:ml-6 md:relative">
         {/* Top actions row (Always visible on mobile, hover on desktop) */}
         <div
-          className={`absolute top-0 left-0 mt-auto mb-1 flex min-h-[28.6px] w-full items-center justify-between transition-opacity duration-200 ${
+          className={`absolute top-[10px] right-[10px] z-10 mt-auto mb-1 flex min-h-[28.6px] w-full items-center justify-end gap-4 transition-opacity duration-200 md:top-0 md:left-0 md:justify-between ${
             isShareOpen ? "opacity-100" : "opacity-100 sm:opacity-0 sm:group-hover:opacity-100"
           }`}
         >

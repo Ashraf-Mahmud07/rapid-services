@@ -1,52 +1,50 @@
-import Image from "next/image";
+import subBellIcon from "@/shared/assets/svg/sub-bell.svg";
 import { useTranslations } from "next-intl";
-import subsIcon from "@/shared/assets/svg/subs.svg";
+import Image from "next/image";
 
 export function NewsletterSection() {
   const t = useTranslations("common");
 
   return (
-    <section className="container-page pb-16 md:pb-24">
-      <div className="flex flex-col items-center justify-between overflow-hidden rounded-3xl bg-[#C6D5FF] px-8 py-10 md:flex-row md:px-12 md:py-12 lg:px-16 lg:py-16">
-        {/* Left Side: Illustration */}
-        <div className="flex w-full justify-center md:w-4/12 lg:w-5/12 lg:justify-start">
-          <div className="relative flex w-full max-w-[320px] items-center justify-center lg:max-w-[420px]">
-            {/* The SVG from the designer */}
-            <Image
-              src={subsIcon}
-              alt="Subscribe to our newsletter"
-              className="h-auto w-full drop-shadow-sm"
-            />
+    <section className="w-full bg-[#fafafa] py-10 md:py-12">
+      <div className="container-page mx-auto flex flex-col items-center justify-between gap-8 lg:flex-row lg:gap-12">
+        {/* Left Side: Icon & Text */}
+        <div className="flex flex-col items-center text-center sm:flex-row sm:items-start sm:text-left">
+          {/* New Custom Icon */}
+          <div className="mr-0 mb-4 flex shrink-0 items-center justify-center sm:mr-5 sm:mb-0">
+            <Image src={subBellIcon} alt="Subscribe" className="h-[64px] w-[64px] object-contain" />
+          </div>
+
+          <div className="flex flex-col justify-center pt-1">
+            <h3 className="mb-1.5 text-[14px] font-bold tracking-tight text-[#111] md:text-[15px]">
+              SUBSCRIBE & <span className="text-primary">GET 15% DISCOUNT</span>
+            </h3>
+            <p className="max-w-[380px] text-[11px] leading-[1.6] text-gray-500 md:text-[12px]">
+              Get 15% off your first purchase! Plus, be the first to know about sales new product
+              launches and exclusive offers!
+            </p>
           </div>
         </div>
 
-        {/* Right Side: Content */}
-        <div className="flex w-full flex-col pt-8 md:w-8/12 md:pt-0 lg:w-7/12 lg:pl-12">
-          <h3 className="mb-8 max-w-xl text-[22px] leading-snug font-semibold text-[#1C2C5A] sm:text-[26px] lg:mb-10 lg:text-[30px]">
-            {t("newsletter.title")}
-          </h3>
-
+        {/* Right Side: Form */}
+        <div className="w-full shrink-0 lg:w-auto">
           <form
-            className="flex w-full max-w-xl items-center rounded-full bg-white p-1.5 shadow-sm sm:p-2"
+            className="flex w-full flex-col items-center gap-3 sm:flex-row sm:gap-4"
             onSubmit={(e) => e.preventDefault()}
           >
             <input
               type="email"
-              placeholder={t("newsletter.placeholder")}
-              className="flex-1 border-none bg-transparent px-4 text-[13px] text-gray-700 outline-none placeholder:text-gray-400 sm:px-5 sm:text-[14px]"
+              placeholder="Enter Your Email"
+              className="w-full flex-1 rounded-full border border-gray-200 bg-white px-6 py-3 text-[13px] text-gray-700 outline-none placeholder:text-gray-400 focus:border-primary/40 focus:ring-1 focus:ring-primary/40 lg:w-[540px] lg:flex-none"
               required
             />
             <button
               type="submit"
-              className="cursor-pointer rounded-full bg-primary px-6 py-2.5 text-[13px] font-bold text-white transition-all hover:bg-primary/90 sm:px-8 sm:py-2.5 sm:text-[14px]"
+              className="w-full cursor-pointer rounded-full bg-primary px-8 py-3 text-[13px] font-bold tracking-wide text-white transition-all hover:bg-primary/90 sm:w-auto"
             >
-              {t("newsletter.button")}
+              Subscribe
             </button>
           </form>
-
-          <p className="mt-3 pl-4 text-[11px] font-medium text-[#1C2C5A]/60 sm:mt-4 sm:text-[12px]">
-            {t("newsletter.subtext")}
-          </p>
         </div>
       </div>
     </section>

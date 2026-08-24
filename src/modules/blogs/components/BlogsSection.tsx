@@ -3,6 +3,8 @@
 import { useBlogs } from "../hooks/useBlogs";
 import { Mail, ArrowRight, ChevronsLeft, ChevronsRight } from "lucide-react";
 import { BlogCard } from "./BlogCard";
+import { Link } from "@/i18n/navigation";
+import { ROUTES } from "@/shared/constants/routes";
 
 const CATEGORIES = [
   "All Categories",
@@ -69,9 +71,12 @@ export function BlogsSection() {
               >
                 info@majokaengineering.com
               </a>
-              <button className="flex items-center gap-2 rounded-full bg-white px-6 py-3 text-[13px] font-bold text-primary transition-all hover:bg-gray-50">
+              <Link
+                href={ROUTES.CONTACT}
+                className="flex cursor-pointer items-center gap-2 rounded-full bg-white px-6 py-3 text-[13px] font-bold text-primary transition-all hover:bg-gray-50"
+              >
                 Contact Us <ArrowRight className="size-4" />
-              </button>
+              </Link>
             </div>
           </div>
 
@@ -88,25 +93,25 @@ export function BlogsSection() {
             <div className="flex flex-col items-center justify-between gap-6 pt-2 sm:flex-row">
               <span className="text-[13px] font-medium text-gray-600">Showing 1 to 5 of 120</span>
               <div className="flex items-center gap-2">
-                <button className="flex size-9 items-center justify-center rounded border border-[#e6fbf9] text-primary transition-colors hover:bg-[#e6fbf9]">
+                <button className="flex size-9 cursor-pointer items-center justify-center rounded border border-[#e6fbf9] text-primary transition-colors hover:bg-[#e6fbf9]">
                   <ChevronsLeft className="size-4" />
                 </button>
-                <button className="flex size-9 items-center justify-center rounded bg-primary text-[13px] font-semibold text-white transition-colors">
+                <button className="flex size-9 cursor-pointer items-center justify-center rounded bg-primary text-[13px] font-semibold text-white transition-colors">
                   1
                 </button>
-                <button className="flex size-9 items-center justify-center rounded border border-[#e6fbf9] text-[13px] font-semibold text-primary transition-colors hover:bg-[#e6fbf9]">
+                <button className="flex size-9 cursor-pointer items-center justify-center rounded border border-[#e6fbf9] text-[13px] font-semibold text-primary transition-colors hover:bg-[#e6fbf9]">
                   2
                 </button>
-                <button className="flex size-9 items-center justify-center rounded border border-[#e6fbf9] text-[13px] font-semibold text-primary transition-colors hover:bg-[#e6fbf9]">
+                <button className="flex size-9 cursor-pointer items-center justify-center rounded border border-[#e6fbf9] text-[13px] font-semibold text-primary transition-colors hover:bg-[#e6fbf9]">
                   3
                 </button>
                 <span className="flex size-9 items-center justify-center text-[13px] font-semibold text-primary/50">
                   ...
                 </span>
-                <button className="flex size-9 items-center justify-center rounded border border-[#e6fbf9] text-[13px] font-semibold text-primary transition-colors hover:bg-[#e6fbf9]">
+                <button className="flex size-9 cursor-pointer items-center justify-center rounded border border-[#e6fbf9] text-[13px] font-semibold text-primary transition-colors hover:bg-[#e6fbf9]">
                   24
                 </button>
-                <button className="flex size-9 items-center justify-center rounded border border-[#e6fbf9] text-primary transition-colors hover:bg-[#e6fbf9]">
+                <button className="flex size-9 cursor-pointer items-center justify-center rounded border border-[#e6fbf9] text-primary transition-colors hover:bg-[#e6fbf9]">
                   <ChevronsRight className="size-4" />
                 </button>
               </div>

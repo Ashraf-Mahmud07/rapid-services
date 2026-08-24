@@ -19,15 +19,15 @@ export default function CTASection() {
         <div className="relative z-10 flex w-full shrink-0 flex-col gap-4 sm:flex-row md:w-auto">
           <Link
             href="/appointment"
-            className="rounded-full bg-primary px-6 py-3.5 text-center font-semibold text-white transition-colors hover:bg-primary/90"
+            className="rounded-full bg-primary px-8 py-2 text-center text-white transition-colors hover:bg-primary/90"
           >
             Book a technician
           </Link>
           <a
             href="tel:7185550142"
-            className="rounded-full border border-white/20 bg-transparent px-6 py-3.5 text-center font-semibold text-white transition-all hover:border-white/40 hover:bg-white/5"
+            className="rounded-full border border-white bg-white/20 px-8 py-2 text-center text-white transition-all hover:border-white/40 hover:bg-white/5"
           >
-            (718) 555-0142
+            Call Now
           </a>
         </div>
       </div>

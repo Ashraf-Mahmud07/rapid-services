@@ -1,10 +1,11 @@
 "use client";
 
-import { useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
+import { useRouter } from "next/navigation";
 
 import { Button } from "@/shared/components/ui/Button";
 import { cn } from "@/shared/utils/cn";
+import NoProductFoundIcon from "../icons/NoProductFoundIcon";
 import { NoProductFoundProps } from "../types/product.type";
 
 export default function NoProductFound({ className, onGoBack }: NoProductFoundProps) {
@@ -15,21 +16,8 @@ export default function NoProductFound({ className, onGoBack }: NoProductFoundPr
     <div
       className={cn("flex h-[80vh] w-full flex-col items-center justify-center gap-4.5", className)}
     >
-      <div className="relative flex size-18 items-center justify-center rounded-full bg-[#F8F8F8]">
-        <svg
-          aria-hidden="true"
-          className="size-7.5"
-          fill="none"
-          viewBox="0 0 30 30"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M13.75 22.5C18.5825 22.5 22.5 18.5825 22.5 13.75C22.5 8.91751 18.5825 5 13.75 5C8.91751 5 5 8.91751 5 13.75C5 18.5825 8.91751 22.5 13.75 22.5Z"
-            stroke="#BBBBBB"
-            strokeWidth="2.25"
-          />
-          <path d="M26.25 26.25L20.875 20.875" stroke="#BBBBBB" strokeWidth="2.25" />
-        </svg>
+      <div className="relative flex size-[112px] items-center justify-center rounded-full bg-[#F8F8F8]">
+        <NoProductFoundIcon />
       </div>
 
       <div className="flex w-full max-w-73.5 flex-col items-center gap-4 text-center">

@@ -23,6 +23,13 @@ export const CONTACT_DETAILS: ContactDetail[] = [
 
 export const CONTACT_TOPICS = ["General enquiry", "Support", "Careers"];
 
+/** Centred lead-in that introduces the contact form. */
+export const CONTACT_INTRO = {
+  title: "Get in touch",
+  description:
+    "Have a question, need support, or want to learn more about our services? Get in touch with our team, and we'll be happy to assist you as quickly as possible.",
+} as const;
+
 export const CONTACT_MAP = {
   title: "Al Muteena, Fish Roundabout, Deira, Dubai, United Arab Emirates",
   embedUrl:

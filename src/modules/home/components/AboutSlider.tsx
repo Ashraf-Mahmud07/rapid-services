@@ -36,7 +36,7 @@ export default function AboutSlider() {
   return (
     <div className="flex w-full max-w-[702px] shrink-0 flex-col gap-4 lg:w-1/2">
       <div
-        className="relative aspect-[702/511] w-full overflow-hidden rounded-md bg-[#f8f8f8]"
+        className="relative aspect-[702/511] w-full overflow-hidden rounded-[20px] bg-[#f8f8f8]"
         onPointerDown={(event) => setSwipeStart(event.clientX)}
         onPointerUp={(event) => handlePointerUp(event.clientX)}
         onPointerCancel={() => setSwipeStart(null)}

@@ -17,17 +17,15 @@ interface EngineeringSafetyCardProps {
 
 const EngineeringSafetyCard = ({ item }: EngineeringSafetyCardProps) => {
   return (
-    <article className="flex min-h-[121px] items-center rounded-md border border-[#efefef] bg-[#fafafa] px-[24px] py-[24px] shadow-[0_0_0_1px_rgba(0,0,0,0.01)]">
-      <div className="mr-[20px] flex size-[52px] shrink-0 items-center justify-center rounded-[12px] bg-primary text-white">
+    <article className="flex items-center rounded-[16px] border border-[#F0F0F0] bg-[#FAFAFA] p-6 transition-all duration-200 hover:shadow-md">
+      <div className="mr-5 flex size-[52px] shrink-0 items-center justify-center rounded-[12px] bg-primary text-white shadow-sm">
         {iconMap[item.icon]}
       </div>
 
       <div className="min-w-0">
-        <h3 className="text-[18px] leading-[1.2] font-medium text-[#0e0e0e]">{item.title}</h3>
-        <p className="mt-[6px] text-[13px] leading-[20px] text-[#8a8a8a]">
-          {item.descriptionLine1}
-          <br />
-          {item.descriptionLine2}
+        <h3 className="text-[17px] font-bold text-[#0E0E0E]">{item.title}</h3>
+        <p className="mt-1 text-[13.5px] leading-[1.5] text-[#737373]">
+          {item.descriptionLine1} {item.descriptionLine2}
         </p>
       </div>
     </article>

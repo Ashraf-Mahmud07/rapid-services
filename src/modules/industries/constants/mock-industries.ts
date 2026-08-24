@@ -139,55 +139,159 @@ export const bookingSteps: BookingStep[] = [
   },
 ];
 
-export const industryCards = [
+import { IndustryContentBlock, IndustryDetailData } from "../types/industries.types";
+
+import imgHealthcare from "@/modules/service/assets/clean-industrial.jpg";
+import imgEducation from "@/modules/service/assets/hvac-installation.jpg";
+import imgFinance from "@/modules/service/assets/elec-panel.jpg";
+import imgRetail from "@/modules/service/assets/paint-interior.jpg";
+import imgManufacturing from "@/modules/service/assets/epoxy.webp";
+import imgTechnology from "@/modules/service/assets/elec-lv.webp";
+import imgRealEstate from "@/modules/service/assets/combo-roof.jpg";
+import imgLogistics from "@/modules/service/assets/grp-fiberglass.jpg";
+import imgEnergy from "@/modules/service/assets/polyurea.jpg";
+import imgEntertainment from "@/modules/service/assets/ceil-acoustic.jpg";
+
+const defaultIndustryContent: IndustryContentBlock[] = [
   {
+    type: "paragraph",
+    text: "Our dedicated solutions for this industry are designed to address the most pressing challenges you face today. We provide comprehensive services tailored to your specific operational requirements, ensuring seamless integration and maximum efficiency.",
+  },
+  {
+    type: "list",
+    title: "Key Capabilities & Solutions",
+    listType: "check",
+    items: [
+      {
+        title: "Specialized Expertise",
+        text: "Deep understanding of industry-specific compliance and technical standards.",
+      },
+      {
+        title: "Scalable Infrastructure",
+        text: "Solutions that grow with your business and adapt to changing market demands.",
+      },
+      {
+        title: "24/7 Support",
+        text: "Round-the-clock maintenance and rapid response for critical systems.",
+      },
+    ],
+  },
+  {
+    type: "paragraph",
+    text: "By partnering with us, you gain access to a team of dedicated professionals who are committed to delivering excellence. We handle the complexity of your infrastructure so you can focus on what matters most—growing your business.",
+  },
+];
+
+export const industryCards: IndustryDetailData[] = [
+  {
+    id: "healthcare",
     title: "Healthcare",
-    description:
-      "We support hospitals, clinics, and medical groups with secure, reliable infrastructure that keeps patient care connected and compliant. We support hospitals, clinics, and medical groups with secure, reliable infrastructure that keeps patient care connected and compliant. We support hospitals, clinics, and medical groups with secure, reliable infrastructure that keeps patient care connected and compliant.",
+    shortDesc:
+      "We support hospitals, clinics, and medical groups with secure, reliable infrastructure that keeps patient care connected and compliant.",
+    image: imgHealthcare,
+    content: defaultIndustryContent,
   },
   {
+    id: "education",
     title: "Education",
-    description:
-      "From K-12 to higher ed, we help schools modernize learning environments with scalable, secure solutions for classrooms and campuses. From K-12 to higher ed, we help schools modernize learning environments with scalable, secure solutions for classrooms and campuses.From K-12 to higher ed, we help schools modernize learning environments with scalable, secure solutions for classrooms and campuses.",
+    shortDesc:
+      "From K-12 to higher ed, we help schools modernize learning environments with scalable, secure solutions for classrooms and campuses.",
+    image: imgEducation,
+    content: defaultIndustryContent,
   },
   {
+    id: "finance",
     title: "Finance",
-    description:
-      "Banks, insurers, and fintechs rely on us for high-security infrastructure that protects transactions, data, and compliance.Banks, insurers, and fintechs rely on us for high-security infrastructure that protects transactions, data, and compliance. Banks, insurers, and fintechs rely on us for high-security infrastructure that protects transactions, data, and compliance.",
+    shortDesc:
+      "Banks, insurers, and fintechs rely on us for high-security infrastructure that protects transactions, data, and compliance.",
+    image: imgFinance,
+    content: defaultIndustryContent,
   },
   {
+    id: "retail",
     title: "Retail",
-    description:
-      "We power omnichannel retail with fast, reliable connectivity that keeps stores running smoothly and customers engaged.We power omnichannel retail with fast, reliable connectivity that keeps stores running smoothly and customers engaged.We power omnichannel retail with fast, reliable connectivity that keeps stores running smoothly and customers engaged.",
+    shortDesc:
+      "We power omnichannel retail with fast, reliable connectivity that keeps stores running smoothly and customers engaged.",
+    image: imgRetail,
+    content: defaultIndustryContent,
   },
   {
+    id: "manufacturing",
     title: "Manufacturing",
-    description:
-      "We help manufacturers build resilient operations with IoT-ready networks that improve efficiency, safety, and supply chain visibility.We help manufacturers build resilient operations with IoT-ready networks that improve efficiency, safety, and supply chain visibility.We help manufacturers build resilient operations with IoT-ready networks that improve efficiency, safety, and supply chain visibility.",
+    shortDesc:
+      "We help manufacturers build resilient operations with IoT-ready networks that improve efficiency, safety, and supply chain visibility.",
+    image: imgManufacturing,
+    content: defaultIndustryContent,
   },
   {
+    id: "technology",
     title: "Technology",
-    description:
-      "Software, SaaS, and IT teams trust us to deliver scalable infrastructure that supports rapid development and global deployment.Software, SaaS, and IT teams trust us to deliver scalable infrastructure that supports rapid development and global deployment.Software, SaaS, and IT teams trust us to deliver scalable infrastructure that supports rapid development and global deployment.",
+    shortDesc:
+      "Software, SaaS, and IT teams trust us to deliver scalable infrastructure that supports rapid development and global deployment.",
+    image: imgTechnology,
+    content: defaultIndustryContent,
   },
   {
+    id: "real-estate",
     title: "Real Estate",
-    description:
-      "Property developers and managers use our solutions to build smart, connected buildings that attract tenants and reduce operational costs. Property developers and managers use our solutions to build smart, connected buildings that attract tenants and reduce operational costs.Property developers and managers use our solutions to build smart, connected buildings that attract tenants and reduce operational costs.",
+    shortDesc:
+      "Property developers and managers use our solutions to build smart, connected buildings that attract tenants and reduce operational costs.",
+    image: imgRealEstate,
+    content: defaultIndustryContent,
   },
   {
+    id: "logistics",
     title: "Logistics",
-    description:
-      "We help logistics and distribution teams streamline operations with reliable connectivity for warehouses, yards, and fleet management.We help logistics and distribution teams streamline operations with reliable connectivity for warehouses, yards, and fleet management.We help logistics and distribution teams streamline operations with reliable connectivity for warehouses, yards, and fleet management.",
+    shortDesc:
+      "We help logistics and distribution teams streamline operations with reliable connectivity for warehouses, yards, and fleet management.",
+    image: imgLogistics,
+    content: defaultIndustryContent,
   },
   {
+    id: "energy",
     title: "Energy",
-    description:
-      "Utilities and energy providers partner with us to secure grid operations, remote monitoring, and critical infrastructure.Utilities and energy providers partner with us to secure grid operations, remote monitoring, and critical infrastructure.Utilities and energy providers partner with us to secure grid operations, remote monitoring, and critical infrastructure.",
+    shortDesc:
+      "Utilities and energy providers partner with us to secure grid operations, remote monitoring, and critical infrastructure.",
+    image: imgEnergy,
+    content: defaultIndustryContent,
   },
   {
+    id: "entertainment",
     title: "Entertainment",
-    description:
-      "Venues, studios, and streaming services rely on us for low-latency connectivity that keeps experiences seamless and engaging.Venues, studios, and streaming services rely on us for low-latency connectivity that keeps experiences seamless and engaging.Venues, studios, and streaming services rely on us for low-latency connectivity that keeps experiences seamless and engaging.",
+    shortDesc:
+      "Venues, studios, and streaming services rely on us for low-latency connectivity that keeps experiences seamless and engaging.",
+    image: imgEntertainment,
+    content: defaultIndustryContent,
+  },
+];
+
+export const getIndustryById = (id: string): IndustryDetailData | undefined => {
+  return industryCards.find((industry) => industry.id === id);
+};
+export const industryCategories = [
+  {
+    id: "public-sector",
+    title: "Public Sector",
+    industries: industryCards.filter((c) => ["healthcare", "education"].includes(c.id)),
+  },
+  {
+    id: "commercial",
+    title: "Commercial",
+    industries: industryCards.filter((c) => ["finance", "retail", "real-estate"].includes(c.id)),
+  },
+  {
+    id: "industrial",
+    title: "Industrial",
+    industries: industryCards.filter((c) => ["manufacturing", "logistics"].includes(c.id)),
+  },
+  {
+    id: "technology",
+    title: "Technology",
+    industries: industryCards.filter((c) => ["technology", "entertainment"].includes(c.id)),
+  },
+  {
+    id: "energy",
+    title: "Energy & Utilities",
+    industries: industryCards.filter((c) => ["energy"].includes(c.id)),
   },
 ];

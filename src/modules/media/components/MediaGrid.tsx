@@ -23,10 +23,10 @@ export default function MediaGrid() {
       {/* Header & Tabs */}
       <div className="mb-10 flex flex-col justify-between gap-6 md:flex-row md:items-end">
         <div>
-          <h2 className="flex items-center border-l-[3px] border-primary pl-4 text-[26px] font-bold text-primary md:text-[28px]">
+          <h2 className="flex items-center border-l-[3px] border-primary pl-4 text-[26px] font-bold text-[#0E0E0E] md:text-[28px]">
             Media
           </h2>
-          <p className="mt-3 max-w-2xl text-[14px] leading-relaxed text-gray-500">
+          <p className="mt-3 max-w-125 text-[14px] leading-relaxed text-[#45556C]">
             Waterproofing is the fundamental pillar for preserving the lifespan of any building. At
             Taj Alrahmah, we don&apos;t just offer insulation;
           </p>

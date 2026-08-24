@@ -11,7 +11,11 @@ interface ProjectContentAreaProps {
   onItemChange: (itemId: string | null) => void;
 }
 
-export default function ProjectContentArea({ activeData, activeItem, onItemChange }: ProjectContentAreaProps) {
+export default function ProjectContentArea({
+  activeData,
+  activeItem,
+  onItemChange,
+}: ProjectContentAreaProps) {
   const scrollRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -25,9 +29,9 @@ export default function ProjectContentArea({ activeData, activeItem, onItemChang
   const activeProject = activeData.projects?.find((project) => project.id === activeItem);
 
   return (
-    <div 
+    <div
       ref={scrollRef}
-      className="flex-1 bg-white p-6 md:p-8 lg:p-10 relative overflow-y-auto hide-scrollbar rounded-b-xl lg:rounded-bl-none lg:rounded-r-xl border-t border-gray-100 lg:border-t-0"
+      className="relative hide-scrollbar flex-1 overflow-y-auto rounded-b-xl border-t border-gray-100 bg-white p-6 md:p-8 lg:rounded-r-xl lg:rounded-bl-none lg:border-t-0 lg:p-10"
     >
       {!activeProject && (
         <div className="mb-8 flex flex-col justify-between gap-4 border-b border-gray-100 pb-6 sm:flex-row sm:items-center">
@@ -44,20 +48,16 @@ export default function ProjectContentArea({ activeData, activeItem, onItemChang
       )}
 
       {activeProject ? (
-        <ProjectDetail 
-          project={activeProject} 
-          onBack={() => onItemChange(null)} 
-        />
+        <ProjectDetail project={activeProject} />
       ) : activeData.projects?.length > 0 ? (
-        <ProjectGrid 
-          projects={activeData.projects} 
-          onCardClick={onItemChange} 
-        />
+        <ProjectGrid projects={activeData.projects} onCardClick={onItemChange} />
       ) : (
         <div className="flex flex-col items-center justify-center py-20 text-center">
-          <FolderOpen className="h-16 w-16 text-primary mb-4 fill-primary/20" strokeWidth={1} />
-          <h3 className="text-xl font-bold text-slate-800 mb-2">No Projects Found</h3>
-          <p className="text-[15px] text-slate-500">Sorry, no projects match the selected category.</p>
+          <FolderOpen className="mb-4 h-16 w-16 fill-primary/20 text-primary" strokeWidth={1} />
+          <h3 className="mb-2 text-xl font-bold text-slate-800">No Projects Found</h3>
+          <p className="text-[15px] text-slate-500">
+            Sorry, no projects match the selected category.
+          </p>
         </div>
       )}
     </div>

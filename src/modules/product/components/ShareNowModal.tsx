@@ -123,7 +123,7 @@ export default function ShareNowModal({ shareUrl, onClose }: ShareNowModalProps)
         <p className="text-sm leading-none font-medium text-[#4b5563] sm:text-[16px]">
           {t("orCopyLink")}
         </p>
-        <div className="flex items-center gap-2 rounded-[10px] border border-[#e5e7eb] bg-white py-1.5 pr-1.5 pl-3 focus-within:border-[#00a79d] focus-within:ring-1 focus-within:ring-[#00a79d]/25 sm:gap-3 sm:rounded-[12px] sm:py-2 sm:pl-4">
+        <div className="flex items-center gap-2 rounded-[100px] border border-[#e5e7eb] bg-white py-1.5 pr-1.5 pl-3 focus-within:border-[#00a79d] focus-within:ring-1 focus-within:ring-[#00a79d]/25 sm:gap-3 sm:py-2 sm:pl-4">
           <LinkIcon className="size-4 shrink-0 text-[#9ca3af] sm:size-[18px]" />
           <span className="min-w-0 flex-1 overflow-hidden text-xs font-normal text-ellipsis whitespace-nowrap text-[#111827] sm:text-[15px]">
             {shareUrl}
@@ -135,7 +135,7 @@ export default function ShareNowModal({ shareUrl, onClose }: ShareNowModalProps)
               e.stopPropagation();
               handleCopy();
             }}
-            className={`min-w-[64px] cursor-pointer rounded-[6px] px-3 py-1.5 text-xs font-semibold text-white transition-all duration-150 select-none active:scale-95 sm:min-w-[80px] sm:rounded-[8px] sm:px-5 sm:py-2.5 sm:text-[15px] ${
+            className={`min-w-[64px] cursor-pointer rounded-[100px] px-3 py-1.5 text-xs font-semibold text-white transition-all duration-150 select-none active:scale-95 sm:min-w-[80px] sm:px-5 sm:py-2.5 sm:text-[15px] ${
               copied ? "bg-emerald-600 hover:bg-emerald-700" : "bg-[#00a79d] hover:bg-[#008f86]"
             }`}
           >

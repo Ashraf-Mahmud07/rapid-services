@@ -3,52 +3,51 @@ import { HOME_PROCESS_STEPS } from "../data/home.data";
 
 export default function ProcessSection() {
   return (
-    <section className="relative isolate overflow-hidden surface-wash py-10 lg:py-14">
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 -z-10 section-background bg-cover opacity-30"
-      />
-      <div className="relative container-page mx-auto">
-        <div className="grid gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:items-center">
-          {/* Image */}
+    <section className="bg-[#EBF9F8] py-12 lg:py-20">
+      <div className="container-page">
+        <div className="grid items-center gap-10 lg:grid-cols-[1fr_1.15fr] lg:gap-14 xl:gap-16">
+          {/* Left: Heading & Image */}
           <div>
-            <h2 className="mb-6 max-w-110 text-[26px] font-bold tracking-[-0.52px] text-black">
+            <h2 className="text-[32px] leading-[1.2] font-bold tracking-tight text-[#0E0E0E] sm:text-[38px] lg:text-[42px]">
               A Refined Process Built for{" "}
               <span className="text-primary">Precision &amp; Excellence</span>
             </h2>
-            <div className="relative aspect-4/3 w-full overflow-hidden rounded-md lg:max-w-115">
+            <div className="relative mt-8 aspect-[4/3] w-full overflow-hidden rounded-[20px] bg-neutral-100 shadow-md">
               <Image
                 src="/images/commitmentImage.png"
-                alt="Technician working on precise electrical installation"
+                alt="Technician working with precision"
                 fill
-                sizes="(max-width: 1024px) 100vw, 40vw"
+                sizes="(max-width: 1024px) 100vw, 45vw"
                 className="object-cover"
               />
             </div>
           </div>
 
-          {/* Steps */}
-          <div>
-            <div className="mt-2 flex flex-col gap-8 lg:mt-14">
-              {HOME_PROCESS_STEPS.map((step) => (
-                <div key={step.number} className="flex gap-6">
-                  <div className="shrink-0">
-                    <span className="block text-[11.5px] font-semibold tracking-[0.92px] text-primary uppercase">
-                      Step
-                    </span>
-                    <span className="block text-[28px] leading-none font-bold text-primary">
-                      {step.number}
-                    </span>
-                  </div>
-                  <div>
-                    <h3 className="text-[16.5px] font-bold text-black">{step.title}</h3>
-                    <p className="mt-2 max-w-115 text-[14.5px] leading-6 text-black/55">
-                      {step.description}
-                    </p>
-                  </div>
+          {/* Right: 3 Steps */}
+          <div className="divide-y divide-[#D1F0EC]">
+            {HOME_PROCESS_STEPS.map((step) => (
+              <div
+                key={step.number}
+                className="flex items-start gap-6 py-7 first:pt-0 last:pb-0 sm:gap-8"
+              >
+                <div className="shrink-0 text-center">
+                  <span className="block text-[11px] font-bold tracking-[0.14em] text-primary uppercase">
+                    Step
+                  </span>
+                  <span className="block text-[32px] leading-tight font-bold text-primary sm:text-[36px]">
+                    {step.number}
+                  </span>
                 </div>
-              ))}
-            </div>
+                <div className="min-w-0 flex-1">
+                  <h3 className="text-[19px] font-bold text-primary sm:text-[21px]">
+                    {step.title}
+                  </h3>
+                  <p className="mt-2 text-[14.5px] leading-[1.7] text-[#737373] sm:text-[15px]">
+                    {step.description}
+                  </p>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </div>

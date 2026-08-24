@@ -1,95 +1,13 @@
 "use client";
 
-import { ArrowRightToLine, ArrowUpRight, Mic, PenSquare, ScrollText } from "lucide-react";
+import { ArrowRightToLine, ArrowUpRight, Mic, PenSquare, ScrollText, Send } from "lucide-react";
 import Image from "next/image";
 import { Dialog as DialogPrimitive } from "radix-ui";
 import * as React from "react";
 
+import { SUGGESTIONS, TOPICS } from "@/shared/constants/ask-ai.constants";
+import { useAskAi } from "@/shared/hooks/useAskAi";
 import { cn } from "@/shared/utils/cn";
-
-type Message = { id: number; from: "user" | "ai"; text: string; at: string };
-
-/**
- * Ask AI. The reference is populated with another product's assistant — domains,
- * hosting, email accounts — so the layout and interaction are reproduced and the
- * content is Rapid's.
- *
- * Static by design: there is no model behind this and none is planned. Answers
- * are a fixed set of questions the business already answers on the FAQ and
- * service pages, matched on keywords. Editing the copy below is the whole
- * maintenance story — add a Q&A pair and it works.
- */
-const TOPICS = ["Services", "Products", "Projects", "Careers"] as const;
-type Topic = (typeof TOPICS)[number];
-
-/** Question → answer, grouped by the topic pill that surfaces it. */
-const ANSWERS: Record<Topic, { q: string; keys: string[]; a: string }[]> = {
-  Services: [
-    {
-      q: "Which trades do you cover?",
-      keys: ["trade", "cover", "service", "what do you do"],
-      a: "We cover electrical, plumbing, painting, cleaning, repairs, and heating & cooling — one team across all six.",
-    },
-    {
-      q: "How soon can someone come out?",
-      keys: ["soon", "when", "visit", "book", "appointment", "available"],
-      a: "Most jobs are booked within 24 hours, with a two-hour arrival window rather than a full-day wait.",
-    },
-    {
-      q: "Do you charge for a quote?",
-      keys: ["quote", "price", "cost", "callout", "charge", "fee"],
-      a: "Quotes are free and fixed. We assess the job, give you a price, and that price is what you pay — no callout fee.",
-    },
-    {
-      q: "What if something goes wrong after the visit?",
-      keys: ["guarantee", "warranty", "wrong", "after", "fix"],
-      a: "Every visit carries a 90-day workmanship guarantee, and we return at no cost if anything slips.",
-    },
-  ],
-  Products: [
-    {
-      q: "What do you supply?",
-      keys: ["supply", "product", "part", "equipment", "stock"],
-      a: "We supply and fit parts, tools and equipment used on our own jobs. Browse the catalogue from the Product menu.",
-    },
-    {
-      q: "Do you fit what you sell?",
-      keys: ["fit", "install", "installation"],
-      a: "Yes — anything in the catalogue can be supplied and fitted by our own certified technicians.",
-    },
-  ],
-  Projects: [
-    {
-      q: "What sort of projects do you take on?",
-      keys: ["project", "work", "portfolio", "example", "sector", "industry"],
-      a: "Residential, commercial, industrial, aviation, civil and government work across the UAE — over 400 completed jobs since 2009.",
-    },
-    {
-      q: "Do you work with landlords and offices?",
-      keys: ["landlord", "office", "agency", "facility", "contract"],
-      a: "Yes. Landlords, agencies and facility teams book us on contract as well as job by job.",
-    },
-  ],
-  Careers: [
-    {
-      q: "Are you hiring?",
-      keys: ["hiring", "job", "career", "role", "vacancy", "apply"],
-      a: "We usually are. Open roles and the application form are on the Careers page.",
-    },
-  ],
-};
-
-const ALL = Object.values(ANSWERS).flat();
-
-/** The empty state lists two starters, as the reference does. */
-const SUGGESTIONS = ["Book a technician visit", "Get a fixed price for a job"];
-
-function reply(question: string): string {
-  const q = question.toLowerCase();
-  const hit = ALL.find((entry) => entry.keys.some((key) => q.includes(key)));
-  if (hit) return hit.a;
-  return "I can help with services, pricing, booking a visit, or finding a past project. Ask away — or use the contact page to reach the team directly.";
-}
 
 export default function AskAiPanel({
   open,
@@ -98,38 +16,22 @@ export default function AskAiPanel({
   open: boolean;
   onOpenChange: (open: boolean) => void;
 }) {
-  const [tab, setTab] = React.useState<"chat" | "history">("chat");
-  const [topic, setTopic] = React.useState<Topic>(TOPICS[0]);
-  const [draft, setDraft] = React.useState("");
-  const [messages, setMessages] = React.useState<Message[]>([]);
-  const endRef = React.useRef<HTMLDivElement>(null);
-
-  const now = () =>
-    new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit", hour12: false });
-
-  const send = (text: string) => {
-    const value = text.trim();
-    if (!value) return;
-    setMessages((prev) => [
-      ...prev,
-      { id: prev.length, from: "user", text: value, at: now() },
-      { id: prev.length + 1, from: "ai", text: reply(value), at: now() },
-    ]);
-    setDraft("");
-  };
-
-  React.useEffect(() => {
-    endRef.current?.scrollIntoView({ behavior: "smooth" });
-  }, [messages]);
-
-  const close = (next: boolean) => {
-    if (!next) {
-      setMessages([]);
-      setDraft("");
-      setTab("chat");
-    }
-    onOpenChange(next);
-  };
+  const {
+    tab,
+    setTab,
+    topic,
+    setTopic,
+    draft,
+    setDraft,
+    messages,
+    history,
+    endRef,
+    send,
+    startNewChat,
+    loadHistoryItem,
+    close,
+    answers,
+  } = useAskAi({ open, onOpenChange });
 
   return (
     <DialogPrimitive.Root open={open} onOpenChange={close}>
@@ -137,163 +39,205 @@ export default function AskAiPanel({
         <DialogPrimitive.Overlay className="fixed inset-0 z-100 animate-[fadeIn_0.18s_ease] bg-[rgba(20,22,24,0.45)]" />
         <DialogPrimitive.Content
           className={cn(
-            "fixed inset-x-0 bottom-0 z-100 flex h-[88dvh] animate-[modalIn_0.22s_ease] flex-col rounded-t-[16px] bg-white shadow-[0_28px_70px_rgba(10,17,40,0.3)] focus:outline-none",
-            "sm:inset-x-auto sm:top-[132px] sm:right-11 sm:bottom-11 sm:h-auto sm:w-[400px] sm:rounded-[14px]"
+            "fixed inset-x-0 bottom-0 z-100 flex h-[88dvh] max-h-[714px] animate-[modalIn_0.22s_ease] flex-col rounded-t-[16px] bg-white shadow-[0_28px_70px_rgba(10,17,40,0.3)] focus:outline-none",
+            "sm:inset-x-auto sm:top-[81px] sm:right-11 sm:bottom-11 sm:h-auto sm:w-[398px] sm:rounded-[16px]"
           )}
         >
           <DialogPrimitive.Title className="sr-only">Ask AI</DialogPrimitive.Title>
           <DialogPrimitive.Description className="sr-only">
-            Ask a question about Rapid Services.
+            Ask a question or select a topic.
           </DialogPrimitive.Description>
 
-          <div className="flex items-center justify-between gap-3 border-b border-[#eef0f1] px-4 py-3">
-            <div className="flex rounded-full bg-[#f1f2f4] p-0.5">
+          {/* Header Bar (Figma: 398x46px) */}
+          <div className="flex items-center justify-between border-b border-[#EEF0F1] px-4 py-2.5">
+            <div className="flex items-center rounded-full bg-[#F1F2F4] p-1">
               {(["chat", "history"] as const).map((id) => (
                 <button
                   key={id}
                   type="button"
                   onClick={() => setTab(id)}
                   className={cn(
-                    "rounded-full px-3.5 py-1.5 text-[13px] font-medium capitalize transition-colors",
-                    tab === id ? "bg-white text-[#17181a] shadow-sm" : "text-[#5a5f63]"
+                    "cursor-pointer rounded-full px-4 py-1.5 text-[13px] font-medium capitalize transition-all duration-200",
+                    tab === id
+                      ? "bg-[#00A79D] text-white shadow-xs"
+                      : "text-[#5A5F63] hover:text-[#111827]"
                   )}
                 >
-                  {id}
+                  {id === "chat" ? "Chat" : "History"}
                 </button>
               ))}
             </div>
-            <div className="flex items-center gap-1 text-[#5a5f63]">
+
+            {/* Action Buttons (Transcript, New Chat, Close) */}
+            <div className="flex items-center gap-1.5">
               <button
                 type="button"
-                aria-label="Transcript"
-                className="flex size-8 items-center justify-center rounded-lg hover:bg-[#f1f2f4]"
+                aria-label="View history"
+                onClick={() => setTab((t) => (t === "chat" ? "history" : "chat"))}
+                className="flex size-9 cursor-pointer items-center justify-center rounded-full text-[#111827] transition-colors hover:bg-[#F1F2F4]"
               >
-                <ScrollText className="size-4" />
+                <ScrollText className="size-4.5" />
               </button>
               <button
                 type="button"
                 aria-label="New chat"
-                onClick={() => setMessages([])}
-                className="flex size-8 items-center justify-center rounded-lg hover:bg-[#f1f2f4]"
+                onClick={startNewChat}
+                className="flex size-9 cursor-pointer items-center justify-center rounded-full text-[#111827] transition-colors hover:bg-[#F1F2F4]"
               >
-                <PenSquare className="size-4" />
+                <PenSquare className="size-4.5" />
               </button>
               <DialogPrimitive.Close
-                aria-label="Close"
-                className="flex size-8 items-center justify-center rounded-lg hover:bg-[#f1f2f4]"
+                aria-label="Close panel"
+                className="flex size-9 cursor-pointer items-center justify-center rounded-full text-[#111827] transition-colors hover:bg-[#F1F2F4]"
               >
-                <ArrowRightToLine className="size-4" />
+                <ArrowRightToLine className="size-5" />
               </DialogPrimitive.Close>
             </div>
           </div>
 
-          <div className="flex-1 overflow-y-auto px-4 py-4">
+          {/* Body Content Area */}
+          <div className="flex flex-1 flex-col overflow-y-auto px-4 py-4">
             {tab === "history" ? (
-              <p className="mt-10 text-center text-[14px] text-[#8b9096]">
-                Past conversations will appear here.
-              </p>
+              <div className="flex flex-col gap-2">
+                {history.map((item) => (
+                  <button
+                    key={item.id}
+                    type="button"
+                    onClick={() => loadHistoryItem(item)}
+                    className="flex cursor-pointer items-center justify-between rounded-[12px] p-3 text-left transition-colors hover:bg-[#F8F9FA]"
+                  >
+                    <div className="flex min-w-0 flex-1 items-center gap-3 pr-2">
+                      <div className="flex size-9 flex-none items-center justify-center rounded-full bg-[#E4FFFD] p-1.5">
+                        <Image
+                          src="/images/logo.png"
+                          alt=""
+                          width={2633}
+                          height={1904}
+                          className="h-auto w-full object-contain"
+                        />
+                      </div>
+                      <span className="truncate text-sm font-medium text-[#111827]">
+                        {item.snippet}
+                      </span>
+                    </div>
+                    <span className="flex-none text-xs text-[#8E8E93]">{item.timeAgo}</span>
+                  </button>
+                ))}
+              </div>
             ) : messages.length === 0 ? (
-              <div className="flex h-full flex-col">
-                <div className="flex flex-1 flex-col items-center justify-center text-center">
-                  <Image
-                    src="/images/logo.png"
-                    alt=""
-                    width={2633}
-                    height={1904}
-                    className="mb-3 h-10 w-auto"
-                  />
-                  <p className="text-[16px] font-semibold text-[#17181a]">Hello 👋</p>
-                  <p className="mt-1 text-[14px] text-[#5a5f63]">How can I help you today?</p>
+              <div className="flex flex-1 flex-col justify-between">
+                {/* Center logo & greeting (Figma: Hello BD EXPERT 👋) */}
+                <div className="flex flex-1 flex-col items-center justify-center py-6 text-center">
+                  <div className="flex size-18 items-center justify-center rounded-full bg-[#F5F6F7] p-2 shadow-xs">
+                    <Image
+                      src="/images/logo.png"
+                      alt="Rapid"
+                      width={2633}
+                      height={1904}
+                      className="h-auto w-full object-contain"
+                    />
+                  </div>
+                  <h3 className="mt-3 text-[18px] font-bold text-[#111827]">Hello BD EXPERT 👋</h3>
+                  <p className="mt-1 text-sm font-normal text-[#5A5F63]">
+                    How can I help you today?
+                  </p>
                 </div>
-                <ul className="mt-6 border-t border-[#eef0f1]">
-                  {[...SUGGESTIONS, ANSWERS[topic][0].q].map((item) => (
-                    <li key={item} className="border-b border-[#eef0f1]">
+
+                {/* Suggested Questions List */}
+                <div className="mt-auto">
+                  <div className="divide-y divide-[#EEF0F1] border-t border-[#EEF0F1]">
+                    {SUGGESTIONS.map((item) => (
                       <button
+                        key={item}
                         type="button"
                         onClick={() => send(item)}
-                        className="flex w-full items-center gap-2.5 py-3 text-left text-[14px] text-[#17181a] hover:text-primary"
+                        className="group flex w-full cursor-pointer items-center gap-3 py-3 text-left transition-colors"
                       >
-                        <ArrowUpRight className="size-4 flex-none text-[#8b9096]" />
-                        {item}
+                        <ArrowUpRight className="size-4.5 flex-none text-[#111827] transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                        <span className="text-sm font-medium text-[#111827] group-hover:text-[#00A79D]">
+                          {item}
+                        </span>
                       </button>
-                    </li>
-                  ))}
-                </ul>
+                    ))}
+                  </div>
+                </div>
               </div>
             ) : (
-              <div className="flex flex-col gap-3">
+              <div className="flex flex-col gap-4 py-2">
                 {messages.map((message) => (
                   <div
                     key={message.id}
                     className={cn(
-                      "max-w-[85%]",
-                      message.from === "user" ? "self-end" : "self-start"
+                      "flex max-w-[85%] flex-col",
+                      message.from === "user" ? "items-end self-end" : "items-start self-start"
                     )}
                   >
                     <div
                       className={cn(
-                        "rounded-2xl px-3.5 py-2.5 text-[14px] leading-[1.55]",
+                        "px-4 py-2.5 text-sm leading-relaxed",
                         message.from === "user"
-                          ? "bg-primary/12 text-[#17181a]"
-                          : "bg-[#f5f6f7] text-[#17181a]"
+                          ? "rounded-[16px] rounded-tr-xs bg-[#E4FFFD] font-normal text-[#00A79D]"
+                          : "rounded-[16px] rounded-tl-xs bg-[#F5F6F7] text-[#111827]"
                       )}
                     >
                       {message.text}
                     </div>
-                    <p
-                      className={cn(
-                        "mt-1 text-[11px] text-[#9aa0a6]",
-                        message.from === "user" ? "text-right" : "text-left"
-                      )}
-                    >
-                      {message.at}
-                    </p>
+                    <span className="mt-1 text-[11px] text-[#8E8E93]">{message.at}</span>
                   </div>
                 ))}
 
-                <p className="mt-2 text-[12px] font-semibold text-[#5a5f63]">Quick actions</p>
-                <div className="flex flex-col items-start gap-2">
-                  {ANSWERS[topic].map((entry) => (
-                    <button
-                      key={entry.q}
-                      type="button"
-                      onClick={() => send(entry.q)}
-                      className="rounded-full bg-primary/10 px-3.5 py-2 text-left text-[13px] text-[#17181a] transition-colors hover:bg-primary/20"
-                    >
-                      {entry.q}
-                    </button>
-                  ))}
+                {/* Quick actions section (matching node 3107:9411) */}
+                <div className="mt-2 flex flex-col items-start gap-2 border-t border-[#EEF0F1] pt-3">
+                  <p className="text-xs font-semibold text-[#5A5F63]">Quick actions</p>
+                  <div className="flex w-full flex-col items-start gap-2">
+                    {answers.map((entry) => (
+                      <button
+                        key={entry.q}
+                        type="button"
+                        onClick={() => send(entry.q)}
+                        className="cursor-pointer rounded-full bg-[#E4FFFD] px-4 py-2 text-left text-xs font-medium text-[#111827] transition-colors hover:bg-[#D0FAF7]"
+                      >
+                        {entry.q}
+                      </button>
+                    ))}
+                  </div>
                 </div>
                 <div ref={endRef} />
               </div>
             )}
           </div>
 
-          <div className="border-t border-[#eef0f1] px-4 pt-3 pb-4">
-            <div className="mb-2.5 flex flex-wrap gap-1.5">
-              {TOPICS.map((item) => (
-                <button
-                  key={item}
-                  type="button"
-                  onClick={() => setTopic(item)}
-                  className={cn(
-                    "rounded-full px-3 py-1 text-[12.5px] transition-colors",
-                    topic === item
-                      ? "border border-primary text-primary"
-                      : "border border-transparent text-[#5a5f63] hover:text-[#17181a]"
-                  )}
-                >
-                  {item}
-                </button>
-              ))}
+          {/* Footer & Input Area */}
+          <div className="px-4 pt-1 pb-4">
+            {/* Category Filter Pills */}
+            <div className="mb-3 flex scrollbar-none items-center gap-2 overflow-x-auto py-0.5">
+              {TOPICS.map((item) => {
+                const isActive = topic === item;
+                return (
+                  <button
+                    key={item}
+                    type="button"
+                    onClick={() => setTopic(item)}
+                    className={cn(
+                      "cursor-pointer rounded-full px-3.5 py-1.5 text-xs font-medium whitespace-nowrap transition-all duration-150",
+                      isActive
+                        ? "border border-[#00A79D] bg-[#E4FFFD] text-[#00A79D]"
+                        : "border border-transparent bg-transparent text-[#333333] hover:text-[#00A79D]"
+                    )}
+                  >
+                    {item}
+                  </button>
+                );
+              })}
             </div>
 
+            {/* Input Box (Figma rounded box with mic icon button) */}
             <form
               onSubmit={(event) => {
                 event.preventDefault();
                 send(draft);
               }}
-              className="flex items-end gap-2 rounded-xl border border-[#e7e9eb] p-2"
+              className="relative flex flex-col justify-between rounded-[20px] border border-[#E5E7EB] bg-[#F8F9FA] p-3.5 transition-all focus-within:border-[#00A79D] focus-within:bg-white focus-within:ring-2 focus-within:ring-[#00A79D]/20"
             >
               <textarea
                 value={draft}
@@ -307,17 +251,18 @@ export default function AskAiPanel({
                 rows={2}
                 placeholder="Ask AI anything..."
                 aria-label="Ask AI anything"
-                className="min-w-0 flex-1 resize-none bg-transparent px-1.5 py-1 text-[14px] text-[#17181a] outline-none placeholder:text-[#9aa0a6]"
+                className="h-[88px] w-full resize-none bg-transparent pr-12 text-sm text-[#111827] outline-none placeholder:text-[#9CA3AF]"
               />
               <button
                 type="submit"
-                aria-label="Send"
-                className="flex size-9 flex-none items-center justify-center rounded-full border border-[#e7e9eb] text-[#5a5f63] transition-colors hover:border-primary hover:text-primary"
+                aria-label={draft.trim() ? "Send message" : "Voice input"}
+                className="absolute right-3.5 bottom-3.5 flex size-9 cursor-pointer items-center justify-center rounded-full border border-[#00A79D] bg-white text-[#00A79D] transition-colors hover:bg-[#00A79D] hover:text-white"
               >
-                <Mic className="size-4" />
+                {draft.trim() ? <Send className="size-4" /> : <Mic className="size-4" />}
               </button>
             </form>
-            <p className="mt-2 text-center text-[11.5px] text-[#9aa0a6]">
+
+            <p className="mt-2 text-center text-[12px] text-[#8E8E93]">
               AI can make mistakes. Double-check replies.
             </p>
           </div>

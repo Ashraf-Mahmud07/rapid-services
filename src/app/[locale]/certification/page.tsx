@@ -1,12 +1,5 @@
 import type { Metadata } from "next";
-
-import {
-  ApprovalGrid,
-  CertificationCredentials,
-  MunicipalityHighlight,
-} from "@/modules/certification";
-import FAQCTASection from "@/modules/service/components/FAQCTASection";
-import { Footer, Navbar, PageHero } from "@/shared/components/layout";
+import { CertificationView } from "@/modules/certification";
 
 export const metadata: Metadata = {
   title: "Certification | Rapid",
@@ -15,22 +8,5 @@ export const metadata: Metadata = {
 };
 
 export default function CertificationPage() {
-  return (
-    <div className="relative w-full overflow-x-hidden font-poppins">
-      <Navbar />
-      <PageHero
-        title="Certification"
-        description="Our internationally recognized certifications reflect our commitment to quality, safety, and industry-leading standards."
-      />
-      <div className="section-background">
-        <div className="container-page">
-          <CertificationCredentials />
-          <MunicipalityHighlight />
-          <ApprovalGrid />
-        </div>
-        <FAQCTASection />
-      </div>
-      <Footer />
-    </div>
-  );
+  return <CertificationView />;
 }

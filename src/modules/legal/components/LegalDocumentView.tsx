@@ -79,14 +79,14 @@ export default function LegalDocumentView({ document }: { document: LegalDocumen
 
         <div>
           {sections.map((section, index) => (
-            <section key={section.id} className="mb-12 last:mb-0">
+            <section key={section.id} className="mb-4 last:mb-0">
               <h2
                 id={section.id}
                 ref={(node) => {
                   if (node) headingRefs.current.set(section.id, node);
                   else headingRefs.current.delete(section.id);
                 }}
-                className="m-0 scroll-mt-24 text-2xl font-semibold text-[#1a1a1a]"
+                className="m-0 scroll-mt-24 text-[15px] font-semibold text-[#1a1a1a]"
               >
                 {index + 1}. {section.title}
               </h2>

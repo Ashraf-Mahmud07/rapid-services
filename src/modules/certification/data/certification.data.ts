@@ -1,90 +1,53 @@
-/** TEMPORARY SAMPLE DATA **/
+import cert1 from "../assets/images/1.png";
+import cert2 from "../assets/images/2.png";
+import cert3 from "../assets/images/3.png";
+import cert4 from "../assets/images/4.png";
+import { StaticImageData } from "next/image";
 
-import dubaiMunicipalityLogo from "../assets/images/dubai-municipality.png";
-import type {
-  Approval,
-  Certificate,
-  MunicipalityHighlightContent,
-} from "../types/certification.types";
+export interface CertificationCard {
+  id: string;
+  title: string;
+  description: string;
+  highlight: string;
+  badge: string;
+  image: StaticImageData;
+}
 
-export const CERTIFICATION_INTRO = {
-  eyebrow: "OUR CREDENTIALS",
-  title: "Recognized by international and local authorities",
-  description:
-    "Documentation for every certificate is available on request for tenders, audits and client due diligence.",
-};
-
-export const CERTIFICATES: Certificate[] = [
+export const CERTIFICATIONS: CertificationCard[] = [
   {
-    code: "ISO 9001:2015",
-    name: "Quality management systems",
-    issuer: "Issued by Bureau Veritas",
-    status: "ACTIVE",
-    icon: "shield",
-  },
-  {
-    code: "ISO 14001:2015",
-    name: "Environmental management",
-    issuer: "Issued by Bureau Veritas",
-    status: "ACTIVE",
-    icon: "droplet",
-  },
-  {
-    code: "ISO 45001:2018",
-    name: "Occupational health & safety",
-    issuer: "Issued by Bureau Veritas",
-    status: "ACTIVE",
-    icon: "shield-check",
-  },
-  {
-    code: "OHSAS 18001",
-    name: "Site safety management",
-    issuer: "Issued by Bureau Veritas",
-    status: "ACTIVE",
-    icon: "building",
-  },
-];
-
-export const MUNICIPALITY_HIGHLIGHT: MunicipalityHighlightContent = {
-  eyebrow: "REGULATORY COMPLIANCE",
-  title: "Dubai Municipality (DM)",
-  titleAccent: "Approved",
-  description:
-    "Our products are selected from manufacturers whose systems comply with Dubai Municipality standards, ensuring quality, durability, and safety for construction, waterproofing, roofing, flooring, and swimming pool applications.",
-  highlight: "Guarantees solutions that meet the strict regulatory requirements of UAE projects.",
-  badge: "DM Approved",
-  /** Cropped from assets/images/municipality-logo.png; swap for a transparent source when available. */
-  logo: dubaiMunicipalityLogo,
-  logoAlt: "Dubai Municipality",
-};
-
-export const APPROVALS: Approval[] = [
-  {
+    id: "dm",
     title: "Dubai Municipality (DM) Approved",
     description:
       "Our products are selected from manufacturers whose systems comply with Dubai Municipality standards, ensuring quality, durability, and safety for construction, waterproofing, roofing, flooring, and swimming pool applications.",
-    highlight: "GUARANTEES REGULATORY COMPLIANCE ACROSS THE UAE",
-    icon: "shield",
+    highlight: "Guarantees solutions that meet the strict regulatory requirements of UAE projects.",
+    badge: "REGULATORY COMPLIANCE",
+    image: cert1,
   },
   {
+    id: "dcl",
     title: "DCL Approved Products",
     description:
       "We utilize products that meet recognized Dubai Central Laboratory (DCL) approval requirements, demonstrating compliance with established technical and quality standards.",
-    highlight: "RELIABLE PERFORMANCE FOR RESIDENTIAL & INDUSTRIAL PROJECTS",
-    icon: "lab",
+    highlight: "Reliable performance for residential & industrial projects",
+    badge: "REGULATORY COMPLIANCE",
+    image: cert2,
   },
   {
-    title: "DM Green Building Compliant",
-    description:
-      "Our solutions support Dubai Green Building regulations by incorporating environmentally responsible materials and systems. These products contribute to sustainable construction.",
-    highlight: "ECO-FRIENDLY MATERIALS WITH EXCEPTIONAL DURABILITY",
-    icon: "leaf",
-  },
-  {
+    id: "wras",
     title: "WRAS Certified Products",
     description:
       "Where applicable, we use products certified under the Water Regulations Approval Scheme (WRAS), ensuring materials that come into contact with potable water meet stringent safety requirements.",
-    highlight: "SAFE FOR SWIMMING POOLS AND WATER STORAGE SYSTEMS",
-    icon: "droplet",
+    highlight: "Safe for swimming pools and water storage systems",
+    badge: "REGULATORY COMPLIANCE",
+    image: cert3,
+  },
+  {
+    id: "dm-green",
+    title: "DM Green Building Compliant",
+    description:
+      "Our solutions support Dubai Green Building regulations by incorporating environmentally responsible materials and systems. These products contribute to sustainable construction.",
+    highlight: "Eco-friendly materials with exceptional durability",
+    badge: "REGULATORY COMPLIANCE",
+    image: cert4,
   },
 ];

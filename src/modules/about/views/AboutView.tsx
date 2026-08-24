@@ -18,8 +18,8 @@ export default function AboutView() {
         <StatsBand />
         <HowItWorks />
         <MissionVision />
-        <Certifications />
-        <div className="container-page">
+        <Certifications tone="navy" />
+        <div className="container-page pt-10 sm:pt-14 lg:pt-19">
           <FaqSection />
         </div>
       </div>

@@ -1,13 +1,12 @@
-import { BadgeCheck, Clock, Receipt } from "lucide-react";
+import { Clock, DollarSign, PenTool, ShieldCheck } from "lucide-react";
 import type { ReactNode } from "react";
-import { CertifiedIcon } from "../icons/CertifiedIcon";
 import type { AboutCard as AboutCardItem } from "../types/about.types";
 
 const iconMap: Record<AboutCardItem["icon"], ReactNode> = {
-  certified: <CertifiedIcon />,
-  pricing: <Receipt className="size-8" aria-hidden="true" />,
-  response: <Clock className="size-8" aria-hidden="true" />,
-  guarantee: <BadgeCheck className="size-8" aria-hidden="true" />,
+  certified: <ShieldCheck className="size-6 text-white" aria-hidden="true" />,
+  pricing: <DollarSign className="size-6 text-white" aria-hidden="true" />,
+  visits: <Clock className="size-6 text-white" aria-hidden="true" />,
+  trades: <PenTool className="size-6 text-white" aria-hidden="true" />,
 };
 
 interface AboutCardProps {
@@ -16,12 +15,12 @@ interface AboutCardProps {
 
 const AboutCard = ({ item }: AboutCardProps) => {
   return (
-    <div className="flex-1 basis-[230px] rounded-md bg-[#FAFAFA] px-[21px] py-[27px]">
-      <div className="mb-2.5 flex size-12 content-center items-center rounded-md bg-primary p-2 text-white">
+    <div className="flex-1 basis-[240px] rounded-[14px] bg-[#FAFAFA] p-6 transition-all duration-200 hover:shadow-md">
+      <div className="mb-4 flex size-12 items-center justify-center rounded-[10px] bg-primary text-white shadow-sm">
         {iconMap[item.icon]}
       </div>
-      <h3 className="mb-3 text-base font-medium text-[#0E0E0E]">{item.title}</h3>
-      <p className="text-sm text-[#737373]">{item.description}</p>
+      <h3 className="mb-2 text-[17px] font-bold text-[#0E0E0E]">{item.title}</h3>
+      <p className="text-[14px] leading-[1.6] text-[#737373]">{item.description}</p>
     </div>
   );
 };

@@ -10,22 +10,22 @@ export default function Commitment() {
   const overlays = useOverlays();
 
   return (
-    <section className="section-space">
-      <div className="container mx-auto">
-        <div className="relative overflow-hidden rounded-[14px] bg-primary">
-          <div className="relative z-10 grid items-center gap-10 px-5 py-6 sm:px-6 sm:py-8 lg:grid-cols-[1.05fr_0.95fr] lg:px-12.5 lg:py-10">
-            <div className="max-w-142.5">
-              <div className="inline-flex rounded-md border border-white/35 bg-white/15 px-3 py-2">
-                <span className="text-[11px] font-semibold tracking-[1.1px] text-white uppercase">
+    <section className="py-12 lg:py-20">
+      <div className="container-page">
+        <div className="relative overflow-hidden rounded-[24px] bg-[#0B2C4D] shadow-2xl">
+          <div className="grid items-center gap-10 p-8 sm:p-10 lg:grid-cols-[1.1fr_0.9fr] lg:p-14">
+            <div className="max-w-[580px]">
+              <div className="inline-flex rounded-md border border-[#2B4E73] bg-[#1C3E63] px-3.5 py-1.5">
+                <span className="text-[11px] font-semibold tracking-[0.14em] text-white uppercase sm:text-[12px]">
                   Our commitment
                 </span>
               </div>
 
-              <h2 className="mt-5 max-w-105 text-[34px] leading-[40.8px] font-semibold tracking-[-0.884px] text-white sm:text-[40px]">
-                Committed to precision <span className="text-white/70"> and quality</span>
+              <h2 className="mt-5 text-[32px] leading-[1.2] font-bold tracking-tight text-white sm:text-[38px] lg:text-[42px]">
+                Committed to precision and quality
               </h2>
 
-              <p className="mt-4 max-w-[560px] text-[16px] leading-[26.25px] text-white/80 sm:text-[18px]">
+              <p className="mt-4 text-[15px] leading-[1.7] text-white/80 sm:text-[16px]">
                 From electrical and plumbing to painting and cleaning, our skilled team delivers
                 reliable, high-quality services tailored to your needs. Every project is completed
                 with precision, professionalism, and a commitment to exceptional results.
@@ -35,21 +35,24 @@ export default function Commitment() {
                 type="button"
                 aria-haspopup="dialog"
                 onClick={() => overlays.open("quote")}
-                className="mt-8 inline-flex rounded-full bg-white px-7.5 py-3.5 text-[15px] font-semibold text-primary transition-opacity hover:opacity-90"
+                className="mt-8 inline-flex items-center rounded-full bg-primary px-8 py-3.5 text-[15px] font-semibold text-white transition-all duration-200 hover:bg-primary/90 hover:shadow-lg active:scale-[0.98]"
               >
                 Request a Quote
               </button>
             </div>
 
-            <div className="relative h-80 rounded-xl lg:h-107.5">
+            <div className="relative aspect-[4/3] w-full overflow-hidden rounded-[16px] lg:aspect-[16/11]">
               <Image
                 src={commitmentImage}
-                alt="Skilled professionals working on a property"
+                alt="Skilled technician working on installation"
                 fill
                 sizes="(max-width: 1024px) 100vw, 50vw"
-                className="rounded-md object-cover"
+                className="object-cover"
               />
-              <div className="bg-[background: linear-gradient(90deg, #0A0E1C_0.41%, rgba(10, 14, 28, 0.00)_99.59%);] absolute inset-0 z-10 -translate-x-10" />
+              <div
+                aria-hidden="true"
+                className="pointer-events-none absolute inset-0 bg-gradient-to-r from-[#0B2C4D] via-transparent to-transparent opacity-60 lg:opacity-80"
+              />
             </div>
           </div>
         </div>

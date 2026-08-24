@@ -3,3 +3,5 @@ export interface FaqItem {
   question: string;
   answer: string;
 }
+
+export * from "./ask-ai.types";

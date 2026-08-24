@@ -22,22 +22,23 @@ export const sliderItems: AboutSlider[] = [
 export const aboutCards: AboutCard[] = [
   {
     icon: "certified",
-    title: "Certified Technicians",
-    description: "Experienced professionals with proven expertise in auto and home maintenance",
+    title: "Certified technicians",
+    description: "Licensed, insured, and background-verified technicians you can trust.",
   },
   {
     icon: "pricing",
-    title: "Transparent Pricing",
-    description: "A fixed quote before we start, with no callout charge and nothing added later",
+    title: "Transparent pricing",
+    description: "Transparent, upfront fixed pricing with no hidden fees or surprise charges.",
   },
   {
-    icon: "response",
-    title: "Fast Response",
-    description: "Most jobs booked within 24 hours, with same-day slots kept free for urgent work",
+    icon: "visits",
+    title: "Same-week visits",
+    description: "Two-hour arrival windows, and a text when we're on the way.",
   },
   {
-    icon: "guarantee",
-    title: "Workmanship Guarantee",
-    description: "Every visit is covered for 90 days, and we return at no cost if anything slips",
+    icon: "trades",
+    title: "One crew, many trades",
+    description:
+      "Book cleaning, plumbing, electrical, and repair services in one convenient place.",
   },
 ];

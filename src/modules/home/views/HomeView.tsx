@@ -4,12 +4,10 @@ import { Footer, Navbar } from "@/shared/components/layout";
 import {
   About,
   Blog,
-  Certifications,
   Commitment,
   Contact,
   CTA,
   EngineeringSafety,
-  FinishedProjects,
   HomeHero,
   IndustriesSplit,
   MeetTheExperts,
@@ -19,7 +17,6 @@ import {
   RecentWork,
   Reviews,
   Services,
-  Team,
   TradesTicker,
   WhyChooseUs,
 } from "../sections";
@@ -35,16 +32,14 @@ export default function HomeView() {
       <OngoingProjects />
       <EngineeringSafety />
       <Commitment />
-      <FinishedProjects />
       <RecentWork />
       <Services />
       <ProcessSection />
       <Reviews />
       <IndustriesSplit />
       <CTA />
-      <Certifications />
-      <Team />
       <MeetTheExperts />
+      {/* <Certifications /> */}
       <Blog />
       <Contact />
       <Newsletter />

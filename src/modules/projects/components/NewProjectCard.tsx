@@ -6,6 +6,9 @@ import { ArrowLeft, ArrowRight } from "lucide-react";
 import { cn } from "@/shared/utils/cn";
 import type { Project } from "../types/projects.types";
 
+import { useRouter } from "@/i18n/navigation";
+import { projectDetailRoute } from "@/shared/constants/routes";
+
 interface NewProjectCardProps {
   project: Project;
   location?: string;
@@ -17,6 +20,7 @@ export default function NewProjectCard({
 }: NewProjectCardProps) {
   const [isHovered, setIsHovered] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const router = useRouter();
 
   const gallery =
     project.gallery && project.gallery.length > 0
@@ -38,20 +42,27 @@ export default function NewProjectCard({
   }, [isHovered, gallery.length]);
 
   const handleNext = (e: React.MouseEvent) => {
+    e.preventDefault();
     e.stopPropagation();
     setCurrentIndex((prev) => (prev === gallery.length - 1 ? 0 : prev + 1));
   };
 
   const handlePrev = (e: React.MouseEvent) => {
+    e.preventDefault();
     e.stopPropagation();
     setCurrentIndex((prev) => (prev === 0 ? gallery.length - 1 : prev - 1));
   };
 
+  const handleNavigate = () => {
+    router.push(projectDetailRoute(project.id));
+  };
+
   return (
     <div
-      className="flex cursor-pointer flex-col rounded-xl border border-[#EBEFF0] bg-[#F8F8F8] p-4 transition-all hover:shadow-sm lg:p-5"
+      className="flex h-full cursor-pointer flex-col rounded-xl border border-[#EBEFF0] bg-[#F8F8F8] p-4 transition-all hover:shadow-sm lg:p-5"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
+      onClick={handleNavigate}
     >
       <h3 className="mb-4 text-[17px] font-bold text-primary">{project.title}</h3>
 
@@ -89,6 +100,7 @@ export default function NewProjectCard({
                 <button
                   key={idx}
                   onClick={(e) => {
+                    e.preventDefault();
                     e.stopPropagation();
                     setCurrentIndex(idx);
                   }}

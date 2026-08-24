@@ -5,6 +5,7 @@ import Image from "next/image";
 import * as React from "react";
 
 import { Link, usePathname } from "@/i18n/navigation";
+import { AskAiIcon } from "@/shared/assets/icons";
 import { useOverlays } from "@/shared/components/overlays/OverlayProvider";
 import { MEGA_MENUS } from "@/shared/constants/navigation";
 import { ROUTES } from "@/shared/constants/routes";
@@ -92,8 +93,8 @@ export default function Navbar({
   };
 
   const control = cn(
-    "hidden h-11 items-center justify-center text-white transition-colors xl:inline-flex",
-    isSolid ? "hover:text-white/75" : "rounded-full border border-primary hover:bg-white/10"
+    "hidden h-11 items-center cursor-pointer justify-center text-white transition-colors xl:inline-flex",
+    isSolid ? "hover:text-priamry" : ""
   );
 
   return (
@@ -193,15 +194,14 @@ export default function Navbar({
             <LanguageSelector variant={variant} />
           </div> */}
 
-          {/* Ask AI hidden for this version */}
-          {/* <button
+          <button
             type="button"
             aria-haspopup="dialog"
             onClick={onAskAiClick ?? (() => overlays.open("ai"))}
             className={cn(control, "px-4 text-[15px] font-medium")}
           >
-            Ask AI
-          </button> */}
+            <AskAiIcon />
+          </button>
 
           {appointmentHref ? (
             <Link href={appointmentHref} onClick={closeAll} className={appointmentClass}>
@@ -213,7 +213,7 @@ export default function Navbar({
               type="button"
               aria-haspopup="dialog"
               onClick={openAppointment}
-              className={appointmentClass}
+              className={`${appointmentClass} cursor-pointer hover:text-primary`}
             >
               Appointment
               <ChevronDownIcon className="size-4" strokeWidth={2.4} />
@@ -299,8 +299,7 @@ export default function Navbar({
                   <SearchIcon className="size-4" strokeWidth={1.8} />
                   Search
                 </button>
-                {/* Ask AI hidden for this version */}
-                {/* <button
+                <button
                   type="button"
                   onClick={() => {
                     closeAll();
@@ -310,7 +309,7 @@ export default function Navbar({
                   className="flex h-11 flex-1 items-center justify-center rounded-full border border-white/25 text-[15px] font-medium text-white"
                 >
                   Ask AI
-                </button> */}
+                </button>
               </div>
 
               {appointmentHref ? (

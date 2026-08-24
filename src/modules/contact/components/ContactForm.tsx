@@ -5,8 +5,8 @@ import Image from "next/image";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 
+import { Input } from "@/shared/components/ui";
 import { Button } from "@/shared/components/ui/Button";
-import { Input } from "@/shared/components/ui/Input";
 import { Textarea } from "@/shared/components/ui/Textarea";
 import contactSupportImage from "../assets/images/contact-support.png";
 import { contactSchema, type ContactFormData } from "../validation/contact.schema";
@@ -41,7 +41,7 @@ export default function ContactForm() {
       id="contact-form"
       className="mt-6 grid scroll-mt-24 items-stretch gap-6 rounded-2xl border border-gray-100 bg-white p-4 sm:mt-8 sm:p-6 lg:mt-10 lg:grid-cols-[1fr_1.1fr] lg:gap-12 lg:p-10 xl:p-12"
     >
-      <div className="relative min-h-[300px] w-full overflow-hidden rounded-xl lg:h-full">
+      <div className="relative min-h-75 w-full overflow-hidden rounded-xl lg:h-full">
         <Image src={contactSupportImage} alt="Contact Support" fill className="object-cover" />
       </div>
 
@@ -93,17 +93,15 @@ export default function ContactForm() {
               <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:gap-6">
                 <Input
                   id="firstName"
-                  placeholder="First Name"
-                  aria-label="First Name"
-                  className={FIELD_CLASSNAME}
+                  label="First Name"
                   error={errors.firstName?.message}
+                  className={FIELD_CLASSNAME}
                   {...register("firstName")}
                 />
 
                 <Input
                   id="lastName"
-                  placeholder="Last Name"
-                  aria-label="Last Name"
+                  label="Last Name"
                   className={FIELD_CLASSNAME}
                   error={errors.lastName?.message}
                   {...register("lastName")}
@@ -112,8 +110,7 @@ export default function ContactForm() {
 
               <Input
                 id="phone"
-                placeholder="Phone"
-                aria-label="Phone"
+                label="Phone"
                 className={FIELD_CLASSNAME}
                 error={errors.phone?.message}
                 {...register("phone")}
@@ -122,8 +119,7 @@ export default function ContactForm() {
               <Input
                 id="email"
                 type="email"
-                placeholder="Email"
-                aria-label="Email"
+                label="Email"
                 className={FIELD_CLASSNAME}
                 error={errors.email?.message}
                 {...register("email")}
@@ -131,8 +127,7 @@ export default function ContactForm() {
 
               <Input
                 id="subject"
-                placeholder="Subject"
-                aria-label="Subject"
+                label="Subject"
                 className={FIELD_CLASSNAME}
                 error={errors.subject?.message}
                 {...register("subject")}
@@ -140,8 +135,7 @@ export default function ContactForm() {
 
               <Textarea
                 id="message"
-                placeholder="Message"
-                aria-label="Message"
+                label="Message"
                 className="min-h-[140px] w-full resize-none rounded-3xl border border-gray-100 bg-[#f9f9f9] px-6 py-4 text-[14.5px] text-[#333] transition-colors placeholder:text-gray-400 focus-visible:border-primary focus-visible:bg-white focus-visible:ring-1 focus-visible:ring-primary"
                 error={errors.message?.message}
                 {...register("message")}

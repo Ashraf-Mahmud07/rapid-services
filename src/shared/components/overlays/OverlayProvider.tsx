@@ -53,15 +53,14 @@ export default function OverlayProvider({ children }: { children: React.ReactNod
       <div className="pointer-events-none fixed right-5 bottom-5 z-90 flex flex-col items-end gap-2.5 sm:right-8 sm:bottom-8">
         {current === null && (
           <>
-            {/* Ask AI hidden for this version */}
-            {/* <button
+            <button
               type="button"
               onClick={() => setCurrent("ai")}
               className="pointer-events-auto inline-flex h-11 items-center gap-2 rounded-full bg-[#1a1a1a] px-4 text-[14px] font-medium text-white shadow-[0_8px_24px_rgba(0,0,0,0.24)] transition-transform hover:-translate-y-0.5"
             >
               <Sparkles className="size-4" />
               Ask AI
-            </button> */}
+            </button>
             <button
               type="button"
               onClick={() => setCurrent("call")}
@@ -79,8 +78,7 @@ export default function OverlayProvider({ children }: { children: React.ReactNod
       <AppointmentModal open={current === "appointment"} onOpenChange={toggle("appointment")} />
       <RequestQuoteModal open={current === "quote"} onOpenChange={toggle("quote")} />
       <RequestCallModal open={current === "call"} onOpenChange={toggle("call")} />
-      {/* Ask AI hidden for this version */}
-      {/* <AskAiPanel open={current === "ai"} onOpenChange={toggle("ai")} /> */}
+      <AskAiPanel open={current === "ai"} onOpenChange={toggle("ai")} />
     </OverlayContext.Provider>
   );
 }

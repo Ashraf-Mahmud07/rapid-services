@@ -124,9 +124,9 @@ export default function SubServiceDetail({ subService, onBack }: SubServiceDetai
 
       <div className="mb-10 text-center">
         <Link href={ROUTES.CONTACT} className="inline-block w-full cursor-pointer md:w-auto">
-          <Button size="lg" className="w-full cursor-pointer tracking-wide uppercase md:w-auto">
-            TECHNICIAN VISIT
-          </Button>
+          <button className="w-full cursor-pointer rounded-full bg-primary px-10 py-3 text-[15px] font-medium text-white transition-all hover:bg-primary/90 md:w-auto">
+            Technician Visit
+          </button>
         </Link>
       </div>
 

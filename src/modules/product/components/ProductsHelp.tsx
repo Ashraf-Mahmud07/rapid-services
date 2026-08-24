@@ -44,12 +44,9 @@ export default function ProductsHelp({ className }: ProductsHelpProps) {
 
       <Link
         href={ROUTES.CONTACT}
-        className="mt-5 inline-flex w-fit items-center gap-3 border-b border-primary pb-1 text-[14px] leading-none font-medium text-white transition-colors"
+        className="mt-5 inline-flex w-fit max-w-fit items-center gap-3 border-b border-white pb-1 text-[14px] leading-none font-medium text-white transition-colors"
       >
         <span>{t("talkToExpert")}</span>
-        <span aria-hidden="true" className="text-primary">
-          →
-        </span>
       </Link>
     </section>
   );

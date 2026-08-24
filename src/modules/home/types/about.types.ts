@@ -1,5 +1,5 @@
 export interface AboutCard {
-  icon: "certified" | "pricing" | "response" | "guarantee";
+  icon: "certified" | "pricing" | "visits" | "trades";
   title: string;
   description: string;
 }

@@ -1,7 +1,6 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import Image from "next/image";
 
 export interface ProductPaginationProps {
   currentPage: number;
@@ -25,14 +24,14 @@ export default function ProductPagination({
   const getPageNumbers = (): (number | string)[] => {
     const pages: (number | string)[] = [];
 
-    if (totalPages <= 4) {
+    if (totalPages <= 5) {
       for (let i = 1; i <= totalPages; i++) {
         pages.push(i);
       }
     } else if (currentPage <= 2) {
-      pages.push(1, 2, "...", totalPages);
+      pages.push(1, 2, 3, "...", totalPages);
     } else if (currentPage >= totalPages - 1) {
-      pages.push(1, "...", totalPages - 1, totalPages);
+      pages.push(1, "...", totalPages - 2, totalPages - 1, totalPages);
     } else {
       pages.push(1, "...", currentPage, "...", totalPages);
     }
@@ -49,27 +48,19 @@ export default function ProductPagination({
       aria-label="Pagination Navigation"
       className="mt-10 flex flex-col items-start justify-between gap-4 py-4 sm:flex-row sm:items-center"
     >
-      <div className="flex items-start gap-[11.158px] text-[14.877px] leading-[22.315px] whitespace-nowrap">
-        <span className="font-light text-[rgba(0,0,0,0.6)]">{t("showing")}</span>
-        <span className="font-normal text-[#0f0f0f]">
-          {firstItem} {t("to")} {lastItem} {t("of")} {totalItems}
+      <div className="flex items-center gap-1.5 text-[14.88px] leading-[22.3px] font-normal text-[#0f0f0f]">
+        <span>
+          {t("showing")} {firstItem} {t("to")} {lastItem} {t("of")} {totalItems}
         </span>
       </div>
 
-      <div className="flex items-start gap-[8.788px]">
+      <div className="flex items-center gap-[8.8px]">
         <PaginationControl
           ariaLabel={t("firstPage")}
           disabled={currentPage === 1}
           onClick={() => onPageChange(1)}
         >
-          <Image
-            src="/icons/pagination-first.svg"
-            alt=""
-            width={15}
-            height={15}
-            aria-hidden="true"
-            className="size-[14]"
-          />
+          <FirstPageIcon />
         </PaginationControl>
 
         {pages.map((page, index) => {
@@ -77,7 +68,7 @@ export default function ProductPagination({
             return (
               <span
                 key={`ellipsis-${index}`}
-                className="flex h-[44] w-[44] items-center justify-center overflow-hidden rounded-[6] border border-[rgba(0,0,0,0.2)] bg-white p-[12] text-center leading-[18] font-normal text-[#0f0f0f] text-[12]"
+                className="flex h-[41.4px] w-[43.9px] items-center justify-center rounded-[8px] border border-[#B3ECE8] bg-[#E6F7F6] text-center text-xs font-normal text-[#00A79D]"
               >
                 ...
               </span>
@@ -91,10 +82,10 @@ export default function ProductPagination({
               key={page}
               type="button"
               onClick={() => onPageChange(page)}
-              className={`flex h-[44] w-[44] cursor-pointer items-center justify-center overflow-hidden rounded-[6] border p-[11] text-center leading-[18] font-normal text-[#0f0f0f] text-[12] transition-colors ${
+              className={`flex h-[41.4px] w-[43.9px] cursor-pointer items-center justify-center rounded-[8px] border text-center text-xs font-normal transition-all duration-200 ${
                 isActive
-                  ? "border-primary bg-brand-tint"
-                  : "border-[rgba(0,0,0,0.2)] bg-white hover:border-primary hover:bg-brand-tint"
+                  ? "border-[#00A79D] bg-[#00A79D] text-white"
+                  : "border-[#B3ECE8] bg-[#E6F7F6] text-[#00A79D] hover:border-[#00A79D] hover:bg-[#00A79D] hover:text-white"
               }`}
               aria-current={isActive ? "page" : undefined}
             >
@@ -108,14 +99,7 @@ export default function ProductPagination({
           disabled={currentPage === totalPages}
           onClick={() => onPageChange(totalPages)}
         >
-          <Image
-            src="/icons/pagination-last.svg"
-            alt=""
-            width={15}
-            height={15}
-            aria-hidden="true"
-            className="size-[14]"
-          />
+          <LastPageIcon />
         </PaginationControl>
       </div>
     </nav>
@@ -138,10 +122,64 @@ function PaginationControl({
       type="button"
       disabled={disabled}
       onClick={onClick}
-      className="flex h-[44] w-[44] cursor-pointer items-center justify-center overflow-hidden rounded-[5.859px] border border-[rgba(0,0,0,0.2)] bg-white px-[11.717px] py-[13.182px] transition-colors hover:border-primary hover:bg-brand-tint disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:border-[rgba(0,0,0,0.2)] disabled:hover:bg-white"
+      className="flex h-[41.4px] w-[43.9px] cursor-pointer items-center justify-center rounded-[8px] border border-[#B3ECE8] bg-[#E6F7F6] text-[#00A79D] transition-all duration-200 hover:border-[#00A79D] hover:bg-[#00A79D] hover:text-white disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:border-[#B3ECE8] disabled:hover:bg-[#E6F7F6] disabled:hover:text-[#00A79D]"
       aria-label={ariaLabel}
     >
       {children}
     </button>
+  );
+}
+
+function FirstPageIcon({ className = "size-4" }: { className?: string }) {
+  return (
+    <svg
+      width="15"
+      height="15"
+      viewBox="0 0 12.3273 12.3273"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      className={className}
+      aria-hidden="true"
+    >
+      <path
+        d="M0.366159 6.16367C0.366159 3.4307 0.366159 2.06421 1.21518 1.21518C2.06421 0.366159 3.4307 0.366159 6.16367 0.366159C8.89664 0.366159 10.2631 0.366159 11.1121 1.21518C11.9612 2.06421 11.9612 3.4307 11.9612 6.16367C11.9612 8.89664 11.9612 10.2631 11.1121 11.1121C10.2631 11.9612 8.89664 11.9612 6.16367 11.9612C3.4307 11.9612 2.06421 11.9612 1.21518 11.1121C0.366159 10.2631 0.366159 8.89664 0.366159 6.16367Z"
+        stroke="currentColor"
+        strokeWidth="0.8"
+      />
+      <path
+        d="M5.45169 3.72261L4.20417 5.01294C3.67971 5.5554 3.41748 5.82663 3.41748 6.16367C3.41748 6.50071 3.67971 6.77193 4.20417 7.31439L5.45169 8.60472M8.90986 3.72261L7.66233 5.01294C7.13787 5.5554 6.87564 5.82663 6.87564 6.16367C6.87564 6.50071 7.13787 6.77193 7.66233 7.31439L8.90986 8.60472"
+        stroke="currentColor"
+        strokeWidth="0.8"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
+function LastPageIcon({ className = "size-4" }: { className?: string }) {
+  return (
+    <svg
+      width="15"
+      height="15"
+      viewBox="0 0 12.3273 12.3273"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      className={className}
+      aria-hidden="true"
+    >
+      <path
+        d="M0.366159 6.16367C0.366159 3.4307 0.366159 2.06421 1.21518 1.21518C2.06421 0.366159 3.4307 0.366159 6.16367 0.366159C8.89664 0.366159 10.2631 0.366159 11.1121 1.21518C11.9612 2.06421 11.9612 3.4307 11.9612 6.16367C11.9612 8.89664 11.9612 10.2631 11.1121 11.1121C10.2631 11.9612 8.89664 11.9612 6.16367 11.9612C3.4307 11.9612 2.06421 11.9612 1.21518 11.1121C0.366159 10.2631 0.366159 8.89664 0.366159 6.16367Z"
+        stroke="currentColor"
+        strokeWidth="0.8"
+      />
+      <path
+        d="M6.87564 3.72261L8.12316 5.01294C8.64762 5.5554 8.90985 5.82663 8.90985 6.16367C8.90985 6.50071 8.64762 6.77193 8.12316 7.31439L6.87564 8.60472M3.41748 3.72261L4.665 5.01294C5.18946 5.5554 5.45169 5.82663 5.45169 6.16367C5.45169 6.50071 5.18946 6.77193 4.665 7.31439L3.41748 8.60472"
+        stroke="currentColor"
+        strokeWidth="0.8"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
   );
 }

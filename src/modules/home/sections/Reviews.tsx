@@ -77,7 +77,7 @@ export default function Reviews() {
                     type="button"
                     onClick={handlePrev}
                     aria-label="Previous review"
-                    className="flex h-9 w-9 cursor-pointer items-center justify-center rounded-full border border-white/30 bg-transparent text-white/80 transition-all duration-200 hover:scale-105 hover:border-primary hover:bg-primary hover:text-white hover:shadow-md active:scale-95 sm:h-10 sm:w-10"
+                    className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full border border-white/30 bg-transparent text-white transition-all duration-200 hover:border-white hover:bg-white/10 active:scale-95"
                   >
                     <LeftArrowIcon className="h-4 w-4" />
                   </button>
@@ -85,7 +85,7 @@ export default function Reviews() {
                     type="button"
                     onClick={handleNext}
                     aria-label="Next review"
-                    className="flex h-9 w-9 cursor-pointer items-center justify-center rounded-full border border-white/30 bg-transparent text-white/80 transition-all duration-200 hover:scale-105 hover:border-primary hover:bg-primary hover:text-white hover:shadow-md active:scale-95 sm:h-10 sm:w-10"
+                    className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-primary text-white shadow-md transition-all duration-200 hover:bg-primary/90 hover:shadow-lg active:scale-95"
                   >
                     <RightArrowIcon className="h-4 w-4" />
                   </button>

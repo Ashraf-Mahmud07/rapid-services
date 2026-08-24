@@ -11,6 +11,7 @@ import {
   Package,
   Phone,
   Search,
+  Sparkles,
   Store,
   Wrench,
 } from "lucide-react";
@@ -87,6 +88,7 @@ const ENTRIES: Entry[] = [
 export default function SearchModal({
   open,
   onOpenChange,
+  onAskAi,
 }: {
   open: boolean;
   onOpenChange: (open: boolean) => void;
@@ -173,7 +175,20 @@ export default function SearchModal({
             </p>
           )}
 
-          {/* AI Section hidden as requested */}
+          <div className="mt-6 flex items-center justify-between gap-4 border-t border-[#eef0f1] pt-5">
+            <p className="text-[15px] text-[#5a5f63]">Need help finding something?</p>
+            <button
+              type="button"
+              onClick={() => {
+                handleOpenChange(false);
+                onAskAi?.();
+              }}
+              className="inline-flex h-11 flex-none items-center gap-2 rounded-full bg-primary px-5 text-[15px] font-semibold text-white transition-opacity hover:opacity-90"
+            >
+              <Sparkles className="size-4" />
+              Ask AI
+            </button>
+          </div>
         </DialogPrimitive.Content>
       </DialogPrimitive.Portal>
     </DialogPrimitive.Root>

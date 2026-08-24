@@ -1,7 +1,7 @@
 "use client";
 
-import Image from "next/image";
 import { useTranslations } from "next-intl";
+import Image from "next/image";
 
 export default function CeoQuote() {
   const t = useTranslations("about");
@@ -9,13 +9,13 @@ export default function CeoQuote() {
   return (
     <section className="section-space">
       <div className="container-page">
-        <div className="grid gap-8 rounded-[14px] surface-wash p-6 sm:p-9 lg:grid-cols-[290px_minmax(0,1fr)] lg:gap-14 lg:p-12">
-          <div className="relative aspect-square w-full overflow-hidden rounded-[10px] lg:aspect-[290/340]">
+        <div className="grid gap-8 rounded-[14px] bg-[#F8F8F8] p-6 sm:p-9 lg:grid-cols-[minmax(0,0.52fr)_minmax(0,1fr)] lg:gap-11 lg:p-12">
+          <div className="relative aspect-square w-full overflow-hidden rounded-lg lg:aspect-4/5">
             <Image
               src="/images/about/ceo.png"
               alt={t("ceoImageAlt")}
               fill
-              sizes="(max-width: 1024px) 100vw, 290px"
+              sizes="(max-width: 1024px) 100vw, 34vw"
               className="object-cover"
             />
           </div>

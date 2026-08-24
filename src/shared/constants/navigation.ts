@@ -4,7 +4,6 @@ import {
   Briefcase,
   Building,
   Building2,
-  CircleHelp,
   Droplet,
   Factory,
   Hammer,
@@ -231,12 +230,6 @@ export const MEGA_MENUS: Record<string, MegaMenu> = {
         href: ROUTES.CERTIFICATION,
         icon: Award,
       },
-      {
-        title: "FAQs",
-        subtitle: "Answers To Common Questions",
-        href: ROUTES.FAQ,
-        icon: CircleHelp,
-      },
     ],
   },
 
@@ -254,7 +247,7 @@ export const MEGA_MENUS: Record<string, MegaMenu> = {
       {
         title: "Video Library",
         subtitle: "Guides, Insights, And Project Videos",
-        href: ROUTES.BLOG + "?type=video",
+        href: ROUTES.MEDIA,
         icon: Video,
       },
       {

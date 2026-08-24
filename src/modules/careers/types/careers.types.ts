@@ -2,6 +2,11 @@ export type JobDepartment = "Engineering" | "Marketing" | "Design" | "Operations
 
 export type JobFilter = "All" | JobDepartment;
 
+export interface CareerHighlight {
+  title: string;
+  description: string;
+}
+
 export interface JobMetaRow {
   label: string;
   value: string;

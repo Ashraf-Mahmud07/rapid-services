@@ -1,3 +1,4 @@
+import type { StaticImageData } from "next/image";
 import type { LucideIcon } from "lucide-react";
 
 export interface CounterItem {
@@ -47,7 +48,7 @@ export interface HomeFinishedProject {
 export interface HomeCertificationItem {
   title: string;
   subtitle: string;
-  icon: LucideIcon;
+  icon: StaticImageData;
 }
 
 export interface HomeExpert {

@@ -21,11 +21,10 @@ export default function NewProjectsSection() {
   return (
     <div className="container-page bg-white py-10 md:py-16">
       <div className="mb-10 flex flex-col items-center text-center">
-        <h2 className="text-[28px] font-bold text-primary md:text-[32px]">Recent Projects</h2>
-        <p className="mt-4 max-w-3xl text-[14px] leading-relaxed text-gray-500">
-          Explore the innovative projects that showcase our steadfast commitment to excellence and
-          the creativity we passionately bring to life. Each endeavor reflects our dedication to
-          pushing boundaries and achieving remarkable results
+        <h2 className="text-[28px] font-bold text-primary md:text-[32px]">Projects</h2>
+        <p className="mt-4 max-w-xl text-[14px] leading-relaxed text-gray-500">
+          Explore our projects to see how we deliver efficient, reliable solutions across different
+          industries and project needs.
         </p>
       </div>
 
@@ -49,7 +48,7 @@ export default function NewProjectsSection() {
         </div>
       </div>
 
-      {/* Grid */}
+      {/* Main Content Area */}
       {filteredProjects.length > 0 ? (
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {filteredProjects.map((project, idx) => (

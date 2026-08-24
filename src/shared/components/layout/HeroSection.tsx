@@ -16,6 +16,7 @@ interface HeroSectionProps {
   title: string;
   subtitle: string;
   backgroundImage?: string | StaticImageData;
+  descriptionClassName?: string;
   slides?: HeroSlide[];
 }
 
@@ -24,6 +25,7 @@ export default function HeroSection({
   subtitle,
   backgroundImage,
   slides,
+  descriptionClassName,
 }: HeroSectionProps) {
   const deck: HeroSlide[] =
     slides && slides.length > 0 ? slides : [{ title, subtitle, backgroundImage }];
@@ -51,10 +53,15 @@ export default function HeroSection({
       </div>
 
       <div className="relative z-10 flex flex-1 flex-col items-center justify-center px-4 py-16 text-center text-white sm:py-24 md:py-28">
-        <h1 className="mb-4 text-2xl font-bold tracking-tight drop-shadow-sm md:text-3xl lg:text-4xl">
+        <h1 className="mb-4 text-2xl font-semibold tracking-tight drop-shadow-sm md:text-3xl lg:text-4xl">
           {current.title}
         </h1>
-        <p className="mx-auto max-w-4xl text-[15px] leading-relaxed font-medium text-white/90 drop-shadow-sm md:text-base">
+        <p
+          className={cn(
+            "mx-auto max-w-4xl text-[15px] leading-relaxed font-medium text-white/90 drop-shadow-sm md:text-base",
+            descriptionClassName
+          )}
+        >
           {current.subtitle}
         </p>
       </div>
