@@ -51,7 +51,7 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
                 );
               } else if (block.type === 2) {
                 return (
-                  <div key={index} className="flex flex-col rounded-xl bg-white p-6 md:p-8">
+                  <div key={index} className="flex flex-col rounded-xl bg-white p-4 sm:p-6 md:p-8">
                     <h3 className="mb-4 text-base font-bold text-primary md:text-[18px]">
                       {block.title}
                     </h3>

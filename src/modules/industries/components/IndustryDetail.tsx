@@ -53,7 +53,7 @@ export default function IndustryDetail({ industry }: IndustryDetailProps) {
               return (
                 <div
                   key={index}
-                  className="rounded-xl border border-transparent bg-white p-6 shadow-sm"
+                  className="rounded-xl border border-transparent bg-white p-4 shadow-sm sm:p-6"
                 >
                   {block.title && (
                     <h3 className="mb-4 text-base font-bold text-primary">{block.title}</h3>
@@ -85,7 +85,7 @@ export default function IndustryDetail({ industry }: IndustryDetailProps) {
           })}
         </div>
       ) : (
-        <div className="rounded-xl border border-[#EBEFF0] bg-white p-6 md:p-8">
+        <div className="rounded-xl border border-[#EBEFF0] bg-white p-4 sm:p-6 md:p-8">
           <p className="text-[15px] leading-relaxed text-gray-600">{industry.shortDesc}</p>
         </div>
       )}

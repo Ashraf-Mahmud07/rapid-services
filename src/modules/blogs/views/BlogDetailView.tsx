@@ -1,6 +1,5 @@
 "use client";
 
-import serviceBanner from "@/shared/assets/png/service-banner.jpg";
 import { BlogDetailsHero } from "../components/BlogDetailsHero";
 import { BlogDetailsSection } from "../components/BlogDetailsSection";
 import { useBlogDetail } from "../hooks/useBlogDetail";

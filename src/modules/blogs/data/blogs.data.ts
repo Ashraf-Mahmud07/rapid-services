@@ -59,7 +59,7 @@ export const listBlogs: Blog[] = [
     readTime: "3 min",
     title: "A deep clean checklist landlords actually accept",
     description:
-      "The eleven items inspectors look for, in the order a professional crew works through them.",
+      "The eleven items inspectors look for, in the order a professional crew works through them. Learn the insider strategies that guarantee your property passes its final walkthrough on the very first attempt, saving you time and dispute costs.",
     image: project1Image,
   },
   {
@@ -69,7 +69,7 @@ export const listBlogs: Blog[] = [
     readTime: "5 min",
     title: "Getting a finish that survives the handover",
     description:
-      "Two coats is not a spec. What we actually agree with clients before a brush comes out, and why it saves a repaint.",
+      "Two coats is not a spec. What we actually agree with clients before a brush comes out, and why it saves a repaint. Discover how proper surface preparation and specific material choices dictate the true longevity of your interior spaces.",
     image: blogImage,
   },
   {
@@ -78,7 +78,8 @@ export const listBlogs: Blog[] = [
     date: "Jun 18, 2026",
     readTime: "5 min",
     title: "Hairline cracks: when to fill and when to call",
-    description: "A quick way to tell settling from movement, without guessing at it.",
+    description:
+      "A quick way to tell settling from movement, without guessing at it. We outline the exact structural warning signs that mean you need a professional assessment versus the minor cosmetic blemishes you can safely handle yourself.",
     image: project1Image,
   },
   {
@@ -88,7 +89,7 @@ export const listBlogs: Blog[] = [
     readTime: "7 min",
     title: "Epoxy floors in working plant rooms",
     description:
-      "Downtime is the real cost. How we phase a pour so the room keeps running while the floor goes down.",
+      "Downtime is the real cost. How we phase a pour so the room keeps running while the floor goes down. Step-by-step guidance on industrial floor coatings that provide maximum durability while minimizing operational disruption in critical facilities.",
     image: blogImage,
   },
 ];

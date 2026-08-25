@@ -5,5 +5,12 @@
     "placeholder": "Email address",
     "button": "Subscribe",
     "subtext": "No spam. Unsubscribe anytime."
+  },
+  "pagination": {
+    "showing": "Showing",
+    "to": "to",
+    "of": "of",
+    "firstPage": "First Page",
+    "lastPage": "Last Page"
   }
 }

@@ -7,7 +7,7 @@ import NoProductFound from "./NoProductFound";
 import ProductGridCard from "./ProductGridCard";
 import ProductHeader from "./ProductHeader";
 import ProductListCard from "./ProductListCard";
-import ProductPagination from "./ProductPagination";
+import { Pagination } from "@/shared/components/ui/Pagination";
 import { useProductView } from "../hooks/useProductView";
 
 export default function ProductView() {
@@ -42,7 +42,7 @@ export default function ProductView() {
         <>
           {activeView === "grid" && <GridView productsList={displayedProducts} />}
           {activeView === "list" && <ListView productsList={displayedProducts} />}
-          <ProductPagination
+          <Pagination
             currentPage={currentPage}
             itemsPerPage={itemsPerPage}
             totalItems={filteredProducts.length}

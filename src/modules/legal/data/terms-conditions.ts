@@ -129,6 +129,6 @@ export const TERMS_CONDITIONS: LegalDocument = {
     title: "Questions about these terms?",
     body: "Ask anything on the contact support page for more details",
     actionLabelKey: "contactSupport",
-    href: ROUTES.PRIVACY,
+    href: ROUTES.CONTACT,
   },
 };

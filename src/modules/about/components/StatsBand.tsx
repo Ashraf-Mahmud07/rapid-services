@@ -10,11 +10,14 @@ export default function StatsBand() {
 
   return (
     <section className="bg-[#0A365C] py-14 lg:py-16">
-      <div className="container-page grid gap-10 sm:grid-cols-2 xl:grid-cols-4 xl:gap-0">
+      <div className="container-page grid grid-cols-2 gap-x-6 gap-y-10 xl:grid-cols-4 xl:gap-0">
         {stats.map((stat, index) => (
           <div
             key={stat.key}
-            className={cn("xl:pe-8", index > 0 && "xl:border-s xl:border-white/15 xl:ps-8")}
+            className={cn(
+              "flex flex-col items-center text-center xl:pe-8",
+              index > 0 && "xl:border-s xl:border-white/15 xl:ps-8"
+            )}
           >
             <span className="mb-5 flex size-14 items-center justify-center rounded-[14px] bg-white">
               <Image src={stat.icon} alt="" aria-hidden="true" className="size-7" />

@@ -10,11 +10,11 @@ export default function ContactHero() {
       }}
     >
       <h1 className="mb-4 text-[32px] font-bold text-white sm:text-[38px] lg:mb-5 lg:text-[48px]">
-        Contact Us
+        Contact Us to Start Your Project
       </h1>
-      <p className="max-w-180 text-[15px] leading-[1.6] text-white/85 sm:text-base lg:text-[17px]">
-        Have a question, need support, or want to learn more about our services? Get in touch with
-        our team, and we&apos;ll be happy to assist you as quickly as possible.
+      <p className="max-w-130 text-[15px] leading-[1.6] text-white/85 sm:text-base lg:text-[17px]">
+        Tell us about your project, and our team will be in touch to discuss your needs and next
+        steps.
       </p>
     </section>
   );

@@ -220,7 +220,7 @@ export default function Navbar({
             aria-label="Search"
             aria-haspopup="dialog"
             onClick={openSearch}
-            className={cn(control, "w-11")}
+            className={cn(control, "w-11 transition-colors hover:text-primary")}
           >
             <SearchIcon className="size-5" strokeWidth={1.8} />
           </button>
@@ -234,7 +234,10 @@ export default function Navbar({
             type="button"
             aria-haspopup="dialog"
             onClick={onAskAiClick ?? (() => overlays.open("ai"))}
-            className={cn(control, "px-4 text-[15px] font-medium")}
+            className={cn(
+              control,
+              "px-4 text-[15px] font-medium transition-colors hover:text-primary"
+            )}
           >
             <AskAiIcon />
           </button>
@@ -249,7 +252,7 @@ export default function Navbar({
               type="button"
               aria-haspopup="dialog"
               onClick={openAppointment}
-              className={`${appointmentClass} cursor-pointer hover:text-primary`}
+              className={`${appointmentClass} cursor-pointer`}
             >
               Appointment
               <ChevronDownIcon className="size-4" strokeWidth={2.4} />

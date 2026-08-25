@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { ArrowRight, Headphones } from "lucide-react";
 import { Link } from "@/i18n/navigation";
 import { ROUTES } from "@/shared/constants/routes";
@@ -9,6 +10,18 @@ interface TradeSidebarProps {
 }
 
 export default function TradeSidebar({ activeTab, onTabChange }: TradeSidebarProps) {
+  // Auto-scroll the active tab into view within the sidebar
+  useEffect(() => {
+    const activeElement = document.getElementById(`sidebar-tab-${activeTab}`);
+    if (activeElement) {
+      activeElement.scrollIntoView({
+        behavior: "smooth",
+        block: "center",
+        inline: "center",
+      });
+    }
+  }, [activeTab]);
+
   return (
     <div className="flex w-full flex-shrink-0 flex-col border-b border-gray-100 bg-[#F8F8F8] pt-6 lg:h-full lg:w-[280px] lg:self-start lg:border-r lg:border-b-0 lg:pt-8 xl:w-[320px]">
       <div className="mb-4 flex-shrink-0 px-6 text-[11px] font-bold tracking-widest text-gray-400 uppercase lg:mb-6 lg:px-8">
@@ -23,6 +36,7 @@ export default function TradeSidebar({ activeTab, onTabChange }: TradeSidebarPro
           return (
             <button
               key={trade.id}
+              id={`sidebar-tab-${trade.id}`}
               onClick={() => onTabChange(trade.id)}
               className={`flex w-full cursor-pointer items-center gap-3.5 rounded-xl px-3 py-2.5 text-left text-[15px] font-medium whitespace-nowrap transition-all duration-200 ${
                 isActive ? "bg-primary text-white" : "text-gray-700 hover:bg-gray-100"
@@ -43,6 +57,8 @@ export default function TradeSidebar({ activeTab, onTabChange }: TradeSidebarPro
             </button>
           );
         })}
+        {/* Spacer to guarantee scroll gap at the bottom on desktop */}
+        <div className="hidden min-h-6 w-full flex-shrink-0 lg:block" aria-hidden="true" />
       </div>
 
       <div className="mt-6 w-full flex-shrink-0 lg:mt-auto">

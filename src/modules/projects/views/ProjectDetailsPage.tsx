@@ -25,8 +25,8 @@ export default function ProjectDetailsPage({ projectId }: ProjectDetailsPageProp
       />
 
       <div className="w-full bg-white">
-        <div className="container-page py-10 md:py-16">
-          <div className="rounded-2xl bg-[#F8F8F8] p-6 md:p-10 lg:p-12">
+        <div className="container-page py-8 md:py-16">
+          <div className="rounded-2xl bg-[#F8F8F8] p-4 sm:p-6 md:p-10 lg:p-12">
             <ProjectDetail project={project} />
           </div>
         </div>

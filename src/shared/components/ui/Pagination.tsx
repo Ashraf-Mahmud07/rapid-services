@@ -2,22 +2,24 @@
 
 import { useTranslations } from "next-intl";
 
-export interface ProductPaginationProps {
+export interface PaginationProps {
   currentPage: number;
   itemsPerPage: number;
   totalItems: number;
   totalPages: number;
   onPageChange: (page: number) => void;
+  className?: string;
 }
 
-export default function ProductPagination({
+export function Pagination({
   currentPage,
   itemsPerPage,
   totalItems,
   totalPages,
   onPageChange,
-}: ProductPaginationProps) {
-  const t = useTranslations("product");
+  className = "mt-10",
+}: PaginationProps) {
+  const t = useTranslations("common.pagination");
 
   if (totalPages <= 1) return null;
 
@@ -46,7 +48,7 @@ export default function ProductPagination({
   return (
     <nav
       aria-label="Pagination Navigation"
-      className="mt-10 flex flex-col items-start justify-between gap-4 py-4 sm:flex-row sm:items-center"
+      className={`${className} flex flex-col items-center justify-between gap-4 py-4 sm:flex-row sm:items-center`}
     >
       <div className="flex items-center gap-1.5 text-[14.88px] leading-[22.3px] font-normal text-[#0f0f0f]">
         <span>

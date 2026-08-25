@@ -51,7 +51,7 @@ export default function OverlayProvider({ children }: { children: React.ReactNod
 
       {/* Floating triggers, bottom-right, as the references show. Hidden while
           a panel is open so they do not sit on top of it. */}
-      <div className="pointer-events-none fixed right-5 bottom-5 z-90 flex flex-col items-end gap-2.5 sm:right-8 sm:bottom-8">
+      <div className="pointer-events-none fixed right-3 bottom-8 z-90 flex flex-col items-end gap-2.5 sm:right-4 sm:bottom-12">
         {current === null && (
           <>
             <button

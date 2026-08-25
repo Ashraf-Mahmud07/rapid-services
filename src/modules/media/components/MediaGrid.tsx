@@ -21,8 +21,8 @@ export default function MediaGrid() {
   return (
     <div className="container-page py-10 md:py-16">
       {/* Header & Tabs */}
-      <div className="mb-10 flex flex-col justify-between gap-6 md:flex-row md:items-end">
-        <div>
+      <div className="mb-10 flex flex-col items-center justify-between gap-6 text-center md:flex-row md:items-center md:text-left">
+        <div className="flex flex-col items-center md:items-start">
           <h2 className="flex items-center border-l-[3px] border-primary pl-4 text-[26px] font-bold text-[#0E0E0E] md:text-[28px]">
             Media
           </h2>
@@ -32,7 +32,7 @@ export default function MediaGrid() {
           </p>
         </div>
 
-        <div className="flex items-center gap-3">
+        <div className="flex items-center justify-center gap-3">
           <button
             onClick={() => setActiveTab("photo")}
             className={`cursor-pointer rounded-full px-8 py-2.5 text-[14px] font-medium transition-colors ${

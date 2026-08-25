@@ -1,10 +1,12 @@
 "use client";
 
+import { useState } from "react";
 import { useBlogs } from "../hooks/useBlogs";
-import { Mail, ArrowRight, ChevronsLeft, ChevronsRight } from "lucide-react";
+import { Mail, ArrowRight } from "lucide-react";
 import { BlogCard } from "./BlogCard";
 import { Link } from "@/i18n/navigation";
 import { ROUTES } from "@/shared/constants/routes";
+import { Pagination } from "@/shared/components/ui/Pagination";
 
 const CATEGORIES = [
   "All Categories",
@@ -21,9 +23,16 @@ const CATEGORIES = [
 
 export function BlogsSection() {
   const { featuredBlogs, listBlogs } = useBlogs();
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 4;
 
-  // Combine all blogs to feed the new unified grid design and slice to first 4
-  const allBlogs = [...featuredBlogs, ...listBlogs].slice(0, 4);
+  // Combine all blogs to feed the new unified grid design
+  const allBlogs = [...featuredBlogs, ...listBlogs];
+  const totalPages = Math.ceil(allBlogs.length / itemsPerPage);
+  const displayedBlogs = allBlogs.slice(
+    (currentPage - 1) * itemsPerPage,
+    currentPage * itemsPerPage
+  );
 
   return (
     <div className="bg-white py-16 md:py-24">
@@ -84,38 +93,20 @@ export function BlogsSection() {
           <div className="flex flex-col">
             {/* Blog Grid */}
             <div className="mb-12 grid gap-6 md:grid-cols-2 lg:gap-8">
-              {allBlogs.map((blog) => (
+              {displayedBlogs.map((blog) => (
                 <BlogCard key={blog.id} blog={blog} />
               ))}
             </div>
 
             {/* Pagination */}
-            <div className="flex flex-col items-center justify-between gap-6 pt-2 sm:flex-row">
-              <span className="text-[13px] font-medium text-gray-600">Showing 1 to 5 of 120</span>
-              <div className="flex items-center gap-2">
-                <button className="flex size-9 cursor-pointer items-center justify-center rounded border border-[#e6fbf9] text-primary transition-colors hover:bg-[#e6fbf9]">
-                  <ChevronsLeft className="size-4" />
-                </button>
-                <button className="flex size-9 cursor-pointer items-center justify-center rounded bg-primary text-[13px] font-semibold text-white transition-colors">
-                  1
-                </button>
-                <button className="flex size-9 cursor-pointer items-center justify-center rounded border border-[#e6fbf9] text-[13px] font-semibold text-primary transition-colors hover:bg-[#e6fbf9]">
-                  2
-                </button>
-                <button className="flex size-9 cursor-pointer items-center justify-center rounded border border-[#e6fbf9] text-[13px] font-semibold text-primary transition-colors hover:bg-[#e6fbf9]">
-                  3
-                </button>
-                <span className="flex size-9 items-center justify-center text-[13px] font-semibold text-primary/50">
-                  ...
-                </span>
-                <button className="flex size-9 cursor-pointer items-center justify-center rounded border border-[#e6fbf9] text-[13px] font-semibold text-primary transition-colors hover:bg-[#e6fbf9]">
-                  24
-                </button>
-                <button className="flex size-9 cursor-pointer items-center justify-center rounded border border-[#e6fbf9] text-primary transition-colors hover:bg-[#e6fbf9]">
-                  <ChevronsRight className="size-4" />
-                </button>
-              </div>
-            </div>
+            <Pagination
+              currentPage={currentPage}
+              itemsPerPage={itemsPerPage}
+              totalItems={allBlogs.length}
+              totalPages={totalPages}
+              onPageChange={setCurrentPage}
+              className="mt-0"
+            />
           </div>
         </div>
       </div>

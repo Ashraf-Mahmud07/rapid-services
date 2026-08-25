@@ -6,7 +6,6 @@ export { default as ProductGridCard } from "./components/ProductGridCard";
 export { default as ProductHeader } from "./components/ProductHeader";
 export { default as ProductListCard } from "./components/ProductListCard";
 export { default as ProductOverview } from "./components/ProductOverview";
-export { default as ProductPagination } from "./components/ProductPagination";
 export { default as ProductRatings } from "./components/ProductRatings";
 export { default as ProductScrollspyNav } from "./components/ProductScrollspyNav";
 export { default as ProductShortOverview } from "./components/ProductShortOverview";

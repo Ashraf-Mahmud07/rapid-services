@@ -1,16 +1,6 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import NextTopLoader from "nextjs-toploader";
 import "./globals.css";
-
-const inter = Inter({
-  subsets: ["latin"],
-  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
-  variable: "--font-inter",
-  display: "swap",
-  fallback: ["sans-serif"],
-  adjustFontFallback: false,
-});
 
 export const metadata: Metadata = {
   title: "Rapid Services",
@@ -23,13 +13,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="en"
-      dir="ltr"
-      className={`${inter.variable} ${inter.className}`}
-      suppressHydrationWarning
-    >
-      <body className={inter.className} suppressHydrationWarning>
+    <html lang="en" dir="ltr" suppressHydrationWarning>
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
+          rel="stylesheet"
+        />
+      </head>
+      <body suppressHydrationWarning style={{ fontFamily: '"Inter", sans-serif' }}>
         <NextTopLoader
           color="#00a79d"
           initialPosition={0.08}
